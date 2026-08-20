@@ -14,6 +14,11 @@ import { siteConfig } from "@/data/site";
 const MOBILE_MENU_ID =
   "mobile-navigation";
 
+const DARK_SURFACE_SELECTOR =
+  '[data-navbar-surface="dark"]';
+
+const NAVBAR_SURFACE_PROBE_Y = 44;
+
 function isRouteActive(
   pathname: string,
   href: string,
@@ -34,6 +39,11 @@ export default function Navbar() {
   const [scrolled, setScrolled] =
     useState(false);
 
+  const [
+    overDarkSurface,
+    setOverDarkSurface,
+  ] = useState(false);
+
   const [menuOpen, setMenuOpen] =
     useState(false);
 
@@ -44,30 +54,65 @@ export default function Navbar() {
     useRef<HTMLDivElement>(null);
 
   /* -------------------------------------------------------
-     Scroll state
+     Scroll + surface state
      ------------------------------------------------------- */
 
   useEffect(() => {
-    const handleScroll = () => {
+    const darkSurfaces = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        DARK_SURFACE_SELECTOR,
+      ),
+    );
+
+    const updateNavbarState = () => {
       setScrolled(
         window.scrollY > 24,
       );
+
+      const isOverDarkSurface =
+        darkSurfaces.some(
+          (surface) => {
+            const rect =
+              surface.getBoundingClientRect();
+
+            return (
+              rect.top <=
+                NAVBAR_SURFACE_PROBE_Y &&
+              rect.bottom >=
+                NAVBAR_SURFACE_PROBE_Y
+            );
+          },
+        );
+
+      setOverDarkSurface(
+        isOverDarkSurface,
+      );
     };
 
-    handleScroll();
+    updateNavbarState();
 
     window.addEventListener(
       "scroll",
-      handleScroll,
+      updateNavbarState,
       {
         passive: true,
       },
     );
 
+    window.addEventListener(
+      "resize",
+      updateNavbarState,
+    );
+
     return () => {
       window.removeEventListener(
         "scroll",
-        handleScroll,
+        updateNavbarState,
+      );
+
+      window.removeEventListener(
+        "resize",
+        updateNavbarState,
       );
     };
   }, []);
@@ -224,16 +269,26 @@ export default function Navbar() {
     setMenuOpen(false);
   };
 
+  /*
+   * The mobile overlay uses the normal page surface,
+   * so the navbar returns to its default treatment
+   * while the menu is open.
+   */
+  const useDarkSurface =
+    overDarkSurface && !menuOpen;
+
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
         <nav
           aria-label="Primary navigation"
           className={[
-            "mx-auto flex h-14.5 max-w-6xl items-center justify-between rounded-full border px-3 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-500 sm:px-4",
-            scrolled
-              ? "border-border bg-background/80 shadow-[0_8px_30px_rgb(0_0_0/0.06)] backdrop-blur-xl"
-              : "border-transparent bg-transparent",
+            "mx-auto flex h-14 w-full max-w-270 items-center justify-between rounded-full border px-3 transition-[background-color,border-color,box-shadow,backdrop-filter,color] duration-500 sm:px-4",
+            useDarkSurface
+              ? "border-feature-border bg-feature/90 shadow-[0_10px_35px_rgb(0_0_0/0.22)] backdrop-blur-xl"
+              : scrolled
+                ? "border-border bg-background/80 shadow-[0_8px_30px_rgb(0_0_0/0.06)] backdrop-blur-xl"
+                : "border-transparent bg-transparent",
           ].join(" ")}
         >
           {/* Brand */}
@@ -242,12 +297,19 @@ export default function Navbar() {
             onClick={closeMobileMenu}
             aria-label={`${siteConfig.shortName} — Home`}
             className="group flex shrink-0 items-center gap-2.5"
-        >
+          >
             <span className="grid size-8 place-items-center rounded-lg bg-primary font-display text-xs font-bold text-primary-foreground transition-transform duration-300 group-hover:-rotate-6">
               {siteConfig.monogram}
             </span>
 
-            <span className="font-display text-[17px] font-semibold tracking-[-0.035em]">
+            <span
+              className={[
+                "font-display text-[17px] font-semibold tracking-[-0.035em] transition-colors duration-500",
+                useDarkSurface
+                  ? "text-feature-foreground"
+                  : "text-foreground",
+              ].join(" ")}
+            >
               {siteConfig.shortName}
 
               <span className="text-primary">
@@ -279,7 +341,9 @@ export default function Navbar() {
                       "group relative rounded-full px-3.5 py-2 text-[13px] transition-colors duration-300",
                       active
                         ? "text-primary"
-                        : "text-muted-foreground hover:text-foreground",
+                        : useDarkSurface
+                          ? "text-feature-muted hover:text-feature-foreground"
+                          : "text-muted-foreground hover:text-foreground",
                     ].join(" ")}
                   >
                     {item.label}
@@ -301,13 +365,24 @@ export default function Navbar() {
 
           {/* Right Actions */}
           <div className="flex shrink-0 items-center gap-2">
-            <ThemeToggle />
+            <ThemeToggle
+              variant={
+                useDarkSurface
+                  ? "inverse"
+                  : "default"
+              }
+            />
 
             <Link
               href={
                 siteConfig.resume.href
               }
-              className="hidden min-h-10 items-center justify-center rounded-full bg-foreground px-4 text-[13px] font-semibold text-background transition-[transform,opacity] duration-300 hover:-translate-y-0.5 hover:opacity-90 lg:inline-flex"
+              className={[
+                "hidden min-h-10 items-center justify-center rounded-full px-4 text-[13px] font-semibold transition-[transform,opacity,background-color,color] duration-300 hover:-translate-y-0.5 hover:opacity-90 lg:inline-flex",
+                useDarkSurface
+                  ? "bg-feature-foreground text-feature"
+                  : "bg-foreground text-background",
+              ].join(" ")}
             >
               {
                 siteConfig.resume
@@ -334,7 +409,12 @@ export default function Navbar() {
                     !current,
                 )
               }
-              className="relative grid size-10 shrink-0 place-items-center rounded-full border border-border bg-background/40 text-foreground transition-colors duration-300 hover:border-primary hover:text-primary lg:hidden"
+              className={[
+                "relative grid size-10 shrink-0 place-items-center rounded-full border transition-colors duration-300 lg:hidden",
+                useDarkSurface
+                  ? "border-feature-border bg-feature-foreground/5 text-feature-foreground hover:border-primary hover:text-primary"
+                  : "border-border bg-background/40 text-foreground hover:border-primary hover:text-primary",
+              ].join(" ")}
             >
               <span
                 aria-hidden="true"

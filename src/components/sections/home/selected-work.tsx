@@ -500,8 +500,6 @@ export default function SelectedWork() {
             />
           </div>
         </div>
-
-        {/* Bottom project index */}
       </div>
     </section>
   );

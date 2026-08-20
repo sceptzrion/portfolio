@@ -24,6 +24,7 @@ export default function ExperiencePreview() {
   return (
     <section
       id="experience"
+      data-navbar-surface="dark"
       className="relative overflow-hidden bg-feature text-feature-foreground"
     >
       {/* Background */}

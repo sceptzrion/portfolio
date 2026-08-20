@@ -2,6 +2,10 @@
 
 import { useTheme } from "@/components/theme/theme-provider";
 
+type ThemeToggleProps = {
+  variant?: "default" | "inverse";
+};
+
 function MoonIcon() {
   return (
     <svg
@@ -49,12 +53,17 @@ function SunIcon() {
   );
 }
 
-export default function ThemeToggle() {
+export default function ThemeToggle({
+  variant = "default",
+}: ThemeToggleProps) {
   const {
     theme,
     mounted,
     toggleTheme,
   } = useTheme();
+
+  const inverse =
+    variant === "inverse";
 
   return (
     <button
@@ -78,7 +87,12 @@ export default function ThemeToggle() {
             } mode`
           : "Toggle color theme"
       }
-      className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-background/40 text-muted-foreground transition-[color,border-color,background-color,transform] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft hover:text-primary"
+      className={[
+        "grid size-10 shrink-0 place-items-center rounded-full border transition-[color,border-color,background-color,transform] duration-300 hover:-translate-y-0.5",
+        inverse
+          ? "border-feature-border bg-feature-foreground/5 text-feature-muted hover:border-primary hover:bg-primary/10 hover:text-primary"
+          : "border-border bg-background/40 text-muted-foreground hover:border-primary hover:bg-primary-soft hover:text-primary",
+      ].join(" ")}
     >
       {!mounted ? (
         <span
