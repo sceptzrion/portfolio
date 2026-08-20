@@ -1,26 +1,423 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =========================================================
+   Design Tokens
+   Light theme is the default.
+   ========================================================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base */
+  --background: #f7f4ef;
+  --foreground: #211e1a;
+
+  /* Cards / surfaces */
+  --card: #fffdfa;
+  --card-foreground: #211e1a;
+
+  --muted: #ece7dd;
+  --muted-foreground: #726b61;
+
+  --secondary: #efe9df;
+  --secondary-foreground: #2b2822;
+
+  --tertiary: #e9e2d5;
+
+  /* Brand */
+  --primary: #dd5f22;
+  --primary-foreground: #fdf7f2;
+  --primary-soft: #f4e3d6;
+
+  --accent: #dd5f22;
+  --accent-foreground: #fdf7f2;
+
+  /* Borders */
+  --border: #e1dace;
+  --border-strong: #d3cabb;
+
+  /* Focus */
+  --ring: #dd5f22;
+
+  /*
+   Feature palette.
+   Used when a section intentionally becomes dark
+   even while the website is in Light Mode.
+  */
+  --feature: #201c17;
+  --feature-foreground: #f3eee6;
+  --feature-muted: #948b7d;
+  --feature-border: #342f28;
+
+  /* Radius */
+  --radius: 1rem;
+
+  color-scheme: light;
 }
+
+/* =========================================================
+   Dark Theme
+   Toggle will be implemented later.
+   ========================================================= */
+
+.dark {
+  --background: #14120e;
+  --foreground: #eee9e0;
+
+  --card: #1e1b16;
+  --card-foreground: #eee9e0;
+
+  --muted: #262119;
+  --muted-foreground: #a49b8c;
+
+  --primary: #f0703c;
+  --primary-foreground: #17120e;
+  --primary-soft: #34251c;
+
+  --secondary: #221e18;
+  --secondary-foreground: #e6e0d5;
+
+  --tertiary: #1a1712;
+
+  --accent: #f0703c;
+  --accent-foreground: #17120e;
+
+  --border: #302a22;
+  --border-strong: #3c352b;
+
+  --ring: #f0703c;
+
+  --feature: #0d0b08;
+  --feature-foreground: #f3eee6;
+  --feature-muted: #8b8275;
+  --feature-border: #292420;
+
+  color-scheme: dark;
+}
+
+/* =========================================================
+   Tailwind v4 mappings
+   ========================================================= */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-tertiary: var(--tertiary);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-ring: var(--ring);
+
+  --color-feature: var(--feature);
+  --color-feature-foreground: var(--feature-foreground);
+  --color-feature-muted: var(--feature-muted);
+  --color-feature-border: var(--feature-border);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =========================================================
+   Base
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
+  margin: 0;
+
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  transition:
+    background-color 400ms ease,
+    color 400ms ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  font-family: var(--font-display), Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  border: 0;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   Shared Layout
+   ========================================================= */
+
+.shell {
+  width: min(calc(100% - 32px), 1240px);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: 80px;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+
+  color: var(--muted-foreground);
+}
+
+.section-label-number {
+  color: var(--primary);
+}
+
+.mono {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.5;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   Decorative Utilities
+   Used sparingly across the site.
+   ========================================================= */
+
+.tech-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--foreground) 4%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--foreground) 4%, transparent) 1px,
+      transparent 1px
+    );
+
+  background-size: 72px 72px;
+}
+
+.tech-grid-feature {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--feature-foreground) 6%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--feature-foreground) 6%, transparent) 1px,
+      transparent 1px
+    );
+
+  background-size: 56px 56px;
+}
+
+.tech-dots {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--foreground) 12%, transparent) 1px,
+    transparent 1px
+  );
+
+  background-size: 22px 22px;
+}
+
+.warm-veil {
+  background:
+    radial-gradient(
+      60% 55% at 80% 0%,
+      color-mix(in srgb, var(--primary) 14%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      50% 50% at 0% 30%,
+      color-mix(in srgb, var(--tertiary) 60%, transparent),
+      transparent 70%
+    );
+}
+
+.hairline {
+  border-color: var(--border);
+}
+
+/* =========================================================
+   Simple entrance utilities
+   Full scroll animation system comes later.
+   ========================================================= */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.reveal {
+  opacity: 0;
+
+  animation: rise 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal-fade {
+  opacity: 0;
+
+  animation: fade 900ms ease forwards;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (min-width: 640px) {
+  .shell {
+    width: min(calc(100% - 48px), 1240px);
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 104px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    width: min(calc(100% - 80px), 1240px);
+  }
+
+  .section {
+    padding-block: 128px;
+  }
+}
+
+/* =========================================================
+   Reduced Motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .reveal-fade {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
