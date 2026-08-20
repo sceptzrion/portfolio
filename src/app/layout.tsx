@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import {
   Inter,
   JetBrains_Mono,
@@ -27,14 +28,69 @@ const monoFont = JetBrains_Mono({
   display: "swap",
 });
 
+const siteName = "Rizqi Yanuar";
+
+const siteTitle =
+  "Rizqi Yanuar | Full-Stack Web Developer";
+
+const siteDescription =
+  "Portfolio of Muhamad Ikhsan Rizqi Yanuar, a Full-Stack Web Developer with hands-on experience in responsive web development, full-stack applications, and data projects.";
+
+const siteUrl = "https://rizqiyr.id";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+
+  applicationName: siteName,
+
   title: {
-    default: "Rizqi — Full-Stack Web Developer",
-    template: "%s — Rizqi",
+    default: siteTitle,
+    template: `%s | ${siteName}`,
   },
 
-  description:
-    "Portfolio of Muhamad Ikhsan Rizqi Yanuar, a Full-Stack Web Developer based in Karawang, Indonesia.",
+  description: siteDescription,
+
+  authors: [
+    {
+      name: "Muhamad Ikhsan Rizqi Yanuar",
+      url: siteUrl,
+    },
+  ],
+
+  creator: "Muhamad Ikhsan Rizqi Yanuar",
+
+  publisher: "Muhamad Ikhsan Rizqi Yanuar",
+
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName,
+    title: siteTitle,
+    description: siteDescription,
+  },
+
+  twitter: {
+    card: "summary",
+    title: siteTitle,
+    description: siteDescription,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const websiteStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  alternateName: [
+    "Rizqi",
+    "rizqiyr.id",
+  ],
+  url: siteUrl,
 };
 
 const themeScript = `
@@ -63,8 +119,11 @@ export default function RootLayout({
     >
       <head>
         <script
+          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: themeScript,
+            __html: JSON.stringify(
+              websiteStructuredData,
+            ),
           }}
         />
       </head>
@@ -72,6 +131,14 @@ export default function RootLayout({
       <body
         className={`${displayFont.variable} ${sansFont.variable} ${monoFont.variable}`}
       >
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: themeScript,
+          }}
+        />
+
         <ThemeProvider>
           {children}
         </ThemeProvider>
