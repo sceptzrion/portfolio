@@ -25,7 +25,7 @@ export default function Footer() {
     new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-card">
+    <footer className="border-t border-border bg-background">
       <div className="shell py-10 md:py-12">
         <div className="grid gap-10 md:grid-cols-[1.35fr_0.8fr_0.8fr] md:gap-12">
           {/* Brand */}

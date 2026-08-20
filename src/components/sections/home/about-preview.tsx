@@ -39,7 +39,7 @@ function PortraitPlaceholder() {
       </div>
 
       {/* Portrait */}
-      <div className="group relative aspect-4/5 overflow-hidden rounded-4xl border border-border-strong bg-card shadow-[0_28px_70px_rgb(33_30_26/0.10)]">
+      <div className="group relative aspect-4/5 overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[0_22px_55px_rgb(33_30_26/0.08)]">
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-[radial-gradient(circle_at_65%_20%,color-mix(in_srgb,var(--primary)_20%,transparent),transparent_32%),linear-gradient(145deg,var(--secondary),var(--tertiary))]"
@@ -86,7 +86,7 @@ function PortraitPlaceholder() {
       </div>
 
       {/* Education floating card */}
-      <div className="absolute -bottom-7 left-4 z-10 max-w-57.5 rounded-2xl border border-border-strong bg-card/95 p-4 shadow-[0_18px_45px_rgb(33_30_26/0.14)] backdrop-blur-md sm:left-7">
+      <div className="absolute -bottom-7 left-4 z-10 max-w-57.5 rounded-2xl border border-border bg-card/95 p-4 shadow-[0_14px_35px_rgb(33_30_26/0.10)] backdrop-blur-md sm:left-7">
         <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
           Education
         </p>
@@ -122,12 +122,12 @@ export default function AboutPreview() {
       {/* Decorative background */}
       <div
         aria-hidden="true"
-        className="warm-veil pointer-events-none absolute inset-0 opacity-35"
+        className="warm-veil pointer-events-none absolute inset-0 opacity-25"
       />
 
       <div
         aria-hidden="true"
-        className="tech-dots pointer-events-none absolute right-0 top-0 h-[55%] w-[38%] opacity-25 mask-[linear-gradient(to_left,black,transparent)]"
+        className="tech-dots pointer-events-none absolute right-0 top-0 h-[55%] w-[38%] opacity-[0.14] mask-[linear-gradient(to_left,black,transparent)]"
       />
 
       <div className="shell section relative">
@@ -153,7 +153,7 @@ export default function AboutPreview() {
               About
             </div>
 
-            <h2 className="mt-5 max-w-195 text-balance font-display text-[clamp(2.7rem,5vw,4.8rem)] font-bold leading-[0.99] tracking-tighter">
+            <h2 className="mt-5 max-w-195 text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
               Building technology with{" "}
               <span className="text-primary">
                 functionality

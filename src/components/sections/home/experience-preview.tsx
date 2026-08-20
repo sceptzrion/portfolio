@@ -30,12 +30,12 @@ export default function ExperiencePreview() {
       {/* Background */}
       <div
         aria-hidden="true"
-        className="tech-grid-feature pointer-events-none absolute inset-0 opacity-40"
+        className="tech-grid-feature pointer-events-none absolute inset-0 opacity-30"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-40 -top-30 size-130 rounded-full bg-primary/10 blur-3xl"
+        className="pointer-events-none absolute -right-40 -top-30 size-130 rounded-full bg-primary/8 blur-3xl"
       />
 
       <div className="shell section relative">
@@ -53,7 +53,7 @@ export default function ExperiencePreview() {
               Experience
             </div>
 
-            <h2 className="mt-5 max-w-190 text-balance font-display text-[clamp(2.7rem,5vw,4.8rem)] font-bold leading-[0.99] tracking-tighter">
+            <h2 className="mt-5 max-w-190 text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
               Experience across{" "}
               <span className="text-primary">
                 web and data.
@@ -94,7 +94,7 @@ export default function ExperiencePreview() {
               >
                 <Link
                   href={`/experience#${experience.slug}`}
-                  className="group relative flex min-h-full flex-col overflow-hidden rounded-[1.6rem] border border-feature-border bg-feature-foreground/[0.035] p-6 transition-[background-color,border-color,transform,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/45 hover:bg-feature-foreground/6 hover:shadow-[0_24px_65px_rgb(0_0_0/0.18)] focus-visible:-translate-y-1 focus-visible:border-primary/45 focus-visible:bg-feature-foreground/6 sm:p-7 lg:p-8"
+                  className="group relative flex min-h-full flex-col overflow-hidden rounded-3xl border border-feature-border bg-feature-foreground/[0.035] p-6 transition-[background-color,border-color,transform,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/45 hover:bg-feature-foreground/6 hover:shadow-[0_20px_50px_rgb(0_0_0/0.16)] focus-visible:-translate-y-1 focus-visible:border-primary/45 focus-visible:bg-feature-foreground/6 sm:p-7 lg:p-8"
                 >
                   {/* Accent glow */}
                   <div

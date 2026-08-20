@@ -9,7 +9,7 @@ export default function Capabilities() {
       {/* Subtle background treatment */}
       <div
         aria-hidden="true"
-        className="tech-dots pointer-events-none absolute right-0 top-0 h-[62%] w-[34%] opacity-[0.18] mask-[linear-gradient(to_left,black,transparent)]"
+        className="tech-dots pointer-events-none absolute right-0 top-0 h-[62%] w-[34%] opacity-[0.11] mask-[linear-gradient(to_left,black,transparent)]"
       />
 
       <div className="shell section-compact relative">
@@ -27,7 +27,7 @@ export default function Capabilities() {
               Capabilities
             </div>
 
-            <h2 className="mt-5 max-w-190 text-balance font-display text-[clamp(2.6rem,5vw,4.5rem)] font-bold leading-none tracking-tighter">
+            <h2 className="mt-5 max-w-190 text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
               From interface to{" "}
               <span className="text-primary">
                 data layer.
@@ -103,7 +103,7 @@ export default function Capabilities() {
                         (skill) => (
                           <li
                             key={skill}
-                            className="rounded-full border border-border-strong bg-secondary/55 px-2.5 py-1.5 font-mono text-[9px] uppercase leading-none tracking-widest text-muted-foreground"
+                            className="rounded-full border border-border bg-secondary/50 px-2.5 py-1.5 font-mono text-[9px] uppercase leading-none tracking-widest text-muted-foreground"
                           >
                             {skill}
                           </li>

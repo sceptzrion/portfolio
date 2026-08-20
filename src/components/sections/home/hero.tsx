@@ -123,12 +123,12 @@ export default function Hero() {
       {/* Background atmosphere */}
       <div
         aria-hidden="true"
-        className="warm-veil pointer-events-none absolute inset-0 opacity-70"
+        className="warm-veil pointer-events-none absolute inset-0 opacity-60"
       />
 
       <div
         aria-hidden="true"
-        className="tech-grid pointer-events-none absolute inset-0 opacity-40 mask-[radial-gradient(ellipse_at_top_right,black,transparent_68%)]"
+        className="tech-grid pointer-events-none absolute inset-0 opacity-25 mask-[radial-gradient(ellipse_at_top_right,black,transparent_68%)]"
       />
 
       {/* Small decorative marker */}
@@ -232,7 +232,7 @@ export default function Hero() {
             >
               <Link
                 href={siteConfig.hero.primaryAction.href}
-                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-accent"
+                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-[0_8px_22px_rgb(221_95_34/0.12)] transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-accent hover:shadow-[0_12px_28px_rgb(221_95_34/0.20)]"
               >
                 {siteConfig.hero.primaryAction.label}
 
@@ -304,7 +304,7 @@ export default function Hero() {
             />
 
             {/* Main portrait shell */}
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-border-strong bg-card shadow-[0_30px_70px_rgb(33_30_26/0.13)]">
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[0_24px_60px_rgb(33_30_26/0.10)]">
               <PortraitPlaceholder />
             </div>
 

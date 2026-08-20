@@ -29,7 +29,7 @@ function ProjectChip({
   children: React.ReactNode;
 }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-border bg-card px-2.5 py-1 font-mono text-[10px] text-muted-foreground">
+    <span className="inline-flex items-center rounded-full border border-border bg-secondary/50 px-2.5 py-1 font-mono text-[10px] text-muted-foreground">
       {children}
     </span>
   );
@@ -293,7 +293,7 @@ function SecondaryProjectCard({
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-border bg-card transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_65px_rgb(33_30_26/0.10)]"
+      className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_20px_50px_rgb(33_30_26/0.08)]"
     >
       <div aria-hidden="true">
         {visual}
@@ -353,7 +353,7 @@ export default function SelectedWork() {
     >
       <div
         aria-hidden="true"
-        className="tech-grid pointer-events-none absolute inset-0 opacity-[0.16]"
+        className="tech-grid pointer-events-none absolute inset-0 opacity-[0.10]"
       />
 
       <div className="shell section relative">
@@ -371,7 +371,7 @@ export default function SelectedWork() {
               Selected Work
             </div>
 
-            <h2 className="mt-5 text-balance font-display text-[clamp(2.6rem,5vw,4.7rem)] font-bold leading-none tracking-tighter">
+            <h2 className="mt-5 text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
               Products built from{" "}
               <span className="text-primary">
                 idea to implementation.
@@ -404,7 +404,7 @@ export default function SelectedWork() {
         <Link
             data-reveal
             href={`/projects/${flagship.slug}`}
-            className="reveal-on-scroll reveal-delay-1 group mt-12 block overflow-hidden rounded-4xl border border-border bg-card transition-[opacity,transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_30px_85px_rgb(33_30_26/0.11)]"
+            className="reveal-on-scroll reveal-delay-1 group mt-12 block overflow-hidden rounded-[1.75rem] border border-border bg-card transition-[opacity,transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_24px_60px_rgb(33_30_26/0.09)]"
         >
           <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
             {/* Project information */}

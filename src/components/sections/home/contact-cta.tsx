@@ -47,17 +47,17 @@ export default function ContactCTA() {
       {/* Ambient background */}
       <div
         aria-hidden="true"
-        className="warm-veil pointer-events-none absolute inset-0 opacity-80"
+        className="warm-veil pointer-events-none absolute inset-0 opacity-65"
       />
 
       <div
         aria-hidden="true"
-        className="tech-grid pointer-events-none absolute inset-0 opacity-[0.12] mask-[radial-gradient(ellipse_at_center,black,transparent_72%)]"
+        className="tech-grid pointer-events-none absolute inset-0 opacity-[0.07] mask-[radial-gradient(ellipse_at_center,black,transparent_72%)]"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-60 left-1/2 size-140 -translate-x-1/2 rounded-full bg-primary/15 blur-3xl"
+        className="pointer-events-none absolute -bottom-60 left-1/2 size-140 -translate-x-1/2 rounded-full bg-primary/12 blur-3xl"
       />
 
       <div className="shell section relative">
@@ -107,7 +107,7 @@ export default function ContactCTA() {
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href={siteConfig.contact.primaryAction.href}
-              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-accent hover:shadow-[0_14px_35px_rgb(221_95_34/0.20)]"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-[0_8px_22px_rgb(221_95_34/0.12)] transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-accent hover:shadow-[0_12px_28px_rgb(221_95_34/0.20)]"
             >
               {siteConfig.contact.primaryAction.label}
 
