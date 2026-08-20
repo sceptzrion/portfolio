@@ -30,7 +30,7 @@ export default function ExperiencePreview() {
       {/* Background */}
       <div
         aria-hidden="true"
-        className="tech-grid-feature pointer-events-none absolute inset-0 opacity-30"
+        className="tech-grid-feature pointer-events-none absolute inset-0 opacity-20 sm:opacity-30"
       />
 
       <div
@@ -79,7 +79,7 @@ export default function ExperiencePreview() {
         </div>
 
         {/* Experience cards */}
-        <div className="mt-12 grid gap-4 lg:grid-cols-2 lg:gap-5">
+        <div className="mt-10 grid gap-4 sm:mt-12 lg:grid-cols-2 lg:gap-5">
           {experiences.map(
             (experience, index) => (
               <div
@@ -94,7 +94,7 @@ export default function ExperiencePreview() {
               >
                 <Link
                   href={`/experience#${experience.slug}`}
-                  className="group relative flex min-h-full flex-col overflow-hidden rounded-3xl border border-feature-border bg-feature-foreground/[0.035] p-6 transition-[background-color,border-color,transform,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/45 hover:bg-feature-foreground/6 hover:shadow-[0_20px_50px_rgb(0_0_0/0.16)] focus-visible:-translate-y-1 focus-visible:border-primary/45 focus-visible:bg-feature-foreground/6 sm:p-7 lg:p-8"
+                  className="group relative flex min-h-full flex-col overflow-hidden rounded-3xl border border-feature-border bg-feature-foreground/[0.035] p-5 transition-[background-color,border-color,transform,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/45 hover:bg-feature-foreground/6 hover:shadow-[0_20px_50px_rgb(0_0_0/0.16)] focus-visible:-translate-y-1 focus-visible:border-primary/45 focus-visible:bg-feature-foreground/6 sm:p-7 lg:p-8"
                 >
                   {/* Accent glow */}
                   <div
@@ -120,7 +120,7 @@ export default function ExperiencePreview() {
                   </div>
 
                   {/* Main identity */}
-                  <div className="relative mt-8">
+                  <div className="relative mt-6 sm:mt-8">
                     <h3 className="max-w-130 font-display text-[clamp(1.55rem,2.5vw,2.05rem)] font-bold leading-[1.08] tracking-[-0.04em]">
                       {experience.role}
                     </h3>
@@ -137,7 +137,7 @@ export default function ExperiencePreview() {
                     Desktop:
                     compact by default, reveal on hover/focus.
                   */}
-                  <div className="relative mt-6 grid grid-rows-[1fr] opacity-100 transition-[grid-template-rows,opacity,margin] duration-500 ease-out lg:mt-0 lg:grid-rows-[0fr] lg:opacity-0 lg:group-hover:mt-6 lg:group-hover:grid-rows-[1fr] lg:group-hover:opacity-100 lg:group-focus-visible:mt-6 lg:group-focus-visible:grid-rows-[1fr] lg:group-focus-visible:opacity-100">
+                  <div className="relative mt-5 grid grid-rows-[1fr] opacity-100 transition-[grid-template-rows,opacity,margin] duration-500 ease-out sm:mt-6 lg:mt-0 lg:grid-rows-[0fr] lg:opacity-0 lg:group-hover:mt-6 lg:group-hover:grid-rows-[1fr] lg:group-hover:opacity-100 lg:group-focus-visible:mt-6 lg:group-focus-visible:grid-rows-[1fr] lg:group-focus-visible:opacity-100">
                     <div className="overflow-hidden">
                       <p className="border-t border-feature-border pt-5 text-sm leading-7 text-feature-muted lg:transition-colors lg:duration-500 lg:group-hover:text-feature-foreground/80 lg:group-focus-visible:text-feature-foreground/80">
                         {experience.summary}
@@ -146,7 +146,7 @@ export default function ExperiencePreview() {
                   </div>
 
                   {/* Bottom affordance */}
-                  <div className="relative mt-auto flex items-end justify-between gap-5 pt-7">
+                  <div className="relative mt-auto flex items-end justify-between gap-5 pt-5 sm:pt-7">
                     <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-feature-muted">
                       Experience / {experience.index}
                     </span>

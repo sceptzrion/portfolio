@@ -44,7 +44,7 @@ function ProjectChip({
 
 function EduBidanVisual() {
   return (
-    <div className="relative h-full min-h-97.5 overflow-hidden bg-[linear-gradient(145deg,var(--tertiary),var(--secondary))] p-5 sm:p-8 lg:p-10">
+    <div className="relative h-full min-h-80 overflow-hidden bg-[linear-gradient(145deg,var(--tertiary),var(--secondary))] p-4 sm:min-h-97.5 sm:p-8 lg:p-10">
       <div
         aria-hidden="true"
         className="tech-grid absolute inset-0 opacity-35"
@@ -73,7 +73,7 @@ function EduBidanVisual() {
           </div>
 
           {/* Dashboard */}
-          <div className="grid min-h-75 grid-cols-[72px_1fr] sm:grid-cols-[92px_1fr]">
+          <div className="grid min-h-64 grid-cols-[64px_1fr] sm:min-h-75 sm:grid-cols-[92px_1fr]">
             <aside className="border-r border-border bg-secondary/55 p-3">
               <div className="size-8 rounded-lg bg-primary" />
 
@@ -299,7 +299,7 @@ function SecondaryProjectCard({
         {visual}
       </div>
 
-      <div className="flex flex-1 flex-col p-6 sm:p-7">
+      <div className="flex flex-1 flex-col p-5 sm:p-7">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
           <span className="text-primary">
             {project.index}
@@ -404,7 +404,7 @@ export default function SelectedWork() {
         <Link
             data-reveal
             href={`/projects/${flagship.slug}`}
-            className="reveal-on-scroll reveal-delay-1 group mt-12 block overflow-hidden rounded-[1.75rem] border border-border bg-card transition-[opacity,transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_24px_60px_rgb(33_30_26/0.09)]"
+            className="reveal-on-scroll reveal-delay-1 group mt-10 block overflow-hidden rounded-[1.75rem] border border-border bg-card transition-[opacity,transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_24px_60px_rgb(33_30_26/0.09)] sm:mt-12"
         >
           <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
             {/* Project information */}

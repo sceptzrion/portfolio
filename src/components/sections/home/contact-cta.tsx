@@ -77,7 +77,7 @@ export default function ContactCTA() {
           </div>
 
           {/* Headline */}
-          <h2 className="mx-auto mt-6 max-w-212.5 text-balance font-display text-[clamp(3rem,6vw,5.6rem)] font-extrabold leading-[0.97] tracking-[-0.055em]">
+          <h2 className="mx-auto mt-6 max-w-212.5 text-balance font-display text-[clamp(2.6rem,6vw,5.6rem)] font-extrabold leading-[0.97] tracking-[-0.055em]">
             {siteConfig.contact.headline.introduction}{" "}
             <span className="relative text-primary">
               {siteConfig.contact.headline.emphasis}
@@ -107,7 +107,7 @@ export default function ContactCTA() {
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href={siteConfig.contact.primaryAction.href}
-              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-[0_8px_22px_rgb(221_95_34/0.12)] transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-accent hover:shadow-[0_12px_28px_rgb(221_95_34/0.20)]"
+              className="group inline-flex min-h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-[0_8px_22px_rgb(221_95_34/0.12)] transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-accent hover:shadow-[0_12px_28px_rgb(221_95_34/0.20)] sm:w-auto"
             >
               {siteConfig.contact.primaryAction.label}
 
@@ -116,7 +116,7 @@ export default function ContactCTA() {
 
             <a
               href={`mailto:${siteConfig.contact.email}`}
-              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border-strong bg-background/40 px-6 text-sm font-semibold text-foreground backdrop-blur-sm transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft"
+              className="group inline-flex min-h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full border border-border-strong bg-background/40 px-5 text-sm font-semibold text-foreground backdrop-blur-sm transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft sm:w-auto sm:px-6"
             >
               {siteConfig.contact.email}
 

@@ -127,15 +127,15 @@ export default function AboutPreview() {
 
       <div
         aria-hidden="true"
-        className="tech-dots pointer-events-none absolute right-0 top-0 h-[55%] w-[38%] opacity-[0.14] mask-[linear-gradient(to_left,black,transparent)]"
+        className="tech-dots pointer-events-none absolute right-0 top-0 hidden h-[55%] w-[38%] opacity-[0.14] mask-[linear-gradient(to_left,black,transparent)] sm:block"
       />
 
       <div className="shell section relative">
-        <div className="grid items-center gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 xl:gap-20">
+        <div className="grid items-center gap-12 sm:gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 xl:gap-20">
           {/* Portrait */}
           <div
             data-reveal
-            className="reveal-on-scroll reveal-from-left mx-auto w-full max-w-107.5 pb-8 lg:mx-0"
+            className="reveal-on-scroll reveal-from-left mx-auto w-full max-w-[19rem] pb-8 sm:max-w-107.5 lg:mx-0"
           >
             <PortraitPlaceholder />
           </div>
@@ -190,7 +190,7 @@ export default function AboutPreview() {
         {/* Approach */}
         <div
           data-reveal
-          className="reveal-on-scroll mt-16 grid gap-6 border-t border-border pt-6 lg:grid-cols-[0.3fr_1fr] lg:items-start"
+          className="reveal-on-scroll mt-12 grid gap-6 border-t border-border pt-6 sm:mt-16 lg:grid-cols-[0.3fr_1fr] lg:items-start"
         >
           <div>
             <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-primary">

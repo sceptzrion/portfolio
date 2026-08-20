@@ -9,7 +9,7 @@ export default function Capabilities() {
       {/* Subtle background treatment */}
       <div
         aria-hidden="true"
-        className="tech-dots pointer-events-none absolute right-0 top-0 h-[62%] w-[34%] opacity-[0.11] mask-[linear-gradient(to_left,black,transparent)]"
+        className="tech-dots pointer-events-none absolute right-0 top-0 hidden h-[62%] w-[34%] opacity-[0.11] mask-[linear-gradient(to_left,black,transparent)] md:block"
       />
 
       <div className="shell section-compact relative">
@@ -72,7 +72,7 @@ export default function Capabilities() {
                   className="absolute bottom-0 left-0 top-0 w-0.5 origin-bottom scale-y-0 bg-primary transition-transform duration-500 group-hover:scale-y-100"
                 />
 
-                <div className="grid gap-4 py-6 pl-5 sm:py-7 sm:pl-6 md:grid-cols-[54px_1fr] md:gap-7 lg:grid-cols-[60px_0.85fr_1.15fr] lg:items-center lg:gap-10">
+                <div className="grid grid-cols-[36px_1fr] gap-x-3 gap-y-4 py-6 pl-4 sm:grid-cols-[44px_1fr] sm:gap-x-5 sm:py-7 sm:pl-6 md:grid-cols-[54px_1fr] md:gap-x-7 lg:grid-cols-[60px_0.85fr_1.15fr] lg:items-center lg:gap-10">
                   {/* Index */}
                   <span className="font-mono text-[10px] font-medium tracking-[0.12em] text-primary">
                     {capability.index}
@@ -90,7 +90,7 @@ export default function Capabilities() {
                   </div>
 
                   {/* Description + toolkit */}
-                  <div className="md:col-start-2 lg:col-start-auto">
+                  <div className="col-start-2 lg:col-start-auto">
                     <p className="hidden max-w-xl text-sm leading-6 text-muted-foreground lg:block">
                       {capability.description}
                     </p>

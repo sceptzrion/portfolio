@@ -232,11 +232,11 @@
 }
 
 .section {
-  padding-block: 72px;
+  padding-block: 64px;
 }
 
 .section-compact {
-  padding-block: 64px;
+  padding-block: 56px;
 }
 
 .section-header {
@@ -452,6 +452,14 @@
 @media (min-width: 640px) {
   .shell {
     width: min(calc(100% - 48px), 1240px);
+  }
+
+  .section {
+    padding-block: 72px;
+  }
+
+  .section-compact {
+    padding-block: 64px;
   }
 }
 

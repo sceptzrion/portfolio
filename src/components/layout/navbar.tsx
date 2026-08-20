@@ -453,7 +453,7 @@ export default function Navbar() {
         aria-label="Mobile navigation"
         aria-hidden={!menuOpen}
         className={[
-          "fixed inset-0 z-40 overflow-hidden bg-background transition-[opacity,visibility] duration-500 lg:hidden",
+          "fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-background transition-[opacity,visibility] duration-500 lg:hidden",
           menuOpen
             ? "visible pointer-events-auto opacity-100"
             : "invisible pointer-events-none opacity-0",
@@ -514,7 +514,7 @@ export default function Navbar() {
                           : "0ms",
                     }}
                     className={[
-                      "group flex items-baseline gap-5 border-b border-border py-4 transition-[opacity,transform,color] duration-500",
+                      "group flex items-baseline gap-4 border-b border-border py-3.5 transition-[opacity,transform,color] duration-500 sm:gap-5 sm:py-4",
                       menuOpen
                         ? "translate-y-0 opacity-100"
                         : "translate-y-3 opacity-0",
@@ -532,7 +532,7 @@ export default function Navbar() {
                       )}
                     </span>
 
-                    <span className="font-display text-[clamp(2rem,9vw,3.1rem)] font-semibold leading-none tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1">
+                    <span className="font-display text-[clamp(1.85rem,7vw,2.75rem)] font-semibold leading-none tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1">
                       {
                         item.label
                       }
@@ -554,7 +554,7 @@ export default function Navbar() {
                 menuOpen ? 0 : -1
               }
               className={[
-                "mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-5 text-sm font-semibold text-background transition-[opacity,transform] duration-500",
+                "mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-5 text-sm font-semibold text-background transition-[opacity,transform] duration-500",
                 menuOpen
                   ? "translate-y-0 opacity-100"
                   : "translate-y-3 opacity-0",
@@ -572,7 +572,7 @@ export default function Navbar() {
 
           <div
             className={[
-              "mt-8 transition-[opacity,transform] duration-500",
+              "mt-6 transition-[opacity,transform] duration-500",
               menuOpen
                 ? "translate-y-0 opacity-100"
                 : "translate-y-3 opacity-0",

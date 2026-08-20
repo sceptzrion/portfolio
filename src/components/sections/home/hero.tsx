@@ -144,8 +144,8 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="shell relative flex min-h-svh items-center pb-20 pt-32 sm:pt-36 lg:pb-24 lg:pt-40">
-        <div className="grid w-full items-center gap-16 lg:grid-cols-[1.06fr_0.94fr] lg:gap-12 xl:gap-20">
+      <div className="shell relative flex min-h-svh items-center pb-16 pt-28 sm:pb-20 sm:pt-36 lg:pb-24 lg:pt-40">
+        <div className="grid w-full items-center gap-12 sm:gap-16 lg:grid-cols-[1.06fr_0.94fr] lg:gap-12 xl:gap-20">
           {/* =================================================
               Left Content
               ================================================= */}
@@ -281,7 +281,7 @@ export default function Hero() {
               ================================================= */}
 
           <div
-            className="reveal relative mx-auto w-full max-w-107.5 lg:mr-0"
+            className="reveal relative mx-auto w-full max-w-[20rem] sm:max-w-107.5 lg:mr-0"
             style={{
               animationDelay: "300ms",
             }}

@@ -27,9 +27,9 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="shell py-10 md:py-12">
-        <div className="grid gap-10 md:grid-cols-[1.35fr_0.8fr_0.8fr] md:gap-12">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[1.35fr_0.8fr_0.8fr] md:gap-12">
           {/* Brand */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <Link
               href="/"
               aria-label={`${siteConfig.shortName} — Home`}
