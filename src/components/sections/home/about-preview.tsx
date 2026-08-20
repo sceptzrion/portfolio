@@ -130,8 +130,8 @@ export default function AboutPreview() {
         className="tech-dots pointer-events-none absolute right-0 top-0 h-[55%] w-[38%] opacity-25 mask-[linear-gradient(to_left,black,transparent)]"
       />
 
-      <div className="shell relative py-24 md:py-28 lg:py-36">
-        <div className="grid items-center gap-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20 xl:gap-28">
+      <div className="shell section relative">
+        <div className="grid items-center gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 xl:gap-20">
           {/* =================================================
               Portrait / Visual
               ================================================= */}
@@ -171,56 +171,8 @@ export default function AboutPreview() {
               </p>
             </div>
 
-            {/* Focus areas */}
-            <div className="mt-9">
-              <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-muted-foreground">
-                Current areas of focus
-              </p>
-
-              <div className="mt-3 flex flex-wrap gap-2">
-                {profile.focusAreas.map(
-                  (focus) => (
-                    <span
-                      key={focus}
-                      className="rounded-full border border-border bg-card px-3 py-2 text-xs font-medium text-foreground"
-                    >
-                      {focus}
-                    </span>
-                  ),
-                )}
-              </div>
-            </div>
-
-            {/* Quick facts */}
-            <dl className="mt-10 border-y border-border">
-              {profile.quickFacts.map(
-                (fact, index) => (
-                  <div
-                    key={fact.label}
-                    className={[
-                      "group grid gap-2 py-4 sm:grid-cols-[150px_1fr] sm:items-center",
-                      index <
-                      profile.quickFacts
-                        .length -
-                        1
-                        ? "border-b border-border"
-                        : "",
-                    ].join(" ")}
-                  >
-                    <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
-                      {fact.label}
-                    </dt>
-
-                    <dd className="font-display text-[15px] font-semibold tracking-[-0.02em] transition-transform duration-300 group-hover:translate-x-1 sm:text-base">
-                      {fact.value}
-                    </dd>
-                  </div>
-                ),
-              )}
-            </dl>
-
             {/* CTA */}
-            <div className="mt-9 flex flex-wrap items-center gap-5">
+            <div className="mt-8 flex flex-wrap items-center gap-5">
               <Link
                 href="/about"
                 className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-5 text-sm font-semibold text-background transition-[transform,opacity] duration-300 hover:-translate-y-0.5 hover:opacity-90"
@@ -241,7 +193,7 @@ export default function AboutPreview() {
             Bottom editorial statement
             ================================================= */}
 
-        <div className="mt-24 grid gap-6 border-t border-border pt-7 lg:grid-cols-[0.35fr_1fr] lg:items-start">
+        <div className="mt-16 grid gap-6 border-t border-border pt-6 lg:grid-cols-[0.3fr_1fr] lg:items-start">
           <div>
             <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-primary">
               Approach

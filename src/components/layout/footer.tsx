@@ -26,7 +26,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-border bg-card">
-      <div className="shell py-12 md:py-14">
+      <div className="shell py-10 md:py-12">
         <div className="grid gap-10 md:grid-cols-[1.35fr_0.8fr_0.8fr] md:gap-12">
           {/* Brand */}
           <div>
@@ -133,7 +133,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-border">
-        <div className="shell flex flex-col gap-2 py-5 font-mono text-[9px] uppercase tracking-[0.11em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="shell flex flex-col gap-2 py-4 font-mono text-[9px] uppercase tracking-[0.11em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {currentYear} {siteConfig.fullName}
           </p>

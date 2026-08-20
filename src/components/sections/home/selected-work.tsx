@@ -356,7 +356,7 @@ export default function SelectedWork() {
         className="tech-grid pointer-events-none absolute inset-0 opacity-[0.16]"
       />
 
-      <div className="shell relative py-20 md:py-28 lg:py-32">
+      <div className="shell section relative">
         {/* Section header */}
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
@@ -400,7 +400,7 @@ export default function SelectedWork() {
 
         <Link
           href={`/projects/${flagship.slug}`}
-          className="group mt-14 block overflow-hidden rounded-4xl border border-border bg-card transition-[border-color,box-shadow] duration-500 hover:border-primary/40 hover:shadow-[0_30px_85px_rgb(33_30_26/0.11)]"
+          className="group mt-12 block overflow-hidden rounded-4xl border border-border bg-card transition-[border-color,box-shadow] duration-500 hover:border-primary/40 hover:shadow-[0_30px_85px_rgb(33_30_26/0.11)]"
         >
           <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
             {/* Project information */}
@@ -475,7 +475,7 @@ export default function SelectedWork() {
             Intentionally asymmetric.
             ================================================= */}
 
-        <div className="mt-7 grid gap-7 md:grid-cols-5">
+        <div className="mt-6 grid gap-6 md:grid-cols-5">
           <div className="md:col-span-3">
             <SecondaryProjectCard
               project={disarpus}
@@ -492,19 +492,6 @@ export default function SelectedWork() {
         </div>
 
         {/* Bottom project index */}
-        <div className="mt-10 flex flex-col justify-between gap-4 border-t border-border pt-6 sm:flex-row sm:items-center">
-          <p className="mono text-muted-foreground">
-            03 selected projects / landing preview
-          </p>
-
-          <Link
-            href="/projects"
-            className="group inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
-          >
-            Explore the full project archive
-            <ArrowIcon />
-          </Link>
-        </div>
       </div>
     </section>
   );

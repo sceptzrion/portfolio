@@ -37,7 +37,7 @@ export default function ExperiencePreview() {
         className="pointer-events-none absolute -right-40 -top-30 size-130 rounded-full bg-primary/10 blur-3xl"
       />
 
-      <div className="shell relative py-24 md:py-28 lg:py-36">
+      <div className="shell section relative">
         {/* =================================================
             Header
             ================================================= */}
@@ -83,7 +83,7 @@ export default function ExperiencePreview() {
             Mobile: content always visible
             ================================================= */}
 
-        <div className="mt-14 grid gap-4 lg:grid-cols-2 lg:gap-5">
+        <div className="mt-12 grid gap-4 lg:grid-cols-2 lg:gap-5">
           {experiences.map((experience) => (
             <Link
               key={experience.slug}

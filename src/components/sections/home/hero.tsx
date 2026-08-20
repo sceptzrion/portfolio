@@ -20,24 +20,6 @@ function ArrowIcon() {
   );
 }
 
-function ArrowDownIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="size-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 5v14" />
-      <path d="m7 14 5 5 5-5" />
-    </svg>
-  );
-}
-
 function PortraitPlaceholder() {
   return (
     <div
@@ -264,17 +246,6 @@ export default function Hero() {
                 className="inline-flex min-h-12 items-center justify-center rounded-full border border-border-strong bg-background/30 px-5 text-sm font-semibold text-foreground transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft"
               >
                 {siteConfig.hero.secondaryAction.label}
-              </Link>
-
-              <Link
-                href={siteConfig.resume.href}
-                className="group inline-flex min-h-12 items-center gap-2 px-2 text-sm font-medium text-foreground transition-colors duration-300 hover:text-primary"
-              >
-                Résumé
-
-                <span className="transition-transform duration-300 group-hover:translate-y-0.5">
-                  <ArrowDownIcon />
-                </span>
               </Link>
             </div>
 

@@ -152,6 +152,10 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  section[id] {
+    scroll-margin-top: 96px;
+  }
+
   body {
     margin: 0;
 
@@ -228,7 +232,11 @@
 }
 
 .section {
-  padding-block: 80px;
+  padding-block: 72px;
+}
+
+.section-compact {
+  padding-block: 64px;
 }
 
 .section-header {
@@ -378,7 +386,11 @@
 
 @media (min-width: 768px) {
   .section {
-    padding-block: 104px;
+    padding-block: 88px;
+  }
+
+  .section-compact {
+    padding-block: 80px;
   }
 }
 
@@ -388,7 +400,11 @@
   }
 
   .section {
-    padding-block: 128px;
+    padding-block: 112px;
+  }
+
+  .section-compact {
+    padding-block: 96px;
   }
 }
 

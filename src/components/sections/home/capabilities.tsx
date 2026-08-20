@@ -12,7 +12,7 @@ export default function Capabilities() {
         className="tech-dots pointer-events-none absolute right-0 top-0 h-[62%] w-[34%] opacity-[0.18] mask-[linear-gradient(to_left,black,transparent)]"
       />
 
-      <div className="shell relative py-20 md:py-24 lg:py-28">
+      <div className="shell section-compact relative">
         {/* =================================================
             Header
             ================================================= */}
@@ -46,7 +46,7 @@ export default function Capabilities() {
             Capability Rows
             ================================================= */}
 
-        <div className="mt-12 border-y border-border lg:mt-14">
+        <div className="mt-10 border-y border-border lg:mt-12">
           {capabilities.map(
             (capability, index) => (
               <article
@@ -65,7 +65,7 @@ export default function Capabilities() {
                     className="absolute bottom-0 left-0 top-0 w-0.5 origin-bottom scale-y-0 bg-primary transition-transform duration-500 group-hover:scale-y-100"
                 />
 
-                <div className="grid gap-4 py-7 pl-5 sm:py-8 sm:pl-6 md:grid-cols-[54px_1fr] md:gap-7 lg:grid-cols-[60px_0.85fr_1.15fr] lg:items-center lg:gap-10">
+                <div className="grid gap-4 py-6 pl-5 sm:py-7 sm:pl-6 md:grid-cols-[54px_1fr] md:gap-7 lg:grid-cols-[60px_0.85fr_1.15fr] lg:items-center lg:gap-10">
                   {/* Index */}
                   <span className="font-mono text-[10px] font-medium tracking-[0.12em] text-primary">
                     {capability.index}
