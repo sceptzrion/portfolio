@@ -83,4 +83,32 @@ export const siteConfig = {
     label: "Resume",
     href: "/resume",
   },
+
+  contact: {
+    email: "rizqi.iry@gmail.com",
+
+    headline: {
+      introduction: "Have an opportunity",
+      emphasis: "worth building?",
+    },
+
+    description:
+      "I’m open to full-time opportunities, collaborations, and conversations around web development and digital products.",
+
+    primaryAction: {
+      label: "Get in Touch",
+      href: "/contact",
+    },
+  },
+
+  socials: [
+    {
+      label: "LinkedIn",
+      href: "https://linkedin.com/in/ikhsanry",
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/sceptzrion",
+    },
+  ],
 } as const;
