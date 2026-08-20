@@ -87,7 +87,7 @@ function PortraitPlaceholder() {
 
       {/* Education floating card */}
       <div className="absolute -bottom-7 left-4 z-10 max-w-57.5 rounded-2xl border border-border bg-card/95 p-4 shadow-[0_14px_35px_rgb(33_30_26/0.10)] backdrop-blur-md sm:left-7">
-        <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
+        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
           Education
         </p>
 
@@ -100,11 +100,11 @@ function PortraitPlaceholder() {
         </p>
 
         <div className="mt-3 flex items-center gap-2">
-          <span className="rounded-full bg-primary-soft px-2 py-1 font-mono text-[8px] uppercase tracking-widest text-primary">
+          <span className="rounded-full bg-primary-soft px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-primary">
             {profile.education.honour}
           </span>
 
-          <span className="font-mono text-[8px] text-muted-foreground">
+          <span className="font-mono text-[10px] text-muted-foreground">
             {profile.education.graduationYear}
           </span>
         </div>
@@ -180,7 +180,7 @@ export default function AboutPreview() {
                 <ArrowIcon />
               </Link>
 
-              <p className="font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
+              <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground">
                 {siteConfig.domain} / profile
               </p>
             </div>
@@ -193,7 +193,7 @@ export default function AboutPreview() {
           className="reveal-on-scroll mt-12 grid gap-6 border-t border-border pt-6 sm:mt-16 lg:grid-cols-[0.3fr_1fr] lg:items-start"
         >
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-primary">
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
               Approach
             </p>
           </div>

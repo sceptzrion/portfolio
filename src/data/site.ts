@@ -1,5 +1,6 @@
 export const siteConfig = {
   shortName: "Rizqi",
+  siteName: "Rizqi Yanuar",
   fullName: "Muhamad Ikhsan Rizqi Yanuar",
   monogram: "RY",
 
@@ -20,7 +21,7 @@ export const siteConfig = {
     },
 
     description:
-      "Full-Stack Web Developer and fresh Informatics graduate focused on turning interface designs and ideas into responsive, maintainable, and functional web products.",
+      "A Full-Stack Web Developer and fresh Informatics graduate focused on turning interface designs and ideas into responsive, maintainable, and functional web applications.",
 
     primaryAction: {
       label: "View My Work",
@@ -89,7 +90,7 @@ export const siteConfig = {
 
     headline: {
       introduction: "Have an opportunity",
-      emphasis: "worth building?",
+      emphasis: "worth exploring?",
     },
 
     description:

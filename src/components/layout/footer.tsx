@@ -53,14 +53,14 @@ export default function Footer() {
               experiences from interface to implementation.
             </p>
 
-            <p className="mt-5 font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
+            <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
               {siteConfig.domain}
             </p>
           </div>
 
           {/* Sitemap */}
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-muted-foreground">
+            <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
               Sitemap
             </p>
 
@@ -96,7 +96,7 @@ export default function Footer() {
 
           {/* Elsewhere */}
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-muted-foreground">
+            <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
               Elsewhere
             </p>
 
@@ -133,7 +133,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-border">
-        <div className="shell flex flex-col gap-2 py-4 font-mono text-[9px] uppercase tracking-[0.11em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="shell flex flex-col gap-2 py-4 font-mono text-[10px] uppercase tracking-[0.11em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {currentYear} {siteConfig.fullName}
           </p>

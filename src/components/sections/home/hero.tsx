@@ -257,8 +257,15 @@ export default function Hero() {
               }}
             >
               {siteConfig.stats.map((stat) => (
-                <div key={stat.label}>
-                  <dd className="font-display text-[1.4rem] font-bold tracking-[-0.035em]">
+                <div
+                  key={stat.label}
+                  className="flex flex-col"
+                >
+                  <dt className="order-2 mt-1 text-xs text-muted-foreground">
+                    {stat.label}
+                  </dt>
+
+                  <dd className="order-1 font-display text-[1.4rem] font-bold tracking-[-0.035em]">
                     {stat.value}
 
                     {stat.suffix ? (
@@ -267,10 +274,6 @@ export default function Hero() {
                       </span>
                     ) : null}
                   </dd>
-
-                  <dt className="mt-1 text-xs text-muted-foreground">
-                    {stat.label}
-                  </dt>
                 </div>
               ))}
             </dl>
@@ -324,7 +327,7 @@ export default function Hero() {
             </div>
 
             {/* Role chip */}
-            <div className="absolute bottom-8 -right-2.5 hidden rounded-full border border-border-strong bg-card/90 px-4 py-2 font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground shadow-lg backdrop-blur-md md:block lg:-right-6">
+            <div className="absolute bottom-8 -right-2.5 hidden rounded-full border border-border-strong bg-card/90 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground shadow-lg backdrop-blur-md md:block lg:-right-6">
               Full-stack / web
             </div>
           </div>

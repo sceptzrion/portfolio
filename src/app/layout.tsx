@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { siteConfig } from "@/data/site";
 
 import "./globals.css";
 
@@ -28,44 +29,40 @@ const monoFont = JetBrains_Mono({
   display: "swap",
 });
 
-const siteName = "Rizqi Yanuar";
-
 const siteTitle =
-  "Rizqi Yanuar | Full-Stack Web Developer";
+  `${siteConfig.siteName} | ${siteConfig.role}`;
 
 const siteDescription =
-  "Portfolio of Muhamad Ikhsan Rizqi Yanuar, a Full-Stack Web Developer with hands-on experience in responsive web development, full-stack applications, and data projects.";
-
-const siteUrl = "https://rizqiyr.id";
+  `Portfolio of ${siteConfig.fullName}, a ${siteConfig.role} with hands-on experience building responsive web applications and data projects.`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(siteConfig.url),
 
-  applicationName: siteName,
+  applicationName: siteConfig.siteName,
 
   title: {
     default: siteTitle,
-    template: `%s | ${siteName}`,
+    template: `%s | ${siteConfig.siteName}`,
   },
 
   description: siteDescription,
 
   authors: [
     {
-      name: "Muhamad Ikhsan Rizqi Yanuar",
-      url: siteUrl,
+      name: siteConfig.fullName,
+      url: siteConfig.url,
     },
   ],
 
-  creator: "Muhamad Ikhsan Rizqi Yanuar",
+  creator: siteConfig.fullName,
 
-  publisher: "Muhamad Ikhsan Rizqi Yanuar",
+  publisher: siteConfig.fullName,
 
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteUrl,
-    siteName,
+    url: siteConfig.url,
+    siteName: siteConfig.siteName,
     title: siteTitle,
     description: siteDescription,
   },
@@ -80,17 +77,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
-
-const websiteStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: siteName,
-  alternateName: [
-    "Rizqi",
-    "rizqiyr.id",
-  ],
-  url: siteUrl,
 };
 
 const themeScript = `
@@ -117,16 +103,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
     >
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              websiteStructuredData,
-            ),
-          }}
-        />
-      </head>
+      
 
       <body
         className={`${displayFont.variable} ${sansFont.variable} ${monoFont.variable}`}

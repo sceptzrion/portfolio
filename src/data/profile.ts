@@ -3,7 +3,7 @@ export const profile = {
     "I’m a fresh Informatics graduate with hands-on experience building responsive interfaces and web applications through internships, academic projects, and collaborative development.",
 
   perspective:
-    "I enjoy translating ideas and interface designs into functional products, with particular interest in frontend engineering, full-stack development, database integration, and maintainable application architecture.",
+    "I enjoy translating ideas and interface designs into functional products, with particular interest in frontend engineering, full-stack development, database integration, and maintainable application development.",
 
   focusAreas: [
     "Full-Stack Development",

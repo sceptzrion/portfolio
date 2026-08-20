@@ -109,11 +109,11 @@ export default function ExperiencePreview() {
                     </span>
 
                     <div className="text-right">
-                      <p className="font-mono text-[9px] uppercase tracking-[0.13em] text-feature-muted">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-feature-muted">
                         {experience.period}
                       </p>
 
-                      <p className="mt-2 font-mono text-[8px] uppercase tracking-[0.13em] text-primary">
+                      <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.13em] text-primary">
                         {experience.type}
                       </p>
                     </div>
@@ -147,7 +147,7 @@ export default function ExperiencePreview() {
 
                   {/* Bottom affordance */}
                   <div className="relative mt-auto flex items-end justify-between gap-5 pt-5 sm:pt-7">
-                    <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-feature-muted">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-feature-muted">
                       Experience / {experience.index}
                     </span>
 

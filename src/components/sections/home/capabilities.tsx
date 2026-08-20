@@ -103,7 +103,7 @@ export default function Capabilities() {
                         (skill) => (
                           <li
                             key={skill}
-                            className="rounded-full border border-border bg-secondary/50 px-2.5 py-1.5 font-mono text-[9px] uppercase leading-none tracking-widest text-muted-foreground"
+                            className="rounded-full border border-border bg-secondary/50 px-2.5 py-1.5 font-mono text-[10px] uppercase leading-none tracking-widest text-muted-foreground"
                           >
                             {skill}
                           </li>
@@ -122,7 +122,7 @@ export default function Capabilities() {
           data-reveal
           className="reveal-on-scroll mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
         >
-          <p className="font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
+          <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground">
             Selected toolkit / not exhaustive
           </p>
 

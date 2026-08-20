@@ -372,9 +372,9 @@ export default function SelectedWork() {
             </div>
 
             <h2 className="mt-5 text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
-              Products built from{" "}
+              Projects built through{" "}
               <span className="text-primary">
-                idea to implementation.
+                design and implementation.
               </span>
             </h2>
           </div>
@@ -401,16 +401,19 @@ export default function SelectedWork() {
             Flagship
             ================================================= */}
 
-        <Link
-            data-reveal
-            href={`/projects/${flagship.slug}`}
-            className="reveal-on-scroll reveal-delay-1 group mt-10 block overflow-hidden rounded-[1.75rem] border border-border bg-card transition-[opacity,transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_24px_60px_rgb(33_30_26/0.09)] sm:mt-12"
+        <div
+          data-reveal
+          className="reveal-on-scroll reveal-delay-1 mt-10 sm:mt-12"
         >
+          <Link
+            href={`/projects/${flagship.slug}`}
+            className="group block overflow-hidden rounded-[1.75rem] border border-border bg-card transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_24px_60px_rgb(33_30_26/0.09)]"
+          >
           <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
             {/* Project information */}
             <div className="flex flex-col justify-center p-7 sm:p-9 lg:p-11 xl:p-12">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-primary px-3 py-1.5 font-mono text-[9px] font-semibold uppercase tracking-[0.12em] text-primary-foreground">
+                <span className="rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-foreground">
                   Flagship Project
                 </span>
 
@@ -433,7 +436,7 @@ export default function SelectedWork() {
 
               <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-border pt-6 text-sm">
                 <div>
-                  <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
                     Role
                   </dt>
 
@@ -443,7 +446,7 @@ export default function SelectedWork() {
                 </div>
 
                 <div>
-                  <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
                     Context
                   </dt>
 
@@ -473,6 +476,7 @@ export default function SelectedWork() {
             </div>
           </div>
         </Link>
+        </div>
 
         {/* =================================================
             Secondary Projects
