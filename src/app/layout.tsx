@@ -11,26 +11,25 @@ import "./globals.css";
 
 const displayFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-plus-jakarta",
   display: "swap",
 });
 
 const sansFont = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
   display: "swap",
 });
 
 const monoFont = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default:
-      "Rizqi — Full-Stack Web Developer",
+    default: "Rizqi — Full-Stack Web Developer",
     template: "%s — Rizqi",
   },
 
@@ -47,6 +46,7 @@ const themeScript = `
 
     root.classList.toggle("dark", theme === "dark");
     root.dataset.theme = theme;
+    root.style.colorScheme = theme;
   } catch (error) {}
 })();
 `;

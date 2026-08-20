@@ -9,6 +9,53 @@ export const siteConfig = {
   domain: "rizqiyr.id",
   url: "https://rizqiyr.id",
 
+  hero: {
+    availability: "Available for opportunities",
+
+    headline: {
+      introduction: "Hi, I’m Rizqi.",
+      statement: "I build",
+      emphasis: "useful",
+      continuation: "digital experiences for the web.",
+    },
+
+    description:
+      "Full-Stack Web Developer and fresh Informatics graduate focused on turning interface designs and ideas into responsive, maintainable, and functional web products.",
+
+    primaryAction: {
+      label: "View My Work",
+      href: "#selected-work",
+    },
+
+    secondaryAction: {
+      label: "About Me",
+      href: "#about",
+    },
+  },
+
+  stats: [
+    {
+      value: "3.93",
+      suffix: "/ 4.00",
+      label: "GPA",
+    },
+    {
+      value: "Cum Laude",
+      suffix: "",
+      label: "Honours",
+    },
+    {
+      value: "02",
+      suffix: "",
+      label: "Internships",
+    },
+    {
+      value: "05",
+      suffix: "",
+      label: "Selected Projects",
+    },
+  ],
+
   navigation: [
     {
       label: "Home",
@@ -27,12 +74,13 @@ export const siteConfig = {
       href: "/projects",
     },
     {
-      label: "Resume",
-      href: "/resume",
-    },
-    {
       label: "Contact",
       href: "/contact",
     },
   ],
+
+  resume: {
+    label: "Resume",
+    href: "/resume",
+  },
 } as const;

@@ -30,7 +30,11 @@ function SunIcon() {
       strokeWidth="1.7"
       strokeLinecap="round"
     >
-      <circle cx="12" cy="12" r="4" />
+      <circle
+        cx="12"
+        cy="12"
+        r="4"
+      />
 
       <path d="M12 2v2" />
       <path d="M12 20v2" />
@@ -59,11 +63,22 @@ export default function ThemeToggle() {
       aria-label={
         mounted
           ? `Switch to ${
-              theme === "light" ? "dark" : "light"
+              theme === "light"
+                ? "dark"
+                : "light"
             } mode`
           : "Toggle color theme"
       }
-      className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-[color,border-color,background-color,transform] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft hover:text-primary"
+      title={
+        mounted
+          ? `Switch to ${
+              theme === "light"
+                ? "dark"
+                : "light"
+            } mode`
+          : "Toggle color theme"
+      }
+      className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-background/40 text-muted-foreground transition-[color,border-color,background-color,transform] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft hover:text-primary"
     >
       {!mounted ? (
         <span

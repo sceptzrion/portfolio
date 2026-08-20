@@ -4,11 +4,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   useEffect,
+  useRef,
   useState,
 } from "react";
 
 import ThemeToggle from "@/components/theme/theme-toggle";
 import { siteConfig } from "@/data/site";
+
+const MOBILE_MENU_ID =
+  "mobile-navigation";
+
+function isRouteActive(
+  pathname: string,
+  href: string,
+) {
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  return (
+    pathname === href ||
+    pathname.startsWith(`${href}/`)
+  );
+}
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -19,9 +37,21 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] =
     useState(false);
 
+  const menuButtonRef =
+    useRef<HTMLButtonElement>(null);
+
+  const mobileMenuRef =
+    useRef<HTMLDivElement>(null);
+
+  /* -------------------------------------------------------
+     Scroll state
+     ------------------------------------------------------- */
+
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 24);
+      setScrolled(
+        window.scrollY > 24,
+      );
     };
 
     handleScroll();
@@ -42,27 +72,142 @@ export default function Navbar() {
     };
   }, []);
 
+  /* -------------------------------------------------------
+     Close mobile menu after route change
+     ------------------------------------------------------- */
+
+  /* -------------------------------------------------------
+     Close mobile menu if viewport becomes desktop
+     ------------------------------------------------------- */
+
   useEffect(() => {
-    document.body.style.overflow =
-      menuOpen ? "hidden" : "";
+    const mediaQuery =
+      window.matchMedia(
+        "(min-width: 1024px)",
+      );
+
+    const handleChange = (
+      event: MediaQueryListEvent,
+    ) => {
+      if (event.matches) {
+        setMenuOpen(false);
+      }
+    };
+
+    mediaQuery.addEventListener(
+      "change",
+      handleChange,
+    );
 
     return () => {
-      document.body.style.overflow = "";
+      mediaQuery.removeEventListener(
+        "change",
+        handleChange,
+      );
     };
-  }, [menuOpen]);
+  }, []);
 
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  /* -------------------------------------------------------
+     Body scroll lock
+     ------------------------------------------------------- */
 
   useEffect(() => {
     if (!menuOpen) return;
+
+    const previousOverflow =
+      document.body.style.overflow;
+
+    document.body.style.overflow =
+      "hidden";
+
+    return () => {
+      document.body.style.overflow =
+        previousOverflow;
+    };
+  }, [menuOpen]);
+
+  /* -------------------------------------------------------
+     Mobile menu keyboard / focus management
+     ------------------------------------------------------- */
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const menu =
+      mobileMenuRef.current;
+
+    if (!menu) return;
+
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(",");
+
+    const getFocusableElements =
+      () =>
+        Array.from(
+          menu.querySelectorAll<HTMLElement>(
+            focusableSelector,
+          ),
+        );
+
+    const focusableElements =
+      getFocusableElements();
+
+    focusableElements[0]?.focus();
 
     const handleKeyDown = (
       event: KeyboardEvent,
     ) => {
       if (event.key === "Escape") {
+        event.preventDefault();
+
         setMenuOpen(false);
+
+        requestAnimationFrame(() => {
+          menuButtonRef.current?.focus();
+        });
+
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const elements =
+        getFocusableElements();
+
+      if (elements.length === 0) {
+        return;
+      }
+
+      const firstElement =
+        elements[0];
+
+      const lastElement =
+        elements[
+          elements.length - 1
+        ];
+
+      if (
+        event.shiftKey &&
+        document.activeElement ===
+          firstElement
+      ) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (
+        !event.shiftKey &&
+        document.activeElement ===
+          lastElement
+      ) {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
@@ -79,13 +224,17 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
+  const closeMobileMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
         <nav
           aria-label="Primary navigation"
           className={[
-            "mx-auto flex h-14.5 max-w-6xl items-center justify-between rounded-full border px-3 transition-all duration-500 sm:px-4",
+            "mx-auto flex h-14.5 max-w-6xl items-center justify-between rounded-full border px-3 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-500 sm:px-4",
             scrolled
               ? "border-border bg-background/80 shadow-[0_8px_30px_rgb(0_0_0/0.06)] backdrop-blur-xl"
               : "border-transparent bg-transparent",
@@ -94,9 +243,10 @@ export default function Navbar() {
           {/* Brand */}
           <Link
             href="/"
+            onClick={closeMobileMenu}
             aria-label={`${siteConfig.shortName} — Home`}
-            className="group flex items-center gap-2.5"
-          >
+            className="group flex shrink-0 items-center gap-2.5"
+        >
             <span className="grid size-8 place-items-center rounded-lg bg-primary font-display text-xs font-bold text-primary-foreground transition-transform duration-300 group-hover:-rotate-6">
               {siteConfig.monogram}
             </span>
@@ -111,23 +261,27 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-0.5 md:flex">
+          <div className="hidden items-center gap-0.5 lg:flex">
             {siteConfig.navigation.map(
               (item) => {
-                const isActive =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(
-                        item.href,
-                      );
+                const active =
+                  isRouteActive(
+                    pathname,
+                    item.href,
+                  );
 
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
+                    aria-current={
+                      active
+                        ? "page"
+                        : undefined
+                    }
                     className={[
                       "group relative rounded-full px-3.5 py-2 text-[13px] transition-colors duration-300",
-                      isActive
+                      active
                         ? "text-primary"
                         : "text-muted-foreground hover:text-foreground",
                     ].join(" ")}
@@ -135,9 +289,10 @@ export default function Navbar() {
                     {item.label}
 
                     <span
+                      aria-hidden="true"
                       className={[
                         "absolute inset-x-3.5 bottom-1 h-px origin-center bg-primary transition-transform duration-300",
-                        isActive
+                        active
                           ? "scale-x-100"
                           : "scale-x-0 group-hover:scale-x-100",
                       ].join(" ")}
@@ -149,18 +304,24 @@ export default function Navbar() {
           </div>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
             <ThemeToggle />
 
             <Link
-              href="/resume"
-              className="hidden min-h-9 items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-transform duration-300 hover:-translate-y-0.5 md:inline-flex"
+              href={
+                siteConfig.resume.href
+              }
+              className="hidden min-h-10 items-center justify-center rounded-full bg-foreground px-4 text-[13px] font-semibold text-background transition-[transform,opacity] duration-300 hover:-translate-y-0.5 hover:opacity-90 lg:inline-flex"
             >
-              Resume
+              {
+                siteConfig.resume
+                  .label
+              }
             </Link>
 
             {/* Mobile menu trigger */}
             <button
+              ref={menuButtonRef}
               type="button"
               aria-label={
                 menuOpen
@@ -168,14 +329,19 @@ export default function Navbar() {
                   : "Open navigation menu"
               }
               aria-expanded={menuOpen}
+              aria-controls={
+                MOBILE_MENU_ID
+              }
               onClick={() =>
                 setMenuOpen(
-                  (current) => !current,
+                  (current) =>
+                    !current,
                 )
               }
-              className="relative grid size-9 place-items-center rounded-full border border-border text-foreground transition-colors hover:border-primary md:hidden"
+              className="relative grid size-10 shrink-0 place-items-center rounded-full border border-border bg-background/40 text-foreground transition-colors duration-300 hover:border-primary hover:text-primary lg:hidden"
             >
               <span
+                aria-hidden="true"
                 className={[
                   "absolute h-px w-4.5 bg-current transition-transform duration-300",
                   menuOpen
@@ -185,6 +351,7 @@ export default function Navbar() {
               />
 
               <span
+                aria-hidden="true"
                 className={[
                   "absolute h-px w-4.5 bg-current transition-transform duration-300",
                   menuOpen
@@ -197,11 +364,20 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Navigation */}
       <div
+        id={MOBILE_MENU_ID}
+        ref={mobileMenuRef}
+        role="dialog"
+        aria-modal={
+          menuOpen
+            ? "true"
+            : undefined
+        }
+        aria-label="Mobile navigation"
         aria-hidden={!menuOpen}
         className={[
-          "fixed inset-0 z-40 overflow-hidden bg-background transition-[opacity,visibility] duration-500 md:hidden",
+          "fixed inset-0 z-40 overflow-hidden bg-background transition-[opacity,visibility] duration-500 lg:hidden",
           menuOpen
             ? "visible pointer-events-auto opacity-100"
             : "invisible pointer-events-none opacity-0",
@@ -219,31 +395,45 @@ export default function Navbar() {
 
         <div className="shell relative flex min-h-dvh flex-col pb-7 pt-24">
           <nav
-            aria-label="Mobile navigation"
+            aria-label="Mobile navigation links"
             className="flex flex-1 flex-col"
           >
             {siteConfig.navigation.map(
               (item, index) => {
-                const isActive =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(
-                        item.href,
-                      );
+                const active =
+                  isRouteActive(
+                    pathname,
+                    item.href,
+                  );
 
                 return (
                   <Link
-                    key={item.href}
-                    href={item.href}
+                    key={
+                      item.href
+                    }
+                    href={
+                      item.href
+                    }
+                    onClick={
+                      closeMobileMenu
+                    }
                     tabIndex={
-                      menuOpen ? 0 : -1
+                      menuOpen
+                        ? 0
+                        : -1
+                    }
+                    aria-current={
+                      active
+                        ? "page"
+                        : undefined
                     }
                     style={{
                       transitionDelay:
                         menuOpen
                           ? `${
                               80 +
-                              index * 45
+                              index *
+                                45
                             }ms`
                           : "0ms",
                     }}
@@ -252,7 +442,7 @@ export default function Navbar() {
                       menuOpen
                         ? "translate-y-0 opacity-100"
                         : "translate-y-3 opacity-0",
-                      isActive
+                      active
                         ? "text-primary"
                         : "text-foreground",
                     ].join(" ")}
@@ -260,16 +450,48 @@ export default function Navbar() {
                     <span className="mono w-6 shrink-0 text-muted-foreground">
                       {String(
                         index + 1,
-                      ).padStart(2, "0")}
+                      ).padStart(
+                        2,
+                        "0",
+                      )}
                     </span>
 
                     <span className="font-display text-[clamp(2rem,9vw,3.1rem)] font-semibold leading-none tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1">
-                      {item.label}
+                      {
+                        item.label
+                      }
                     </span>
                   </Link>
                 );
               },
             )}
+
+            {/* Resume as mobile CTA */}
+            <Link
+              href={
+                siteConfig.resume.href
+              }
+              onClick={
+                closeMobileMenu
+              }
+              tabIndex={
+                menuOpen ? 0 : -1
+              }
+              className={[
+                "mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-foreground px-5 text-sm font-semibold text-background transition-[opacity,transform] duration-500",
+                menuOpen
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-3 opacity-0",
+              ].join(" ")}
+              style={{
+                transitionDelay:
+                  menuOpen
+                    ? "340ms"
+                    : "0ms",
+              }}
+            >
+              View Resume
+            </Link>
           </nav>
 
           <div
@@ -280,15 +502,18 @@ export default function Navbar() {
                 : "translate-y-3 opacity-0",
             ].join(" ")}
             style={{
-              transitionDelay: menuOpen
-                ? "380ms"
-                : "0ms",
+              transitionDelay:
+                menuOpen
+                  ? "400ms"
+                  : "0ms",
             }}
           >
             <div className="flex items-center justify-between border-t border-border pt-5">
               <div>
                 <p className="mono text-primary">
-                  {siteConfig.domain}
+                  {
+                    siteConfig.domain
+                  }
                 </p>
 
                 <p className="mt-1 text-xs text-muted-foreground">
@@ -298,7 +523,10 @@ export default function Navbar() {
                 </p>
               </div>
 
-              <span className="size-2 rounded-full bg-primary" />
+              <span
+                aria-hidden="true"
+                className="size-2 rounded-full bg-primary"
+              />
             </div>
           </div>
         </div>
