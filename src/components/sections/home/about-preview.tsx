@@ -182,7 +182,7 @@ export default function AboutPreview() {
                   (focus) => (
                     <span
                       key={focus}
-                      className="rounded-full border border-border bg-card px-3 py-2 text-xs font-medium text-foreground transition-[border-color,background-color,color] duration-300 hover:border-primary/50 hover:bg-primary-soft hover:text-primary"
+                      className="rounded-full border border-border bg-card px-3 py-2 text-xs font-medium text-foreground"
                     >
                       {focus}
                     </span>

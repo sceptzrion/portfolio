@@ -149,8 +149,8 @@ function EduBidanVisual() {
                   </p>
 
                   <div className="mx-auto mt-5 grid size-20 place-items-center rounded-full border-[7px] border-primary/80">
-                    <span className="font-display text-xl font-bold">
-                      82%
+                    <span className="font-mono text-[8px] uppercase tracking-[0.12em] text-feature-muted">
+                        Learning
                     </span>
                   </div>
                 </div>
@@ -252,9 +252,10 @@ function LestariVisual() {
                 Points
               </span>
 
-              <p className="mt-3 font-display text-2xl font-bold text-feature-foreground">
-                2,480
-              </p>
+              <div className="mt-4 space-y-2">
+                <span className="block h-2 w-3/4 rounded-full bg-feature-foreground/75" />
+                <span className="block h-2 w-1/2 rounded-full bg-primary/75" />
+              </div>
             </div>
 
             <div className="rounded-2xl border border-feature-border bg-feature/70 p-3">
@@ -294,7 +295,9 @@ function SecondaryProjectCard({
       href={`/projects/${project.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-border bg-card transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_65px_rgb(33_30_26/0.10)]"
     >
-      {visual}
+      <div aria-hidden="true">
+        {visual}
+      </div>
 
       <div className="flex flex-1 flex-col p-6 sm:p-7">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
@@ -460,8 +463,10 @@ export default function SelectedWork() {
               </span>
             </div>
 
-            {/* Visual */}
-            <EduBidanVisual />
+            {/* Decorative project preview */}
+            <div aria-hidden="true">
+              <EduBidanVisual />
+            </div>
           </div>
         </Link>
 

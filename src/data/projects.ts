@@ -40,11 +40,9 @@ export const featuredProjects = [
     category: "Frontend Development",
     context: "Professional Internship",
     role: "Web Developer Intern",
-    year: "2025",
+    year: "2025 — 2026",
     tech: [
       "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
       "Figma",
     ],
   },
@@ -60,8 +58,6 @@ export const featuredProjects = [
     year: "2024",
     tech: [
       "Laravel",
-      "PHP",
-      "Tailwind CSS",
     ],
   },
 ] as const satisfies readonly FeaturedProject[];
