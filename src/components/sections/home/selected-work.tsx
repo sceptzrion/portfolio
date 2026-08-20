@@ -358,7 +358,10 @@ export default function SelectedWork() {
 
       <div className="shell section relative">
         {/* Section header */}
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div
+            data-reveal
+            className="reveal-on-scroll flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
+        >
           <div className="max-w-3xl">
             <div className="section-label">
               <span className="section-label-number">
@@ -399,8 +402,9 @@ export default function SelectedWork() {
             ================================================= */}
 
         <Link
-          href={`/projects/${flagship.slug}`}
-          className="group mt-12 block overflow-hidden rounded-4xl border border-border bg-card transition-[border-color,box-shadow] duration-500 hover:border-primary/40 hover:shadow-[0_30px_85px_rgb(33_30_26/0.11)]"
+            data-reveal
+            href={`/projects/${flagship.slug}`}
+            className="reveal-on-scroll reveal-delay-1 group mt-12 block overflow-hidden rounded-4xl border border-border bg-card transition-[opacity,transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_30px_85px_rgb(33_30_26/0.11)]"
         >
           <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
             {/* Project information */}
@@ -476,14 +480,20 @@ export default function SelectedWork() {
             ================================================= */}
 
         <div className="mt-6 grid gap-6 md:grid-cols-5">
-          <div className="md:col-span-3">
+          <div
+            data-reveal
+            className="reveal-on-scroll reveal-delay-1 md:col-span-3"
+        >
             <SecondaryProjectCard
               project={disarpus}
               visual={<DisarpusVisual />}
             />
           </div>
 
-          <div className="md:col-span-2">
+          <div
+            data-reveal
+            className="reveal-on-scroll reveal-delay-2 md:col-span-2"
+          >
             <SecondaryProjectCard
               project={lestari}
               visual={<LestariVisual />}

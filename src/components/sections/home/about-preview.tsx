@@ -132,19 +132,19 @@ export default function AboutPreview() {
 
       <div className="shell section relative">
         <div className="grid items-center gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 xl:gap-20">
-          {/* =================================================
-              Portrait / Visual
-              ================================================= */}
-
-          <div className="mx-auto w-full max-w-107.5 pb-8 lg:mx-0">
+          {/* Portrait */}
+          <div
+            data-reveal
+            className="reveal-on-scroll reveal-from-left mx-auto w-full max-w-107.5 pb-8 lg:mx-0"
+          >
             <PortraitPlaceholder />
           </div>
 
-          {/* =================================================
-              Content
-              ================================================= */}
-
-          <div>
+          {/* Content */}
+          <div
+            data-reveal
+            className="reveal-on-scroll reveal-from-right reveal-delay-1"
+          >
             <div className="section-label">
               <span className="section-label-number">
                 02
@@ -171,14 +171,12 @@ export default function AboutPreview() {
               </p>
             </div>
 
-            {/* CTA */}
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <Link
                 href="/about"
                 className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-5 text-sm font-semibold text-background transition-[transform,opacity] duration-300 hover:-translate-y-0.5 hover:opacity-90"
               >
                 More About Me
-
                 <ArrowIcon />
               </Link>
 
@@ -189,11 +187,11 @@ export default function AboutPreview() {
           </div>
         </div>
 
-        {/* =================================================
-            Bottom editorial statement
-            ================================================= */}
-
-        <div className="mt-16 grid gap-6 border-t border-border pt-6 lg:grid-cols-[0.3fr_1fr] lg:items-start">
+        {/* Approach */}
+        <div
+          data-reveal
+          className="reveal-on-scroll mt-16 grid gap-6 border-t border-border pt-6 lg:grid-cols-[0.3fr_1fr] lg:items-start"
+        >
           <div>
             <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-primary">
               Approach

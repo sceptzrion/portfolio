@@ -13,11 +13,11 @@ export default function Capabilities() {
       />
 
       <div className="shell section-compact relative">
-        {/* =================================================
-            Header
-            ================================================= */}
-
-        <div className="grid gap-7 lg:grid-cols-[1fr_0.58fr] lg:items-end lg:gap-16">
+        {/* Header */}
+        <div
+          data-reveal
+          className="reveal-on-scroll grid gap-7 lg:grid-cols-[1fr_0.58fr] lg:items-end lg:gap-16"
+        >
           <div>
             <div className="section-label">
               <span className="section-label-number">
@@ -42,27 +42,34 @@ export default function Capabilities() {
           </p>
         </div>
 
-        {/* =================================================
-            Capability Rows
-            ================================================= */}
-
+        {/* Capability Rows */}
         <div className="mt-10 border-y border-border lg:mt-12">
           {capabilities.map(
             (capability, index) => (
               <article
                 key={capability.title}
+                data-reveal
                 className={[
-                  "group relative",
+                  "reveal-on-scroll group relative",
+                  index === 1
+                    ? "reveal-delay-1"
+                    : "",
+                  index === 2
+                    ? "reveal-delay-2"
+                    : "",
+                  index === 3
+                    ? "reveal-delay-3"
+                    : "",
                   index <
                   capabilities.length - 1
                     ? "border-b border-border"
                     : "",
                 ].join(" ")}
               >
-                {/* Desktop hover accent */}
+                {/* Hover accent */}
                 <span
-                    aria-hidden="true"
-                    className="absolute bottom-0 left-0 top-0 w-0.5 origin-bottom scale-y-0 bg-primary transition-transform duration-500 group-hover:scale-y-100"
+                  aria-hidden="true"
+                  className="absolute bottom-0 left-0 top-0 w-0.5 origin-bottom scale-y-0 bg-primary transition-transform duration-500 group-hover:scale-y-100"
                 />
 
                 <div className="grid gap-4 py-6 pl-5 sm:py-7 sm:pl-6 md:grid-cols-[54px_1fr] md:gap-7 lg:grid-cols-[60px_0.85fr_1.15fr] lg:items-center lg:gap-10">
@@ -82,26 +89,26 @@ export default function Capabilities() {
                     </p>
                   </div>
 
-                  {/* Description + selected toolkit */}
+                  {/* Description + toolkit */}
                   <div className="md:col-start-2 lg:col-start-auto">
                     <p className="hidden max-w-xl text-sm leading-6 text-muted-foreground lg:block">
                       {capability.description}
                     </p>
 
                     <ul
-                        aria-label={`${capability.title} technologies`}
-                        className="mt-4 flex flex-wrap gap-2 lg:mt-4"
+                      aria-label={`${capability.title} technologies`}
+                      className="mt-4 flex flex-wrap gap-2"
                     >
-                        {capability.skills.map(
-                            (skill) => (
-                            <li
-                                key={skill}
-                                className="rounded-full border border-border-strong bg-secondary/55 px-2.5 py-1.5 font-mono text-[9px] uppercase leading-none tracking-widest text-muted-foreground"
-                            >
-                                {skill}
-                            </li>
-                            ),
-                        )}
+                      {capability.skills.map(
+                        (skill) => (
+                          <li
+                            key={skill}
+                            className="rounded-full border border-border-strong bg-secondary/55 px-2.5 py-1.5 font-mono text-[9px] uppercase leading-none tracking-widest text-muted-foreground"
+                          >
+                            {skill}
+                          </li>
+                        ),
+                      )}
                     </ul>
                   </div>
                 </div>
@@ -110,11 +117,11 @@ export default function Capabilities() {
           )}
         </div>
 
-        {/* =================================================
-            Footer note
-            ================================================= */}
-
-        <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        {/* Footer note */}
+        <div
+          data-reveal
+          className="reveal-on-scroll mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+        >
           <p className="font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
             Selected toolkit / not exhaustive
           </p>

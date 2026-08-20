@@ -61,7 +61,10 @@ export default function ContactCTA() {
       />
 
       <div className="shell section relative">
-        <div className="mx-auto max-w-225 text-center">
+        <div
+          data-reveal
+          className="reveal-on-scroll mx-auto max-w-225 text-center"
+        >
           {/* Section label */}
           <div className="flex justify-center">
             <div className="section-label">
