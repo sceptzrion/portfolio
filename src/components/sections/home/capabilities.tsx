@@ -126,7 +126,7 @@ export default function Capabilities() {
             Selected toolkit / not exhaustive
           </p>
 
-          <p className="text-xs text-muted-foreground">
+          <p className="hidden sm:block text-xs text-muted-foreground">
             Technologies evolve. Fundamentals stay useful.
           </p>
         </div>
