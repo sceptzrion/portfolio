@@ -9,8 +9,10 @@ import {
 } from "react";
 
 import LanguageSwitch from "@/components/i18n/language-switch";
+import { useLocale } from "@/components/i18n/locale-provider";
 import ThemeToggle from "@/components/theme/theme-toggle";
 import { siteConfig } from "@/data/site";
+import { sharedDictionary } from "@/i18n/dictionaries/shared";
 
 const MOBILE_MENU_ID =
   "mobile-navigation";
@@ -37,6 +39,10 @@ function isRouteActive(
 export default function Navbar() {
   const pathname = usePathname();
 
+  const { locale } = useLocale();
+  const copy =
+    sharedDictionary[locale];
+
   const [scrolled, setScrolled] =
     useState(false);
 
@@ -59,36 +65,38 @@ export default function Navbar() {
      ------------------------------------------------------- */
 
   useEffect(() => {
-    const darkSurfaces = Array.from(
-      document.querySelectorAll<HTMLElement>(
-        DARK_SURFACE_SELECTOR,
-      ),
-    );
-
-    const updateNavbarState = () => {
-      setScrolled(
-        window.scrollY > 24,
+    const darkSurfaces =
+      Array.from(
+        document.querySelectorAll<HTMLElement>(
+          DARK_SURFACE_SELECTOR,
+        ),
       );
 
-      const isOverDarkSurface =
-        darkSurfaces.some(
-          (surface) => {
-            const rect =
-              surface.getBoundingClientRect();
-
-            return (
-              rect.top <=
-                NAVBAR_SURFACE_PROBE_Y &&
-              rect.bottom >=
-                NAVBAR_SURFACE_PROBE_Y
-            );
-          },
+    const updateNavbarState =
+      () => {
+        setScrolled(
+          window.scrollY > 24,
         );
 
-      setOverDarkSurface(
-        isOverDarkSurface,
-      );
-    };
+        const isOverDarkSurface =
+          darkSurfaces.some(
+            (surface) => {
+              const rect =
+                surface.getBoundingClientRect();
+
+              return (
+                rect.top <=
+                  NAVBAR_SURFACE_PROBE_Y &&
+                rect.bottom >=
+                  NAVBAR_SURFACE_PROBE_Y
+              );
+            },
+          );
+
+        setOverDarkSurface(
+          isOverDarkSurface,
+        );
+      };
 
     updateNavbarState();
 
@@ -210,9 +218,11 @@ export default function Navbar() {
 
         setMenuOpen(false);
 
-        requestAnimationFrame(() => {
-          menuButtonRef.current?.focus();
-        });
+        requestAnimationFrame(
+          () => {
+            menuButtonRef.current?.focus();
+          },
+        );
 
         return;
       }
@@ -282,7 +292,9 @@ export default function Navbar() {
     <>
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
         <nav
-          aria-label="Primary navigation"
+          aria-label={
+            copy.navbar.primaryLabel
+          }
           className={[
             "mx-auto flex h-14 w-full max-w-270 items-center justify-between rounded-full border px-3 transition-[background-color,border-color,box-shadow,backdrop-filter,color] duration-500 sm:px-4",
             useDarkSurface
@@ -295,12 +307,16 @@ export default function Navbar() {
           {/* Brand */}
           <Link
             href="/"
-            onClick={closeMobileMenu}
-            aria-label={`${siteConfig.shortName} — Home`}
+            onClick={
+              closeMobileMenu
+            }
+            aria-label={`${siteConfig.shortName} — ${copy.navigation.home}`}
             className="group flex shrink-0 items-center gap-2.5"
           >
             <span className="grid size-8 place-items-center rounded-[8px] bg-primary font-brand text-[13px] font-bold tracking-tighter text-primary-foreground transition-transform duration-300 group-hover:-rotate-6">
-              {siteConfig.monogram}
+              {
+                siteConfig.monogram
+              }
             </span>
 
             <span
@@ -311,7 +327,9 @@ export default function Navbar() {
                   : "text-foreground",
               ].join(" ")}
             >
-              {siteConfig.shortName}
+              {
+                siteConfig.shortName
+              }
 
               <span className="text-primary">
                 .
@@ -331,8 +349,12 @@ export default function Navbar() {
 
                 return (
                   <Link
-                    key={item.href}
-                    href={item.href}
+                    key={
+                      item.href
+                    }
+                    href={
+                      item.href
+                    }
                     aria-current={
                       active
                         ? "page"
@@ -347,7 +369,12 @@ export default function Navbar() {
                           : "text-muted-foreground hover:text-foreground",
                     ].join(" ")}
                   >
-                    {item.label}
+                    {
+                      copy
+                        .navigation[
+                        item.key
+                      ]
+                    }
 
                     <span
                       aria-hidden="true"
@@ -393,10 +420,7 @@ export default function Navbar() {
                   : "bg-foreground text-background",
               ].join(" ")}
             >
-              {
-                siteConfig.resume
-                  .label
-              }
+              {copy.resume.label}
             </Link>
 
             {/* Mobile menu trigger */}
@@ -405,10 +429,14 @@ export default function Navbar() {
               type="button"
               aria-label={
                 menuOpen
-                  ? "Close navigation menu"
-                  : "Open navigation menu"
+                  ? copy.navbar
+                      .closeMenu
+                  : copy.navbar
+                      .openMenu
               }
-              aria-expanded={menuOpen}
+              aria-expanded={
+                menuOpen
+              }
               aria-controls={
                 MOBILE_MENU_ID
               }
@@ -456,10 +484,12 @@ export default function Navbar() {
         role="dialog"
         aria-modal={
           menuOpen
-            ? "true"
+            ? true
             : undefined
         }
-        aria-label="Mobile navigation"
+        aria-label={
+          copy.navbar.mobileLabel
+        }
         aria-hidden={!menuOpen}
         className={[
           "fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-background transition-[opacity,visibility] duration-500 lg:hidden",
@@ -480,11 +510,17 @@ export default function Navbar() {
 
         <div className="shell relative flex min-h-dvh flex-col pb-7 pt-24">
           <nav
-            aria-label="Mobile navigation links"
+            aria-label={
+              copy.navbar
+                .mobileLinksLabel
+            }
             className="flex flex-1 flex-col"
           >
             {siteConfig.navigation.map(
-              (item, index) => {
+              (
+                item,
+                index,
+              ) => {
                 const active =
                   isRouteActive(
                     pathname,
@@ -543,7 +579,10 @@ export default function Navbar() {
 
                     <span className="font-display text-[clamp(1.85rem,7vw,2.75rem)] font-semibold leading-none tracking-[-0.045em] transition-transform duration-300 group-hover:translate-x-1">
                       {
-                        item.label
+                        copy
+                          .navigation[
+                          item.key
+                        ]
                       }
                     </span>
                   </Link>
@@ -575,7 +614,7 @@ export default function Navbar() {
                     : "0ms",
               }}
             >
-              View Resume
+              {copy.resume.view}
             </Link>
           </nav>
 
@@ -602,9 +641,7 @@ export default function Navbar() {
                 </p>
 
                 <p className="mt-1 text-xs text-muted-foreground">
-                  {
-                    siteConfig.location
-                  }
+                  {copy.location}
                 </p>
               </div>
 

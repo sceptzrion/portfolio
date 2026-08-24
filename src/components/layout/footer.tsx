@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import { siteConfig } from "@/data/site";
+import { sharedDictionary } from "@/i18n/dictionaries/shared";
+import { getLocale } from "@/i18n/get-locale";
 
 function ExternalArrowIcon() {
   return (
@@ -20,19 +22,24 @@ function ExternalArrowIcon() {
   );
 }
 
-export default function Footer() {
+export default async function Footer() {
   const currentYear =
     new Date().getFullYear();
+
+  const locale =
+    await getLocale();
+
+  const copy =
+    sharedDictionary[locale];
 
   return (
     <footer className="border-t border-border bg-background">
       <div className="shell py-10 md:py-12">
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[1.35fr_0.8fr_0.8fr] md:gap-12">
-          {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link
               href="/"
-              aria-label={`${siteConfig.shortName} — Home`}
+              aria-label={`${siteConfig.shortName} — ${copy.navigation.home}`}
               className="group inline-flex items-center gap-2.5"
             >
               <span className="grid size-8 place-items-center rounded-[8px] bg-primary font-brand text-[13px] font-bold tracking-tighter text-primary-foreground transition-transform duration-300 group-hover:-rotate-6">
@@ -48,9 +55,10 @@ export default function Footer() {
             </Link>
 
             <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">
-              {siteConfig.role} based in{" "}
-              {siteConfig.location}, building useful web
-              experiences from interface to implementation.
+              {
+                copy.footer
+                  .description
+              }
             </p>
 
             <p className="mt-5 font-mono text-[10px] lowercase tracking-[0.14em] text-primary">
@@ -58,14 +66,19 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Sitemap */}
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-              Sitemap
+              {
+                copy.footer
+                  .navigation
+              }
             </p>
 
             <nav
-              aria-label="Footer navigation"
+              aria-label={
+                copy.footer
+                  .navigationLabel
+              }
               className="mt-4"
             >
               <ul className="space-y-2.5">
@@ -76,7 +89,12 @@ export default function Footer() {
                         href={item.href}
                         className="text-sm text-foreground transition-colors duration-300 hover:text-primary"
                       >
-                        {item.label}
+                        {
+                          copy
+                            .navigation[
+                            item.key
+                          ]
+                        }
                       </Link>
                     </li>
                   ),
@@ -84,20 +102,25 @@ export default function Footer() {
 
                 <li>
                   <Link
-                    href={siteConfig.resume.href}
+                    href={
+                      siteConfig
+                        .resume.href
+                    }
                     className="text-sm text-foreground transition-colors duration-300 hover:text-primary"
                   >
-                    {siteConfig.resume.label}
+                    {copy.resume.label}
                   </Link>
                 </li>
               </ul>
             </nav>
           </div>
 
-          {/* Elsewhere */}
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-              Elsewhere
+              {
+                copy.footer
+                  .elsewhere
+              }
             </p>
 
             <ul className="mt-4 space-y-2.5">
@@ -113,14 +136,20 @@ export default function Footer() {
 
               {siteConfig.socials.map(
                 (social) => (
-                  <li key={social.label}>
+                  <li
+                    key={
+                      social.label
+                    }
+                  >
                     <a
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group inline-flex items-center gap-1.5 text-sm text-foreground transition-colors duration-300 hover:text-primary"
                     >
-                      {social.label}
+                      {
+                        social.label
+                      }
                       <ExternalArrowIcon />
                     </a>
                   </li>
@@ -131,15 +160,18 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-border">
         <div className="shell flex flex-col gap-2 py-4 font-mono text-[10px] uppercase tracking-[0.11em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {currentYear} {siteConfig.fullName}
+            © {currentYear}{" "}
+            {siteConfig.fullName}
           </p>
 
           <p>
-            Designed &amp; built with care · Karawang, ID
+            {
+              copy.footer
+                .bottomNote
+            }
           </p>
         </div>
       </div>

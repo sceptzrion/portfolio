@@ -17,7 +17,8 @@ export const siteConfig = {
       introduction: "Hi, I’m Rizqi.",
       statement: "I build",
       emphasis: "useful",
-      continuation: "digital experiences for the web.",
+      continuation:
+        "digital experiences for the web.",
     },
 
     description:
@@ -59,29 +60,28 @@ export const siteConfig = {
 
   navigation: [
     {
-      label: "Home",
+      key: "home",
       href: "/",
     },
     {
-      label: "About",
+      key: "about",
       href: "/about",
     },
     {
-      label: "Experience",
+      key: "experience",
       href: "/experience",
     },
     {
-      label: "Projects",
+      key: "projects",
       href: "/projects",
     },
     {
-      label: "Contact",
+      key: "contact",
       href: "/contact",
     },
   ],
 
   resume: {
-    label: "Resume",
     href: "/resume",
   },
 

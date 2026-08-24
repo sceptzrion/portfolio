@@ -8,12 +8,13 @@ import {
 } from "react";
 
 import {
+  useLocale,
+} from "@/components/i18n/locale-provider";
+import {
   locales,
   type Locale,
 } from "@/i18n/config";
-import {
-  useLocale,
-} from "@/components/i18n/locale-provider";
+import { sharedDictionary } from "@/i18n/dictionaries/shared";
 
 type LanguageSwitchProps = {
   variant?:
@@ -30,6 +31,9 @@ export default function LanguageSwitch({
     locale,
     setLocale,
   } = useLocale();
+
+  const copy =
+    sharedDictionary[locale];
 
   const [
     switchingTo,
@@ -90,7 +94,9 @@ export default function LanguageSwitch({
   return (
     <div
       role="group"
-      aria-label="Language"
+      aria-label={
+        copy.language.label
+      }
       className={[
         "flex h-10 items-center rounded-full border p-1 transition-colors duration-300",
         inverse
@@ -112,8 +118,10 @@ export default function LanguageSwitch({
               }
               aria-label={
                 item === "en"
-                  ? "Switch to English"
-                  : "Ganti ke Bahasa Indonesia"
+                  ? copy.language
+                      .switchToEnglish
+                  : copy.language
+                      .switchToIndonesian
               }
               disabled={
                 switchingTo !==

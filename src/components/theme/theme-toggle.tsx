@@ -1,6 +1,8 @@
 "use client";
 
+import { useLocale } from "@/components/i18n/locale-provider";
 import { useTheme } from "@/components/theme/theme-provider";
+import { sharedDictionary } from "@/i18n/dictionaries/shared";
 
 type ThemeToggleProps = {
   variant?: "default" | "inverse";
@@ -44,7 +46,6 @@ function SunIcon() {
       <path d="M12 20v2" />
       <path d="M4 12H2" />
       <path d="M22 12h-2" />
-
       <path d="M5 5l1.5 1.5" />
       <path d="M17.5 17.5 19 19" />
       <path d="M19 5l-1.5 1.5" />
@@ -56,6 +57,12 @@ function SunIcon() {
 export default function ThemeToggle({
   variant = "default",
 }: ThemeToggleProps) {
+  const { locale } =
+    useLocale();
+
+  const copy =
+    sharedDictionary[locale];
+
   const {
     theme,
     mounted,
@@ -65,28 +72,18 @@ export default function ThemeToggle({
   const inverse =
     variant === "inverse";
 
+  const label = mounted
+    ? theme === "light"
+      ? copy.theme.switchToDark
+      : copy.theme.switchToLight
+    : copy.theme.toggle;
+
   return (
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label={
-        mounted
-          ? `Switch to ${
-              theme === "light"
-                ? "dark"
-                : "light"
-            } mode`
-          : "Toggle color theme"
-      }
-      title={
-        mounted
-          ? `Switch to ${
-              theme === "light"
-                ? "dark"
-                : "light"
-            } mode`
-          : "Toggle color theme"
-      }
+      aria-label={label}
+      title={label}
       className={[
         "grid size-10 shrink-0 place-items-center rounded-full border transition-[color,border-color,background-color,transform] duration-300 hover:-translate-y-0.5",
         inverse
