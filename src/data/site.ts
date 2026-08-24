@@ -75,18 +75,7 @@ export const siteConfig = {
   contact: {
     email: "rizqi.iry@gmail.com",
 
-    headline: {
-      introduction:
-        "Have an opportunity",
-      emphasis:
-        "worth exploring?",
-    },
-
-    description:
-      "I’m open to full-time opportunities, collaborations, and conversations around web development and digital products.",
-
     primaryAction: {
-      label: "Get in Touch",
       href: "/contact",
     },
   },

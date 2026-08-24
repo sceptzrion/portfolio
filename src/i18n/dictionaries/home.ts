@@ -136,6 +136,18 @@ type HomeDictionary = {
     toolkitNote: string;
     closingNote: string;
   };
+
+  contactCTA: {
+    label: string;
+
+    headline: {
+        introduction: string;
+        emphasis: string;
+    };
+
+    description: string;
+    primaryAction: string;
+  };
 };
 
 export const homeDictionary = {
@@ -336,6 +348,23 @@ export const homeDictionary = {
     closingNote:
         "Technologies evolve. Fundamentals stay useful.",
     },
+
+    contactCTA: {
+    label: "Contact",
+
+    headline: {
+        introduction:
+        "Have an opportunity",
+        emphasis:
+        "worth exploring?",
+    },
+
+    description:
+        "I’m open to full-time opportunities, collaborations, and conversations around web development and digital products.",
+
+    primaryAction:
+        "Get in Touch",
+    },
   },
 
   id: {
@@ -345,7 +374,7 @@ export const homeDictionary = {
 
       headline: {
         introduction:
-          "Halo, saya Rizqi.",
+          "Hai, saya Rizqi.",
         statement:
           "Membangun pengalaman digital yang",
         emphasis:
@@ -481,7 +510,7 @@ export const homeDictionary = {
       },
 
       description:
-        "Pengalaman praktis di bidang web development dan business intelligence melalui lingkungan profesional dan project-based.",
+        "Pengalaman praktis dalam web development dan business intelligence melalui magang profesional dan project-based internship.",
 
       action:
         "Lihat Pengalaman Lengkap",
@@ -533,6 +562,23 @@ export const homeDictionary = {
 
     closingNote:
         "Technologies evolve. Fundamentals stay useful.",
+    },
+
+    contactCTA: {
+    label: "Kontak",
+
+    headline: {
+        introduction:
+        "Ada peluang yang",
+        emphasis:
+        "menarik untuk dibahas?",
+    },
+
+    description:
+        "Saya terbuka untuk peluang full-time, kolaborasi, dan diskusi seputar web development serta produk digital.",
+
+    primaryAction:
+        "Get in Touch",
     },
   },
 } satisfies Record<

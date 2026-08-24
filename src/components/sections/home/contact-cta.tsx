@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import { siteConfig } from "@/data/site";
+import { homeDictionary } from "@/i18n/dictionaries/home";
+import { getLocale } from "@/i18n/get-locale";
 
 function ArrowIcon() {
   return (
@@ -38,13 +40,19 @@ function ExternalArrowIcon() {
   );
 }
 
-export default function ContactCTA() {
+export default async function ContactCTA() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    homeDictionary[locale]
+      .contactCTA;
+
   return (
     <section
       id="contact"
       className="relative overflow-hidden border-t border-border bg-tertiary"
     >
-      {/* Ambient background */}
       <div
         aria-hidden="true"
         className="warm-veil pointer-events-none absolute inset-0 opacity-65"
@@ -65,18 +73,22 @@ export default function ContactCTA() {
           data-reveal
           className="reveal-on-scroll mx-auto max-w-225 text-center"
         >
-          {/* Section label */}
           <div className="flex justify-center">
             <div className="section-label">
-              Contact
+              {copy.label}
             </div>
           </div>
 
-          {/* Headline */}
           <h2 className="mx-auto mt-6 max-w-212.5 text-balance font-display text-[clamp(2.6rem,6vw,5.6rem)] font-extrabold leading-[0.97] tracking-[-0.055em]">
-            {siteConfig.contact.headline.introduction}{" "}
+            {
+              copy.headline
+                .introduction
+            }{" "}
             <span className="relative text-primary">
-              {siteConfig.contact.headline.emphasis}
+              {
+                copy.headline
+                  .emphasis
+              }
 
               <svg
                 aria-hidden="true"
@@ -96,16 +108,20 @@ export default function ContactCTA() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-152.5 text-[15px] leading-7 text-muted-foreground sm:text-base sm:leading-8">
-            {siteConfig.contact.description}
+            {copy.description}
           </p>
 
-          {/* Main actions */}
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href={siteConfig.contact.primaryAction.href}
+              href={
+                siteConfig.contact
+                  .primaryAction.href
+              }
               className="group inline-flex min-h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-[0_8px_22px_rgb(221_95_34/0.12)] transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-accent hover:shadow-[0_12px_28px_rgb(221_95_34/0.20)] sm:w-auto"
             >
-              {siteConfig.contact.primaryAction.label}
+              {
+                copy.primaryAction
+              }
 
               <ArrowIcon />
             </Link>
@@ -114,7 +130,10 @@ export default function ContactCTA() {
               href={`mailto:${siteConfig.contact.email}`}
               className="group inline-flex min-h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full border border-border-strong bg-background/40 px-5 text-sm font-semibold text-foreground backdrop-blur-sm transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft sm:w-auto sm:px-6"
             >
-              {siteConfig.contact.email}
+              {
+                siteConfig.contact
+                  .email
+              }
 
               <ExternalArrowIcon />
             </a>
