@@ -71,31 +71,49 @@ type HomeDictionary = {
   };
 
   aboutPreview: {
-  label: string;
+    label: string;
 
-  headline: {
+    headline: {
+      introduction: string;
+      emphasis: string;
+      continuation: string;
+    };
+
     introduction: string;
-    emphasis: string;
-    continuation: string;
+    perspective: string;
+
+    education: {
+      label: string;
+      degree: string;
+    };
+
+    portraitPlaceholder: string;
+
+    action: string;
+
+    approach: {
+      label: string;
+      description: string;
+    };
   };
 
-  introduction: string;
-  perspective: string;
-
-  education: {
+  experiencePreview: {
     label: string;
-    degree: string;
-  };
 
-  portraitPlaceholder: string;
+    headline: {
+      introduction: string;
+      emphasis: string;
+    };
 
-  action: string;
-
-  approach: {
-    label: string;
     description: string;
+    action: string;
+    itemLabel: string;
+
+    summaries: {
+      "diskominfosantik-bekasi": string;
+      "bank-muamalat": string;
+    };
   };
-};
 };
 
 export const homeDictionary = {
@@ -145,7 +163,8 @@ export const homeDictionary = {
     },
 
     selectedWork: {
-      label: "Selected Work",
+      label:
+        "Selected Work",
 
       headline: {
         introduction:
@@ -195,41 +214,69 @@ export const homeDictionary = {
     },
 
     aboutPreview: {
-        label: "About",
+      label: "About",
 
-        headline: {
-            introduction:
-            "Building technology with",
-            emphasis:
-            "functionality",
-            continuation:
-            "and people in mind.",
-        },
-
+      headline: {
         introduction:
-            "I’m a fresh Informatics graduate with hands-on experience building responsive interfaces and web applications through internships, academic projects, and collaborative development.",
+          "Building technology with",
+        emphasis:
+          "functionality",
+        continuation:
+          "and people in mind.",
+      },
 
-        perspective:
-            "I enjoy translating ideas and interface designs into functional products, with particular interest in frontend engineering, full-stack development, database integration, and maintainable application development.",
+      introduction:
+        "I’m a fresh Informatics graduate with hands-on experience building responsive interfaces and web applications through internships, academic projects, and collaborative development.",
 
-        education: {
-            label: "Education",
-            degree:
-            "Bachelor of Informatics",
-        },
+      perspective:
+        "I enjoy translating ideas and interface designs into functional products, with particular interest in frontend engineering, full-stack development, database integration, and maintainable application development.",
 
-        portraitPlaceholder:
-            "Portrait placeholder",
+      education: {
+        label: "Education",
+        degree:
+          "Bachelor of Informatics",
+      },
 
-        action:
-            "More About Me",
+      portraitPlaceholder:
+        "Portrait placeholder",
 
-        approach: {
-            label: "Approach",
-            description:
-            "From interface decisions to implementation, I aim to build digital products that are clear to use, practical to maintain, and purposeful in what they solve.",
-        },
-        },
+      action:
+        "More About Me",
+
+      approach: {
+        label: "Approach",
+        description:
+          "From interface decisions to implementation, I aim to build digital products that are clear to use, practical to maintain, and purposeful in what they solve.",
+      },
+    },
+
+    experiencePreview: {
+      label: "Experience",
+
+      headline: {
+        introduction:
+          "Experience across",
+        emphasis:
+          "web and data.",
+      },
+
+      description:
+        "Hands-on experience across web development and business intelligence in professional and project-based environments.",
+
+      action:
+        "View full experience",
+
+      itemLabel:
+        "Experience",
+
+      summaries: {
+        "diskominfosantik-bekasi":
+          "Developed responsive frontend pages for the Disarpus Kabupaten Bekasi website, translating approved Figma designs into functional Next.js interfaces and resolving layout issues across breakpoints.",
+
+        "bank-muamalat":
+          "Analyzed relational sales data in Google BigQuery and translated it into structured master tables, interactive Looker Studio dashboards, and data-driven business recommendations.",
+      },
+    },
   },
 
   id: {
@@ -277,7 +324,8 @@ export const homeDictionary = {
     },
 
     selectedWork: {
-      label: "Proyek Pilihan",
+      label:
+        "Proyek Pilihan",
 
       headline: {
         introduction:
@@ -327,41 +375,69 @@ export const homeDictionary = {
     },
 
     aboutPreview: {
-        label: "Tentang",
+      label: "Tentang",
 
-        headline: {
-            introduction:
-            "Membangun teknologi dengan mengutamakan",
-            emphasis:
-            "fungsionalitas",
-            continuation:
-            "dan kebutuhan pengguna.",
-        },
-
+      headline: {
         introduction:
-            "Saya adalah Fresh Graduate Informatika dengan pengalaman praktis dalam membangun antarmuka responsif dan aplikasi web melalui magang, proyek akademik, serta pengembangan kolaboratif.",
+          "Membangun teknologi dengan mengutamakan",
+        emphasis:
+          "fungsionalitas",
+        continuation:
+          "dan kebutuhan pengguna.",
+      },
 
-        perspective:
-            "Saya tertarik mengubah ide dan desain antarmuka menjadi produk yang fungsional, terutama melalui frontend engineering, full-stack development, integrasi database, serta pengembangan aplikasi yang terstruktur.",
+      introduction:
+        "Saya adalah Fresh Graduate Informatika dengan pengalaman praktis dalam membangun antarmuka responsif dan aplikasi web melalui magang, proyek akademik, serta pengembangan kolaboratif.",
 
-        education: {
-            label: "Pendidikan",
-            degree:
-            "Sarjana Informatika",
-        },
+      perspective:
+        "Saya tertarik mengubah ide dan desain antarmuka menjadi produk yang fungsional, terutama melalui frontend engineering, full-stack development, integrasi database, serta pengembangan aplikasi yang terstruktur.",
 
-        portraitPlaceholder:
-            "Portrait akan ditambahkan",
+      education: {
+        label: "Pendidikan",
+        degree:
+          "Sarjana Informatika",
+      },
 
-        action:
-            "Selengkapnya",
+      portraitPlaceholder:
+        "Portrait akan ditambahkan",
 
-        approach: {
-            label: "Approach",
-            description:
-            "Dari keputusan antarmuka hingga implementasi, saya berupaya membangun produk digital yang jelas digunakan, mudah dikembangkan, dan tepat guna dalam menyelesaikan masalah.",
-        },
-        },
+      action:
+        "Selengkapnya",
+
+      approach: {
+        label: "Approach",
+        description:
+          "Dari keputusan antarmuka hingga implementasi, saya berupaya membangun produk digital yang jelas digunakan, mudah dikembangkan, dan tepat guna dalam menyelesaikan masalah.",
+      },
+    },
+
+    experiencePreview: {
+      label: "Pengalaman",
+
+      headline: {
+        introduction:
+          "Pengalaman di bidang",
+        emphasis:
+          "web dan data.",
+      },
+
+      description:
+        "Pengalaman praktis di bidang web development dan business intelligence melalui lingkungan profesional dan project-based.",
+
+      action:
+        "Lihat Pengalaman Lengkap",
+
+      itemLabel:
+        "Pengalaman",
+
+      summaries: {
+        "diskominfosantik-bekasi":
+          "Mengembangkan halaman frontend responsif untuk website Disarpus Kabupaten Bekasi dengan menerapkan desain Figma yang telah disetujui menjadi antarmuka Next.js yang fungsional serta memperbaiki masalah layout di berbagai breakpoint.",
+
+        "bank-muamalat":
+          "Menganalisis data penjualan relasional di Google BigQuery dan mengolahnya menjadi master table terstruktur, dashboard interaktif di Looker Studio, serta rekomendasi bisnis berbasis data.",
+      },
+    },
   },
 } satisfies Record<
   Locale,
