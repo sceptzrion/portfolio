@@ -1,6 +1,9 @@
 import Link from "next/link";
 
 import { siteConfig } from "@/data/site";
+import { homeDictionary } from "@/i18n/dictionaries/home";
+import { sharedDictionary } from "@/i18n/dictionaries/shared";
+import { getLocale } from "@/i18n/get-locale";
 
 function ArrowIcon() {
   return (
@@ -20,13 +23,18 @@ function ArrowIcon() {
   );
 }
 
-function PortraitPlaceholder() {
+function PortraitPlaceholder({
+  ariaLabel,
+  comingLater,
+}: {
+  ariaLabel: string;
+  comingLater: string;
+}) {
   return (
     <div
-      aria-label="Portrait placeholder for Rizqi"
+      aria-label={ariaLabel}
       className="relative aspect-5/6 w-full overflow-hidden bg-muted"
     >
-      {/* Decorative portrait placeholder */}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-[radial-gradient(circle_at_68%_20%,color-mix(in_srgb,var(--primary)_18%,transparent),transparent_34%),linear-gradient(145deg,var(--muted),var(--tertiary))]"
@@ -39,7 +47,7 @@ function PortraitPlaceholder() {
 
       <div
         aria-hidden="true"
-        className="absolute left-[-12%] bottom-[8%] size-[58%] rounded-full bg-primary/10 blur-3xl"
+        className="absolute bottom-[8%] left-[-12%] size-[58%] rounded-full bg-primary/10 blur-3xl"
       />
 
       <div className="absolute inset-0 grid place-items-center">
@@ -49,12 +57,11 @@ function PortraitPlaceholder() {
           </span>
 
           <p className="mono mt-3 text-muted-foreground">
-            Portrait coming later
+            {comingLater}
           </p>
         </div>
       </div>
 
-      {/* Bottom identity */}
       <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgb(0_0_0/0.55),transparent)] px-5 pb-5 pt-16">
         <p className="font-display text-lg font-semibold text-white">
           {siteConfig.fullName}
@@ -68,13 +75,16 @@ function PortraitPlaceholder() {
   );
 }
 
-function ProjectPreview() {
+function ProjectPreview({
+  label,
+}: {
+  label: string;
+}) {
   return (
     <div
       aria-hidden="true"
       className="absolute -bottom-7 -left-5 hidden w-55 rotate-[-4deg] overflow-hidden rounded-xl border border-border-strong bg-card shadow-[0_20px_55px_rgb(33_30_26/0.18)] transition-transform duration-500 hover:rotate-0 sm:block lg:-left-10"
     >
-      {/* Browser toolbar */}
       <div className="flex items-center border-b border-border px-3 py-2">
         <div className="flex items-center gap-1">
           <span className="size-1.5 rounded-full bg-primary/70" />
@@ -87,14 +97,13 @@ function ProjectPreview() {
         </span>
       </div>
 
-      {/* Temporary project visual */}
       <div className="relative aspect-16/10 overflow-hidden bg-feature">
         <div className="tech-grid-feature absolute inset-0 opacity-60" />
 
         <div className="absolute inset-3 rounded-lg border border-feature-border bg-feature">
           <div className="p-3">
             <p className="font-mono text-[7px] uppercase tracking-[0.16em] text-primary">
-              Featured project
+              {label}
             </p>
 
             <p className="mt-2 font-display text-sm font-semibold leading-tight text-feature-foreground">
@@ -114,13 +123,21 @@ function ProjectPreview() {
   );
 }
 
-export default function Hero() {
+export default async function Hero() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    homeDictionary[locale].hero;
+
+  const shared =
+    sharedDictionary[locale];
+
   return (
     <section
       id="home"
       className="relative min-h-svh overflow-hidden"
     >
-      {/* Background atmosphere */}
       <div
         aria-hidden="true"
         className="warm-veil pointer-events-none absolute inset-0 opacity-60"
@@ -131,12 +148,13 @@ export default function Hero() {
         className="tech-grid pointer-events-none absolute inset-0 opacity-25 mask-[radial-gradient(ellipse_at_top_right,black,transparent_68%)]"
       />
 
-      {/* Small decorative marker */}
       <div
         aria-hidden="true"
         className="absolute right-[7%] top-[18%] hidden grid-cols-4 gap-2 opacity-45 xl:grid"
       >
-        {Array.from({ length: 16 }).map((_, index) => (
+        {Array.from({
+          length: 16,
+        }).map((_, index) => (
           <span
             key={index}
             className="size-1 rounded-full bg-primary"
@@ -146,16 +164,12 @@ export default function Hero() {
 
       <div className="shell relative flex min-h-svh items-center pb-16 pt-28 sm:pb-20 sm:pt-36 lg:pb-24 lg:pt-40">
         <div className="grid w-full items-center gap-12 sm:gap-16 lg:grid-cols-[1.06fr_0.94fr] lg:gap-12 xl:gap-20">
-          {/* =================================================
-              Left Content
-              ================================================= */}
-
           <div>
-            {/* Availability */}
             <div
               className="reveal flex flex-wrap items-center gap-x-4 gap-y-2 text-sm"
               style={{
-                animationDelay: "0ms",
+                animationDelay:
+                  "0ms",
               }}
             >
               <span className="inline-flex items-center gap-2 font-medium text-foreground">
@@ -165,7 +179,9 @@ export default function Hero() {
                   <span className="relative inline-flex size-2 rounded-full bg-primary" />
                 </span>
 
-                {siteConfig.hero.availability}
+                {
+                  copy.availability
+                }
               </span>
 
               <span
@@ -176,23 +192,32 @@ export default function Hero() {
               </span>
 
               <span className="text-muted-foreground">
-                {siteConfig.location}
+                {shared.location}
               </span>
             </div>
 
-            {/* Headline */}
             <h1
               className="reveal mt-7 max-w-190 text-balance font-display text-[clamp(3.15rem,7vw,5.5rem)] font-extrabold leading-[0.97] tracking-[-0.055em]"
               style={{
-                animationDelay: "80ms",
+                animationDelay:
+                  "80ms",
               }}
             >
-              {siteConfig.hero.headline.introduction}
+              {
+                copy.headline
+                  .introduction
+              }
 
               <span className="mt-3 block font-semibold text-muted-foreground">
-                {siteConfig.hero.headline.statement}{" "}
+                {
+                  copy.headline
+                    .statement
+                }{" "}
                 <span className="relative whitespace-nowrap text-foreground">
-                  {siteConfig.hero.headline.emphasis}
+                  {
+                    copy.headline
+                      .emphasis
+                  }
 
                   <svg
                     aria-hidden="true"
@@ -209,32 +234,41 @@ export default function Hero() {
                     />
                   </svg>
                 </span>{" "}
-                {siteConfig.hero.headline.continuation}
+                {
+                  copy.headline
+                    .continuation
+                }
               </span>
             </h1>
 
-            {/* Description */}
             <p
               className="reveal mt-8 max-w-152.5 text-[16px] leading-7 text-muted-foreground sm:text-[17px] sm:leading-8"
               style={{
-                animationDelay: "160ms",
+                animationDelay:
+                  "160ms",
               }}
             >
-              {siteConfig.hero.description}
+              {copy.description}
             </p>
 
-            {/* Actions */}
             <div
               className="reveal mt-9 flex flex-wrap items-center gap-3 sm:gap-4"
               style={{
-                animationDelay: "240ms",
+                animationDelay:
+                  "240ms",
               }}
             >
               <Link
-                href={siteConfig.hero.primaryAction.href}
+                href={
+                  siteConfig.hero
+                    .primaryAction.href
+                }
                 className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-[0_8px_22px_rgb(221_95_34/0.12)] transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-accent hover:shadow-[0_12px_28px_rgb(221_95_34/0.20)]"
               >
-                {siteConfig.hero.primaryAction.label}
+                {
+                  copy.actions
+                    .primary
+                }
 
                 <span className="transition-transform duration-300 group-hover:translate-x-0.5">
                   <ArrowIcon />
@@ -242,60 +276,70 @@ export default function Hero() {
               </Link>
 
               <Link
-                href={siteConfig.hero.secondaryAction.href}
+                href={
+                  siteConfig.hero
+                    .secondaryAction
+                    .href
+                }
                 className="inline-flex min-h-12 items-center justify-center rounded-full border border-border-strong bg-background/30 px-5 text-sm font-semibold text-foreground transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft"
               >
-                {siteConfig.hero.secondaryAction.label}
+                {
+                  copy.actions
+                    .secondary
+                }
               </Link>
             </div>
 
-            {/* Stats */}
             <dl
               className="reveal mt-12 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-border pt-7 sm:flex sm:flex-wrap sm:gap-x-10"
               style={{
-                animationDelay: "320ms",
+                animationDelay:
+                  "320ms",
               }}
             >
-              {siteConfig.stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="flex flex-col"
-                >
-                  <dt className="order-2 mt-1 text-xs text-muted-foreground">
-                    {stat.label}
-                  </dt>
+              {siteConfig.stats.map(
+                (stat) => (
+                  <div
+                    key={stat.key}
+                    className="flex flex-col"
+                  >
+                    <dt className="order-2 mt-1 text-xs text-muted-foreground">
+                      {
+                        copy.stats[
+                          stat.key
+                        ]
+                      }
+                    </dt>
 
-                  <dd className="order-1 font-display text-[1.4rem] font-bold tracking-[-0.035em]">
-                    {stat.value}
+                    <dd className="order-1 font-display text-[1.4rem] font-bold tracking-[-0.035em]">
+                      {stat.value}
 
-                    {stat.suffix ? (
-                      <span className="ml-1 text-[11px] font-medium tracking-normal text-muted-foreground">
-                        {stat.suffix}
-                      </span>
-                    ) : null}
-                  </dd>
-                </div>
-              ))}
+                      {stat.suffix ? (
+                        <span className="ml-1 text-[11px] font-medium tracking-normal text-muted-foreground">
+                          {
+                            stat.suffix
+                          }
+                        </span>
+                      ) : null}
+                    </dd>
+                  </div>
+                ),
+              )}
             </dl>
           </div>
-
-          {/* =================================================
-              Right Visual
-              ================================================= */}
 
           <div
             className="reveal relative mx-auto w-full max-w-[20rem] sm:max-w-107.5 lg:mr-0"
             style={{
-              animationDelay: "300ms",
+              animationDelay:
+                "300ms",
             }}
           >
-            {/* Offset soft plate */}
             <div
               aria-hidden="true"
               className="absolute -inset-3 rounded-4xl bg-primary-soft/70"
             />
 
-            {/* Side technical line */}
             <div
               aria-hidden="true"
               className="absolute -right-7 top-[22%] hidden h-[46%] w-px bg-border-strong sm:block"
@@ -306,15 +350,23 @@ export default function Hero() {
               className="absolute -right-7.75 top-[21%] hidden size-2 rounded-full border border-primary bg-background sm:block"
             />
 
-            {/* Main portrait shell */}
             <div className="relative overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[0_24px_60px_rgb(33_30_26/0.10)]">
-              <PortraitPlaceholder />
+              <PortraitPlaceholder
+                ariaLabel={
+                  copy.portraitLabel
+                }
+                comingLater={
+                  copy.portraitComingLater
+                }
+              />
             </div>
 
-            {/* Floating preview */}
-            <ProjectPreview />
+            <ProjectPreview
+              label={
+                copy.featuredProject
+              }
+            />
 
-            {/* Domain chip */}
             <div className="absolute -right-3 top-7 rounded-full border border-border-strong bg-card/90 px-4 py-2 text-xs font-medium shadow-lg backdrop-blur-md sm:-right-5">
               <span
                 aria-hidden="true"
@@ -326,7 +378,6 @@ export default function Hero() {
               {siteConfig.domain}
             </div>
 
-            {/* Role chip */}
             <div className="absolute bottom-8 -right-2.5 hidden rounded-full border border-border-strong bg-card/90 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground shadow-lg backdrop-blur-md md:block lg:-right-6">
               Full-stack / web
             </div>
@@ -334,11 +385,10 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom scroll indicator */}
       <div className="shell pointer-events-none absolute inset-x-0 bottom-7 hidden lg:block">
         <div className="flex items-center gap-3">
           <span className="mono text-muted-foreground">
-            Scroll to explore
+            {copy.scrollHint}
           </span>
 
           <span

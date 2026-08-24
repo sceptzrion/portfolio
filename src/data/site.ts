@@ -1,60 +1,47 @@
 export const siteConfig = {
   shortName: "Rizqi",
   siteName: "Rizqi Yanuar",
-  fullName: "Muhamad Ikhsan Rizqi Yanuar",
+  fullName:
+    "Muhamad Ikhsan Rizqi Yanuar",
   monogram: "RY",
 
   role: "Full-Stack Web Developer",
-  location: "Karawang, West Java, Indonesia",
+  location:
+    "Karawang, West Java, Indonesia",
 
   domain: "rizqiyr.id",
   url: "https://rizqiyr.id",
 
   hero: {
-    availability: "Available for opportunities",
-
-    headline: {
-      introduction: "Hi, I’m Rizqi.",
-      statement: "I build",
-      emphasis: "useful",
-      continuation:
-        "digital experiences for the web.",
-    },
-
-    description:
-      "A Full-Stack Web Developer and fresh Informatics graduate focused on turning interface designs and ideas into responsive, maintainable, and functional web applications.",
-
     primaryAction: {
-      label: "View My Work",
       href: "#selected-work",
     },
 
     secondaryAction: {
-      label: "About Me",
       href: "#about",
     },
   },
 
   stats: [
     {
+      key: "gpa",
       value: "3.93",
       suffix: "/ 4.00",
-      label: "GPA",
     },
     {
+      key: "honours",
       value: "Cum Laude",
       suffix: "",
-      label: "Honours",
     },
     {
+      key: "internships",
       value: "02",
       suffix: "",
-      label: "Internships",
     },
     {
+      key: "selectedProjects",
       value: "05",
       suffix: "",
-      label: "Selected Projects",
     },
   ],
 
@@ -89,8 +76,10 @@ export const siteConfig = {
     email: "rizqi.iry@gmail.com",
 
     headline: {
-      introduction: "Have an opportunity",
-      emphasis: "worth exploring?",
+      introduction:
+        "Have an opportunity",
+      emphasis:
+        "worth exploring?",
     },
 
     description:
@@ -105,11 +94,13 @@ export const siteConfig = {
   socials: [
     {
       label: "LinkedIn",
-      href: "https://linkedin.com/in/ikhsanry",
+      href:
+        "https://linkedin.com/in/ikhsanry",
     },
     {
       label: "GitHub",
-      href: "https://github.com/sceptzrion",
+      href:
+        "https://github.com/sceptzrion",
     },
   ],
 } as const;
