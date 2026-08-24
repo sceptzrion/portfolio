@@ -115,7 +115,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       
-
       <body
         className={`${displayFont.variable} ${sansFont.variable} ${monoFont.variable} ${brandFont.variable}`}
       >
