@@ -1,8 +1,19 @@
 import { profile } from "@/data/profile";
+import { aboutDictionary } from "@/i18n/dictionaries/about";
+import { getLocale } from "@/i18n/get-locale";
 
-export default function AboutEducation() {
+export default async function AboutEducation() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    aboutDictionary[locale]
+      .education;
+
   const [gpa, scale] =
-    profile.education.gpa.split(" / ");
+    profile.education.gpa.split(
+      " / ",
+    );
 
   return (
     <section
@@ -19,7 +30,7 @@ export default function AboutEducation() {
           data-reveal
           className="reveal-on-scroll section-label"
         >
-          Education
+          {copy.label}
         </div>
 
         <div className="mt-8 grid gap-10 lg:grid-cols-[0.7fr_1fr] lg:items-end lg:gap-20">
@@ -28,7 +39,7 @@ export default function AboutEducation() {
             className="reveal-on-scroll"
           >
             <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-              Academic result
+              {copy.resultLabel}
             </p>
 
             <div className="mt-3 flex items-end gap-3">
@@ -42,7 +53,10 @@ export default function AboutEducation() {
             </div>
 
             <p className="mt-6 inline-flex rounded-full border border-primary/25 bg-primary-soft px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
-              {profile.education.honour}
+              {
+                profile.education
+                  .honour
+              }
             </p>
           </div>
 
@@ -51,23 +65,29 @@ export default function AboutEducation() {
             className="reveal-on-scroll reveal-delay-1 border-t border-border pt-6 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0"
           >
             <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
-              {profile.education.period}
+              {
+                profile.education
+                  .period
+              }
             </p>
 
             <h2 className="mt-4 max-w-xl font-display text-[clamp(2rem,4vw,3.4rem)] font-bold leading-[1.02] tracking-[-0.045em]">
-              {profile.education.degree}
+              {copy.degree}
             </h2>
 
             <p className="mt-4 max-w-xl text-lg font-medium leading-7 text-foreground">
-              {profile.education.university}
+              {
+                profile.education
+                  .university
+              }
             </p>
 
             <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.13em] text-muted-foreground">
-              {profile.education.location}
+              {copy.location}
             </p>
 
             <p className="mt-7 max-w-xl text-[15px] leading-7 text-muted-foreground">
-              {profile.education.description}
+              {copy.description}
             </p>
           </div>
         </div>

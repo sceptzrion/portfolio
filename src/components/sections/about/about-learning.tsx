@@ -1,4 +1,6 @@
 import { profile } from "@/data/profile";
+import { aboutDictionary } from "@/i18n/dictionaries/about";
+import { getLocale } from "@/i18n/get-locale";
 
 function ExternalArrowIcon() {
   return (
@@ -18,7 +20,14 @@ function ExternalArrowIcon() {
   );
 }
 
-export default function AboutLearning() {
+export default async function AboutLearning() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    aboutDictionary[locale]
+      .learning;
+
   return (
     <section
       id="learning"
@@ -31,124 +40,157 @@ export default function AboutLearning() {
         >
           <div>
             <div className="section-label">
-              Learning &amp; Training
+              {copy.label}
             </div>
 
             <h2 className="mt-5 max-w-md text-balance font-display text-[clamp(2.5rem,4.5vw,4rem)] font-bold leading-none tracking-tighter">
-              Learning beyond the{" "}
+              {
+                copy.headline
+                  .introduction
+              }{" "}
               <span className="text-primary">
-                classroom.
+                {
+                  copy.headline
+                    .emphasis
+                }
               </span>
             </h2>
           </div>
 
           <p className="max-w-lg self-end text-[15px] leading-7 text-muted-foreground lg:justify-self-end">
-            Structured learning experiences that
-            complemented my academic background with
-            practical development work and collaborative
-            projects.
+            {copy.description}
           </p>
         </div>
 
         <div className="mt-10 border-y border-border sm:mt-12">
           {profile.learning.map(
-            (item, index) => (
-              <article
-                key={item.title}
-                data-reveal
-                className={[
-                  "reveal-on-scroll grid gap-5 py-7 sm:py-8 lg:grid-cols-[0.22fr_0.78fr_1fr] lg:gap-10",
-                  index <
-                  profile.learning.length - 1
-                    ? "border-b border-border"
-                    : "",
-                ].join(" ")}
-              >
-                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
-                  {item.period}
-                </p>
+            (item, index) => {
+              const itemCopy =
+                copy.items[index];
 
-                <div>
-                  <h3 className="max-w-md font-display text-xl font-bold leading-tight tracking-[-0.035em] sm:text-2xl">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-3 text-sm font-medium text-foreground">
-                    {item.provider}
+              return (
+                <article
+                  key={item.title}
+                  data-reveal
+                  className={[
+                    "reveal-on-scroll grid gap-5 py-7 sm:py-8 lg:grid-cols-[0.22fr_0.78fr_1fr] lg:gap-10",
+                    index <
+                    profile.learning
+                      .length -
+                      1
+                      ? "border-b border-border"
+                      : "",
+                  ].join(" ")}
+                >
+                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
+                    {
+                      itemCopy.period
+                    }
                   </p>
 
-                  <p className="mt-2 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
-                    {item.type}
-                  </p>
-                </div>
+                  <div>
+                    <h3 className="max-w-md font-display text-xl font-bold leading-tight tracking-[-0.035em] sm:text-2xl">
+                      {item.title}
+                    </h3>
 
-                <div>
-                  <p className="max-w-xl text-sm leading-7 text-muted-foreground">
-                    {item.description}
-                  </p>
+                    <p className="mt-3 text-sm font-medium text-foreground">
+                      {item.provider}
+                    </p>
 
-                  {item.stages.length > 0 && (
-                    <div className="mt-5 border-y border-border">
-                      {item.stages.map(
-                        (stage, stageIndex) => (
-                          <div
-                            key={`${stage.label}-${stage.period}`}
-                            className={[
-                              "grid gap-2 py-4 sm:grid-cols-[0.3fr_1fr] sm:gap-5",
-                              stageIndex <
-                              item.stages.length -
-                                1
-                                ? "border-b border-border"
-                                : "",
-                            ].join(" ")}
-                          >
-                            <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-primary">
-                              {stage.label}
-                            </p>
+                    <p className="mt-2 font-mono text-[10px] uppercase leading-5 tracking-[0.12em] text-muted-foreground">
+                      {item.type}
+                    </p>
+                  </div>
 
-                            <div>
-                              <p className="text-sm font-semibold text-foreground">
-                                {stage.title}
+                  <div>
+                    <p className="max-w-xl text-sm leading-7 text-muted-foreground">
+                      {
+                        itemCopy.description
+                      }
+                    </p>
+
+                    {item.stages.length >
+                      0 && (
+                      <div className="mt-5 border-y border-border">
+                        {item.stages.map(
+                          (
+                            stage,
+                            stageIndex,
+                          ) => (
+                            <div
+                              key={`${stage.label}-${stage.period}`}
+                              className={[
+                                "grid gap-2 py-4 sm:grid-cols-[0.3fr_1fr] sm:gap-5",
+                                stageIndex <
+                                item.stages
+                                  .length -
+                                  1
+                                  ? "border-b border-border"
+                                  : "",
+                              ].join(
+                                " ",
+                              )}
+                            >
+                              <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-primary">
+                                {
+                                  stage.label
+                                }
                               </p>
 
-                              <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.11em] text-muted-foreground">
-                                {stage.period}
-                              </p>
+                              <div>
+                                <p className="text-sm font-semibold text-foreground">
+                                  {
+                                    stage.title
+                                  }
+                                </p>
+
+                                <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.11em] text-muted-foreground">
+                                  {itemCopy
+                                    .stagePeriods[
+                                    stageIndex
+                                  ] ??
+                                    stage.period}
+                                </p>
+                              </div>
                             </div>
-                          </div>
-                        ),
-                      )}
-                    </div>
-                  )}
+                          ),
+                        )}
+                      </div>
+                    )}
 
-                  {item.certificates.length > 0 && (
-                    <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
-                      {item.certificates.map(
-                        (certificate) => (
-                          <a
-                            key={
-                              certificate.href
-                            }
-                            href={
-                              certificate.href
-                            }
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors duration-300 hover:text-primary"
-                          >
-                            {
-                              certificate.label
-                            }
+                    {item.certificates
+                      .length >
+                      0 && (
+                      <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+                        {item.certificates.map(
+                          (
+                            certificate,
+                          ) => (
+                            <a
+                              key={
+                                certificate.href
+                              }
+                              href={
+                                certificate.href
+                              }
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors duration-300 hover:text-primary"
+                            >
+                              {
+                                certificate.label
+                              }
 
-                            <ExternalArrowIcon />
-                          </a>
-                        ),
-                      )}
-                    </div>
-                  )}
-                </div>
-              </article>
-            ),
+                              <ExternalArrowIcon />
+                            </a>
+                          ),
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            },
           )}
         </div>
       </div>

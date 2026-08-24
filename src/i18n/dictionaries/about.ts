@@ -32,6 +32,41 @@ type AboutDictionary = {
       string,
     ];
   };
+
+  education: {
+    label: string;
+    resultLabel: string;
+    degree: string;
+    location: string;
+    description: string;
+    };
+
+    learning: {
+    label: string;
+
+    headline: {
+        introduction: string;
+        emphasis: string;
+    };
+
+    description: string;
+
+    items: readonly [
+        {
+        period: string;
+        description: string;
+        stagePeriods: readonly [];
+        },
+        {
+        period: string;
+        description: string;
+        stagePeriods: readonly [
+            string,
+            string,
+        ];
+      },
+    ];
+  };
 };
 
 export const aboutDictionary = {
@@ -77,6 +112,61 @@ export const aboutDictionary = {
         "Through academic projects and internships, I gained hands-on experience translating interface designs into responsive pages, working with application data, and collaborating throughout the development process. Those experiences shaped a practical approach to software: understand the problem, keep the implementation clear, and build with both users and maintainability in mind.",
       ],
     },
+
+    education: {
+    label: "Education",
+
+    resultLabel:
+        "Academic result",
+
+    degree:
+        "Bachelor of Informatics",
+
+    location:
+        "Karawang, West Java",
+
+    description:
+        "Built a foundation in software engineering and full-stack development through academic study, hands-on projects, and practical development experience.",
+    },
+
+    learning: {
+    label:
+        "Learning & Training",
+
+    headline: {
+        introduction:
+        "Learning beyond the",
+        emphasis:
+        "classroom.",
+    },
+
+    description:
+        "Structured learning experiences that complemented my academic background with practical development work and collaborative projects.",
+
+    items: [
+        {
+        period:
+            "Sep — Dec 2024",
+
+        description:
+            "Completed a certified independent study program focused on full-stack web development and data science.",
+
+        stagePeriods: [],
+        },
+        {
+        period:
+            "Aug — Nov 2025",
+
+        description:
+            "Participated in Samsung Innovation Campus Batch 7 as part of a team and progressed through Stage 1 and Stage 2 of the program.",
+
+        stagePeriods: [
+            "15 Aug — 13 Sep 2025",
+            "26 Sep — 1 Nov 2025",
+        ],
+        },
+    ],
+    },
   },
 
   id: {
@@ -120,6 +210,61 @@ export const aboutDictionary = {
         "Ketertarikan saya pada pengembangan web tumbuh selama mempelajari Informatika dan mengubah konsep akademik menjadi aplikasi yang dapat digunakan. Saya semakin tertarik pada bagaimana antarmuka, logika aplikasi, dan data perlu bekerja bersama sebagai satu produk.",
         "Melalui proyek akademik dan magang, saya memperoleh pengalaman praktis dalam mengimplementasikan desain antarmuka menjadi halaman responsif, bekerja dengan data aplikasi, serta berkolaborasi sepanjang proses development. Pengalaman tersebut membentuk pendekatan saya dalam software development: memahami masalah, menjaga implementasi tetap jelas, serta membangun dengan mempertimbangkan pengguna dan kemudahan pengembangan.",
       ],
+    },
+
+    education: {
+    label: "Pendidikan",
+
+    resultLabel:
+        "Capaian Akademik",
+
+    degree:
+        "Sarjana Informatika",
+
+    location:
+        "Karawang, Jawa Barat",
+
+    description:
+        "Membangun fondasi dalam software engineering dan full-stack development melalui pembelajaran akademik, proyek praktik, serta pengalaman development secara langsung.",
+    },
+
+    learning: {
+    label:
+        "Pembelajaran & Pelatihan",
+
+    headline: {
+        introduction:
+        "Belajar di luar",
+        emphasis:
+        "ruang kelas.",
+    },
+
+    description:
+        "Pengalaman belajar terstruktur yang melengkapi latar belakang akademik saya melalui praktik development dan proyek kolaboratif.",
+
+    items: [
+        {
+        period:
+            "Sep — Des 2024",
+
+        description:
+            "Menyelesaikan program studi independen bersertifikat yang berfokus pada full-stack web development dan data science.",
+
+        stagePeriods: [],
+        },
+        {
+        period:
+            "Agu — Nov 2025",
+
+        description:
+            "Berpartisipasi dalam Samsung Innovation Campus Batch 7 sebagai bagian dari tim serta mengikuti Stage 1 dan Stage 2 dalam program.",
+
+        stagePeriods: [
+            "15 Agu — 13 Sep 2025",
+            "26 Sep — 1 Nov 2025",
+        ],
+        },
+    ],
     },
   },
 } satisfies Record<
