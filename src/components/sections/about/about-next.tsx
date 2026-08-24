@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import { aboutDictionary } from "@/i18n/dictionaries/about";
+import { getLocale } from "@/i18n/get-locale";
+
 function ArrowIcon() {
   return (
     <svg
@@ -18,7 +21,13 @@ function ArrowIcon() {
   );
 }
 
-export default function AboutNext() {
+export default async function AboutNext() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    aboutDictionary[locale].next;
+
   return (
     <section className="relative overflow-hidden border-t border-border bg-tertiary">
       <div
@@ -33,13 +42,19 @@ export default function AboutNext() {
         >
           <div>
             <div className="section-label">
-              Next
+              {copy.label}
             </div>
 
             <h2 className="mt-5 max-w-3xl text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
-              See how that translates into{" "}
+              {
+                copy.headline
+                  .introduction
+              }{" "}
               <span className="text-primary">
-                real work.
+                {
+                  copy.headline
+                    .emphasis
+                }
               </span>
             </h2>
           </div>
@@ -49,7 +64,10 @@ export default function AboutNext() {
               href="/experience"
               className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-foreground px-5 text-sm font-semibold text-background transition-[transform,opacity] duration-300 hover:-translate-y-0.5 hover:opacity-90"
             >
-              View Experience
+              {
+                copy.actions
+                  .experience
+              }
               <ArrowIcon />
             </Link>
 
@@ -57,7 +75,9 @@ export default function AboutNext() {
               href="/projects"
               className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border-strong bg-background/40 px-5 text-sm font-semibold text-foreground transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft"
             >
-              Explore Projects
+              {
+                copy.actions.projects
+              }
               <ArrowIcon />
             </Link>
           </div>

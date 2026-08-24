@@ -1,6 +1,14 @@
 import { profile } from "@/data/profile";
+import { aboutDictionary } from "@/i18n/dictionaries/about";
+import { getLocale } from "@/i18n/get-locale";
 
-export default function AboutFocus() {
+export default async function AboutFocus() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    aboutDictionary[locale].focus;
+
   return (
     <section
       id="focus"
@@ -18,21 +26,25 @@ export default function AboutFocus() {
         >
           <div>
             <div className="section-label">
-              Focus
+              {copy.label}
             </div>
 
             <h2 className="mt-5 max-w-xl text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
-              The areas I keep{" "}
+              {
+                copy.headline
+                  .introduction
+              }{" "}
               <span className="text-primary">
-                coming back to.
+                {
+                  copy.headline
+                    .emphasis
+                }
               </span>
             </h2>
           </div>
 
           <p className="max-w-md text-[15px] leading-7 text-muted-foreground lg:justify-self-end">
-            Areas that continue to shape the kind of
-            problems I enjoy working through and the
-            direction I want to keep developing.
+            {copy.description}
           </p>
         </div>
 
@@ -49,7 +61,11 @@ export default function AboutFocus() {
                 </h3>
 
                 <p className="max-w-xl text-sm leading-7 text-muted-foreground">
-                  {area.description}
+                  {
+                    copy.descriptions[
+                      area.title
+                    ]
+                  }
                 </p>
               </article>
             ),
@@ -60,7 +76,7 @@ export default function AboutFocus() {
           data-reveal
           className="reveal-on-scroll mt-7 max-w-xl text-sm text-muted-foreground"
         >
-          Technologies evolve. Fundamentals stay useful.
+          {copy.closingNote}
         </p>
       </div>
     </section>

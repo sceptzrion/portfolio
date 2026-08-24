@@ -1,4 +1,6 @@
 import { profile } from "@/data/profile";
+import { aboutDictionary } from "@/i18n/dictionaries/about";
+import { getLocale } from "@/i18n/get-locale";
 
 function ExternalArrowIcon() {
   return (
@@ -18,7 +20,14 @@ function ExternalArrowIcon() {
   );
 }
 
-export default function AboutAchievement() {
+export default async function AboutAchievement() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    aboutDictionary[locale]
+      .achievement;
+
   const achievement =
     profile.achievements[0];
 
@@ -43,7 +52,7 @@ export default function AboutAchievement() {
           data-reveal
           className="reveal-on-scroll section-label section-label-inverse"
         >
-          Achievement
+          {copy.label}
         </div>
 
         <div className="mt-8 grid gap-10 lg:grid-cols-[0.8fr_1fr] lg:items-end lg:gap-20">
@@ -77,26 +86,34 @@ export default function AboutAchievement() {
             </p>
 
             <p className="mt-2 text-sm leading-6 text-feature-muted">
-              {achievement.organizer}
+              {
+                achievement.organizer
+              }
             </p>
 
             <p className="mt-7 max-w-xl text-[15px] leading-7 text-feature-muted">
-              {achievement.description}
+              {copy.description}
             </p>
 
-            {achievement.certificates.length >
-              0 && (
+            {achievement.certificates
+              .length > 0 && (
               <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3">
                 {achievement.certificates.map(
                   (certificate) => (
                     <a
-                      key={certificate.href}
-                      href={certificate.href}
+                      key={
+                        certificate.href
+                      }
+                      href={
+                        certificate.href
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group inline-flex items-center gap-1.5 text-sm font-semibold text-feature-foreground transition-colors duration-300 hover:text-primary"
                     >
-                      {certificate.label}
+                      {
+                        certificate.label
+                      }
 
                       <ExternalArrowIcon />
                     </a>
