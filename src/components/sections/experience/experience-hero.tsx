@@ -31,11 +31,11 @@ export default function ExperienceHero() {
           <p className="mt-8 max-w-2xl text-[17px] leading-8 text-muted-foreground sm:text-lg sm:leading-9">
             Two internships that
             shaped how I approach
-            technical work—one
+            technical work. One
             focused on frontend
-            delivery, the other on
-            turning relational data
-            into useful business
+            delivery, while the other
+            involved turning relational
+            data into useful business
             insights.
           </p>
         </div>
