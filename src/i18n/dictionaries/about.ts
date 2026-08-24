@@ -184,7 +184,7 @@ export const aboutDictionary = {
         "Saya adalah Fresh Graduate Informatika dengan pengalaman praktis dalam membangun antarmuka responsif dan aplikasi web melalui magang, proyek akademik, serta pengembangan kolaboratif.",
 
       perspective:
-        "Saya tertarik mengubah ide dan desain antarmuka menjadi produk yang fungsional, terutama melalui frontend engineering, full-stack development, integrasi database, serta pengembangan aplikasi yang terstruktur.",
+        "Tertarik mengubah ide dan desain antarmuka menjadi produk yang fungsional, terutama melalui frontend engineering, full-stack development, integrasi database, serta pengembangan aplikasi yang terstruktur.",
 
       quickFacts: {
         "Based in":
