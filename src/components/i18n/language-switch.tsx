@@ -22,10 +22,84 @@ type LanguageSwitchProps = {
     | "inverse";
 };
 
+function EnglishFlag() {
+  return (
+    <svg
+      viewBox="0 0 60 36"
+      aria-hidden="true"
+      className="h-2.5 w-4 shrink-0 overflow-hidden rounded-[2px]"
+    >
+      <rect
+        width="60"
+        height="36"
+        fill="#012169"
+      />
+
+      <path
+        d="M0 0 60 36M60 0 0 36"
+        stroke="#fff"
+        strokeWidth="8"
+      />
+
+      <path
+        d="M0 0 60 36M60 0 0 36"
+        stroke="#C8102E"
+        strokeWidth="4"
+      />
+
+      <path
+        d="M30 0v36M0 18h60"
+        stroke="#fff"
+        strokeWidth="12"
+      />
+
+      <path
+        d="M30 0v36M0 18h60"
+        stroke="#C8102E"
+        strokeWidth="7"
+      />
+    </svg>
+  );
+}
+
+function IndonesianFlag() {
+  return (
+    <svg
+      viewBox="0 0 3 2"
+      aria-hidden="true"
+      className="h-2.5 w-4 shrink-0 overflow-hidden rounded-[2px]"
+    >
+      <rect
+        width="3"
+        height="1"
+        fill="#CE1126"
+      />
+
+      <rect
+        y="1"
+        width="3"
+        height="1"
+        fill="#FFFFFF"
+      />
+    </svg>
+  );
+}
+
+function LocaleFlag({
+  locale,
+}: {
+  locale: Locale;
+}) {
+  return locale === "en"
+    ? <EnglishFlag />
+    : <IndonesianFlag />;
+}
+
 export default function LanguageSwitch({
   variant = "default",
 }: LanguageSwitchProps) {
-  const router = useRouter();
+  const router =
+    useRouter();
 
   const {
     locale,
@@ -57,19 +131,22 @@ export default function LanguageSwitch({
     );
 
     try {
-      const response = await fetch(
-        "/api/locale",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type":
-              "application/json",
+      const response =
+        await fetch(
+          "/api/locale",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type":
+                "application/json",
+            },
+            body:
+              JSON.stringify({
+                locale:
+                  nextLocale,
+              }),
           },
-          body: JSON.stringify({
-            locale: nextLocale,
-          }),
-        },
-      );
+        );
 
       if (!response.ok) {
         throw new Error(
@@ -77,7 +154,9 @@ export default function LanguageSwitch({
         );
       }
 
-      setLocale(nextLocale);
+      setLocale(
+        nextLocale,
+      );
 
       document.documentElement.lang =
         nextLocale;
@@ -113,38 +192,33 @@ export default function LanguageSwitch({
             <button
               key={item}
               type="button"
-              aria-pressed={
-                active
-              }
+              aria-pressed={active}
               aria-label={
                 item === "en"
-                  ? copy.language
-                      .switchToEnglish
-                  : copy.language
-                      .switchToIndonesian
+                ? copy.language.switchToEnglish
+                : copy.language.switchToIndonesian
               }
-              disabled={
-                switchingTo !==
-                null
-              }
+              disabled={switchingTo !== null}
               onClick={() =>
-                changeLocale(
-                  item,
-                )
+                changeLocale(item)
               }
               className={[
-                "grid h-8 min-w-8 place-items-center rounded-full px-2 font-mono text-[9px] font-medium uppercase tracking-widest transition-[background-color,color,opacity] duration-300",
+                "flex h-8 min-w-8 items-center justify-center gap-1.5 rounded-full px-2 font-mono text-[9px] font-medium uppercase tracking-[0.08em] transition-[background-color,color,opacity] duration-300 sm:px-2.5",
                 active
-                  ? "bg-primary text-primary-foreground"
-                  : inverse
+                ? "bg-primary text-primary-foreground"
+                : inverse
                     ? "text-feature-muted hover:text-feature-foreground"
                     : "text-muted-foreground hover:text-foreground",
                 switchingTo
-                  ? "cursor-wait"
-                  : "",
+                ? "cursor-wait"
+                : "",
               ].join(" ")}
-            >
-              {item}
+              >
+              <LocaleFlag locale={item} />
+
+              <span className="hidden sm:inline">
+                {item}
+              </span>
             </button>
           );
         },
