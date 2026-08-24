@@ -406,7 +406,7 @@ export const homeDictionary = {
       portraitComingLater:
         "Portrait akan ditambahkan",
       featuredProject:
-        "Proyek unggulan",
+        "Flagship Project",
       scrollHint:
         "Scroll untuk melanjutkan",
     },

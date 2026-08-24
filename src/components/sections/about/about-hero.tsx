@@ -1,6 +1,14 @@
 import { profile } from "@/data/profile";
+import { aboutDictionary } from "@/i18n/dictionaries/about";
+import { getLocale } from "@/i18n/get-locale";
 
-export default function AboutHero() {
+export default async function AboutHero() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    aboutDictionary[locale].hero;
+
   return (
     <section className="relative overflow-hidden border-b border-border bg-background pt-32 sm:pt-36 lg:pt-40">
       <div
@@ -19,14 +27,19 @@ export default function AboutHero() {
           className="reveal-on-scroll"
         >
           <div className="section-label">
-            About
+            {copy.label}
           </div>
 
           <h1 className="mt-7 max-w-5xl text-balance font-display text-[clamp(3.4rem,8vw,7rem)] font-bold leading-[0.94] tracking-[-0.06em]">
-            Building with curiosity,
-            structure, and a{" "}
+            {
+              copy.headline
+                .introduction
+            }{" "}
             <span className="text-primary">
-              practical mindset.
+              {
+                copy.headline
+                  .emphasis
+              }
             </span>
           </h1>
         </div>
@@ -36,8 +49,8 @@ export default function AboutHero() {
             data-reveal
             className="reveal-on-scroll max-w-2xl text-[17px] leading-8 text-muted-foreground sm:text-lg sm:leading-9"
           >
-            {profile.introduction}{" "}
-            {profile.perspective}
+            {copy.introduction}{" "}
+            {copy.perspective}
           </p>
 
           <dl
@@ -51,7 +64,11 @@ export default function AboutHero() {
                   className="border-b border-border pb-4"
                 >
                   <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                    {fact.label}
+                    {
+                      copy.quickFacts[
+                        fact.label
+                      ]
+                    }
                   </dt>
 
                   <dd className="mt-2 font-display text-sm font-semibold tracking-[-0.02em] text-foreground">

@@ -1,7 +1,14 @@
-import { profile } from "@/data/profile";
 import { siteConfig } from "@/data/site";
+import { aboutDictionary } from "@/i18n/dictionaries/about";
+import { getLocale } from "@/i18n/get-locale";
 
-export default function AboutStory() {
+export default async function AboutStory() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    aboutDictionary[locale].story;
+
   return (
     <section
       id="story"
@@ -14,19 +21,24 @@ export default function AboutStory() {
             className="reveal-on-scroll"
           >
             <div className="section-label">
-              Story
+              {copy.label}
             </div>
 
             <h2 className="mt-5 max-w-3xl text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
-              From informatics
-              foundations to{" "}
+              {
+                copy.headline
+                  .introduction
+              }{" "}
               <span className="text-primary">
-                building for the web.
+                {
+                  copy.headline
+                    .emphasis
+                }
               </span>
             </h2>
 
             <div className="mt-8 max-w-2xl space-y-5 text-[15px] leading-7 text-muted-foreground sm:text-base sm:leading-8">
-              {profile.story.map(
+              {copy.paragraphs.map(
                 (paragraph) => (
                   <p key={paragraph}>
                     {paragraph}
@@ -59,17 +71,23 @@ export default function AboutStory() {
 
                 <div className="absolute inset-0 grid place-items-center">
                   <span className="font-brand text-[clamp(7rem,18vw,11rem)] font-bold tracking-[-0.08em] text-foreground/10">
-                    {siteConfig.monogram}
+                    {
+                      siteConfig.monogram
+                    }
                   </span>
                 </div>
 
                 <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgb(0_0_0/0.65),transparent)] px-6 pb-6 pt-24">
                   <p className="font-display text-lg font-semibold text-white">
-                    {siteConfig.fullName}
+                    {
+                      siteConfig.fullName
+                    }
                   </p>
 
                   <p className="mt-1 text-xs text-white/70">
-                    {siteConfig.role}
+                    {
+                      siteConfig.role
+                    }
                   </p>
                 </div>
               </div>
