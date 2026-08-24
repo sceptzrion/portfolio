@@ -364,10 +364,6 @@ export default function SelectedWork() {
         >
           <div className="max-w-3xl">
             <div className="section-label">
-              <span className="section-label-number">
-                01
-              </span>
-
               Selected Work
             </div>
 

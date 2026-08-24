@@ -129,6 +129,7 @@
   --font-display: var(--font-plus-jakarta);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
+  --font-brand: var(--font-space-grotesk);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -261,8 +262,18 @@
   color: var(--muted-foreground);
 }
 
-.section-label-number {
-  color: var(--primary);
+.section-label::before {
+  content: "";
+
+  width: 24px;
+  height: 1px;
+  flex: 0 0 auto;
+
+  background: var(--primary);
+}
+
+.section-label-inverse {
+  color: var(--feature-muted);
 }
 
 .mono {

@@ -35,7 +35,7 @@ export default function Footer() {
               aria-label={`${siteConfig.shortName} — Home`}
               className="group inline-flex items-center gap-2.5"
             >
-              <span className="grid size-8 place-items-center rounded-lg bg-primary font-display text-xs font-bold text-primary-foreground transition-transform duration-300 group-hover:-rotate-6">
+              <span className="grid size-8 place-items-center rounded-[8px] bg-primary font-brand text-[13px] font-bold tracking-[-0.05em] text-primary-foreground transition-transform duration-300 group-hover:-rotate-6">
                 {siteConfig.monogram}
               </span>
 

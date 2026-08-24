@@ -146,10 +146,6 @@ export default function AboutPreview() {
             className="reveal-on-scroll reveal-from-right reveal-delay-1"
           >
             <div className="section-label">
-              <span className="section-label-number">
-                02
-              </span>
-
               About
             </div>
 

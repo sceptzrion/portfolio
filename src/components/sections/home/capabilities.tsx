@@ -20,10 +20,6 @@ export default function Capabilities() {
         >
           <div>
             <div className="section-label">
-              <span className="section-label-number">
-                04
-              </span>
-
               Capabilities
             </div>
 

@@ -4,6 +4,7 @@ import {
   Inter,
   JetBrains_Mono,
   Plus_Jakarta_Sans,
+  Space_Grotesk,
 } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme/theme-provider";
@@ -29,7 +30,17 @@ const monoFont = JetBrains_Mono({
   display: "swap",
 });
 
-const siteTitle =
+const brandFont = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  weight: ["700"],
+  display: "swap",
+});
+
+const pageTitle =
+  `Portfolio | ${siteConfig.fullName}`;
+
+const socialTitle =
   `${siteConfig.siteName} | ${siteConfig.role}`;
 
 const siteDescription =
@@ -41,7 +52,7 @@ export const metadata: Metadata = {
   applicationName: siteConfig.siteName,
 
   title: {
-    default: siteTitle,
+    default: pageTitle,
     template: `%s | ${siteConfig.siteName}`,
   },
 
@@ -63,13 +74,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.siteName,
-    title: siteTitle,
+    title: socialTitle,
     description: siteDescription,
   },
 
   twitter: {
     card: "summary",
-    title: siteTitle,
+    title: socialTitle,
     description: siteDescription,
   },
 
@@ -106,7 +117,7 @@ export default function RootLayout({
       
 
       <body
-        className={`${displayFont.variable} ${sansFont.variable} ${monoFont.variable}`}
+        className={`${displayFont.variable} ${sansFont.variable} ${monoFont.variable} ${brandFont.variable}`}
       >
         <Script
           id="theme-init"

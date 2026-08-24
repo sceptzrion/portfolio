@@ -45,11 +45,7 @@ export default function ExperiencePreview() {
           className="reveal-on-scroll grid gap-8 lg:grid-cols-[1fr_0.48fr] lg:items-end lg:gap-16"
         >
           <div>
-            <div className="inline-flex items-center gap-2.5 font-mono text-[0.7rem] font-medium uppercase leading-none tracking-[0.13em] text-feature-muted">
-              <span className="text-primary">
-                03
-              </span>
-
+            <div className="section-label section-label-inverse">
               Experience
             </div>
 

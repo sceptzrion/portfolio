@@ -68,10 +68,6 @@ export default function ContactCTA() {
           {/* Section label */}
           <div className="flex justify-center">
             <div className="section-label">
-              <span className="section-label-number">
-                05
-              </span>
-
               Contact
             </div>
           </div>
