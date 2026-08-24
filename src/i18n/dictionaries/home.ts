@@ -114,6 +114,28 @@ type HomeDictionary = {
       "bank-muamalat": string;
     };
   };
+
+  capabilities: {
+    label: string;
+
+    headline: {
+        introduction: string;
+        emphasis: string;
+    };
+
+    description: string;
+
+    descriptions: {
+        "01": string;
+        "02": string;
+        "03": string;
+        "04": string;
+    };
+
+    technologiesLabel: string;
+    toolkitNote: string;
+    closingNote: string;
+  };
 };
 
 export const homeDictionary = {
@@ -277,6 +299,43 @@ export const homeDictionary = {
           "Analyzed relational sales data in Google BigQuery and translated it into structured master tables, interactive Looker Studio dashboards, and data-driven business recommendations.",
       },
     },
+
+    capabilities: {
+    label: "Capabilities",
+
+    headline: {
+        introduction:
+        "From interface to",
+        emphasis:
+        "data layer.",
+    },
+
+    description:
+        "A selected overview of the areas and technologies I work with across modern web development, application development, and data.",
+
+    descriptions: {
+        "01":
+        "Translating interface designs into responsive, structured, and maintainable web experiences.",
+
+        "02":
+        "Connecting application logic, data access, and user flows into functional web products.",
+
+        "03":
+        "Working with relational data from application storage through analysis and dashboarding.",
+
+        "04":
+        "Supporting development from design handoff and collaboration through testing and deployment.",
+    },
+
+    technologiesLabel:
+        "Technologies for",
+
+    toolkitNote:
+        "Selected toolkit / not exhaustive",
+
+    closingNote:
+        "Technologies evolve. Fundamentals stay useful.",
+    },
   },
 
   id: {
@@ -437,6 +496,43 @@ export const homeDictionary = {
         "bank-muamalat":
           "Menganalisis data penjualan relasional di Google BigQuery dan mengolahnya menjadi master table terstruktur, dashboard interaktif di Looker Studio, serta rekomendasi bisnis berbasis data.",
       },
+    },
+
+    capabilities: {
+    label: "Keahlian",
+
+    headline: {
+        introduction:
+        "Dari antarmuka hingga",
+        emphasis:
+        "data layer.",
+    },
+
+    description:
+        "Ringkasan area dan teknologi yang saya gunakan dalam web development, pengembangan aplikasi, dan data.",
+
+    descriptions: {
+        "01":
+        "Menerjemahkan desain antarmuka menjadi pengalaman web yang responsif, terstruktur, dan mudah dikembangkan.",
+
+        "02":
+        "Menghubungkan logika aplikasi, akses data, dan alur pengguna menjadi produk web yang fungsional.",
+
+        "03":
+        "Mengelola data relasional mulai dari penyimpanan aplikasi hingga analisis dan visualisasi dashboard.",
+
+        "04":
+        "Mendukung proses development dari design handoff dan kolaborasi hingga testing dan deployment.",
+    },
+
+    technologiesLabel:
+        "Teknologi untuk",
+
+    toolkitNote:
+        "Toolkit pilihan / bukan daftar lengkap",
+
+    closingNote:
+        "Technologies evolve. Fundamentals stay useful.",
     },
   },
 } satisfies Record<
