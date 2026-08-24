@@ -364,7 +364,7 @@ export const aboutDictionary = {
         "Pencapaian",
 
       description:
-        "Meraih 2nd Place untuk konsep proyek teknologi informasi yang inovatif.",
+        "Meraih 2nd Place atas konsep proyek teknologi informasi yang inovatif.",
     },
 
     focus: {
@@ -378,17 +378,17 @@ export const aboutDictionary = {
       },
 
       description:
-        "Area yang terus membentuk jenis masalah yang saya minati serta arah kemampuan yang ingin saya kembangkan.",
+        "Area yang terus membentuk jenis masalah yang ingin saya selesaikan serta arah kemampuan yang ingin saya kembangkan.",
 
       descriptions: {
         "Frontend Engineering":
-          "Mengimplementasikan desain antarmuka menjadi pengalaman web yang responsif, jelas, dan mudah dikembangkan.",
+          "Mengimplementasikan desain antarmuka menjadi pengalaman web yang responsif, terstruktur, dan mudah dikembangkan.",
 
         "Full-Stack Development":
           "Menghubungkan antarmuka, logika aplikasi, autentikasi, layanan, dan data menjadi aplikasi web yang fungsional.",
 
         "Database Integration":
-          "Mengelola data aplikasi terstruktur dan membangun integrasi yang andal antara produk dan data layer.",
+          "Mengelola data aplikasi yang terstruktur dan membangun integrasi yang andal antara produk dan data layer.",
       },
 
       closingNote:
