@@ -4,6 +4,8 @@ import {
   featuredProjects,
   type FeaturedProject,
 } from "@/data/projects";
+import { homeDictionary } from "@/i18n/dictionaries/home";
+import { getLocale } from "@/i18n/get-locale";
 
 function ArrowIcon() {
   return (
@@ -286,9 +288,13 @@ function LestariVisual() {
 function SecondaryProjectCard({
   project,
   visual,
+  tagline,
+  viewProjectLabel,
 }: {
   project: FeaturedProject;
   visual: React.ReactNode;
+  tagline: string;
+  viewProjectLabel: string;
 }) {
   return (
     <Link
@@ -319,19 +325,27 @@ function SecondaryProjectCard({
         </h3>
 
         <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">
-          {project.tagline}
+          {tagline}
         </p>
 
         <div className="mt-6 flex flex-wrap gap-1.5">
-          {project.tech.slice(0, 3).map((technology) => (
-            <ProjectChip key={technology}>
-              {technology}
-            </ProjectChip>
-          ))}
+          {project.tech
+            .slice(0, 3)
+            .map(
+              (technology) => (
+                <ProjectChip
+                  key={
+                    technology
+                  }
+                >
+                  {technology}
+                </ProjectChip>
+              ),
+            )}
         </div>
 
         <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-          View project
+          {viewProjectLabel}
           <ArrowIcon />
         </span>
       </div>
@@ -339,7 +353,14 @@ function SecondaryProjectCard({
   );
 }
 
-export default function SelectedWork() {
+export default async function SelectedWork() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    homeDictionary[locale]
+      .selectedWork;
+
   const [
     flagship,
     disarpus,
@@ -359,44 +380,47 @@ export default function SelectedWork() {
       <div className="shell section relative">
         {/* Section header */}
         <div
-            data-reveal
-            className="reveal-on-scroll flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
+          data-reveal
+          className="reveal-on-scroll flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
         >
           <div className="max-w-3xl">
             <div className="section-label">
-              Selected Work
+              {copy.label}
             </div>
 
             <h2 className="mt-5 text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
-              Projects built through{" "}
+              {
+                copy.headline
+                  .introduction
+              }{" "}
               <span className="text-primary">
-                design and implementation.
+                {
+                  copy.headline
+                    .emphasis
+                }
               </span>
             </h2>
           </div>
 
           <div className="max-w-sm lg:text-right">
             <p className="text-sm leading-6 text-muted-foreground">
-              A selection of academic and professional work
-              across full-stack development, frontend
-              implementation, and collaborative product
-              development.
+              {copy.description}
             </p>
 
             <Link
               href="/projects"
               className="group mt-4 inline-flex items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-primary"
             >
-              All projects
+              {
+                copy.actions
+                  .allProjects
+              }
               <ArrowIcon />
             </Link>
           </div>
         </div>
 
-        {/* =================================================
-            Flagship
-            ================================================= */}
-
+        {/* Flagship */}
         <div
           data-reveal
           className="reveal-on-scroll reveal-delay-1 mt-10 sm:mt-12"
@@ -405,88 +429,119 @@ export default function SelectedWork() {
             href={`/projects/${flagship.slug}`}
             className="group block overflow-hidden rounded-[1.75rem] border border-border bg-card transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_24px_60px_rgb(33_30_26/0.09)]"
           >
-          <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
-            {/* Project information */}
-            <div className="flex flex-col justify-center p-7 sm:p-9 lg:p-11 xl:p-12">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-foreground">
-                  Flagship Project
-                </span>
+            <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
+              <div className="flex flex-col justify-center p-7 sm:p-9 lg:p-11 xl:p-12">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-foreground">
+                    {
+                      copy.flagshipLabel
+                    }
+                  </span>
 
-                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-                  {flagship.index} / {flagship.year}
+                  <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                    {flagship.index} /{" "}
+                    {flagship.year}
+                  </span>
+                </div>
+
+                <p className="mt-7 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                  {flagship.category}
+                </p>
+
+                <h3 className="mt-3 font-display text-[clamp(2.5rem,5vw,4.3rem)] font-bold leading-[0.98] tracking-[-0.055em] transition-colors duration-300 group-hover:text-primary">
+                  {flagship.title}
+                </h3>
+
+                <p className="mt-5 max-w-lg text-[15px] leading-7 text-muted-foreground">
+                  {
+                    copy.projects
+                      .edubidan
+                      .tagline
+                  }
+                </p>
+
+                <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-border pt-6 text-sm">
+                  <div>
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                      {
+                        copy.details
+                          .role
+                      }
+                    </dt>
+
+                    <dd className="mt-1.5 font-medium">
+                      {flagship.role}
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                      {
+                        copy.details
+                          .context
+                      }
+                    </dt>
+
+                    <dd className="mt-1.5 font-medium">
+                      {
+                        copy.projects
+                          .edubidan
+                          .context
+                      }
+                    </dd>
+                  </div>
+                </dl>
+
+                <div className="mt-6 flex flex-wrap gap-1.5">
+                  {flagship.tech.map(
+                    (technology) => (
+                      <ProjectChip
+                        key={
+                          technology
+                        }
+                      >
+                        {technology}
+                      </ProjectChip>
+                    ),
+                  )}
+                </div>
+
+                <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                  {
+                    copy.actions
+                      .readCaseStudy
+                  }
+                  <ArrowIcon />
                 </span>
               </div>
 
-              <p className="mt-7 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                {flagship.category}
-              </p>
-
-              <h3 className="mt-3 font-display text-[clamp(2.5rem,5vw,4.3rem)] font-bold leading-[0.98] tracking-[-0.055em] transition-colors duration-300 group-hover:text-primary">
-                {flagship.title}
-              </h3>
-
-              <p className="mt-5 max-w-lg text-[15px] leading-7 text-muted-foreground">
-                {flagship.tagline}
-              </p>
-
-              <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-border pt-6 text-sm">
-                <div>
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                    Role
-                  </dt>
-
-                  <dd className="mt-1.5 font-medium">
-                    {flagship.role}
-                  </dd>
-                </div>
-
-                <div>
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                    Context
-                  </dt>
-
-                  <dd className="mt-1.5 font-medium">
-                    {flagship.context}
-                  </dd>
-                </div>
-              </dl>
-
-              <div className="mt-6 flex flex-wrap gap-1.5">
-                {flagship.tech.map((technology) => (
-                  <ProjectChip key={technology}>
-                    {technology}
-                  </ProjectChip>
-                ))}
+              <div aria-hidden="true">
+                <EduBidanVisual />
               </div>
-
-              <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                Read case study
-                <ArrowIcon />
-              </span>
             </div>
-
-            {/* Decorative project preview */}
-            <div aria-hidden="true">
-              <EduBidanVisual />
-            </div>
-          </div>
-        </Link>
+          </Link>
         </div>
 
-        {/* =================================================
-            Secondary Projects
-            Intentionally asymmetric.
-            ================================================= */}
-
+        {/* Secondary Projects */}
         <div className="mt-6 grid gap-6 md:grid-cols-5">
           <div
             data-reveal
             className="reveal-on-scroll reveal-delay-1 md:col-span-3"
-        >
+          >
             <SecondaryProjectCard
               project={disarpus}
-              visual={<DisarpusVisual />}
+              visual={
+                <DisarpusVisual />
+              }
+              tagline={
+                copy.projects
+                  .disarpus
+                  .tagline
+              }
+              viewProjectLabel={
+                copy.actions
+                  .viewProject
+              }
             />
           </div>
 
@@ -496,7 +551,18 @@ export default function SelectedWork() {
           >
             <SecondaryProjectCard
               project={lestari}
-              visual={<LestariVisual />}
+              visual={
+                <LestariVisual />
+              }
+              tagline={
+                copy.projects
+                  .lestari
+                  .tagline
+              }
+              viewProjectLabel={
+                copy.actions
+                  .viewProject
+              }
             />
           </div>
         </div>
