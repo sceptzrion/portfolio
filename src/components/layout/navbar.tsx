@@ -634,7 +634,7 @@ export default function Navbar() {
           >
             <div className="flex items-center justify-between border-t border-border pt-5">
               <div>
-                <p className="mono text-primary">
+                <p className="font-mono text-[0.7rem] lowercase tracking-[0.13em] text-primary">
                   {
                     siteConfig.domain
                   }
