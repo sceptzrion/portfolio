@@ -156,7 +156,7 @@ export const sharedDictionary = {
       navigationLabel:
         "Navigasi footer",
       description:
-        "Full-Stack Web Developer berdomisili di Karawang, Jawa Barat, Indonesia, dengan fokus membangun pengalaman web yang fungsional dari interface hingga implementasi.",
+        "Full-Stack Web Developer berdomisili di Karawang, Jawa Barat, Indonesia, dengan fokus membangun pengalaman web yang fungsional dari antarmuka hingga implementasi.",
       bottomNote:
         "Designed & built with care · Karawang, ID",
     },

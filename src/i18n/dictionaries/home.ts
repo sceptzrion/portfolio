@@ -69,6 +69,33 @@ type HomeDictionary = {
       };
     };
   };
+
+  aboutPreview: {
+  label: string;
+
+  headline: {
+    introduction: string;
+    emphasis: string;
+    continuation: string;
+  };
+
+  introduction: string;
+  perspective: string;
+
+  education: {
+    label: string;
+    degree: string;
+  };
+
+  portraitPlaceholder: string;
+
+  action: string;
+
+  approach: {
+    label: string;
+    description: string;
+  };
+};
 };
 
 export const homeDictionary = {
@@ -166,6 +193,43 @@ export const homeDictionary = {
         },
       },
     },
+
+    aboutPreview: {
+        label: "About",
+
+        headline: {
+            introduction:
+            "Building technology with",
+            emphasis:
+            "functionality",
+            continuation:
+            "and people in mind.",
+        },
+
+        introduction:
+            "I’m a fresh Informatics graduate with hands-on experience building responsive interfaces and web applications through internships, academic projects, and collaborative development.",
+
+        perspective:
+            "I enjoy translating ideas and interface designs into functional products, with particular interest in frontend engineering, full-stack development, database integration, and maintainable application development.",
+
+        education: {
+            label: "Education",
+            degree:
+            "Bachelor of Informatics",
+        },
+
+        portraitPlaceholder:
+            "Portrait placeholder",
+
+        action:
+            "More About Me",
+
+        approach: {
+            label: "Approach",
+            description:
+            "From interface decisions to implementation, I aim to build digital products that are clear to use, practical to maintain, and purposeful in what they solve.",
+        },
+        },
   },
 
   id: {
@@ -185,7 +249,7 @@ export const homeDictionary = {
       },
 
       description:
-        "Full-Stack Web Developer dan Fresh Graduate Informatika yang berfokus mengubah desain interface dan ide menjadi aplikasi web yang responsif, terstruktur, dan fungsional.",
+        "Full-Stack Web Developer dan Fresh Graduate Informatika yang berfokus mengubah desain antarmuka dan ide menjadi aplikasi web yang responsif, terstruktur, dan fungsional.",
 
       actions: {
         primary:
@@ -261,6 +325,43 @@ export const homeDictionary = {
         },
       },
     },
+
+    aboutPreview: {
+        label: "Tentang",
+
+        headline: {
+            introduction:
+            "Membangun teknologi dengan mengutamakan",
+            emphasis:
+            "fungsionalitas",
+            continuation:
+            "dan kebutuhan pengguna.",
+        },
+
+        introduction:
+            "Saya adalah Fresh Graduate Informatika dengan pengalaman praktis dalam membangun antarmuka responsif dan aplikasi web melalui magang, proyek akademik, serta pengembangan kolaboratif.",
+
+        perspective:
+            "Saya tertarik mengubah ide dan desain antarmuka menjadi produk yang fungsional, terutama melalui frontend engineering, full-stack development, integrasi database, serta pengembangan aplikasi yang terstruktur.",
+
+        education: {
+            label: "Pendidikan",
+            degree:
+            "Sarjana Informatika",
+        },
+
+        portraitPlaceholder:
+            "Portrait akan ditambahkan",
+
+        action:
+            "Selengkapnya",
+
+        approach: {
+            label: "Approach",
+            description:
+            "Dari keputusan antarmuka hingga implementasi, saya berupaya membangun produk digital yang jelas digunakan, mudah dikembangkan, dan tepat guna dalam menyelesaikan masalah.",
+        },
+        },
   },
 } satisfies Record<
   Locale,

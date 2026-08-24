@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import { profile } from "@/data/profile";
 import { siteConfig } from "@/data/site";
+import { homeDictionary } from "@/i18n/dictionaries/home";
+import { getLocale } from "@/i18n/get-locale";
 
 function ArrowIcon() {
   return (
@@ -21,7 +23,15 @@ function ArrowIcon() {
   );
 }
 
-function PortraitPlaceholder() {
+function PortraitPlaceholder({
+  educationLabel,
+  degree,
+  placeholderLabel,
+}: {
+  educationLabel: string;
+  degree: string;
+  placeholderLabel: string;
+}) {
   return (
     <div className="relative">
       {/* Offset background plate */}
@@ -60,7 +70,6 @@ function PortraitPlaceholder() {
           className="absolute bottom-[-12%] left-[-15%] size-[65%] rounded-full bg-primary/10 blur-3xl"
         />
 
-        {/* Temporary portrait mark */}
         <div className="absolute inset-0 grid place-items-center">
           <div className="text-center">
             <span className="font-display text-[clamp(6rem,16vw,10rem)] font-extrabold tracking-[-0.08em] text-foreground/10">
@@ -68,12 +77,11 @@ function PortraitPlaceholder() {
             </span>
 
             <p className="mono mt-3 text-muted-foreground">
-              Portrait placeholder
+              {placeholderLabel}
             </p>
           </div>
         </div>
 
-        {/* Bottom gradient */}
         <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgb(0_0_0/0.62),transparent)] px-5 pb-5 pt-20">
           <p className="font-display text-lg font-semibold text-white">
             {siteConfig.fullName}
@@ -88,11 +96,11 @@ function PortraitPlaceholder() {
       {/* Education floating card */}
       <div className="absolute -bottom-7 left-4 z-10 max-w-57.5 rounded-2xl border border-border bg-card/95 p-4 shadow-[0_14px_35px_rgb(33_30_26/0.10)] backdrop-blur-md sm:left-7">
         <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
-          Education
+          {educationLabel}
         </p>
 
         <p className="mt-2 font-display text-sm font-semibold leading-snug">
-          {profile.education.degree}
+          {degree}
         </p>
 
         <p className="mt-1 text-[11px] leading-4 text-muted-foreground">
@@ -105,7 +113,10 @@ function PortraitPlaceholder() {
           </span>
 
           <span className="font-mono text-[10px] text-muted-foreground">
-            {profile.education.graduationYear}
+            {
+              profile.education
+                .graduationYear
+            }
           </span>
         </div>
       </div>
@@ -113,13 +124,19 @@ function PortraitPlaceholder() {
   );
 }
 
-export default function AboutPreview() {
+export default async function AboutPreview() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    homeDictionary[locale]
+      .aboutPreview;
+
   return (
     <section
       id="about"
       className="relative overflow-hidden border-t border-border bg-background"
     >
-      {/* Decorative background */}
       <div
         aria-hidden="true"
         className="warm-veil pointer-events-none absolute inset-0 opacity-25"
@@ -132,38 +149,55 @@ export default function AboutPreview() {
 
       <div className="shell section relative">
         <div className="grid items-center gap-12 sm:gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 xl:gap-20">
-          {/* Portrait */}
           <div
             data-reveal
-            className="reveal-on-scroll reveal-from-left mx-auto w-full max-w-[19rem] pb-8 sm:max-w-107.5 lg:mx-0"
+            className="reveal-on-scroll reveal-from-left mx-auto w-full max-w-76 pb-8 sm:max-w-107.5 lg:mx-0"
           >
-            <PortraitPlaceholder />
+            <PortraitPlaceholder
+              educationLabel={
+                copy.education.label
+              }
+              degree={
+                copy.education.degree
+              }
+              placeholderLabel={
+                copy.portraitPlaceholder
+              }
+            />
           </div>
 
-          {/* Content */}
           <div
             data-reveal
             className="reveal-on-scroll reveal-from-right reveal-delay-1"
           >
             <div className="section-label">
-              About
+              {copy.label}
             </div>
 
             <h2 className="mt-5 max-w-195 text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
-              Building technology with{" "}
+              {
+                copy.headline
+                  .introduction
+              }{" "}
               <span className="text-primary">
-                functionality
+                {
+                  copy.headline
+                    .emphasis
+                }
               </span>{" "}
-              and people in mind.
+              {
+                copy.headline
+                  .continuation
+              }
             </h2>
 
             <div className="mt-8 grid gap-5 text-[15px] leading-7 text-muted-foreground sm:text-base sm:leading-8">
               <p>
-                {profile.introduction}
+                {copy.introduction}
               </p>
 
               <p>
-                {profile.perspective}
+                {copy.perspective}
               </p>
             </div>
 
@@ -172,7 +206,7 @@ export default function AboutPreview() {
                 href="/about"
                 className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-5 text-sm font-semibold text-background transition-[transform,opacity] duration-300 hover:-translate-y-0.5 hover:opacity-90"
               >
-                More About Me
+                {copy.action}
                 <ArrowIcon />
               </Link>
 
@@ -190,15 +224,15 @@ export default function AboutPreview() {
         >
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
-              Approach
+              {copy.approach.label}
             </p>
           </div>
 
           <p className="max-w-4xl text-balance font-display text-[clamp(1.5rem,3vw,2.4rem)] font-semibold leading-[1.15] tracking-[-0.035em] text-foreground">
-            From interface decisions to implementation, I aim
-            to build digital products that are clear to use,
-            practical to maintain, and purposeful in what they
-            solve.
+            {
+              copy.approach
+                .description
+            }
           </p>
         </div>
       </div>
