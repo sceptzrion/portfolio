@@ -1,5 +1,23 @@
 import { profile } from "@/data/profile";
 
+function ExternalArrowIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M7 17 17 7" />
+      <path d="M7 7h10v10" />
+    </svg>
+  );
+}
+
 export default function AboutAchievement() {
   const achievement =
     profile.achievements[0];
@@ -65,6 +83,27 @@ export default function AboutAchievement() {
             <p className="mt-7 max-w-xl text-[15px] leading-7 text-feature-muted">
               {achievement.description}
             </p>
+
+            {achievement.certificates.length >
+              0 && (
+              <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3">
+                {achievement.certificates.map(
+                  (certificate) => (
+                    <a
+                      key={certificate.href}
+                      href={certificate.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-1.5 text-sm font-semibold text-feature-foreground transition-colors duration-300 hover:text-primary"
+                    >
+                      {certificate.label}
+
+                      <ExternalArrowIcon />
+                    </a>
+                  ),
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

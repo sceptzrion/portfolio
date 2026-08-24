@@ -1,3 +1,8 @@
+type CertificateLink = {
+  label: string;
+  href: string;
+};
+
 export const profile = {
   introduction:
     "I’m a fresh Informatics graduate with hands-on experience building responsive interfaces and web applications through internships, academic projects, and collaborative development.",
@@ -51,6 +56,23 @@ export const profile = {
       type: "MSIB Certified Independent Study · Cohort 7",
       description:
         "Completed a certified independent study program focused on full-stack web development and data science.",
+      stages: [],
+      certificates: [] as CertificateLink[],
+    },
+    {
+      title:
+        "Samsung Innovation Campus — Batch 7",
+      provider:
+        "Samsung Electronics Indonesia",
+      period: "2025",
+      type: "Technology Learning Program · Batch 7",
+      description:
+        "Participated in Samsung Innovation Campus Batch 7 (2025/2026) as part of a team, progressing through Stage 1 and Stage 2 before the team’s participation concluded at the next selection.",
+      stages: [
+        "Stage 1 — Coding & Programming",
+        "Stage 2 — IoT",
+      ],
+      certificates: [] as CertificateLink[],
     },
   ],
 
@@ -64,6 +86,7 @@ export const profile = {
       period: "Apr 2024",
       description:
         "Awarded 2nd place for an innovative information technology project concept.",
+      certificates: [] as CertificateLink[],
     },
   ],
 

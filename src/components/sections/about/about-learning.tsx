@@ -1,5 +1,23 @@
 import { profile } from "@/data/profile";
 
+function ExternalArrowIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M7 17 17 7" />
+      <path d="M7 7h10v10" />
+    </svg>
+  );
+}
+
 export default function AboutLearning() {
   return (
     <section
@@ -64,9 +82,52 @@ export default function AboutLearning() {
                   </p>
                 </div>
 
-                <p className="max-w-xl text-sm leading-7 text-muted-foreground">
-                  {item.description}
-                </p>
+                <div>
+                  <p className="max-w-xl text-sm leading-7 text-muted-foreground">
+                    {item.description}
+                  </p>
+
+                  {item.stages.length > 0 && (
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {item.stages.map(
+                        (stage) => (
+                          <li
+                            key={stage}
+                            className="rounded-full border border-border bg-secondary/50 px-2.5 py-1.5 font-mono text-[10px] uppercase leading-none tracking-widest text-muted-foreground"
+                          >
+                            {stage}
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  )}
+
+                  {item.certificates.length > 0 && (
+                    <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+                      {item.certificates.map(
+                        (certificate) => (
+                          <a
+                            key={
+                              certificate.href
+                            }
+                            href={
+                              certificate.href
+                            }
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors duration-300 hover:text-primary"
+                          >
+                            {
+                              certificate.label
+                            }
+
+                            <ExternalArrowIcon />
+                          </a>
+                        ),
+                      )}
+                    </div>
+                  )}
+                </div>
               </article>
             ),
           )}
