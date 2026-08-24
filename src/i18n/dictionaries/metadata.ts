@@ -10,6 +10,11 @@ type MetadataDictionary = {
     title: string;
     description: string;
   };
+
+  experience: {
+    title: string;
+    description: string;
+  };
 };
 
 export const metadataDictionary = {
@@ -29,6 +34,14 @@ export const metadataDictionary = {
       description:
         "Learn more about Muhamad Ikhsan Rizqi Yanuar, a fresh Informatics graduate and Full-Stack Web Developer focused on web application development, frontend engineering, and practical full-stack development.",
     },
+
+    experience: {
+    title:
+        "Experience | Muhamad Ikhsan Rizqi Yanuar's Portfolio",
+
+    description:
+        "Explore the professional and project-based experience of Muhamad Ikhsan Rizqi Yanuar across frontend web development and business intelligence.",
+    },
   },
 
   id: {
@@ -46,6 +59,14 @@ export const metadataDictionary = {
 
       description:
         "Tentang Muhamad Ikhsan Rizqi Yanuar, Fresh Graduate Informatika dan Full-Stack Web Developer dengan fokus pada web application development, frontend engineering, dan full-stack development.",
+    },
+
+    experience: {
+    title:
+        "Pengalaman | Portofolio Muhamad Ikhsan Rizqi Yanuar",
+
+    description:
+        "Pengalaman profesional dan project-based Muhamad Ikhsan Rizqi Yanuar di bidang frontend web development dan business intelligence.",
     },
   },
 } satisfies Record<
