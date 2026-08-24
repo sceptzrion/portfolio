@@ -88,18 +88,37 @@ export default function AboutLearning() {
                   </p>
 
                   {item.stages.length > 0 && (
-                    <ul className="mt-4 flex flex-wrap gap-2">
+                    <div className="mt-5 border-y border-border">
                       {item.stages.map(
-                        (stage) => (
-                          <li
-                            key={stage}
-                            className="rounded-full border border-border bg-secondary/50 px-2.5 py-1.5 font-mono text-[10px] uppercase leading-none tracking-widest text-muted-foreground"
+                        (stage, stageIndex) => (
+                          <div
+                            key={`${stage.label}-${stage.period}`}
+                            className={[
+                              "grid gap-2 py-4 sm:grid-cols-[0.3fr_1fr] sm:gap-5",
+                              stageIndex <
+                              item.stages.length -
+                                1
+                                ? "border-b border-border"
+                                : "",
+                            ].join(" ")}
                           >
-                            {stage}
-                          </li>
+                            <p className="font-mono text-[10px] uppercase tracking-[0.13em] text-primary">
+                              {stage.label}
+                            </p>
+
+                            <div>
+                              <p className="text-sm font-semibold text-foreground">
+                                {stage.title}
+                              </p>
+
+                              <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.11em] text-muted-foreground">
+                                {stage.period}
+                              </p>
+                            </div>
+                          </div>
                         ),
                       )}
-                    </ul>
+                    </div>
                   )}
 
                   {item.certificates.length > 0 && (

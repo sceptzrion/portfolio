@@ -3,6 +3,12 @@ type CertificateLink = {
   href: string;
 };
 
+type LearningStage = {
+  label: string;
+  title: string;
+  period: string;
+};
+
 export const profile = {
   introduction:
     "I’m a fresh Informatics graduate with hands-on experience building responsive interfaces and web applications through internships, academic projects, and collaborative development.",
@@ -50,27 +56,37 @@ export const profile = {
     {
       title:
         "IT Full Stack Developer: Mastering Web Development Blending with Data Science",
-      provider:
-        "PT. Rakamin Kolektif Madani",
-      period: "Dec 2024",
-      type: "MSIB Certified Independent Study · Cohort 7",
+      provider: "Rakamin Academy",
+      period: "Sep — Dec 2024",
+      type:
+        "Certified Independent Study · MSIB Batch 7",
       description:
         "Completed a certified independent study program focused on full-stack web development and data science.",
-      stages: [],
+      stages: [] as LearningStage[],
       certificates: [] as CertificateLink[],
     },
     {
-      title:
-        "Samsung Innovation Campus — Batch 7",
+      title: "Samsung Innovation Campus",
       provider:
         "Samsung Electronics Indonesia",
-      period: "2025",
-      type: "Technology Learning Program · Batch 7",
+      period: "Aug — Nov 2025",
+      type:
+        "Technology Learning Program · Batch 7",
       description:
-        "Participated in Samsung Innovation Campus Batch 7 (2025/2026) as part of a team, progressing through Stage 1 and Stage 2 before the team’s participation concluded at the next selection.",
+        "Participated in Samsung Innovation Campus Batch 7 as part of a team and progressed through Stage 1 and Stage 2 of the program.",
       stages: [
-        "Stage 1 — Coding & Programming",
-        "Stage 2 — IoT",
+        {
+          label: "Stage 1",
+          title: "Coding & Programming",
+          period:
+            "15 Aug — 13 Sep 2025",
+        },
+        {
+          label: "Stage 2",
+          title: "IoT",
+          period:
+            "26 Sep — 1 Nov 2025",
+        },
       ],
       certificates: [] as CertificateLink[],
     },
