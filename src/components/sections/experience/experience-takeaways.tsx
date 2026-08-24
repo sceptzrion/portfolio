@@ -3,19 +3,19 @@ const takeaways = [
     index: "01",
     title: "Implementation",
     description:
-      "Turning requirements and approved designs into clear, functional outputs.",
+      "Turning requirements and approved designs into working, functional outputs.",
   },
   {
     index: "02",
     title: "Structure",
     description:
-      "Keeping interfaces, application data, and analysis organized and understandable.",
+      "Organizing interfaces, data, and analysis so the work stays clear and easier to work with.",
   },
   {
     index: "03",
     title: "Collaboration",
     description:
-      "Working through feedback, implementation details, and technical decisions as part of a broader process.",
+      "Working through feedback and implementation details as part of a broader development process.",
   },
 ] as const;
 
@@ -48,12 +48,11 @@ export default function ExperienceTakeaways() {
           <p className="max-w-xl text-[15px] leading-7 text-muted-foreground lg:justify-self-end">
             Working across web
             development and business
-            intelligence reinforced a
-            practical way of approaching
-            technical work: understand
-            the problem, keep the
-            implementation structured,
-            and communicate clearly
+            intelligence reinforced the
+            same fundamentals:
+            understand the problem, keep
+            the work structured, and
+            communicate clearly
             throughout the process.
           </p>
         </div>

@@ -65,35 +65,31 @@ function DataFlowVisual() {
       </p>
 
       <div className="mt-4 border-y border-border">
-        {steps.map(
-          (step, index) => (
-            <div
-              key={step}
-              className={[
-                "grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3.5",
-                index <
-                steps.length - 1
-                  ? "border-b border-border"
-                  : "",
-              ].join(" ")}
-            >
-              <span className="font-mono text-[8px] tracking-[0.12em] text-primary">
-                0{index + 1}
+        {steps.map((step, index) => (
+          <div
+            key={step}
+            className={[
+              "grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3.5",
+              index < steps.length - 1
+                ? "border-b border-border"
+                : "",
+            ].join(" ")}
+          >
+            <span className="font-mono text-[8px] tracking-[0.12em] text-primary">
+              0{index + 1}
+            </span>
+
+            <p className="text-sm font-semibold text-foreground">
+              {step}
+            </p>
+
+            {index < steps.length - 1 && (
+              <span className="text-xs text-muted-foreground">
+                ↓
               </span>
-
-              <p className="text-sm font-semibold text-foreground">
-                {step}
-              </p>
-
-              {index <
-                steps.length - 1 && (
-                <span className="text-xs text-muted-foreground">
-                  ↓
-                </span>
-              )}
-            </div>
-          ),
-        )}
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -107,8 +103,7 @@ function ExperienceCard({
   visual,
   mostRecent = false,
 }: {
-  experience:
-    (typeof experiences)[number];
+  experience: (typeof experiences)[number];
   category: string;
   headline: ReactNode;
   description: string;
@@ -137,8 +132,7 @@ function ExperienceCard({
           <div>
             <div className="flex flex-wrap items-center gap-3">
               <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
-                {experience.index} /{" "}
-                {category}
+                {experience.index} / {category}
               </p>
 
               {mostRecent && (
@@ -181,16 +175,14 @@ function ExperienceCard({
             {visual}
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {experience.tools.map(
-                (tool) => (
-                  <span
-                    key={tool}
-                    className="rounded-full border border-border bg-secondary/35 px-3 py-1.5 font-mono text-[8px] uppercase tracking-[0.11em] text-muted-foreground"
-                  >
-                    {tool}
-                  </span>
-                ),
-              )}
+              {experience.tools.map((tool) => (
+                <span
+                  key={tool}
+                  className="rounded-full border border-border bg-secondary/35 px-3 py-1.5 font-mono text-[8px] uppercase tracking-[0.11em] text-muted-foreground"
+                >
+                  {tool}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -201,33 +193,28 @@ function ExperienceCard({
           </p>
 
           <div className="mt-5 grid border-y border-border md:grid-cols-2">
-            {experience.highlights.map(
-              (
-                highlight,
-                index,
-              ) => (
-                <div
-                  key={highlight}
-                  className={[
-                    "grid grid-cols-[auto_1fr] gap-4 py-5",
-                    index % 2 === 0
-                      ? "md:pr-7"
-                      : "md:border-l md:border-border md:pl-7",
-                    index < 2
-                      ? "border-b border-border"
-                      : "",
-                  ].join(" ")}
-                >
-                  <span className="font-mono text-[8px] tracking-[0.12em] text-primary">
-                    0{index + 1}
-                  </span>
+            {experience.highlights.map((highlight, index) => (
+              <div
+                key={highlight}
+                className={[
+                  "grid grid-cols-[auto_1fr] gap-4 py-5",
+                  index % 2 === 0
+                    ? "md:pr-7"
+                    : "md:border-l md:border-border md:pl-7",
+                  index < 2
+                    ? "border-b border-border"
+                    : "",
+                ].join(" ")}
+              >
+                <span className="font-mono text-[8px] tracking-[0.12em] text-primary">
+                  0{index + 1}
+                </span>
 
-                  <p className="text-sm leading-6 text-muted-foreground">
-                    {highlight}
-                  </p>
-                </div>
-              ),
-            )}
+                <p className="text-sm leading-6 text-muted-foreground">
+                  {highlight}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -236,11 +223,8 @@ function ExperienceCard({
 }
 
 export default function ExperienceTimeline() {
-  const webExperience =
-    experiences[0];
-
-  const dataExperience =
-    experiences[1];
+  const webExperience = experiences[0];
+  const dataExperience = experiences[1];
 
   return (
     <section className="relative overflow-hidden bg-secondary/35">
@@ -275,7 +259,7 @@ export default function ExperienceTimeline() {
           <div className="relative">
             <div
               aria-hidden="true"
-              className="absolute bottom-10 left-1.25 top-10 hidden w-px bg-border-strong sm:block"
+              className="absolute bottom-6 left-1.25 top-10 hidden w-px bg-border-strong sm:block"
             />
 
             <div className="space-y-10 lg:space-y-12">
@@ -294,9 +278,7 @@ export default function ExperienceTimeline() {
                 />
 
                 <ExperienceCard
-                  experience={
-                    webExperience
-                  }
+                  experience={webExperience}
                   category="Frontend Development"
                   mostRecent
                   headline={
@@ -310,9 +292,7 @@ export default function ExperienceTimeline() {
                     </>
                   }
                   description="At Diskominfosantik Kabupaten Bekasi, I worked on the frontend of the Disarpus Kabupaten Bekasi website. My focus was implementing approved Figma designs in Next.js, developing key pages, and resolving responsive layout issues across different breakpoints."
-                  visual={
-                    <BrowserVisual />
-                  }
+                  visual={<BrowserVisual />}
                 />
               </div>
 
@@ -331,9 +311,7 @@ export default function ExperienceTimeline() {
                 />
 
                 <ExperienceCard
-                  experience={
-                    dataExperience
-                  }
+                  experience={dataExperience}
                   category="Business Intelligence"
                   headline={
                     <>
@@ -345,11 +323,20 @@ export default function ExperienceTimeline() {
                       </span>
                     </>
                   }
-                  description="During a project-based internship with Bank Muamalat, I worked with relational sales data in Google BigQuery, organized it into structured master tables, and presented the results through interactive Looker Studio dashboards and data-driven business recommendations."
-                  visual={
-                    <DataFlowVisual />
-                  }
+                  description="During a project-based internship with Bank Muamalat, I worked with relational sales data in Google BigQuery, organized it into structured master tables, built interactive Looker Studio dashboards, and developed recommendations based on the analysis."
+                  visual={<DataFlowVisual />}
                 />
+              </div>
+
+              <div
+                aria-hidden="true"
+                className="relative hidden h-5 sm:block"
+              >
+                <span className="absolute left-0 top-1/2 size-2.75 -translate-y-1/2 rounded-full border-2 border-border-strong bg-secondary" />
+
+                <span className="absolute left-10 top-1/2 -translate-y-1/2 font-mono text-[7px] uppercase tracking-[0.14em] text-muted-foreground">
+                  Earlier
+                </span>
               </div>
             </div>
           </div>

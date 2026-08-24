@@ -37,19 +37,19 @@ export default function ExperienceNext() {
             </div>
 
             <h2 className="mt-5 max-w-3xl text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
-              See how that
-              experience carried
-              into{" "}
+              See how those
+              experiences shaped{" "}
               <span className="text-primary">
                 my projects.
               </span>
             </h2>
 
             <p className="mt-6 max-w-xl text-[15px] leading-7 text-muted-foreground">
-              Currently open to
+              I’m currently open to
               full-time opportunities
-              and new challenges in web
-              development.
+              in web development,
+              particularly frontend and
+              full-stack roles.
             </p>
           </div>
 

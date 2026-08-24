@@ -49,7 +49,7 @@ export default function ExperienceHero() {
           </p>
 
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
-            02 Experiences
+            02 Internships
           </p>
 
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
