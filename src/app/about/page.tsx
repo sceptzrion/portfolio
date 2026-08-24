@@ -11,19 +11,48 @@ import AboutLearning from "@/components/sections/about/about-learning";
 import AboutNext from "@/components/sections/about/about-next";
 import AboutStory from "@/components/sections/about/about-story";
 import { siteConfig } from "@/data/site";
+import { metadataDictionary } from "@/i18n/dictionaries/metadata";
+import { getLocale } from "@/i18n/get-locale";
 
-const aboutTitle =
-  `About | ${siteConfig.fullName}'s Portfolio`;
+export async function generateMetadata(): Promise<Metadata> {
+  const locale =
+    await getLocale();
 
-const aboutDescription =
-  `Learn more about ${siteConfig.fullName}, a fresh Informatics graduate and ${siteConfig.role} focused on web application development, frontend engineering, and practical full-stack development.`;
+  const siteCopy =
+    metadataDictionary[locale].site;
 
-export const metadata: Metadata = {
-  title: {
-    absolute: aboutTitle,
-  },
-  description: aboutDescription,
-};
+  const copy =
+    metadataDictionary[locale]
+      .about;
+
+  return {
+    title: {
+      absolute: copy.title,
+    },
+
+    description:
+      copy.description,
+
+    openGraph: {
+      type: "website",
+      locale:
+        siteCopy.openGraphLocale,
+      url: `${siteConfig.url}/about`,
+      siteName:
+        siteConfig.siteName,
+      title: copy.title,
+      description:
+        copy.description,
+    },
+
+    twitter: {
+      card: "summary",
+      title: copy.title,
+      description:
+        copy.description,
+    },
+  };
+}
 
 export default function AboutPage() {
   return (

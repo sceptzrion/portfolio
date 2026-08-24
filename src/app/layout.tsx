@@ -10,6 +10,7 @@ import {
 import { LocaleProvider } from "@/components/i18n/locale-provider";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { siteConfig } from "@/data/site";
+import { metadataDictionary } from "@/i18n/dictionaries/metadata";
 import { getLocale } from "@/i18n/get-locale";
 
 import "./globals.css";
@@ -49,58 +50,67 @@ const pageTitle =
 const socialTitle =
   `${siteConfig.siteName} | ${siteConfig.role}`;
 
-const siteDescription =
-  `Portfolio of ${siteConfig.fullName}, a ${siteConfig.role} with hands-on experience building responsive web applications and data projects.`;
+export async function generateMetadata(): Promise<Metadata> {
+  const locale =
+    await getLocale();
 
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    siteConfig.url,
-  ),
+  const copy =
+    metadataDictionary[locale].site;
 
-  applicationName:
-    siteConfig.siteName,
+  return {
+    metadataBase: new URL(
+      siteConfig.url,
+    ),
 
-  title: {
-    default: pageTitle,
-    template: `%s | ${siteConfig.siteName}`,
-  },
-
-  description: siteDescription,
-
-  authors: [
-    {
-      name: siteConfig.fullName,
-      url: siteConfig.url,
-    },
-  ],
-
-  creator: siteConfig.fullName,
-
-  publisher: siteConfig.fullName,
-
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: siteConfig.url,
-    siteName:
+    applicationName:
       siteConfig.siteName,
-    title: socialTitle,
-    description:
-      siteDescription,
-  },
 
-  twitter: {
-    card: "summary",
-    title: socialTitle,
-    description:
-      siteDescription,
-  },
+    title: {
+      default: pageTitle,
+      template: `%s | ${siteConfig.siteName}`,
+    },
 
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+    description:
+      copy.description,
+
+    authors: [
+      {
+        name: siteConfig.fullName,
+        url: siteConfig.url,
+      },
+    ],
+
+    creator:
+      siteConfig.fullName,
+
+    publisher:
+      siteConfig.fullName,
+
+    openGraph: {
+      type: "website",
+      locale:
+        copy.openGraphLocale,
+      url: siteConfig.url,
+      siteName:
+        siteConfig.siteName,
+      title: socialTitle,
+      description:
+        copy.description,
+    },
+
+    twitter: {
+      card: "summary",
+      title: socialTitle,
+      description:
+        copy.description,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 const themeScript = `
 (function () {
