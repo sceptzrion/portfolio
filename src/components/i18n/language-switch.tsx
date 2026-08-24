@@ -1,0 +1,146 @@
+"use client";
+
+import {
+  useRouter,
+} from "next/navigation";
+import {
+  useState,
+} from "react";
+
+import {
+  locales,
+  type Locale,
+} from "@/i18n/config";
+import {
+  useLocale,
+} from "@/components/i18n/locale-provider";
+
+type LanguageSwitchProps = {
+  variant?:
+    | "default"
+    | "inverse";
+};
+
+export default function LanguageSwitch({
+  variant = "default",
+}: LanguageSwitchProps) {
+  const router = useRouter();
+
+  const {
+    locale,
+    setLocale,
+  } = useLocale();
+
+  const [
+    switchingTo,
+    setSwitchingTo,
+  ] = useState<Locale | null>(
+    null,
+  );
+
+  const changeLocale = async (
+    nextLocale: Locale,
+  ) => {
+    if (
+      nextLocale === locale ||
+      switchingTo
+    ) {
+      return;
+    }
+
+    setSwitchingTo(
+      nextLocale,
+    );
+
+    try {
+      const response = await fetch(
+        "/api/locale",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+          body: JSON.stringify({
+            locale: nextLocale,
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          "Failed to update locale.",
+        );
+      }
+
+      setLocale(nextLocale);
+
+      document.documentElement.lang =
+        nextLocale;
+
+      router.refresh();
+    } finally {
+      setSwitchingTo(null);
+    }
+  };
+
+  const inverse =
+    variant === "inverse";
+
+  return (
+    <div
+      role="group"
+      aria-label="Language"
+      className={[
+        "flex h-10 items-center rounded-full border p-1 transition-colors duration-300",
+        inverse
+          ? "border-feature-border bg-feature-foreground/5"
+          : "border-border bg-background/40",
+      ].join(" ")}
+    >
+      {locales.map(
+        (item) => {
+          const active =
+            locale === item;
+
+          return (
+            <button
+              key={item}
+              type="button"
+              aria-pressed={
+                active
+              }
+              aria-label={
+                item === "en"
+                  ? "Switch to English"
+                  : "Ganti ke Bahasa Indonesia"
+              }
+              disabled={
+                switchingTo !==
+                null
+              }
+              onClick={() =>
+                changeLocale(
+                  item,
+                )
+              }
+              className={[
+                "grid h-8 min-w-8 place-items-center rounded-full px-2 font-mono text-[9px] font-medium uppercase tracking-widest transition-[background-color,color,opacity] duration-300",
+                active
+                  ? "bg-primary text-primary-foreground"
+                  : inverse
+                    ? "text-feature-muted hover:text-feature-foreground"
+                    : "text-muted-foreground hover:text-foreground",
+                switchingTo
+                  ? "cursor-wait"
+                  : "",
+              ].join(" ")}
+            >
+              {item}
+            </button>
+          );
+        },
+      )}
+    </div>
+  );
+}

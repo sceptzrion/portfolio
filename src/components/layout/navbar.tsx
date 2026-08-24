@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 
+import LanguageSwitch from "@/components/i18n/language-switch";
 import ThemeToggle from "@/components/theme/theme-toggle";
 import { siteConfig } from "@/data/site";
 
@@ -298,7 +299,7 @@ export default function Navbar() {
             aria-label={`${siteConfig.shortName} — Home`}
             className="group flex shrink-0 items-center gap-2.5"
           >
-            <span className="grid size-8 place-items-center rounded-[8px] bg-primary font-brand text-[13px] font-bold tracking-[-0.05em] text-primary-foreground transition-transform duration-300 group-hover:-rotate-6">
+            <span className="grid size-8 place-items-center rounded-[8px] bg-primary font-brand text-[13px] font-bold tracking-tighter text-primary-foreground transition-transform duration-300 group-hover:-rotate-6">
               {siteConfig.monogram}
             </span>
 
@@ -365,6 +366,14 @@ export default function Navbar() {
 
           {/* Right Actions */}
           <div className="flex shrink-0 items-center gap-2">
+            <LanguageSwitch
+              variant={
+                useDarkSurface
+                  ? "inverse"
+                  : "default"
+              }
+            />
+
             <ThemeToggle
               variant={
                 useDarkSurface

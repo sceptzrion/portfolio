@@ -7,16 +7,20 @@ import {
   Space_Grotesk,
 } from "next/font/google";
 
+import { LocaleProvider } from "@/components/i18n/locale-provider";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { siteConfig } from "@/data/site";
+import { getLocale } from "@/i18n/get-locale";
 
 import "./globals.css";
 
-const displayFont = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-plus-jakarta",
-  display: "swap",
-});
+const displayFont =
+  Plus_Jakarta_Sans({
+    subsets: ["latin"],
+    variable:
+      "--font-plus-jakarta",
+    display: "swap",
+  });
 
 const sansFont = Inter({
   subsets: ["latin"],
@@ -26,13 +30,15 @@ const sansFont = Inter({
 
 const monoFont = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  variable:
+    "--font-jetbrains-mono",
   display: "swap",
 });
 
 const brandFont = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable:
+    "--font-space-grotesk",
   weight: ["700"],
   display: "swap",
 });
@@ -47,9 +53,12 @@ const siteDescription =
   `Portfolio of ${siteConfig.fullName}, a ${siteConfig.role} with hands-on experience building responsive web applications and data projects.`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(
+    siteConfig.url,
+  ),
 
-  applicationName: siteConfig.siteName,
+  applicationName:
+    siteConfig.siteName,
 
   title: {
     default: pageTitle,
@@ -73,15 +82,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    siteName: siteConfig.siteName,
+    siteName:
+      siteConfig.siteName,
     title: socialTitle,
-    description: siteDescription,
+    description:
+      siteDescription,
   },
 
   twitter: {
     card: "summary",
     title: socialTitle,
-    description: siteDescription,
+    description:
+      siteDescription,
   },
 
   robots: {
@@ -104,17 +116,19 @@ const themeScript = `
 })();
 `;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale =
+    await getLocale();
+
   return (
     <html
-      lang="en"
+      lang={locale}
       suppressHydrationWarning
     >
-      
       <body
         className={`${displayFont.variable} ${sansFont.variable} ${monoFont.variable} ${brandFont.variable}`}
       >
@@ -122,13 +136,20 @@ export default function RootLayout({
           id="theme-init"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
-            __html: themeScript,
+            __html:
+              themeScript,
           }}
         />
 
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <LocaleProvider
+          initialLocale={
+            locale
+          }
+        >
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </LocaleProvider>
       </body>
     </html>
   );
