@@ -33,6 +33,32 @@ type ProjectsDictionary = {
       experience: string;
     };
   };
+
+  grid: {
+    filters: {
+      all: string;
+      "full-stack": string;
+      frontend: string;
+      "data-ml": string;
+      academic: string;
+      professional: string;
+      personal: string;
+    };
+
+    labels: {
+      featured: string;
+      role: string;
+      context: string;
+      year: string;
+    };
+
+    actions: {
+      viewCaseStudy: string;
+      viewAllProjects: string;
+    };
+
+    empty: string;
+  };
 };
 
 export const projectsDictionary = {
@@ -78,6 +104,35 @@ export const projectsDictionary = {
           "View Experience",
       },
     },
+
+    grid: {
+      filters: {
+        all: "All",
+        "full-stack": "Full-Stack",
+        frontend: "Frontend",
+        "data-ml": "Data / ML",
+        academic: "Academic",
+        professional: "Professional",
+        personal: "Personal",
+      },
+
+      labels: {
+        featured: "Featured",
+        role: "Role",
+        context: "Context",
+        year: "Year",
+      },
+
+      actions: {
+        viewCaseStudy:
+          "View Case Study",
+        viewAllProjects:
+          "View all projects",
+      },
+
+      empty:
+        "No projects in this category yet.",
+    },
   },
 
   id: {
@@ -117,13 +172,118 @@ export const projectsDictionary = {
         "Saya terbuka untuk membahas implementasi, keputusan teknis, dan pembelajaran dari proyek-proyek yang ditampilkan di sini.",
 
       actions: {
-        contact: "Hubungi Saya",
+        contact: "Get in Touch",
         experience:
           "Lihat Pengalaman",
       },
+    },
+
+    grid: {
+      filters: {
+        all: "Semua",
+        "full-stack": "Full-Stack",
+        frontend: "Frontend",
+        "data-ml": "Data / ML",
+        academic: "Akademik",
+        professional: "Profesional",
+        personal: "Personal",
+      },
+
+      labels: {
+        featured: "Unggulan",
+        role: "Peran",
+        context: "Konteks",
+        year: "Tahun",
+      },
+
+      actions: {
+        viewCaseStudy:
+          "Lihat Studi Kasus",
+        viewAllProjects:
+          "Lihat semua proyek",
+      },
+
+      empty:
+        "Belum ada proyek dalam kategori ini.",
     },
   },
 } satisfies Record<
   Locale,
   ProjectsDictionary
 >;
+
+type ProjectIdContent = {
+  tagline: string;
+  category: string;
+  context: string;
+  role?: string;
+};
+
+export const projectsIdContent: Record<
+  string,
+  ProjectIdContent
+> = {
+  edubidan: {
+    tagline:
+      "Learning Management System untuk pendidikan kebidanan dengan sistem berbasis role, modul interaktif, kuis teracak, dan pelacakan progres.",
+
+    category:
+      "Full-Stack Web Development",
+
+    context:
+      "Proyek Skripsi",
+
+    role:
+      "Full-Stack Developer",
+  },
+
+  "disarpus-bekasi": {
+    tagline:
+      "Pengembangan frontend responsif untuk revitalisasi website arsip dan perpustakaan Kabupaten Bekasi.",
+
+    category:
+      "Frontend Development",
+
+    context:
+      "Proyek Magang",
+
+    role:
+      "Web Developer Intern",
+  },
+
+  "lestari-waste-bank": {
+    tagline:
+      "Platform digital kolaboratif untuk layanan penjemputan sampah, pencatatan poin, konten edukasi, dan reward komunitas.",
+
+    category:
+      "Frontend Development",
+
+    context:
+      "Proyek MSIB Kampus Merdeka",
+
+    role:
+      "Frontend Developer",
+  },
+
+  "gold-price-prediction": {
+    tagline:
+      "Sistem prediksi menggunakan linear regression dengan data harga emas dan USD/IDR, termasuk alur simulasi manual untuk mengeksplorasi nilai prediksi.",
+
+    category:
+      "Data & Prediction",
+
+    context:
+      "Sistem Prediksi",
+  },
+
+  healingaja: {
+    tagline:
+      "Landing page pariwisata yang berfokus menyajikan destinasi dan informasi perjalanan melalui pengalaman web yang jelas.",
+
+    category:
+      "Frontend Development",
+
+    context:
+      "Landing Page Pariwisata",
+  },
+};

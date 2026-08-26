@@ -100,7 +100,7 @@ export const projects: readonly Project[] = [
     category:
       "Frontend Development",
     context:
-      "Professional Internship",
+      "Internship Project",
     role:
       "Web Developer Intern",
     year:
@@ -126,7 +126,7 @@ export const projects: readonly Project[] = [
     category:
       "Frontend Development",
     context:
-      "Kampus Merdeka MSIB Project",
+      "MSIB Kampus Merdeka Project",
     role:
       "Frontend Developer",
     year: "2024",

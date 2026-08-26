@@ -14,6 +14,74 @@ import {
   type ProjectFilterValue,
 } from "@/data/projects";
 
+import { useLocale } from "@/components/i18n/locale-provider";
+import {
+  projectsDictionary,
+  projectsIdContent,
+} from "@/i18n/dictionaries/projects";
+
+type ProjectGridCopy = {
+  filters: Record<
+    ProjectFilterValue,
+    string
+  >;
+
+  labels: {
+    featured: string;
+    role: string;
+    context: string;
+    year: string;
+  };
+
+  actions: {
+    viewCaseStudy: string;
+    viewAllProjects: string;
+  };
+
+  empty: string;
+};
+
+function getProjectContent(
+  project: Project,
+  locale: "en" | "id",
+) {
+  if (locale === "en") {
+    return {
+      tagline:
+        project.tagline,
+      category:
+        project.category,
+      context:
+        project.context,
+      role:
+        project.role,
+    };
+  }
+
+  const localized =
+    projectsIdContent[
+      project.slug
+    ];
+
+  return {
+    tagline:
+      localized?.tagline ??
+      project.tagline,
+
+    category:
+      localized?.category ??
+      project.category,
+
+    context:
+      localized?.context ??
+      project.context,
+
+    role:
+      localized?.role ??
+      project.role,
+  };
+}
+
 function ArrowIcon() {
   return (
     <svg
@@ -557,9 +625,19 @@ function ProjectVisual({
 
 function FeaturedProjectCard({
   project,
+  locale,
+  copy,
 }: {
   project: Project;
+  locale: "en" | "id";
+  copy: ProjectGridCopy;
 }) {
+  const content =
+    getProjectContent(
+      project,
+      locale,
+    );
+
   return (
     <article className="group overflow-hidden rounded-[1.75rem] border border-border bg-card transition-[border-color,box-shadow] duration-500 hover:border-primary/35 hover:shadow-[0_22px_60px_rgb(33_30_26/0.08)]">
       <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
@@ -576,11 +654,11 @@ function FeaturedProjectCard({
           <div className="flex flex-wrap items-center gap-3">
             <p className="font-mono text-[8px] uppercase tracking-[0.13em] text-primary">
               {project.index} /{" "}
-              {project.category}
+              {content.category}
             </p>
 
             <span className="rounded-full border border-primary/25 bg-primary-soft px-2.5 py-1 font-mono text-[7px] uppercase tracking-[0.12em] text-primary">
-              Featured
+              {copy.labels.featured}
             </span>
           </div>
 
@@ -589,7 +667,7 @@ function FeaturedProjectCard({
           </h2>
 
           <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
-            {project.tagline}
+            {content.tagline}
           </p>
 
           {project.tech.length > 0 && (
@@ -608,32 +686,32 @@ function FeaturedProjectCard({
 
           <div className="mt-auto pt-7">
             <div className="grid gap-4 border-y border-border py-4 sm:grid-cols-3">
-              {project.role && (
+              {content.role && (
                 <div>
                   <p className="font-mono text-[7px] uppercase tracking-[0.13em] text-muted-foreground">
-                    Role
+                    {copy.labels.role}
                   </p>
 
                   <p className="mt-1.5 text-xs font-medium">
-                    {project.role}
+                    {content.role}
                   </p>
                 </div>
               )}
 
               <div>
                 <p className="font-mono text-[7px] uppercase tracking-[0.13em] text-muted-foreground">
-                  Context
+                  {copy.labels.context}
                 </p>
 
                 <p className="mt-1.5 text-xs font-medium">
-                  {project.context}
+                  {content.context}
                 </p>
               </div>
 
               {project.year && (
                 <div>
                   <p className="font-mono text-[7px] uppercase tracking-[0.13em] text-muted-foreground">
-                    Year
+                    {copy.labels.year}
                   </p>
 
                   <p className="mt-1.5 text-xs font-medium">
@@ -647,7 +725,7 @@ function FeaturedProjectCard({
               href={`/projects/${project.slug}`}
               className="group mt-5 inline-flex items-center gap-2 text-xs font-semibold text-primary"
             >
-              View Case Study
+              {copy.actions.viewCaseStudy}
               <ArrowIcon />
             </Link>
           </div>
@@ -659,9 +737,19 @@ function FeaturedProjectCard({
 
 function StandardProjectCard({
   project,
+  locale,
+  copy,
 }: {
   project: Project;
+  locale: "en" | "id";
+  copy: ProjectGridCopy;
 }) {
+  const content =
+    getProjectContent(
+      project,
+      locale,
+    );
+
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-border bg-card transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_18px_45px_rgb(33_30_26/0.07)]">
       <div aria-hidden="true">
@@ -682,7 +770,7 @@ function StandardProjectCard({
           </span>
 
           <span>
-            {project.category}
+            {content.category}
           </span>
         </div>
 
@@ -691,7 +779,7 @@ function StandardProjectCard({
         </h2>
 
         <p className="mt-3 flex-1 text-[13px] leading-[1.65] text-muted-foreground">
-          {project.tagline}
+          {content.tagline}
         </p>
 
         {project.tech.length > 0 && (
@@ -712,12 +800,12 @@ function StandardProjectCard({
 
         <div className="mt-5 flex items-end justify-between gap-4 border-t border-border pt-4">
           <p className="font-mono text-[7px] uppercase leading-4 tracking-[0.11em] text-muted-foreground">
-            {project.context}
+            {content.context}
           </p>
 
           <Link
             href={`/projects/${project.slug}`}
-            aria-label={`View ${project.title} case study`}
+            aria-label={`${copy.actions.viewCaseStudy}: ${project.title}`}
             className="group grid size-8 shrink-0 place-items-center rounded-full border border-border text-primary transition-[border-color,transform] duration-300 hover:translate-x-1 hover:border-primary"
           >
             <ArrowIcon />
@@ -729,6 +817,13 @@ function StandardProjectCard({
 }
 
 export default function ProjectFilterGrid() {
+  const { locale } =
+    useLocale();
+
+  const copy =
+    projectsDictionary[locale]
+      .grid;
+
   const [
     activeFilter,
     setActiveFilter,
@@ -812,7 +907,7 @@ export default function ProjectFilterGrid() {
                         : "border-border bg-background/70 text-muted-foreground hover:-translate-y-0.5 hover:border-primary hover:text-foreground",
                     ].join(" ")}
                   >
-                    {filter.label}
+                    {copy.filters[filter.value]}
                   </button>
                 );
               },
@@ -830,6 +925,8 @@ export default function ProjectFilterGrid() {
                 project={
                   featuredProject
                 }
+                locale={locale}
+                copy={copy}
               />
             </div>
           )}
@@ -850,6 +947,8 @@ export default function ProjectFilterGrid() {
                       project={
                         project
                       }
+                      locale={locale}
+                      copy={copy}
                     />
                   </div>
                 ),
@@ -861,8 +960,7 @@ export default function ProjectFilterGrid() {
             0 && (
             <div className="rounded-3xl border border-border bg-card p-8 text-center">
               <p className="font-display text-xl font-semibold">
-                No projects in
-                this category yet.
+                {copy.empty}
               </p>
 
               <button
@@ -874,7 +972,10 @@ export default function ProjectFilterGrid() {
                 }
                 className="mt-4 text-sm font-semibold text-primary"
               >
-                View all projects
+                {
+                  copy.actions
+                    .viewAllProjects
+                }
               </button>
             </div>
           )}
