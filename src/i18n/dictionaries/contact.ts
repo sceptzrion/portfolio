@@ -98,7 +98,7 @@ export const contactDictionary = {
     },
 
     panel: {
-      label: "Ketersediaan",
+      label: "Availability",
       title:
         "Terbuka untuk peluang baru.",
       description:
