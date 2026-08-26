@@ -1,8 +1,14 @@
 import type { ReactNode } from "react";
 
 import { experiences } from "@/data/experience";
+import { experienceDictionary } from "@/i18n/dictionaries/experience";
+import { getLocale } from "@/i18n/get-locale";
 
-function BrowserVisual() {
+function BrowserVisual({
+  label,
+}: {
+  label: string;
+}) {
   return (
     <div
       aria-hidden="true"
@@ -39,7 +45,7 @@ function BrowserVisual() {
           </div>
 
           <p className="absolute bottom-4 right-4 font-mono text-[7px] uppercase tracking-[0.15em] text-muted-foreground">
-            Responsive interface
+            {label}
           </p>
         </div>
       </div>
@@ -47,21 +53,20 @@ function BrowserVisual() {
   );
 }
 
-function DataFlowVisual() {
-  const steps = [
-    "Relational data",
-    "Master tables",
-    "Dashboards",
-    "Recommendations",
-  ];
-
+function DataFlowVisual({
+  label,
+  steps,
+}: {
+  label: string;
+  steps: readonly string[];
+}) {
   return (
     <div
       aria-hidden="true"
       className="overflow-hidden rounded-2xl border border-border bg-secondary/45 p-5"
     >
       <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground">
-        Analysis flow
+        {label}
       </p>
 
       <div className="mt-4 border-y border-border">
@@ -98,15 +103,23 @@ function DataFlowVisual() {
 function ExperienceCard({
   experience,
   category,
+  type,
   headline,
   description,
+  highlights,
+  workedOnLabel,
+  mostRecentLabel,
   visual,
   mostRecent = false,
 }: {
   experience: (typeof experiences)[number];
   category: string;
+  type: string;
   headline: ReactNode;
   description: string;
+  highlights: readonly string[];
+  workedOnLabel: string;
+  mostRecentLabel: string;
   visual: ReactNode;
   mostRecent?: boolean;
 }) {
@@ -137,13 +150,13 @@ function ExperienceCard({
 
               {mostRecent && (
                 <span className="rounded-full border border-primary/25 bg-primary-soft px-2.5 py-1 font-mono text-[7px] uppercase tracking-[0.12em] text-primary">
-                  Most Recent
+                  {mostRecentLabel}
                 </span>
               )}
             </div>
 
             <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-              {experience.type}
+              {type}
             </p>
           </div>
 
@@ -189,11 +202,11 @@ function ExperienceCard({
 
         <div className="mt-10 border-t border-border pt-7">
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
-            What I worked on
+            {workedOnLabel}
           </p>
 
           <div className="mt-5 grid border-y border-border md:grid-cols-2">
-            {experience.highlights.map((highlight, index) => (
+            {highlights.map((highlight, index) => (
               <div
                 key={highlight}
                 className={[
@@ -222,9 +235,24 @@ function ExperienceCard({
   );
 }
 
-export default function ExperienceTimeline() {
-  const webExperience = experiences[0];
-  const dataExperience = experiences[1];
+export default async function ExperienceTimeline() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    experienceDictionary[locale].timeline;
+
+  const webExperience =
+    experiences[0];
+
+  const dataExperience =
+    experiences[1];
+
+  const webCopy =
+    copy.items["diskominfosantik-bekasi"];
+
+  const dataCopy =
+    copy.items["bank-muamalat"];
 
   return (
     <section className="relative overflow-hidden bg-secondary/35">
@@ -241,15 +269,15 @@ export default function ExperienceTimeline() {
           >
             <div className="sticky top-28">
               <p className="font-mono text-[8px] uppercase tracking-[0.15em] text-muted-foreground">
-                Timeline
+                {copy.label}
               </p>
 
               <p className="mt-2 font-display text-sm font-semibold">
-                Experience
+                {copy.title}
               </p>
 
               <p className="mt-4 font-mono text-[7px] uppercase leading-5 tracking-[0.13em] text-primary">
-                Latest first
+                {copy.latestFirst}
                 <br />
                 ↓
               </p>
@@ -279,20 +307,45 @@ export default function ExperienceTimeline() {
 
                 <ExperienceCard
                   experience={webExperience}
-                  category="Frontend Development"
+                  category={webCopy.category}
+                  type={webCopy.type}
                   mostRecent
+                  mostRecentLabel={
+                    copy.mostRecent
+                  }
+                  workedOnLabel={
+                    copy.workedOn
+                  }
                   headline={
                     <>
-                      From approved
-                      designs to{" "}
+                      {
+                        webCopy
+                          .headline
+                          .introduction
+                      }{" "}
                       <span className="text-primary">
-                        responsive web
-                        pages.
+                        {
+                          webCopy
+                            .headline
+                            .emphasis
+                        }
                       </span>
                     </>
                   }
-                  description="At Diskominfosantik Kabupaten Bekasi, I worked on the frontend of the Disarpus Kabupaten Bekasi website. My focus was implementing approved Figma designs in Next.js, developing key pages, and resolving responsive layout issues across different breakpoints."
-                  visual={<BrowserVisual />}
+                  description={
+                    webCopy.description
+                  }
+                  highlights={
+                    webCopy.highlights
+                  }
+                  visual={
+                    <BrowserVisual
+                      label={
+                        copy.visuals
+                          .responsiveInterface
+                      }
+                    />
+                  }
                 />
               </div>
 
@@ -312,19 +365,48 @@ export default function ExperienceTimeline() {
 
                 <ExperienceCard
                   experience={dataExperience}
-                  category="Business Intelligence"
+                  category={dataCopy.category}
+                  type={dataCopy.type}
+                  mostRecentLabel={
+                    copy.mostRecent
+                  }
+                  workedOnLabel={
+                    copy.workedOn
+                  }
                   headline={
                     <>
-                      Turning relational
-                      data into{" "}
+                      {
+                        dataCopy
+                          .headline
+                          .introduction
+                      }{" "}
                       <span className="text-primary">
-                        clearer business
-                        insights.
+                        {
+                          dataCopy
+                            .headline
+                            .emphasis
+                        }
                       </span>
                     </>
                   }
-                  description="During a project-based internship with Bank Muamalat, I worked with relational sales data in Google BigQuery, organized it into structured master tables, built interactive Looker Studio dashboards, and developed recommendations based on the analysis."
-                  visual={<DataFlowVisual />}
+                  description={
+                    dataCopy.description
+                  }
+                  highlights={
+                    dataCopy.highlights
+                  }
+                  visual={
+                    <DataFlowVisual
+                      label={
+                        copy.visuals
+                          .analysisFlow
+                      }
+                      steps={
+                        copy.visuals
+                          .flowSteps
+                      }
+                    />
+                  }
                 />
               </div>
 
@@ -335,7 +417,7 @@ export default function ExperienceTimeline() {
                 <span className="absolute left-0 top-1/2 size-2.75 -translate-y-1/2 rounded-full border-2 border-border-strong bg-secondary" />
 
                 <span className="absolute left-10 top-1/2 -translate-y-1/2 font-mono text-[7px] uppercase tracking-[0.14em] text-muted-foreground">
-                  Earlier
+                  {copy.earlier}
                 </span>
               </div>
             </div>

@@ -1,25 +1,13 @@
-const takeaways = [
-  {
-    index: "01",
-    title: "Implementation",
-    description:
-      "Turning requirements and approved designs into working, functional outputs.",
-  },
-  {
-    index: "02",
-    title: "Structure",
-    description:
-      "Organizing interfaces, data, and analysis so the work stays clear and easier to work with.",
-  },
-  {
-    index: "03",
-    title: "Collaboration",
-    description:
-      "Working through feedback and implementation details as part of a broader development process.",
-  },
-] as const;
+import { experienceDictionary } from "@/i18n/dictionaries/experience";
+import { getLocale } from "@/i18n/get-locale";
 
-export default function ExperienceTakeaways() {
+export default async function ExperienceTakeaways() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    experienceDictionary[locale].takeaways;
+
   return (
     <section className="relative overflow-hidden border-y border-border bg-background">
       <div
@@ -34,26 +22,25 @@ export default function ExperienceTakeaways() {
         >
           <div>
             <div className="section-label">
-              What I Took Forward
+              {copy.label}
             </div>
 
             <h2 className="mt-5 max-w-xl text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
-              Different contexts,{" "}
+              {
+                copy.headline
+                  .introduction
+              }{" "}
               <span className="text-primary">
-                shared fundamentals.
+                {
+                  copy.headline
+                    .emphasis
+                }
               </span>
             </h2>
           </div>
 
           <p className="max-w-xl text-[15px] leading-7 text-muted-foreground lg:justify-self-end">
-            Working across web
-            development and business
-            intelligence reinforced the
-            same fundamentals:
-            understand the problem, keep
-            the work structured, and
-            communicate clearly
-            throughout the process.
+            {copy.description}
           </p>
         </div>
 
@@ -61,7 +48,7 @@ export default function ExperienceTakeaways() {
           data-reveal
           className="reveal-on-scroll reveal-delay-1 mt-10 grid border-y border-border md:grid-cols-3 sm:mt-12"
         >
-          {takeaways.map(
+          {copy.items.map(
             (item, index) => (
               <article
                 key={item.title}
@@ -74,13 +61,13 @@ export default function ExperienceTakeaways() {
                     ? "md:pl-0"
                     : "",
                   index ===
-                  takeaways.length - 1
+                  copy.items.length - 1
                     ? "md:pr-0"
                     : "",
                 ].join(" ")}
               >
                 <p className="font-mono text-[8px] tracking-[0.13em] text-primary">
-                  {item.index}
+                  0{index + 1}
                 </p>
 
                 <h3 className="mt-4 font-display text-xl font-bold tracking-[-0.035em]">

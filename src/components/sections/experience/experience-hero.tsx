@@ -1,4 +1,13 @@
-export default function ExperienceHero() {
+import { experienceDictionary } from "@/i18n/dictionaries/experience";
+import { getLocale } from "@/i18n/get-locale";
+
+export default async function ExperienceHero() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    experienceDictionary[locale].hero;
+
   return (
     <section className="relative overflow-hidden border-b border-border bg-background pt-32 sm:pt-36 lg:pt-40">
       <div
@@ -17,26 +26,19 @@ export default function ExperienceHero() {
           className="reveal-on-scroll"
         >
           <div className="section-label">
-            Experience
+            {copy.label}
           </div>
 
           <h1 className="mt-7 max-w-4xl text-balance font-display text-[clamp(3.2rem,7vw,6.3rem)] font-bold leading-[0.95] tracking-[-0.06em]">
-            Professional{" "}
+            {copy.headline.introduction}{" "}
             <span className="text-primary">
-              chapters
+              {copy.headline.emphasis}
             </span>{" "}
-            so far.
+            {copy.headline.continuation}
           </h1>
 
           <p className="mt-8 max-w-2xl text-[17px] leading-8 text-muted-foreground sm:text-lg sm:leading-9">
-            Two internships that
-            shaped how I approach
-            technical work. One
-            focused on frontend
-            delivery, while the other
-            involved turning relational
-            data into useful business
-            insights.
+            {copy.description}
           </p>
         </div>
 
@@ -49,12 +51,11 @@ export default function ExperienceHero() {
           </p>
 
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
-            02 Internships
+            {copy.stats.internships}
           </p>
 
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
-            Web Development +
-            Business Intelligence
+            {copy.stats.areas}
           </p>
         </div>
       </div>

@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import { experienceDictionary } from "@/i18n/dictionaries/experience";
+import { getLocale } from "@/i18n/get-locale";
+
 function ArrowIcon() {
   return (
     <svg
@@ -18,7 +21,13 @@ function ArrowIcon() {
   );
 }
 
-export default function ExperienceNext() {
+export default async function ExperienceNext() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    experienceDictionary[locale].next;
+
   return (
     <section className="relative overflow-hidden bg-tertiary">
       <div
@@ -33,23 +42,24 @@ export default function ExperienceNext() {
         >
           <div>
             <div className="section-label">
-              Next
+              {copy.label}
             </div>
 
             <h2 className="mt-5 max-w-3xl text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
-              See how those
-              experiences shaped{" "}
+              {
+                copy.headline
+                  .introduction
+              }{" "}
               <span className="text-primary">
-                my projects.
+                {
+                  copy.headline
+                    .emphasis
+                }
               </span>
             </h2>
 
             <p className="mt-6 max-w-xl text-[15px] leading-7 text-muted-foreground">
-              I’m currently open to
-              full-time opportunities
-              in web development,
-              particularly frontend and
-              full-stack roles.
+              {copy.description}
             </p>
           </div>
 
@@ -58,7 +68,10 @@ export default function ExperienceNext() {
               href="/projects"
               className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-foreground px-5 text-sm font-semibold text-background transition-[transform,opacity] duration-300 hover:-translate-y-0.5 hover:opacity-90"
             >
-              Explore Projects
+              {
+                copy.actions
+                  .projects
+              }
               <ArrowIcon />
             </Link>
 
@@ -66,7 +79,10 @@ export default function ExperienceNext() {
               href="/resume"
               className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border-strong bg-background/40 px-5 text-sm font-semibold text-foreground transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft"
             >
-              View Resume
+              {
+                copy.actions
+                  .resume
+              }
               <ArrowIcon />
             </Link>
           </div>
