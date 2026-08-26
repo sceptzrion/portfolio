@@ -2,6 +2,7 @@ import type { Locale } from "@/i18n/config";
 
 type MetadataDictionary = {
   site: {
+    title: string;
     description: string;
     openGraphLocale: string;
   };
@@ -35,6 +36,9 @@ type MetadataDictionary = {
 export const metadataDictionary = {
   en: {
     site: {
+      title:
+        "Portfolio | Muhamad Ikhsan Rizqi Yanuar",
+
       description:
         "Portfolio of Muhamad Ikhsan Rizqi Yanuar, a Full-Stack Web Developer with hands-on experience building responsive web applications and data projects.",
 
@@ -85,8 +89,11 @@ export const metadataDictionary = {
 
   id: {
     site: {
+      title:
+        "Portofolio | Muhamad Ikhsan Rizqi Yanuar",
+
       description:
-        "Portfolio Muhamad Ikhsan Rizqi Yanuar, Full-Stack Web Developer dengan pengalaman praktis dalam membangun aplikasi web responsif dan proyek data.",
+        "Portofolio Muhamad Ikhsan Rizqi Yanuar, Full-Stack Web Developer dengan pengalaman praktis dalam membangun aplikasi web responsif dan proyek data.",
 
       openGraphLocale:
         "id_ID",

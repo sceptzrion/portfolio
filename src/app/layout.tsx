@@ -44,9 +44,6 @@ const brandFont = Space_Grotesk({
   display: "swap",
 });
 
-const pageTitle =
-  `Portfolio | ${siteConfig.fullName}`;
-
 const socialTitle =
   `${siteConfig.siteName} | ${siteConfig.role}`;
 
@@ -66,7 +63,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteConfig.siteName,
 
     title: {
-      default: pageTitle,
+      default: copy.title,
       template: `%s | ${siteConfig.siteName}`,
     },
 

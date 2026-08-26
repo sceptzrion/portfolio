@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rizqi Yanuar Portfolio
 
-## Getting Started
+Personal portfolio of **Muhamad Ikhsan Rizqi Yanuar**, a Full-Stack Web Developer based in Karawang, West Java, Indonesia.
 
-First, run the development server:
+The website presents selected projects, professional experience, background, capabilities, resume, and contact information through a responsive bilingual interface.
+
+## Website
+
+**rizqiyr.id**
+
+## Features
+
+- English and Indonesian localization with clean URLs
+- Light and dark themes
+- Responsive layouts across desktop, tablet, and mobile
+- Filterable project showcase
+- Dedicated About, Experience, Projects, Resume, and Contact pages
+- In-site resume PDF viewer integration
+- Custom localized 404 page
+- Subtle motion and interaction states
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- React PDF
+- PDF.js
+- Vercel
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Validation
 
-## Learn More
+Run the project checks before committing:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+npm run build
+git diff --check
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+src/
+├── app/          # App Router pages and global application setup
+├── components/   # Layout, sections, motion, theme, and i18n UI
+├── data/         # Structured portfolio data and site configuration
+└── i18n/         # Locale configuration and EN/ID dictionaries
 
-## Deploy on Vercel
+public/           # Static assets, project images, and resume document
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Localization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+English is the default locale. Language preference is persisted without adding locale prefixes such as `/en` or `/id` to public URLs.
+
+## Contact
+
+- Email: rizqi.iry@gmail.com
+- LinkedIn: linkedin.com/in/ikhsanry
