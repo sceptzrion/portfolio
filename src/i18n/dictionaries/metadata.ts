@@ -15,6 +15,11 @@ type MetadataDictionary = {
     title: string;
     description: string;
   };
+
+  resume: {
+    title: string;
+    description: string;
+  };
 };
 
 export const metadataDictionary = {
@@ -36,11 +41,19 @@ export const metadataDictionary = {
     },
 
     experience: {
-    title:
+      title:
         "Experience | Muhamad Ikhsan Rizqi Yanuar's Portfolio",
 
-    description:
+      description:
         "Explore the professional and project-based experience of Muhamad Ikhsan Rizqi Yanuar across frontend web development and business intelligence.",
+    },
+
+    resume: {
+      title:
+        "Resume | Muhamad Ikhsan Rizqi Yanuar's Portfolio",
+
+      description:
+        "Preview the latest resume of Muhamad Ikhsan Rizqi Yanuar, Full-Stack Web Developer.",
     },
   },
 
@@ -62,11 +75,19 @@ export const metadataDictionary = {
     },
 
     experience: {
-    title:
+      title:
         "Pengalaman | Portofolio Muhamad Ikhsan Rizqi Yanuar",
 
-    description:
+      description:
         "Pengalaman profesional dan project-based Muhamad Ikhsan Rizqi Yanuar di bidang frontend web development dan business intelligence.",
+    },
+
+    resume: {
+      title:
+        "Resume | Portofolio Muhamad Ikhsan Rizqi Yanuar",
+
+      description:
+        "Lihat resume terbaru Muhamad Ikhsan Rizqi Yanuar, Full-Stack Web Developer.",
     },
   },
 } satisfies Record<
