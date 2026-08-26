@@ -89,10 +89,5 @@ export const siteConfig = {
       href:
         "https://linkedin.com/in/ikhsanry",
     },
-    {
-      label: "GitHub",
-      href:
-        "https://github.com/sceptzrion",
-    },
   ],
 } as const;

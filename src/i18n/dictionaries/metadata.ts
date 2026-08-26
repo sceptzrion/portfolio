@@ -20,6 +20,11 @@ type MetadataDictionary = {
     title: string;
     description: string;
   };
+
+  contact: {
+    title: string;
+    description: string;
+  };
 };
 
 export const metadataDictionary = {
@@ -55,6 +60,14 @@ export const metadataDictionary = {
       description:
         "Preview the latest resume of Muhamad Ikhsan Rizqi Yanuar, Full-Stack Web Developer.",
     },
+
+    contact: {
+      title:
+        "Contact | Muhamad Ikhsan Rizqi Yanuar's Portfolio",
+
+      description:
+        "Get in touch with Muhamad Ikhsan Rizqi Yanuar for full-time opportunities, collaborations, and conversations around web development and digital products.",
+    },
   },
 
   id: {
@@ -88,6 +101,14 @@ export const metadataDictionary = {
 
       description:
         "Lihat resume terbaru Muhamad Ikhsan Rizqi Yanuar, Full-Stack Web Developer.",
+    },
+
+    contact: {
+      title:
+        "Kontak | Portofolio Muhamad Ikhsan Rizqi Yanuar",
+
+      description:
+        "Hubungi Muhamad Ikhsan Rizqi Yanuar untuk peluang full-time, kolaborasi, dan diskusi seputar web development serta produk digital.",
     },
   },
 } satisfies Record<
