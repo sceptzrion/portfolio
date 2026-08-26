@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/navbar";
 import MotionObserver from "@/components/motion/motion-observer";
 import ProjectFilterGrid from "@/components/sections/projects/project-filter-grid";
 import ProjectsHero from "@/components/sections/projects/projects-hero";
+import ProjectsNext from "@/components/sections/projects/projects-next";
 
 export const metadata: Metadata = {
   title:
@@ -24,6 +25,7 @@ export default function ProjectsPage() {
       <main>
         <ProjectsHero />
         <ProjectFilterGrid />
+        <ProjectsNext />
       </main>
 
       <Footer />
