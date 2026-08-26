@@ -1,4 +1,13 @@
-export default function ProjectsHero() {
+import { projectsDictionary } from "@/i18n/dictionaries/projects";
+import { getLocale } from "@/i18n/get-locale";
+
+export default async function ProjectsHero() {
+  const locale =
+    await getLocale();
+
+  const copy =
+    projectsDictionary[locale].hero;
+
   return (
     <section className="relative overflow-hidden border-b border-border bg-background pt-32 sm:pt-36 lg:pt-40">
       <div
@@ -17,23 +26,24 @@ export default function ProjectsHero() {
           className="reveal-on-scroll"
         >
           <div className="section-label">
-            Projects
+            {copy.label}
           </div>
 
           <h1 className="mt-7 max-w-5xl text-balance font-display text-[clamp(3.2rem,7vw,6.3rem)] font-bold leading-[0.95] tracking-[-0.06em]">
-            Selected work, built from{" "}
+            {
+              copy.headline
+                .introduction
+            }{" "}
             <span className="text-primary">
-              idea to implementation.
+              {
+                copy.headline
+                  .emphasis
+              }
             </span>
           </h1>
 
           <p className="mt-8 max-w-2xl text-[17px] leading-8 text-muted-foreground sm:text-lg sm:leading-9">
-            A curated selection of
-            academic, professional,
-            collaborative, and personal
-            projects across full-stack
-            development, frontend
-            implementation, and data.
+            {copy.description}
           </p>
         </div>
 
@@ -42,16 +52,18 @@ export default function ProjectsHero() {
           className="reveal-on-scroll reveal-delay-1 mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-border pt-5"
         >
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
-            05 Projects
+            {copy.meta.count}
           </p>
 
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
-            Academic + Professional +
-            Personal
+            {copy.meta.contexts}
           </p>
 
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
-            Full-Stack + Frontend + Data
+            {
+              copy.meta
+                .disciplines
+            }
           </p>
         </div>
       </div>

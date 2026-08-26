@@ -6,14 +6,49 @@ import MotionObserver from "@/components/motion/motion-observer";
 import ProjectFilterGrid from "@/components/sections/projects/project-filter-grid";
 import ProjectsHero from "@/components/sections/projects/projects-hero";
 import ProjectsNext from "@/components/sections/projects/projects-next";
+import { siteConfig } from "@/data/site";
+import { metadataDictionary } from "@/i18n/dictionaries/metadata";
+import { getLocale } from "@/i18n/get-locale";
 
-export const metadata: Metadata = {
-  title:
-    "Projects | Muhamad Ikhsan Rizqi Yanuar's Portfolio",
+export async function generateMetadata(): Promise<Metadata> {
+  const locale =
+    await getLocale();
 
-  description:
-    "Explore selected web development, frontend, full-stack, and data projects by Muhamad Ikhsan Rizqi Yanuar.",
-};
+  const siteCopy =
+    metadataDictionary[locale].site;
+
+  const copy =
+    metadataDictionary[locale]
+      .projects;
+
+  return {
+    title: {
+      absolute: copy.title,
+    },
+
+    description:
+      copy.description,
+
+    openGraph: {
+      type: "website",
+      locale:
+        siteCopy.openGraphLocale,
+      url: `${siteConfig.url}/projects`,
+      siteName:
+        siteConfig.siteName,
+      title: copy.title,
+      description:
+        copy.description,
+    },
+
+    twitter: {
+      card: "summary",
+      title: copy.title,
+      description:
+        copy.description,
+    },
+  };
+}
 
 export default function ProjectsPage() {
   return (

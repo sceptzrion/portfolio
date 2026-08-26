@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { siteConfig } from "@/data/site";
+import { projectsDictionary } from "@/i18n/dictionaries/projects";
+import { getLocale } from "@/i18n/get-locale";
 
 function ArrowIcon() {
   return (
@@ -20,25 +21,13 @@ function ArrowIcon() {
   );
 }
 
-function ExternalArrowIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M7 17 17 7" />
-      <path d="M7 7h10v10" />
-    </svg>
-  );
-}
+export default async function ProjectsNext() {
+  const locale =
+    await getLocale();
 
-export default function ProjectsNext() {
+  const copy =
+    projectsDictionary[locale].next;
+
   return (
     <section className="relative overflow-hidden border-t border-border bg-tertiary">
       <div
@@ -58,39 +47,49 @@ export default function ProjectsNext() {
         >
           <div>
             <div className="section-label">
-              Next
+              {copy.label}
             </div>
 
             <h2 className="mt-5 max-w-3xl text-balance font-display text-[clamp(2.6rem,5vw,4.6rem)] font-bold leading-[0.99] tracking-tighter">
-              Interested in the work{" "}
+              {
+                copy.headline
+                  .introduction
+              }{" "}
               <span className="text-primary">
-                behind these projects?
+                {
+                  copy.headline
+                    .emphasis
+                }
               </span>
             </h2>
 
             <p className="mt-6 max-w-xl text-[15px] leading-7 text-muted-foreground">
-              I’m open to discussing
-              the implementation,
-              technical decisions, and
-              lessons behind the
-              projects shown here.
+              {copy.description}
             </p>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
-            <a
-              href={`mailto:${siteConfig.contact.email}`}
+            <Link
+              href="/contact"
               className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-foreground px-5 text-sm font-semibold text-background transition-[transform,opacity] duration-300 hover:-translate-y-0.5 hover:opacity-90"
             >
-              Get in Touch
-              <ExternalArrowIcon />
-            </a>
+              {
+                copy.actions
+                  .contact
+              }
+
+              <ArrowIcon />
+            </Link>
 
             <Link
               href="/experience"
               className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border-strong bg-background/40 px-5 text-sm font-semibold text-foreground transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft"
             >
-              View Experience
+              {
+                copy.actions
+                  .experience
+              }
+
               <ArrowIcon />
             </Link>
           </div>

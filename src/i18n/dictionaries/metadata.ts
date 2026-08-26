@@ -16,6 +16,11 @@ type MetadataDictionary = {
     description: string;
   };
 
+  projects: {
+    title: string;
+    description: string;
+  };
+
   resume: {
     title: string;
     description: string;
@@ -51,6 +56,14 @@ export const metadataDictionary = {
 
       description:
         "Explore the professional and project-based experience of Muhamad Ikhsan Rizqi Yanuar across frontend web development and business intelligence.",
+    },
+
+    projects: {
+      title:
+        "Projects | Muhamad Ikhsan Rizqi Yanuar's Portfolio",
+
+      description:
+        "Explore selected full-stack, frontend, and data projects by Muhamad Ikhsan Rizqi Yanuar across academic, professional, collaborative, and personal work.",
     },
 
     resume: {
@@ -93,6 +106,14 @@ export const metadataDictionary = {
 
       description:
         "Pengalaman profesional dan project-based Muhamad Ikhsan Rizqi Yanuar di bidang frontend web development dan business intelligence.",
+    },
+
+    projects: {
+      title:
+        "Proyek | Portofolio Muhamad Ikhsan Rizqi Yanuar",
+
+      description:
+        "Jelajahi proyek pilihan Muhamad Ikhsan Rizqi Yanuar di bidang full-stack development, frontend, dan data melalui karya akademik, profesional, kolaboratif, dan personal.",
     },
 
     resume: {
