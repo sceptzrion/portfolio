@@ -31,42 +31,58 @@ function PortraitImage({
   ariaLabel: string;
 }) {
   return (
-    <div className="relative aspect-5/6 w-full overflow-hidden bg-[#f4eee6]">
-      {/* Warm base */}
+    <div className="relative aspect-5/6 w-full overflow-hidden bg-primary">
+      {/* Full orange canvas */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(145deg,#f7f2eb_0%,#f2e8de_58%,#eee3d7_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(145deg,#ef7837_0%,var(--primary)_52%,#cf511f_100%)]"
       />
 
-      {/* Large orange focal shape */}
+      {/* Soft highlight */}
       <div
         aria-hidden="true"
-        className="absolute left-1/2 top-[46%] size-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/82"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_24%_15%,rgb(255_245_235/0.18),transparent_34%)]"
       />
 
-      {/* Soft orange halo */}
+      {/* Main cream inner border */}
       <div
         aria-hidden="true"
-        className="absolute left-1/2 top-[46%] size-[91%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/25"
+        className="absolute inset-4 rounded-[1.35rem] border border-[#f8e7d9]/75 sm:inset-5"
       />
 
-      {/* Technical texture */}
+      {/* Top technical line */}
       <div
         aria-hidden="true"
-        className="tech-grid absolute inset-0 opacity-[0.08]"
+        className="absolute left-[18%] right-[26%] top-[13%] h-px bg-[#f8e7d9]/45"
       />
 
-      {/* Small glow */}
+      {/* Right technical line */}
       <div
         aria-hidden="true"
-        className="absolute right-[-18%] top-[-10%] size-[58%] rounded-full bg-primary/20 blur-3xl"
+        className="absolute right-[12%] top-[18%] h-[22%] w-px bg-[#f8e7d9]/40"
+      />
+
+      {/* Right line marker */}
+      <div
+        aria-hidden="true"
+        className="absolute right-[calc(12%-3px)] top-[40%] size-1.5 rounded-full border border-[#f8e7d9]/70 bg-primary"
+      />
+
+      {/* Bottom-left short accent */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-[17%] left-[10%] h-px w-[18%] bg-[#f8e7d9]/35"
+      />
+
+      {/* Very subtle grid */}
+      <div
+        aria-hidden="true"
+        className="tech-grid absolute inset-0 opacity-[0.045]"
       />
 
       {/* Portrait */}
       <Image
-        src={
-          profileImages.secondary
-        }
+        src={profileImages.hero}
         alt={ariaLabel}
         fill
         priority
@@ -77,7 +93,7 @@ function PortraitImage({
       {/* Bottom readability fade */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-[27%] bg-[linear-gradient(to_top,rgb(24_20_17/0.58),transparent)]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-[28%] bg-[linear-gradient(to_top,rgb(39_21_13/0.60),transparent)]"
       />
 
       {/* Identity */}
@@ -86,7 +102,7 @@ function PortraitImage({
           {siteConfig.fullName}
         </p>
 
-        <p className="mt-1 text-xs text-white/75">
+        <p className="mt-1 text-xs text-white/80">
           {siteConfig.role}
         </p>
       </div>

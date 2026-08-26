@@ -70,22 +70,38 @@ function PortraitVisual({
           className="absolute bottom-[-12%] left-[-15%] size-[65%] rounded-full bg-primary/10 blur-3xl"
         />
 
-        <Image
-          src={profileImages.about}
-          alt={siteConfig.fullName}
-          fill
-          sizes="(max-width: 639px) 304px, 430px"
-          className="z-10 object-cover object-[50%_32%] transition-transform duration-700 group-hover:scale-[1.02]"
-        />
+        <div className="absolute inset-3 z-10 overflow-hidden rounded-[1.35rem] bg-secondary sm:inset-4">
+          {/* Theme-aware warm mat */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[linear-gradient(145deg,var(--secondary),var(--tertiary))]"
+          />
+
+          <div
+            aria-hidden="true"
+            className="absolute inset-3 rounded-2xl border border-border"
+          />
+
+          {/* Square source photo inside its own rounded frame */}
+          <div className="absolute inset-x-0 top-1/2 z-10 aspect-square -translate-y-1/2 overflow-hidden rounded-[1.1rem]">
+            <Image
+              src={profileImages.about}
+              alt={siteConfig.fullName}
+              fill
+              sizes="(max-width: 639px) 280px, 400px"
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.01]"
+            />
+          </div>
+        </div>
 
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[38%] bg-[linear-gradient(to_top,rgb(0_0_0/0.12),transparent)]"
+          className="pointer-events-none absolute inset-x-3 bottom-3 z-20 h-[16%] rounded-b-[1.35rem] bg-[linear-gradient(to_top,color-mix(in_srgb,var(--foreground)_10%,transparent),transparent)] sm:inset-x-4 sm:bottom-4"
         />
       </div>
 
       {/* Education floating card */}
-      <div className="absolute -bottom-7 left-4 z-10 max-w-57.5 rounded-2xl border border-border bg-card/95 p-4 shadow-[0_14px_35px_rgb(33_30_26/0.10)] backdrop-blur-md sm:left-7">
+      <div className="absolute -bottom-7 left-4 z-30 max-w-57.5 rounded-2xl border border-border-strong bg-card p-4 shadow-[0_18px_42px_rgb(0_0_0/0.16)] sm:left-7">
         <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
           {educationLabel}
         </p>

@@ -72,17 +72,31 @@ export default async function AboutStory() {
                   className="tech-grid absolute inset-0 opacity-25"
                 />
 
-                <Image
-                  src={profileImages.about}
-                  alt={siteConfig.fullName}
-                  fill
-                  sizes="(max-width: 1023px) 380px, 380px"
-                  className="z-10 object-cover object-[50%_30%]"
-                />
+                <div className="absolute inset-3 z-10 overflow-hidden rounded-[1.45rem] bg-secondary sm:inset-4">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[linear-gradient(145deg,var(--secondary),var(--tertiary))]"
+                  />
+
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-3 rounded-[1.05rem] border border-border"
+                  />
+
+                  <div className="absolute inset-x-0 top-1/2 z-10 aspect-square -translate-y-1/2 overflow-hidden rounded-[1.15rem]">
+                    <Image
+                      src={profileImages.about}
+                      alt={siteConfig.fullName}
+                      fill
+                      sizes="(max-width: 1023px) 350px, 350px"
+                      className="object-cover object-center"
+                    />
+                  </div>
+                </div>
 
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[35%] bg-[linear-gradient(to_top,rgb(0_0_0/0.10),transparent)]"
+                  className="pointer-events-none absolute inset-x-3 bottom-3 z-20 h-[16%] rounded-b-[1.45rem] bg-[linear-gradient(to_top,color-mix(in_srgb,var(--foreground)_8%,transparent),transparent)] sm:inset-x-4 sm:bottom-4"
                 />
               </div>
 
