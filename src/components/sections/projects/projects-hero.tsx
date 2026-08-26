@@ -29,9 +29,9 @@ export default function ProjectsHero() {
 
           <p className="mt-8 max-w-2xl text-[17px] leading-8 text-muted-foreground sm:text-lg sm:leading-9">
             A curated selection of
-            academic, professional, and
-            collaborative projects
-            across full-stack
+            academic, professional,
+            collaborative, and personal
+            projects across full-stack
             development, frontend
             implementation, and data.
           </p>
@@ -46,7 +46,8 @@ export default function ProjectsHero() {
           </p>
 
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
-            Academic + Professional
+            Academic + Professional +
+            Personal
           </p>
 
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
