@@ -1,3 +1,6 @@
+import Image from "next/image";
+
+import { profileImages } from "@/data/assets";
 import { siteConfig } from "@/data/site";
 import { aboutDictionary } from "@/i18n/dictionaries/about";
 import { getLocale } from "@/i18n/get-locale";
@@ -69,31 +72,22 @@ export default async function AboutStory() {
                   className="tech-grid absolute inset-0 opacity-25"
                 />
 
-                <div className="absolute inset-0 grid place-items-center">
-                  <span className="font-brand text-[clamp(7rem,18vw,11rem)] font-bold tracking-[-0.08em] text-foreground/10">
-                    {
-                      siteConfig.monogram
-                    }
-                  </span>
-                </div>
+                <Image
+                  src={profileImages.about}
+                  alt={siteConfig.fullName}
+                  fill
+                  sizes="(max-width: 1023px) 380px, 380px"
+                  className="z-10 object-cover object-[50%_30%]"
+                />
 
-                <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgb(0_0_0/0.65),transparent)] px-6 pb-6 pt-24">
-                  <p className="font-display text-lg font-semibold text-white">
-                    {
-                      siteConfig.fullName
-                    }
-                  </p>
-
-                  <p className="mt-1 text-xs text-white/70">
-                    {
-                      siteConfig.role
-                    }
-                  </p>
-                </div>
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[35%] bg-[linear-gradient(to_top,rgb(0_0_0/0.10),transparent)]"
+                />
               </div>
 
               <p className="absolute -right-2 top-8 hidden rotate-90 font-mono text-[9px] uppercase tracking-[0.17em] text-muted-foreground xl:block">
-                Portrait / later
+                Profile / Rizqi
               </p>
             </div>
           </div>

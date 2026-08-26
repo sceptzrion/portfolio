@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 
+import { profileImages } from "@/data/assets";
 import { siteConfig } from "@/data/site";
 import { homeDictionary } from "@/i18n/dictionaries/home";
 import { sharedDictionary } from "@/i18n/dictionaries/shared";
@@ -23,47 +25,64 @@ function ArrowIcon() {
   );
 }
 
-function PortraitPlaceholder({
+function PortraitImage({
   ariaLabel,
-  comingLater,
 }: {
   ariaLabel: string;
-  comingLater: string;
 }) {
   return (
-    <div
-      aria-label={ariaLabel}
-      className="relative aspect-5/6 w-full overflow-hidden bg-muted"
-    >
+    <div className="relative aspect-5/6 w-full overflow-hidden bg-[#f4eee6]">
+      {/* Warm base */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(circle_at_68%_20%,color-mix(in_srgb,var(--primary)_18%,transparent),transparent_34%),linear-gradient(145deg,var(--muted),var(--tertiary))]"
+        className="absolute inset-0 bg-[linear-gradient(145deg,#f7f2eb_0%,#f2e8de_58%,#eee3d7_100%)]"
       />
 
+      {/* Large orange focal shape */}
       <div
         aria-hidden="true"
-        className="absolute right-[-15%] top-[10%] size-[70%] rounded-full border border-primary/20"
+        className="absolute left-1/2 top-[46%] size-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/82"
       />
 
+      {/* Soft orange halo */}
       <div
         aria-hidden="true"
-        className="absolute bottom-[8%] left-[-12%] size-[58%] rounded-full bg-primary/10 blur-3xl"
+        className="absolute left-1/2 top-[46%] size-[91%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/25"
       />
 
-      <div className="absolute inset-0 grid place-items-center">
-        <div className="text-center">
-          <span className="font-display text-[clamp(5rem,12vw,9rem)] font-extrabold tracking-[-0.08em] text-foreground/10">
-            {siteConfig.monogram}
-          </span>
+      {/* Technical texture */}
+      <div
+        aria-hidden="true"
+        className="tech-grid absolute inset-0 opacity-[0.08]"
+      />
 
-          <p className="mono mt-3 text-muted-foreground">
-            {comingLater}
-          </p>
-        </div>
-      </div>
+      {/* Small glow */}
+      <div
+        aria-hidden="true"
+        className="absolute right-[-18%] top-[-10%] size-[58%] rounded-full bg-primary/20 blur-3xl"
+      />
 
-      <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgb(0_0_0/0.55),transparent)] px-5 pb-5 pt-16">
-        <p className="font-display text-lg font-semibold text-white">
+      {/* Portrait */}
+      <Image
+        src={
+          profileImages.secondary
+        }
+        alt={ariaLabel}
+        fill
+        priority
+        sizes="(max-width: 639px) 320px, (max-width: 1023px) 430px, 430px"
+        className="z-20 origin-bottom object-contain object-bottom scale-[1.16] sm:scale-[1.20] lg:scale-[1.22]"
+      />
+
+      {/* Bottom readability fade */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-[27%] bg-[linear-gradient(to_top,rgb(24_20_17/0.58),transparent)]"
+      />
+
+      {/* Identity */}
+      <div className="absolute inset-x-0 bottom-0 z-40 px-5 pb-5 pt-14">
+        <p className="font-display text-[17px] font-semibold text-white sm:text-lg">
           {siteConfig.fullName}
         </p>
 
@@ -83,7 +102,7 @@ function ProjectPreview({
   return (
     <div
       aria-hidden="true"
-      className="absolute -bottom-7 -left-5 hidden w-55 rotate-[-4deg] overflow-hidden rounded-xl border border-border-strong bg-card shadow-[0_20px_55px_rgb(33_30_26/0.18)] transition-transform duration-500 hover:rotate-0 sm:block lg:-left-10"
+      className="absolute -bottom-7 -left-5 z-40 hidden w-55 rotate-[-4deg] overflow-hidden rounded-xl border border-border-strong bg-card shadow-[0_20px_55px_rgb(33_30_26/0.22)] transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:rotate-0 hover:shadow-[0_26px_65px_rgb(33_30_26/0.26)] sm:block lg:-left-10"
     >
       <div className="flex items-center border-b border-border px-3 py-2">
         <div className="flex items-center gap-1">
@@ -350,13 +369,10 @@ export default async function Hero() {
               className="absolute -right-7.75 top-[21%] hidden size-2 rounded-full border border-primary bg-background sm:block"
             />
 
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[0_24px_60px_rgb(33_30_26/0.10)]">
-              <PortraitPlaceholder
+            <div className="relative z-10 overflow-hidden rounded-[1.75rem] border border-border-strong bg-card shadow-[0_24px_60px_rgb(33_30_26/0.12)]">
+              <PortraitImage
                 ariaLabel={
                   copy.portraitLabel
-                }
-                comingLater={
-                  copy.portraitComingLater
                 }
               />
             </div>
@@ -367,7 +383,7 @@ export default async function Hero() {
               }
             />
 
-            <div className="absolute -right-3 top-7 rounded-full border border-border-strong bg-card/90 px-4 py-2 text-xs font-medium shadow-lg backdrop-blur-md sm:-right-5">
+            <div className="absolute -right-3 top-7 z-50 rounded-full border border-border-strong bg-card/95 px-4 py-2 text-xs font-medium shadow-lg backdrop-blur-md sm:-right-5">
               <span
                 aria-hidden="true"
                 className="mr-1.5 text-primary"
@@ -378,7 +394,7 @@ export default async function Hero() {
               {siteConfig.domain}
             </div>
 
-            <div className="absolute bottom-8 -right-2.5 hidden rounded-full border border-border-strong bg-card/90 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground shadow-lg backdrop-blur-md md:block lg:-right-6">
+            <div className="absolute bottom-8 -right-2.5 z-50 hidden rounded-full border border-border-strong bg-card/95 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground shadow-lg backdrop-blur-md md:block lg:-right-6">
               Full-stack / web
             </div>
           </div>

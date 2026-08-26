@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 
+import { profileImages } from "@/data/assets";
 import { profile } from "@/data/profile";
 import { siteConfig } from "@/data/site";
 import { homeDictionary } from "@/i18n/dictionaries/home";
@@ -23,14 +25,12 @@ function ArrowIcon() {
   );
 }
 
-function PortraitPlaceholder({
+function PortraitVisual({
   educationLabel,
   degree,
-  placeholderLabel,
 }: {
   educationLabel: string;
   degree: string;
-  placeholderLabel: string;
 }) {
   return (
     <div className="relative">
@@ -70,27 +70,18 @@ function PortraitPlaceholder({
           className="absolute bottom-[-12%] left-[-15%] size-[65%] rounded-full bg-primary/10 blur-3xl"
         />
 
-        <div className="absolute inset-0 grid place-items-center">
-          <div className="text-center">
-            <span className="font-display text-[clamp(6rem,16vw,10rem)] font-extrabold tracking-[-0.08em] text-foreground/10">
-              {siteConfig.monogram}
-            </span>
+        <Image
+          src={profileImages.about}
+          alt={siteConfig.fullName}
+          fill
+          sizes="(max-width: 639px) 304px, 430px"
+          className="z-10 object-cover object-[50%_32%] transition-transform duration-700 group-hover:scale-[1.02]"
+        />
 
-            <p className="mono mt-3 text-muted-foreground">
-              {placeholderLabel}
-            </p>
-          </div>
-        </div>
-
-        <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgb(0_0_0/0.62),transparent)] px-5 pb-5 pt-20">
-          <p className="font-display text-lg font-semibold text-white">
-            {siteConfig.fullName}
-          </p>
-
-          <p className="mt-1 text-xs text-white/70">
-            {siteConfig.role}
-          </p>
-        </div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[38%] bg-[linear-gradient(to_top,rgb(0_0_0/0.12),transparent)]"
+        />
       </div>
 
       {/* Education floating card */}
@@ -153,15 +144,12 @@ export default async function AboutPreview() {
             data-reveal
             className="reveal-on-scroll reveal-from-left mx-auto w-full max-w-76 pb-8 sm:max-w-107.5 lg:mx-0"
           >
-            <PortraitPlaceholder
+            <PortraitVisual
               educationLabel={
                 copy.education.label
               }
               degree={
                 copy.education.degree
-              }
-              placeholderLabel={
-                copy.portraitPlaceholder
               }
             />
           </div>
