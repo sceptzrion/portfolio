@@ -1,4 +1,4 @@
-# Rizqi Yanuar Portfolio
+# Portfolio
 
 Personal portfolio of **Muhamad Ikhsan Rizqi Yanuar**, a Full-Stack Web Developer based in Karawang, West Java, Indonesia.
 
