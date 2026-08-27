@@ -265,6 +265,20 @@ function MobileMockup({
   );
 }
 
+function PlainMockup({
+  index,
+}: {
+  index: number;
+}) {
+  return (
+    <div className="absolute inset-[7%] overflow-hidden rounded-xl border border-border-strong bg-card shadow-[0_20px_55px_rgb(33_30_26/0.10)] transition-transform duration-700 group-hover:-translate-y-1">
+      <PlaceholderContent
+        index={index}
+      />
+    </div>
+  );
+}
+
 function ScreenPlaceholder({
   project,
   screen,
@@ -284,10 +298,11 @@ function ScreenPlaceholder({
           screen.layout,
         );
 
-  const mobileMockup =
-    !primary &&
-    screen.layout ===
-      "portrait";
+  const frame =
+    primary
+      ? "browser"
+      : screen.frame ??
+        "browser";
 
   return (
     <div
@@ -306,9 +321,13 @@ function ScreenPlaceholder({
         className="absolute right-[-10%] top-[-18%] size-[48%] rounded-full bg-primary/10 blur-3xl"
       />
 
-      {mobileMockup ? (
+      {frame === "phone" ? (
         <MobileMockup
           project={project}
+          index={index}
+        />
+      ) : frame === "plain" ? (
+        <PlainMockup
           index={index}
         />
       ) : (
@@ -507,7 +526,7 @@ export default function ProjectDetailView({
                 {copy.overview}
               </SectionLabel>
 
-              <p className="mt-6 max-w-3xl font-display text-[clamp(1.4rem,2.35vw,2.2rem)] font-semibold leading-[1.22] tracking-[-0.03em]">
+              <p className="mt-6 max-w-3xl font-display text-[clamp(1.35rem,2.1vw,2rem)] font-semibold leading-tight tracking-tight">
                 {detail.overview}
               </p>
             </div>
@@ -538,6 +557,35 @@ export default function ProjectDetailView({
                   )}
                 </ul>
               </div>
+
+              {detail.responsibilities &&
+              detail.responsibilities.length >
+                0 ? (
+                <div className="rounded-3xl border border-border bg-card p-6 sm:p-7">
+                  <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-primary">
+                    {
+                      copy.responsibilities
+                    }
+                  </p>
+
+                  <ul className="mt-5 space-y-4">
+                    {detail.responsibilities.map(
+                      (item) => (
+                        <li
+                          key={item}
+                          className="flex gap-3 text-sm leading-6 text-muted-foreground"
+                        >
+                          <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+
+                          <span>
+                            {item}
+                          </span>
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                </div>
+              ) : null}
 
               {project.tech.length >
               0 ? (
@@ -598,7 +646,7 @@ export default function ProjectDetailView({
             </h2>
           </div>
 
-          <div className="mt-10 grid overflow-hidden rounded-3xl border border-feature-border sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid overflow-hidden rounded-3xl border border-feature-border sm:grid-cols-2">
             {detail.features.map(
               (feature, index) => (
                 <article
@@ -717,7 +765,7 @@ export default function ProjectDetailView({
 
             <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-muted-foreground">
               {String(
-                detail.screens.length,
+                supportingScreens.length,
               ).padStart(
                 2,
                 "0",

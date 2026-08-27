@@ -5,10 +5,17 @@ export type ProjectScreenLayout =
   | "standard"
   | "portrait";
 
+export type ProjectScreenFrame =
+  | "browser"
+  | "phone"
+  | "plain";
+
 export type ProjectDetailProjectCopy = {
   overview: string;
 
   focus: readonly string[];
+
+  responsibilities?: readonly string[];
 
   features: readonly {
     title: string;
@@ -24,6 +31,7 @@ export type ProjectDetailProjectCopy = {
     label: string;
     detail: string;
     layout: ProjectScreenLayout;
+    frame?: ProjectScreenFrame;
   }[];
 };
 
@@ -39,6 +47,7 @@ type ProjectDetailsDictionary = {
 
     overview: string;
     focus: string;
+    responsibilities: string;
     technology: string;
     keyFeatures: string;
     implementation: string;
@@ -60,7 +69,10 @@ type ProjectDetailsDictionary = {
   >;
 };
 
-export const projectDetailsDictionary = {
+export const projectDetailsDictionary: Record<
+  Locale,
+  ProjectDetailsDictionary
+> = {
   en: {
     ui: {
       back: "All Projects",
@@ -73,9 +85,10 @@ export const projectDetailsDictionary = {
 
       overview: "Overview",
       focus: "Project Focus",
+      responsibilities: "Responsibilities",
       technology: "Technology",
       keyFeatures: "Key Features",
-      implementation: "Implementation",
+      implementation: "Technical Implementation",
       screens: "Selected Screens",
       selectedScreens:
         "selected screens",
@@ -96,13 +109,20 @@ export const projectDetailsDictionary = {
     projects: {
       edubidan: {
         overview:
-          "EduBidan is a Learning Management System developed as a bachelor's thesis project for midwifery education. It combines role-based access, interactive learning modules, randomized quizzes, and progress tracking in one full-stack web application.",
+          "EduBidan was developed as my bachelor's thesis to support structured digital learning for midwifery education. I worked across the application stack, covering role-based access, learning modules, randomized quizzes, progress tracking, media handling, and transactional email.",
 
         focus: [
-          "Structure learning content and assessment in one application.",
-          "Separate capabilities through role-based access.",
+          "Bring learning content and assessment into one structured application.",
+          "Provide distinct access and capabilities for each user role.",
           "Randomize quiz question order with Fisher-Yates Shuffle.",
           "Track learning progress across the platform.",
+        ],
+
+        responsibilities: [
+          "Develop the application across frontend and backend.",
+          "Implement authentication and role-based access control.",
+          "Build learning modules, quizzes, and progress tracking.",
+          "Integrate Cloudinary for media handling and Resend for email delivery.",
         ],
 
         features: [
@@ -129,18 +149,6 @@ export const projectDetailsDictionary = {
               "Progress Tracking",
             detail:
               "Learning progress can be tracked as users move through the platform.",
-          },
-          {
-            title:
-              "Media Management",
-            detail:
-              "Cloudinary supports media storage and delivery within the application.",
-          },
-          {
-            title:
-              "Email Service",
-            detail:
-              "Resend supports transactional email needs within the platform.",
           },
         ],
 
@@ -286,6 +294,8 @@ export const projectDetailsDictionary = {
               "A mobile or narrow-screen view showing responsive behavior.",
             layout:
               "portrait",
+            frame:
+              "phone",
           },
         ],
       },
@@ -505,12 +515,14 @@ export const projectDetailsDictionary = {
         "Ringkasan",
       focus:
         "Fokus Proyek",
+      responsibilities:
+        "Tanggung Jawab",
       technology:
         "Teknologi",
       keyFeatures:
         "Fitur Utama",
       implementation:
-        "Implementasi",
+        "Implementasi Teknis",
       screens:
         "Tampilan Pilihan",
       selectedScreens:
@@ -532,13 +544,20 @@ export const projectDetailsDictionary = {
     projects: {
       edubidan: {
         overview:
-          "EduBidan adalah Learning Management System yang dikembangkan sebagai proyek skripsi untuk pendidikan kebidanan. Aplikasi ini menggabungkan akses berbasis role, modul pembelajaran interaktif, kuis teracak, dan pelacakan progres dalam satu aplikasi web full-stack.",
+          "EduBidan dikembangkan sebagai proyek skripsi untuk mendukung pembelajaran kebidanan dalam satu platform digital yang terstruktur. Saya mengerjakan aplikasi secara full-stack, mencakup akses berbasis role, modul pembelajaran, kuis teracak, pelacakan progres, pengelolaan media, dan email transaksional.",
 
         focus: [
-          "Menyusun konten pembelajaran dan asesmen dalam satu aplikasi.",
-          "Memisahkan kemampuan pengguna melalui akses berbasis role.",
+          "Menggabungkan konten pembelajaran dan asesmen dalam satu aplikasi yang terstruktur.",
+          "Menyediakan akses dan kemampuan yang berbeda untuk setiap role pengguna.",
           "Mengacak urutan soal kuis menggunakan Fisher-Yates Shuffle.",
           "Melacak progres pembelajaran di dalam platform.",
+        ],
+
+        responsibilities: [
+          "Mengembangkan aplikasi pada sisi frontend dan backend.",
+          "Mengimplementasikan autentikasi dan role-based access control.",
+          "Membangun modul pembelajaran, kuis, dan pelacakan progres.",
+          "Mengintegrasikan Cloudinary untuk media serta Resend untuk pengiriman email.",
         ],
 
         features: [
@@ -565,18 +584,6 @@ export const projectDetailsDictionary = {
               "Pelacakan Progres",
             detail:
               "Progres pembelajaran dapat dipantau selama pengguna menggunakan platform.",
-          },
-          {
-            title:
-              "Manajemen Media",
-            detail:
-              "Cloudinary mendukung penyimpanan dan penyajian media di dalam aplikasi.",
-          },
-          {
-            title:
-              "Email Service",
-            detail:
-              "Resend mendukung kebutuhan email transaksional pada platform.",
           },
         ],
 
@@ -722,6 +729,8 @@ export const projectDetailsDictionary = {
               "Tampilan mobile atau layar sempit yang menunjukkan perilaku responsif.",
             layout:
               "portrait",
+            frame:
+              "phone",
           },
         ],
       },
@@ -925,7 +934,4 @@ export const projectDetailsDictionary = {
       },
     },
   },
-} satisfies Record<
-  Locale,
-  ProjectDetailsDictionary
->;
+};
