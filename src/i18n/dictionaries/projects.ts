@@ -253,7 +253,7 @@ export const projectsIdContent: Record<
 
   "lestari-waste-bank": {
     tagline:
-      "Platform bank sampah digital kolaboratif untuk layanan pengelolaan sampah, pencatatan poin, reward, konten edukasi, dan alur pengelolaan pendukung.",
+      "Platform bank sampah digital kolaboratif untuk layanan sampah, poin, reward, konten edukasi, dan pengelolaan pendukung.",
 
     category:
       "Frontend Development",

@@ -126,7 +126,7 @@ export const projects: readonly Project[] = [
     title:
       "Lestari Waste Bank",
     tagline:
-      "A collaborative digital waste-bank platform for waste collection services, point tracking, rewards, educational content, and supporting management flows.",
+      "A collaborative digital waste-bank platform for waste services, points, rewards, educational content, and management flows.",
     category:
       "Frontend Development",
     context:
@@ -162,8 +162,6 @@ export const projects: readonly Project[] = [
       "Streamlit",
       "scikit-learn",
       "Linear Regression",
-      "MetalPriceAPI",
-      "CurrencyAPI",
     ],
     filters: [
       "data-ml",

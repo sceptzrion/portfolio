@@ -115,7 +115,7 @@ export const projectDetailsDictionary: Record<
     projects: {
       edubidan: {
         overview:
-          "EduBidan is a full-stack Learning Management System developed as my bachelor's thesis for midwifery education. It supports distinct Student, Lecturer, and Admin workflows, structured modules with sequential learning access, randomized quizzes, progress tracking, lecturer gradebook workflows, media handling, and notifications.",
+          "EduBidan is a full-stack Learning Management System developed as my bachelor's thesis for midwifery education. It supports distinct Student, Lecturer, and Admin workflows, structured modules with sequential learning access, randomized quizzes, progress tracking, lecturer gradebook, media handling, and notifications.",
 
         focus: [
           "Organize learning content and assessments in a structured module flow.",
@@ -392,7 +392,7 @@ export const projectDetailsDictionary: Record<
 
       "gold-price-prediction": {
         overview:
-          "Gold Price Prediction System is a Machine Learning course project built as a Streamlit application. Although the assignment was completed as a group project, I handled the application code and technical implementation independently, integrating a linear regression model with gold-price and USD/IDR data, automatic conversion, next-day prediction, and manual simulation.",
+          "Gold Price Prediction System is a Machine Learning course project built as a Streamlit application. I developed the application and technical implementation, integrating a linear regression model with gold-price and USD/IDR data, automatic currency and unit conversion, next-day prediction, and manual simulation.",
 
         focus: [
           "Use recent gold-price values as inputs for a linear regression prediction model.",
@@ -468,13 +468,13 @@ export const projectDetailsDictionary: Record<
             title:
               "Destination Discovery",
             detail:
-              "Selected Indonesian destinations are presented through visual destination cards and external tourism references.",
+              "Selected Indonesian destinations are presented through visual destination cards.",
           },
           {
             title:
               "Travel Guidance",
             detail:
-              "A dedicated guidance section directs visitors to supporting travel and safety information.",
+              "A dedicated guidance section presents supporting information for planning a trip.",
           },
           {
             title:
@@ -602,11 +602,11 @@ export const projectDetailsDictionary: Record<
             title:
               "Kuis & Asesmen",
             detail:
-              "Soal dan pilihan jawaban diacak menggunakan Fisher-Yates Shuffle dengan dukungan batas waktu, attempt, dan hasil kuis.",
+              "Soal dan pilihan jawaban diacak menggunakan Fisher-Yates Shuffle dengan dukungan batas waktu, riwayat pengerjaan, dan hasil kuis.",
           },
           {
             title:
-              "Learning Management",
+              "Pengelolaan Pembelajaran",
             detail:
               "Gradebook dosen, enrollment, pengelolaan pengguna, dan notifikasi mendukung workflow LMS secara menyeluruh.",
           },
@@ -846,7 +846,7 @@ export const projectDetailsDictionary: Record<
 
       "gold-price-prediction": {
         overview:
-          "Gold Price Prediction System adalah proyek mata kuliah Machine Learning yang dibangun sebagai aplikasi Streamlit. Walaupun tugas dikerjakan dalam kelompok, saya menangani kode aplikasi dan implementasi teknis secara mandiri, termasuk integrasi model linear regression, data harga emas dan USD/IDR, konversi otomatis, prediksi hari berikutnya, serta simulasi manual.",
+          "Gold Price Prediction System adalah proyek mata kuliah Machine Learning yang dibangun sebagai aplikasi Streamlit. Saya mengembangkan aplikasi dan implementasi teknisnya, mencakup integrasi model linear regression dengan data harga emas dan USD/IDR, konversi mata uang dan satuan secara otomatis, prediksi hari berikutnya, serta simulasi manual.",
 
         focus: [
           "Menggunakan nilai harga emas terbaru sebagai input model prediksi linear regression.",
@@ -922,13 +922,13 @@ export const projectDetailsDictionary: Record<
             title:
               "Eksplorasi Destinasi",
             detail:
-              "Destinasi pilihan di Indonesia disajikan melalui card visual dan referensi pariwisata eksternal.",
+              "Destinasi pilihan di Indonesia disajikan melalui card visual.",
           },
           {
             title:
               "Panduan Perjalanan",
             detail:
-              "Bagian panduan mengarahkan pengunjung ke informasi pendukung mengenai perjalanan dan keselamatan wisata.",
+              "Bagian panduan menyajikan informasi pendukung untuk membantu perencanaan perjalanan.",
           },
           {
             title:
