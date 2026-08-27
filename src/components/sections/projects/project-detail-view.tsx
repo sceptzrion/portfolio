@@ -771,7 +771,9 @@ export default function ProjectDetailView({
                 "0",
               ) +
                 " " +
-                copy.selectedScreens}
+                (supportingScreens.length === 1
+                  ? copy.selectedScreen
+                  : copy.selectedScreens)}
             </p>
           </div>
 

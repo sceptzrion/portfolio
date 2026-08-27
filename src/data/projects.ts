@@ -168,7 +168,7 @@ export const projects: readonly Project[] = [
     index: "05",
     title: "HealingAja!",
     tagline:
-      "A tourism landing page focused on presenting destinations and travel information through a clear web experience.",
+      "A tourism landing page for presenting destinations and travel information.",
     category:
       "Frontend Development",
     context:

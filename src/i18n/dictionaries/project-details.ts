@@ -52,6 +52,7 @@ type ProjectDetailsDictionary = {
     keyFeatures: string;
     implementation: string;
     screens: string;
+    selectedScreen: string;
     selectedScreens: string;
     primaryScreen: string;
 
@@ -90,6 +91,8 @@ export const projectDetailsDictionary: Record<
       keyFeatures: "Key Features",
       implementation: "Technical Implementation",
       screens: "Selected Screens",
+      selectedScreen:
+        "selected screen",
       selectedScreens:
         "selected screens",
       primaryScreen:
@@ -109,7 +112,7 @@ export const projectDetailsDictionary: Record<
     projects: {
       edubidan: {
         overview:
-          "EduBidan was developed as my bachelor's thesis to support structured digital learning for midwifery education. I worked across the application stack, covering role-based access, learning modules, randomized quizzes, progress tracking, media handling, and transactional email.",
+          "EduBidan was developed as my bachelor's thesis to support structured digital learning for midwifery education. I worked across the application stack, covering role-based access, learning modules, randomized quizzes, progress tracking, media handling, and email delivery.",
 
         focus: [
           "Bring learning content and assessment into one structured application.",
@@ -119,10 +122,10 @@ export const projectDetailsDictionary: Record<
         ],
 
         responsibilities: [
-          "Develop the application across frontend and backend.",
-          "Implement authentication and role-based access control.",
-          "Build learning modules, quizzes, and progress tracking.",
-          "Integrate Cloudinary for media handling and Resend for email delivery.",
+          "Developed the application across frontend and backend.",
+          "Implemented authentication and role-based access control.",
+          "Built learning modules, quizzes, and progress tracking.",
+          "Integrated Cloudinary for media handling and Resend for email delivery.",
         ],
 
         features: [
@@ -215,12 +218,19 @@ export const projectDetailsDictionary: Record<
 
       "disarpus-bekasi": {
         overview:
-          "During my internship, I developed responsive frontend pages for the revitalization of the Disarpus Kabupaten Bekasi website based on approved Figma designs. The work included the homepage, navigation, news-related interfaces, and responsive layout improvements using Next.js.",
+          "During my internship, I developed responsive frontend pages for the Disarpus Kabupaten Bekasi website from Figma designs using Next.js. My work covered the homepage, navigation, news-related interfaces, and responsive layout refinements.",
 
         focus: [
-          "Translate approved Figma designs into responsive web pages.",
+          "Translate Figma designs into responsive web pages.",
           "Keep the implementation visually consistent across screen sizes.",
-          "Build maintainable frontend pages within an existing project workflow.",
+          "Develop frontend pages within an existing project workflow.",
+        ],
+
+        responsibilities: [
+          "Translated Figma designs into responsive Next.js pages.",
+          "Implemented the homepage, navigation, and news-related interfaces.",
+          "Reviewed and fixed layout issues across different screen sizes.",
+          "Collaborated with the team during implementation and refinement.",
         ],
 
         features: [
@@ -244,30 +254,30 @@ export const projectDetailsDictionary: Record<
           },
           {
             title:
-              "Responsive Layout",
+              "Responsive Experience",
             detail:
-              "Layout and responsive issues were diagnosed and corrected across screens.",
+              "Layouts were adjusted to support a consistent experience across screen sizes.",
           },
         ],
 
         implementation: [
           {
             title:
-              "Design Handoff",
+              "Figma-to-Code",
             detail:
-              "Approved Figma layouts were used as the visual implementation reference.",
+              "Figma designs were used as the visual reference for implementation.",
           },
           {
             title:
-              "Frontend Development",
+              "Next.js Frontend",
             detail:
-              "Responsive pages were implemented with Next.js.",
+              "Responsive frontend pages were implemented using Next.js.",
           },
           {
             title:
-              "Responsive QA",
+              "Responsive Refinement",
             detail:
-              "Layout issues were reviewed and adjusted across different viewport sizes.",
+              "Layouts were reviewed and adjusted across different viewport sizes.",
           },
         ],
 
@@ -302,13 +312,18 @@ export const projectDetailsDictionary: Record<
 
       "lestari-waste-bank": {
         overview:
-          "Lestari Waste Bank is a collaborative digital waste-management project developed during the Kampus Merdeka MSIB program. I worked on the frontend using Laravel, contributing to flows for waste pickup requests, point tracking, educational content, and community rewards.",
+          "Lestari Waste Bank is a collaborative digital waste-management project developed during the Kampus Merdeka MSIB program. I contributed to the frontend using Laravel, including flows for waste pickup requests, point tracking, educational content, and rewards.",
 
         focus: [
           "Make waste pickup requests accessible through a digital interface.",
           "Present point tracking and rewards clearly to users.",
-          "Support educational content as part of the waste-management experience.",
-          "Work collaboratively as part of a team project.",
+          "Support educational content within the waste-management experience.",
+        ],
+
+        responsibilities: [
+          "Developed frontend interfaces using Laravel.",
+          "Contributed to waste pickup, point tracking, educational content, and reward flows.",
+          "Collaborated with the team throughout project development.",
         ],
 
         features: [
@@ -328,28 +343,13 @@ export const projectDetailsDictionary: Record<
             title:
               "Rewards",
             detail:
-              "The platform includes a reward-oriented experience connected to points.",
+              "Rewards are presented as part of the platform experience alongside point tracking.",
           },
           {
             title:
               "Educational Content",
             detail:
               "Waste-related educational information is presented within the platform.",
-          },
-        ],
-
-        implementation: [
-          {
-            title:
-              "Frontend",
-            detail:
-              "Frontend interfaces were developed using Laravel.",
-          },
-          {
-            title:
-              "Team Collaboration",
-            detail:
-              "The project was developed collaboratively as part of the MSIB program.",
           },
         ],
 
@@ -382,7 +382,7 @@ export const projectDetailsDictionary: Record<
 
       "gold-price-prediction": {
         overview:
-          "Gold Price Prediction System is a prediction project that uses linear regression with gold price and USD/IDR data. It also includes a manual simulation flow for exploring predicted values through different inputs.",
+          "Gold Price Prediction System uses linear regression with gold price and USD/IDR data to generate predicted values. It also includes a manual simulation flow for exploring predictions through different inputs.",
 
         focus: [
           "Use gold price and USD/IDR data as prediction inputs.",
@@ -393,15 +393,9 @@ export const projectDetailsDictionary: Record<
         features: [
           {
             title:
-              "Gold Price Data",
+              "Data Inputs",
             detail:
-              "Gold Price API data is used as part of the prediction input.",
-          },
-          {
-            title:
-              "USD/IDR Data",
-            detail:
-              "Currency data is incorporated through a USD/IDR API.",
+              "Gold price and USD/IDR data are used as inputs within the prediction flow.",
           },
           {
             title:
@@ -411,30 +405,15 @@ export const projectDetailsDictionary: Record<
           },
           {
             title:
+              "Prediction Result",
+            detail:
+              "Prediction results are presented through the system interface.",
+          },
+          {
+            title:
               "Manual Simulation",
             detail:
-              "Users can explore predicted values through a manual simulation flow.",
-          },
-        ],
-
-        implementation: [
-          {
-            title:
-              "Market Input",
-            detail:
-              "Gold Price API data provides a market-price input.",
-          },
-          {
-            title:
-              "Currency Input",
-            detail:
-              "USD/IDR API data provides the currency component.",
-          },
-          {
-            title:
-              "Prediction Method",
-            detail:
-              "Linear regression processes the available inputs for prediction.",
+              "A manual simulation flow allows predicted values to be explored through different inputs.",
           },
         ],
 
@@ -458,19 +437,19 @@ export const projectDetailsDictionary: Record<
 
       healingaja: {
         overview:
-          "HealingAja! is a tourism landing page focused on presenting destinations and travel information through a clear web experience.",
+          "HealingAja! is a personal tourism landing-page project focused on presenting destinations and travel information through a clear content structure.",
 
         focus: [
-          "Present tourism destinations in a clear visual hierarchy.",
+          "Present destination content through a clear visual hierarchy.",
           "Organize travel information within a focused landing-page experience.",
         ],
 
         features: [
           {
             title:
-              "Destination Presentation",
+              "Destination Highlights",
             detail:
-              "Tourism destinations are presented as the main visual content of the page.",
+              "Destination content is presented as the primary visual focus of the page.",
           },
           {
             title:
@@ -525,6 +504,8 @@ export const projectDetailsDictionary: Record<
         "Implementasi Teknis",
       screens:
         "Tampilan Pilihan",
+      selectedScreen:
+        "tampilan terpilih",
       selectedScreens:
         "tampilan terpilih",
       primaryScreen:
@@ -544,7 +525,7 @@ export const projectDetailsDictionary: Record<
     projects: {
       edubidan: {
         overview:
-          "EduBidan dikembangkan sebagai proyek skripsi untuk mendukung pembelajaran kebidanan dalam satu platform digital yang terstruktur. Saya mengerjakan aplikasi secara full-stack, mencakup akses berbasis role, modul pembelajaran, kuis teracak, pelacakan progres, pengelolaan media, dan email transaksional.",
+          "EduBidan dikembangkan sebagai proyek skripsi untuk mendukung pembelajaran kebidanan dalam satu platform digital yang terstruktur. Saya mengerjakan aplikasi secara full-stack, mencakup akses berbasis role, modul pembelajaran, kuis teracak, pelacakan progres, pengelolaan media, dan pengiriman email.",
 
         focus: [
           "Menggabungkan konten pembelajaran dan asesmen dalam satu aplikasi yang terstruktur.",
@@ -608,7 +589,7 @@ export const projectDetailsDictionary: Record<
           },
           {
             title:
-              "Supporting Services",
+              "Layanan Pendukung",
             detail:
               "Cloudinary menangani media, sedangkan Resend mendukung pengiriman email.",
           },
@@ -650,12 +631,19 @@ export const projectDetailsDictionary: Record<
 
       "disarpus-bekasi": {
         overview:
-          "Selama magang, saya mengembangkan halaman frontend responsif untuk revitalisasi website Disarpus Kabupaten Bekasi berdasarkan desain Figma yang telah disiapkan. Pekerjaan mencakup homepage, navigasi, antarmuka berita, serta perbaikan layout responsif menggunakan Next.js.",
+          "Selama magang, saya mengembangkan halaman frontend responsif untuk website Disarpus Kabupaten Bekasi dari desain Figma menggunakan Next.js. Pekerjaan saya mencakup homepage, navigasi, antarmuka berita, serta penyempurnaan layout responsif.",
 
         focus: [
           "Menerapkan desain Figma menjadi halaman web responsif.",
           "Menjaga konsistensi tampilan pada berbagai ukuran layar.",
-          "Membangun halaman frontend yang mudah dikembangkan dalam workflow proyek yang sudah berjalan.",
+          "Mengembangkan halaman frontend dalam workflow proyek yang sudah berjalan.",
+        ],
+
+        responsibilities: [
+          "Menerapkan desain Figma menjadi halaman Next.js yang responsif.",
+          "Mengembangkan homepage, navigasi, dan antarmuka terkait berita.",
+          "Meninjau dan memperbaiki masalah layout pada berbagai ukuran layar.",
+          "Berkolaborasi dengan tim selama proses implementasi dan penyempurnaan.",
         ],
 
         features: [
@@ -679,28 +667,28 @@ export const projectDetailsDictionary: Record<
           },
           {
             title:
-              "Responsive Layout",
+              "Tampilan Responsif",
             detail:
-              "Masalah layout responsif dianalisis dan diperbaiki pada berbagai ukuran layar.",
+              "Layout disesuaikan untuk menjaga pengalaman yang konsisten pada berbagai ukuran layar.",
           },
         ],
 
         implementation: [
           {
             title:
-              "Design Handoff",
+              "Figma-to-Code",
             detail:
-              "Desain Figma yang telah disiapkan digunakan sebagai acuan implementasi visual.",
+              "Desain Figma digunakan sebagai acuan visual dalam proses implementasi.",
           },
           {
             title:
-              "Frontend Development",
+              "Frontend Next.js",
             detail:
-              "Halaman responsif diimplementasikan menggunakan Next.js.",
+              "Halaman frontend responsif diimplementasikan menggunakan Next.js.",
           },
           {
             title:
-              "Responsive QA",
+              "Penyempurnaan Responsif",
             detail:
               "Layout ditinjau dan disesuaikan pada berbagai ukuran viewport.",
           },
@@ -737,13 +725,18 @@ export const projectDetailsDictionary: Record<
 
       "lestari-waste-bank": {
         overview:
-          "Lestari Waste Bank adalah proyek digital pengelolaan sampah yang dikembangkan secara kolaboratif dalam program Kampus Merdeka MSIB. Saya mengerjakan bagian frontend menggunakan Laravel, termasuk alur permintaan penjemputan sampah, pencatatan poin, konten edukasi, dan reward komunitas.",
+          "Lestari Waste Bank adalah proyek digital pengelolaan sampah yang dikembangkan secara kolaboratif dalam program Kampus Merdeka MSIB. Saya berkontribusi pada pengembangan frontend menggunakan Laravel, termasuk alur penjemputan sampah, pencatatan poin, konten edukasi, dan reward.",
 
         focus: [
           "Membuat layanan penjemputan sampah dapat diakses melalui antarmuka digital.",
           "Menyajikan pencatatan poin dan reward dengan jelas kepada pengguna.",
-          "Mendukung konten edukasi sebagai bagian dari pengalaman pengelolaan sampah.",
-          "Bekerja secara kolaboratif dalam proyek tim.",
+          "Mendukung konten edukasi dalam pengalaman pengelolaan sampah.",
+        ],
+
+        responsibilities: [
+          "Mengembangkan antarmuka frontend menggunakan Laravel.",
+          "Berkontribusi pada alur penjemputan sampah, pencatatan poin, konten edukasi, dan reward.",
+          "Berkolaborasi dengan tim selama pengembangan proyek.",
         ],
 
         features: [
@@ -763,28 +756,13 @@ export const projectDetailsDictionary: Record<
             title:
               "Reward",
             detail:
-              "Platform memiliki pengalaman reward yang terhubung dengan poin.",
+              "Reward disajikan sebagai bagian dari pengalaman platform bersama dengan pencatatan poin.",
           },
           {
             title:
               "Konten Edukasi",
             detail:
               "Informasi edukatif terkait sampah disajikan di dalam platform.",
-          },
-        ],
-
-        implementation: [
-          {
-            title:
-              "Frontend",
-            detail:
-              "Antarmuka frontend dikembangkan menggunakan Laravel.",
-          },
-          {
-            title:
-              "Kolaborasi Tim",
-            detail:
-              "Proyek dikembangkan secara kolaboratif sebagai bagian dari program MSIB.",
           },
         ],
 
@@ -817,7 +795,7 @@ export const projectDetailsDictionary: Record<
 
       "gold-price-prediction": {
         overview:
-          "Gold Price Prediction System adalah sistem prediksi yang menggunakan linear regression dengan data harga emas dan USD/IDR. Sistem ini juga memiliki alur simulasi manual untuk mengeksplorasi nilai prediksi melalui input yang berbeda.",
+          "Gold Price Prediction System menggunakan linear regression dengan data harga emas dan USD/IDR untuk menghasilkan nilai prediksi. Sistem ini juga memiliki alur simulasi manual untuk mengeksplorasi prediksi melalui input yang berbeda.",
 
         focus: [
           "Menggunakan data harga emas dan USD/IDR sebagai input prediksi.",
@@ -828,15 +806,9 @@ export const projectDetailsDictionary: Record<
         features: [
           {
             title:
-              "Data Harga Emas",
+              "Input Data",
             detail:
-              "Data dari Gold Price API digunakan sebagai bagian dari input prediksi.",
-          },
-          {
-            title:
-              "Data USD/IDR",
-            detail:
-              "Data mata uang digunakan melalui USD/IDR API.",
+              "Data harga emas dan USD/IDR digunakan sebagai input dalam alur prediksi.",
           },
           {
             title:
@@ -846,30 +818,15 @@ export const projectDetailsDictionary: Record<
           },
           {
             title:
+              "Hasil Prediksi",
+            detail:
+              "Hasil prediksi disajikan melalui antarmuka sistem.",
+          },
+          {
+            title:
               "Simulasi Manual",
             detail:
-              "Pengguna dapat mengeksplorasi nilai prediksi melalui alur simulasi manual.",
-          },
-        ],
-
-        implementation: [
-          {
-            title:
-              "Market Input",
-            detail:
-              "Data Gold Price API menyediakan input harga pasar.",
-          },
-          {
-            title:
-              "Currency Input",
-            detail:
-              "Data USD/IDR API menyediakan komponen mata uang.",
-          },
-          {
-            title:
-              "Metode Prediksi",
-            detail:
-              "Linear regression memproses input yang tersedia untuk menghasilkan prediksi.",
+              "Alur simulasi manual memungkinkan nilai prediksi dieksplorasi melalui input yang berbeda.",
           },
         ],
 
@@ -893,19 +850,19 @@ export const projectDetailsDictionary: Record<
 
       healingaja: {
         overview:
-          "HealingAja! adalah landing page pariwisata yang berfokus menyajikan destinasi dan informasi perjalanan melalui pengalaman web yang jelas.",
+          "HealingAja! adalah proyek personal berupa landing page pariwisata yang berfokus menyajikan destinasi dan informasi perjalanan melalui struktur konten yang jelas.",
 
         focus: [
-          "Menyajikan destinasi pariwisata melalui hierarki visual yang jelas.",
+          "Menyajikan konten destinasi melalui hierarki visual yang jelas.",
           "Mengatur informasi perjalanan dalam pengalaman landing page yang terarah.",
         ],
 
         features: [
           {
             title:
-              "Penyajian Destinasi",
+              "Sorotan Destinasi",
             detail:
-              "Destinasi pariwisata menjadi konten visual utama pada halaman.",
+              "Konten destinasi disajikan sebagai fokus visual utama pada halaman.",
           },
           {
             title:

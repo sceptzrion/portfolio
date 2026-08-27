@@ -278,7 +278,7 @@ export const projectsIdContent: Record<
 
   healingaja: {
     tagline:
-      "Landing page pariwisata yang berfokus menyajikan destinasi dan informasi perjalanan melalui pengalaman web yang jelas.",
+      "Landing page pariwisata untuk menyajikan destinasi dan informasi perjalanan.",
 
     category:
       "Frontend Development",
