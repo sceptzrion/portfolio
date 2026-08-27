@@ -321,7 +321,7 @@ export const projectDetailsDictionary: Record<
 
       "lestari-waste-bank": {
         overview:
-          "Lestari Waste Bank is a collaborative digital waste-bank platform developed during the Kampus Merdeka MSIB program. The product covers waste collection services, points and rewards, educational content, marketplace-related flows, and supporting management features. I contributed to the frontend implementation using Laravel and PHP.",
+          "Lestari Waste Bank is a collaborative digital waste-bank platform developed during the Kampus Merdeka MSIB program. The product covers waste collection services, points and rewards, educational content, marketplace-related flows, and supporting management features. I contributed to the frontend implementation using Laravel.",
 
         focus: [
           "Support waste collection activities through an accessible digital interface.",
@@ -331,7 +331,7 @@ export const projectDetailsDictionary: Record<
         ],
 
         responsibilities: [
-          "Developed frontend interfaces using Laravel and PHP.",
+          "Developed frontend interfaces using Laravel.",
           "Contributed to user-facing waste services, point tracking, educational content, and reward flows.",
           "Collaborated with the team throughout project development.",
         ],
@@ -775,7 +775,7 @@ export const projectDetailsDictionary: Record<
 
       "lestari-waste-bank": {
         overview:
-          "Lestari Waste Bank adalah platform bank sampah digital yang dikembangkan secara kolaboratif dalam program Kampus Merdeka MSIB. Produk ini mencakup layanan pengelolaan sampah, poin dan reward, konten edukasi, alur marketplace, serta fitur pengelolaan pendukung. Saya berkontribusi pada implementasi frontend menggunakan Laravel dan PHP.",
+          "Lestari Waste Bank adalah platform bank sampah digital yang dikembangkan secara kolaboratif dalam program Kampus Merdeka MSIB. Produk ini mencakup layanan pengelolaan sampah, poin dan reward, konten edukasi, alur marketplace, serta fitur pengelolaan pendukung. Saya berkontribusi pada implementasi frontend menggunakan Laravel.",
 
         focus: [
           "Mendukung aktivitas pengelolaan sampah melalui antarmuka digital yang mudah diakses.",
@@ -785,7 +785,7 @@ export const projectDetailsDictionary: Record<
         ],
 
         responsibilities: [
-          "Mengembangkan antarmuka frontend menggunakan Laravel dan PHP.",
+          "Mengembangkan antarmuka frontend menggunakan Laravel.",
           "Berkontribusi pada layanan sampah, pencatatan poin, konten edukasi, dan alur reward untuk pengguna.",
           "Berkolaborasi dengan tim selama pengembangan proyek.",
         ],

@@ -84,7 +84,7 @@ export const projects: readonly Project[] = [
       "Cloudinary",
     ],
     liveUrl:
-      "https://edubidan.vercel.app",
+      "https://edubidan.my.id",
     filters: [
       "full-stack",
       "academic",
