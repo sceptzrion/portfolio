@@ -147,6 +147,124 @@ function screenLayoutClass(
   return "aspect-4/3";
 }
 
+function PlaceholderContent({
+  index,
+}: {
+  index: number;
+}) {
+  return (
+    <div className="relative flex h-full flex-col justify-between p-4 sm:p-5">
+      <div>
+        <p className="font-mono text-[7px] uppercase tracking-[0.15em] text-primary">
+          Visual {String(
+            index,
+          ).padStart(
+            2,
+            "0",
+          )}
+        </p>
+
+        <div className="mt-3 h-3 w-[42%] rounded-full bg-foreground/75" />
+
+        <div className="mt-2 h-1.5 w-[62%] rounded-full bg-foreground/12" />
+      </div>
+
+      <div className="grid grid-cols-3 gap-2">
+        {[1, 2, 3].map(
+          (item) => (
+            <div
+              key={item}
+              className="rounded-lg border border-border bg-background/70 p-2"
+            >
+              <span className="block h-1.5 w-1/2 rounded-full bg-primary/45" />
+
+              <span className="mt-2 block h-3 w-3/4 rounded bg-foreground/15" />
+            </div>
+          ),
+        )}
+      </div>
+    </div>
+  );
+}
+
+function DesktopMockup({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
+  return (
+    <div className="absolute inset-[7%] overflow-hidden rounded-xl border border-border-strong bg-card shadow-[0_20px_55px_rgb(33_30_26/0.10)] transition-transform duration-700 group-hover:-translate-y-1">
+      <div className="flex h-9 items-center gap-1.5 border-b border-border px-3">
+        <span className="size-1.5 rounded-full bg-primary/75" />
+
+        <span className="size-1.5 rounded-full bg-border-strong" />
+
+        <span className="size-1.5 rounded-full bg-border-strong" />
+
+        <div className="ml-2 min-w-0 flex-1 rounded-md bg-secondary px-2 py-1">
+          <p className="truncate font-mono text-[7px] text-muted-foreground">
+            {project.slug +
+              " / desktop"}
+          </p>
+        </div>
+      </div>
+
+      <div className="relative h-[calc(100%-36px)] overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_82%_15%,color-mix(in_srgb,var(--primary)_12%,transparent),transparent_35%)]"
+        />
+
+        <PlaceholderContent
+          index={index}
+        />
+      </div>
+    </div>
+  );
+}
+
+function MobileMockup({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
+  return (
+    <div className="absolute inset-0 flex items-start justify-center pt-[7%]">
+      <div className="relative h-[72%] aspect-9/19.5 overflow-hidden rounded-4xl border-[6px] border-foreground/85 bg-card shadow-[0_22px_55px_rgb(0_0_0/0.22)] transition-transform duration-700 group-hover:-translate-y-1">
+        <div
+          aria-hidden="true"
+          className="absolute left-1/2 top-1.5 z-20 h-3.5 w-14 -translate-x-1/2 rounded-full bg-foreground/85"
+        />
+
+        <div className="absolute inset-x-0 top-0 z-10 flex h-7 items-center justify-between px-3 font-mono text-[5px] text-muted-foreground">
+          <span>
+            9:41
+          </span>
+
+          <span>
+            {project.index}
+          </span>
+        </div>
+
+        <div className="absolute inset-x-0 bottom-0 top-7 overflow-hidden bg-[linear-gradient(145deg,var(--tertiary),var(--secondary))]">
+          <div
+            aria-hidden="true"
+            className="tech-grid absolute inset-0 opacity-20"
+          />
+
+          <PlaceholderContent
+            index={index}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ScreenPlaceholder({
   project,
   screen,
@@ -166,6 +284,11 @@ function ScreenPlaceholder({
           screen.layout,
         );
 
+  const mobileMockup =
+    !primary &&
+    screen.layout ===
+      "portrait";
+
   return (
     <div
       className={
@@ -183,57 +306,19 @@ function ScreenPlaceholder({
         className="absolute right-[-10%] top-[-18%] size-[48%] rounded-full bg-primary/10 blur-3xl"
       />
 
-      <div className="absolute inset-[7%] overflow-hidden rounded-xl border border-border-strong bg-card shadow-[0_20px_55px_rgb(33_30_26/0.10)] transition-transform duration-700 group-hover:-translate-y-1">
-        <div className="flex h-9 items-center gap-1.5 border-b border-border px-3">
-          <span className="size-1.5 rounded-full bg-primary/75" />
-          <span className="size-1.5 rounded-full bg-border-strong" />
-          <span className="size-1.5 rounded-full bg-border-strong" />
+      {mobileMockup ? (
+        <MobileMockup
+          project={project}
+          index={index}
+        />
+      ) : (
+        <DesktopMockup
+          project={project}
+          index={index}
+        />
+      )}
 
-          <div className="ml-2 min-w-0 flex-1 rounded-md bg-secondary px-2 py-1">
-            <p className="truncate font-mono text-[7px] text-muted-foreground">
-              {project.slug + " / interface"}
-            </p>
-          </div>
-        </div>
-
-        <div className="relative h-[calc(100%-36px)] overflow-hidden p-4 sm:p-5">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-[radial-gradient(circle_at_82%_15%,color-mix(in_srgb,var(--primary)_12%,transparent),transparent_35%)]"
-          />
-
-          <div className="relative flex h-full flex-col justify-between">
-            <div>
-              <p className="font-mono text-[7px] uppercase tracking-[0.15em] text-primary">
-                Visual {String(
-                  index,
-                ).padStart(2, "0")}
-              </p>
-
-              <div className="mt-3 h-3 w-[42%] rounded-full bg-foreground/75" />
-
-              <div className="mt-2 h-1.5 w-[62%] rounded-full bg-foreground/12" />
-            </div>
-
-            <div className="grid grid-cols-3 gap-2">
-              {[1, 2, 3].map(
-                (item) => (
-                  <div
-                    key={item}
-                    className="rounded-lg border border-border bg-background/70 p-2"
-                  >
-                    <span className="block h-1.5 w-1/2 rounded-full bg-primary/45" />
-
-                    <span className="mt-2 block h-3 w-3/4 rounded bg-foreground/15" />
-                  </div>
-                ),
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute inset-x-0 bottom-0 z-10 bg-[linear-gradient(to_top,rgb(0_0_0/0.72),transparent)] px-5 pb-5 pt-16 text-white">
+      <div className="absolute inset-x-0 bottom-0 z-30 bg-[linear-gradient(to_top,rgb(0_0_0/0.78),transparent)] px-5 pb-5 pt-16 text-white">
         <p className="font-display text-base font-semibold sm:text-lg">
           {screen.label}
         </p>
@@ -422,7 +507,7 @@ export default function ProjectDetailView({
                 {copy.overview}
               </SectionLabel>
 
-              <p className="mt-6 max-w-3xl text-balance font-display text-[clamp(1.8rem,3.5vw,3.2rem)] font-semibold leading-[1.12] tracking-[-0.04em]">
+              <p className="mt-6 max-w-3xl font-display text-[clamp(1.4rem,2.35vw,2.2rem)] font-semibold leading-[1.22] tracking-[-0.03em]">
                 {detail.overview}
               </p>
             </div>

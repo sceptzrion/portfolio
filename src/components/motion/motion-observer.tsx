@@ -2,102 +2,185 @@
 
 import { useEffect } from "react";
 
-const REVEAL_SELECTOR = "[data-reveal]";
-const VISIBLE_CLASS = "is-visible";
-const MOTION_READY_CLASS = "motion-ready";
+const REVEAL_SELECTOR =
+  "[data-reveal]";
+
+const VISIBLE_CLASS =
+  "is-visible";
+
+const MOTION_READY_CLASS =
+  "motion-ready";
 
 export default function MotionObserver() {
   useEffect(() => {
-    const elements = Array.from(
-      document.querySelectorAll<HTMLElement>(
-        REVEAL_SELECTOR,
-      ),
-    );
-
-    if (elements.length === 0) {
-      return;
-    }
-
-    const root = document.documentElement;
+    const root =
+      document.documentElement;
 
     const prefersReducedMotion =
       window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
 
-    if (prefersReducedMotion) {
-      elements.forEach((element) => {
+    let intersectionObserver:
+      | IntersectionObserver
+      | null = null;
+
+    const revealOrObserve = (
+      element: HTMLElement,
+    ) => {
+      if (
+        element.classList.contains(
+          VISIBLE_CLASS,
+        )
+      ) {
+        return;
+      }
+
+      if (prefersReducedMotion) {
         element.classList.add(
           VISIBLE_CLASS,
         );
-      });
 
-      return;
-    }
+        return;
+      }
 
-    /*
-     * Mark elements already inside the initial viewport
-     * before enabling the hidden motion state.
-     *
-     * This avoids an unnecessary flash from visible → hidden.
-     */
-    elements.forEach((element) => {
       const rect =
         element.getBoundingClientRect();
 
-      const initiallyVisible =
+      const alreadyVisible =
         rect.top <
-          window.innerHeight * 0.92 &&
+          window.innerHeight *
+            0.92 &&
         rect.bottom > 0;
 
-      if (initiallyVisible) {
+      if (alreadyVisible) {
         element.classList.add(
           VISIBLE_CLASS,
         );
+
+        return;
       }
-    });
+
+      intersectionObserver?.observe(
+        element,
+      );
+    };
+
+    const collectRevealElements = (
+      node: Node,
+    ) => {
+      const result:
+        HTMLElement[] = [];
+
+      if (
+        node instanceof HTMLElement
+      ) {
+        if (
+          node.matches(
+            REVEAL_SELECTOR,
+          )
+        ) {
+          result.push(node);
+        }
+
+        result.push(
+          ...Array.from(
+            node.querySelectorAll<HTMLElement>(
+              REVEAL_SELECTOR,
+            ),
+          ),
+        );
+      }
+
+      return result;
+    };
+
+    if (!prefersReducedMotion) {
+      intersectionObserver =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach(
+              (entry) => {
+                if (
+                  !entry.isIntersecting
+                ) {
+                  return;
+                }
+
+                const element =
+                  entry.target as HTMLElement;
+
+                element.classList.add(
+                  VISIBLE_CLASS,
+                );
+
+                intersectionObserver?.unobserve(
+                  element,
+                );
+              },
+            );
+          },
+          {
+            threshold: 0.12,
+            rootMargin:
+              "0px 0px -8% 0px",
+          },
+        );
+    }
+
+    const initialElements =
+      Array.from(
+        document.querySelectorAll<HTMLElement>(
+          REVEAL_SELECTOR,
+        ),
+      );
+
+    initialElements.forEach(
+      revealOrObserve,
+    );
 
     root.classList.add(
       MOTION_READY_CLASS,
     );
 
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) {
-              return;
-            }
-
-            const element =
-              entry.target as HTMLElement;
-
-            element.classList.add(
-              VISIBLE_CLASS,
-            );
-
-            observer.unobserve(element);
-          });
-        },
-        {
-          threshold: 0.12,
-          rootMargin:
-            "0px 0px -8% 0px",
+    /*
+     * router.refresh() can replace Server Component
+     * DOM without remounting this component.
+     *
+     * Watch for those newly inserted reveal elements
+     * so locale changes never leave them hidden.
+     */
+    const mutationObserver =
+      new MutationObserver(
+        (records) => {
+          records.forEach(
+            (record) => {
+              record.addedNodes.forEach(
+                (node) => {
+                  collectRevealElements(
+                    node,
+                  ).forEach(
+                    revealOrObserve,
+                  );
+                },
+              );
+            },
+          );
         },
       );
 
-    elements.forEach((element) => {
-      if (
-        !element.classList.contains(
-          VISIBLE_CLASS,
-        )
-      ) {
-        observer.observe(element);
-      }
-    });
+    mutationObserver.observe(
+      document.body,
+      {
+        childList: true,
+        subtree: true,
+      },
+    );
 
     return () => {
-      observer.disconnect();
+      mutationObserver.disconnect();
+
+      intersectionObserver?.disconnect();
 
       root.classList.remove(
         MOTION_READY_CLASS,
