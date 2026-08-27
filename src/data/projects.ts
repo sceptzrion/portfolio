@@ -16,6 +16,7 @@ export type Project = {
   role?: string;
   year?: string;
   tech: readonly string[];
+  liveUrl?: string;
   filters: readonly ProjectFilter[];
   featured?: boolean;
   homeFeatured?: boolean;
@@ -80,8 +81,10 @@ export const projects: readonly Project[] = [
       "TypeScript",
       "Prisma ORM",
       "MySQL",
-      "Tailwind CSS",
+      "Cloudinary",
     ],
+    liveUrl:
+      "https://edubidan.vercel.app",
     filters: [
       "full-stack",
       "academic",
@@ -107,6 +110,7 @@ export const projects: readonly Project[] = [
       "2025 — 2026",
     tech: [
       "Next.js",
+      "TypeScript",
       "Figma",
     ],
     filters: [
@@ -122,7 +126,7 @@ export const projects: readonly Project[] = [
     title:
       "Lestari Waste Bank",
     tagline:
-      "A collaborative digital platform for waste pickup, point tracking, educational content, and community rewards.",
+      "A collaborative digital waste-bank platform for waste collection services, point tracking, rewards, educational content, and supporting management flows.",
     category:
       "Frontend Development",
     context:
@@ -132,6 +136,7 @@ export const projects: readonly Project[] = [
     year: "2024",
     tech: [
       "Laravel",
+      "PHP",
     ],
     filters: [
       "frontend",
@@ -147,15 +152,18 @@ export const projects: readonly Project[] = [
     title:
       "Gold Price Prediction System",
     tagline:
-      "A prediction system using linear regression with gold price and USD/IDR data, including a manual simulation flow for exploring predicted values.",
+      "A Streamlit-based gold price prediction app using linear regression, live gold and exchange-rate data, and manual simulation.",
     category:
-      "Data & Prediction",
+      "Data / Machine Learning",
     context:
-      "Prediction System",
+      "Machine Learning Course Project",
     tech: [
+      "Python",
+      "Streamlit",
+      "scikit-learn",
       "Linear Regression",
-      "Gold Price API",
-      "USD/IDR API",
+      "MetalPriceAPI",
+      "CurrencyAPI",
     ],
     filters: [
       "data-ml",
@@ -168,12 +176,18 @@ export const projects: readonly Project[] = [
     index: "05",
     title: "HealingAja!",
     tagline:
-      "A tourism landing page for presenting destinations and travel information.",
+      "A responsive tourism landing page with curated destinations, travel guidance, and supporting travel information.",
     category:
       "Frontend Development",
     context:
-      "Tourism Landing Page",
-    tech: [],
+      "Personal Project",
+    tech: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+    ],
+    liveUrl:
+      "https://healingaja.vercel.app",
     filters: [
       "frontend",
       "personal",

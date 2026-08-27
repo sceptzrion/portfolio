@@ -253,7 +253,7 @@ export const projectsIdContent: Record<
 
   "lestari-waste-bank": {
     tagline:
-      "Platform digital kolaboratif untuk layanan penjemputan sampah, pencatatan poin, konten edukasi, dan reward komunitas.",
+      "Platform bank sampah digital kolaboratif untuk layanan pengelolaan sampah, pencatatan poin, reward, konten edukasi, dan alur pengelolaan pendukung.",
 
     category:
       "Frontend Development",
@@ -267,23 +267,23 @@ export const projectsIdContent: Record<
 
   "gold-price-prediction": {
     tagline:
-      "Sistem prediksi menggunakan linear regression dengan data harga emas dan USD/IDR, termasuk alur simulasi manual untuk mengeksplorasi nilai prediksi.",
+      "Aplikasi prediksi harga emas berbasis Streamlit menggunakan linear regression, data harga emas dan kurs aktual, serta simulasi manual.",
 
     category:
-      "Data & Prediction",
+      "Data / Machine Learning",
 
     context:
-      "Sistem Prediksi",
+      "Proyek Mata Kuliah Machine Learning",
   },
 
   healingaja: {
     tagline:
-      "Landing page pariwisata untuk menyajikan destinasi dan informasi perjalanan.",
+      "Landing page pariwisata responsif dengan destinasi pilihan, panduan perjalanan, dan informasi wisata pendukung.",
 
     category:
       "Frontend Development",
 
     context:
-      "Landing Page Pariwisata",
+      "Proyek Personal",
   },
 };

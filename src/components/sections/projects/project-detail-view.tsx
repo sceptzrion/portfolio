@@ -441,6 +441,22 @@ export default function ProjectDetailView({
             <p className="mt-7 max-w-2xl text-[17px] leading-8 text-muted-foreground sm:text-lg sm:leading-9">
               {display.tagline}
             </p>
+
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="group mt-7 inline-flex min-h-11 items-center gap-2 rounded-full border border-border-strong bg-foreground px-5 text-sm font-semibold text-background transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-primary"
+              >
+                {
+                  copy.actions
+                    .liveProject
+                }
+
+                <ArrowIcon />
+              </a>
+            ) : null}
           </div>
 
           <dl

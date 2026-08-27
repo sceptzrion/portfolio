@@ -59,6 +59,7 @@ type ProjectDetailsDictionary = {
     nextProject: string;
 
     actions: {
+      liveProject: string;
       allProjects: string;
       contact: string;
     };
@@ -102,6 +103,8 @@ export const projectDetailsDictionary: Record<
         "Next Project",
 
       actions: {
+        liveProject:
+          "Live Project",
         allProjects:
           "Back to All Projects",
         contact:
@@ -112,46 +115,46 @@ export const projectDetailsDictionary: Record<
     projects: {
       edubidan: {
         overview:
-          "EduBidan was developed as my bachelor's thesis to support structured digital learning for midwifery education. I worked across the application stack, covering role-based access, learning modules, randomized quizzes, progress tracking, media handling, and email delivery.",
+          "EduBidan is a full-stack Learning Management System developed as my bachelor's thesis for midwifery education. It supports distinct Student, Lecturer, and Admin workflows, structured modules with sequential learning access, randomized quizzes, progress tracking, lecturer gradebook workflows, media handling, and notifications.",
 
         focus: [
-          "Bring learning content and assessment into one structured application.",
-          "Provide distinct access and capabilities for each user role.",
-          "Randomize quiz question order with Fisher-Yates Shuffle.",
-          "Track learning progress across the platform.",
+          "Organize learning content and assessments in a structured module flow.",
+          "Provide distinct workflows and access for Student, Lecturer, and Admin roles.",
+          "Apply sequential learning access while tracking student progress.",
+          "Randomize quiz questions and answer options with Fisher-Yates Shuffle.",
         ],
 
         responsibilities: [
           "Developed the application across frontend and backend.",
-          "Implemented authentication and role-based access control.",
-          "Built learning modules, quizzes, and progress tracking.",
+          "Implemented authentication and role-based access control for Student, Lecturer, and Admin workflows.",
+          "Built learning modules, sequential content access, quiz flows, and progress tracking.",
           "Integrated Cloudinary for media handling and Resend for email delivery.",
         ],
 
         features: [
           {
             title:
-              "Role-Based Access",
+              "Multi-Role Learning",
             detail:
-              "Different access and capabilities are provided according to the user's role.",
+              "Student, Lecturer, and Admin roles have distinct access and workflows across the platform.",
           },
           {
             title:
-              "Interactive Modules",
+              "Structured Learning Flow",
             detail:
-              "Learning materials are structured into modules that support the learning flow.",
+              "Modules combine learning materials and quizzes with sequential access and progress tracking.",
           },
           {
             title:
-              "Randomized Quizzes",
+              "Quiz & Assessment",
             detail:
-              "Fisher-Yates Shuffle is used to randomize quiz question order.",
+              "Questions and answer options are randomized with Fisher-Yates Shuffle, with support for time limits, attempts, and results.",
           },
           {
             title:
-              "Progress Tracking",
+              "Learning Management",
             detail:
-              "Learning progress can be tracked as users move through the platform.",
+              "Lecturer gradebook, enrollment, user management, and notification flows support the broader LMS experience.",
           },
         ],
 
@@ -160,19 +163,25 @@ export const projectDetailsDictionary: Record<
             title:
               "Full-Stack Application",
             detail:
-              "Built with Next.js and TypeScript as the main application foundation.",
+              "Next.js and TypeScript provide the main application foundation across interface and server-side flows.",
           },
           {
             title:
-              "Data Layer",
+              "Relational Data Layer",
             detail:
-              "Prisma ORM and MySQL are used to model and manage relational application data.",
+              "Prisma ORM and MySQL model users, roles, modules, learning content, enrollments, progress, quizzes, and related records.",
+          },
+          {
+            title:
+              "Sequential Learning Logic",
+            detail:
+              "Learning items are progressively unlocked to support an ordered material and assessment flow.",
           },
           {
             title:
               "Quiz Randomization",
             detail:
-              "Fisher-Yates Shuffle handles randomized question ordering for quiz sessions.",
+              "Fisher-Yates Shuffle randomizes both question and answer-option ordering within quiz sessions.",
           },
           {
             title:
@@ -185,32 +194,32 @@ export const projectDetailsDictionary: Record<
         screens: [
           {
             label:
-              "Learning Dashboard",
+              "Student Dashboard",
             detail:
-              "Primary overview of learning activity and progress.",
+              "Overview of enrolled modules, learning progress, completed activities, and pending quizzes.",
             layout: "wide",
           },
           {
             label:
-              "Learning Module",
+              "Module & Lesson",
             detail:
-              "A representative module or lesson experience.",
+              "A representative module and learning-content experience with structured progression.",
             layout:
               "standard",
           },
           {
             label:
-              "Quiz Flow",
+              "Quiz & Result",
             detail:
-              "The assessment experience with randomized questions.",
+              "The assessment experience with randomized questions, answer options, and quiz results.",
             layout:
               "standard",
           },
           {
             label:
-              "Progress & Management",
+              "Lecturer Gradebook",
             detail:
-              "A supporting view for progress or role-based management.",
+              "A lecturer-facing view for reviewing student learning and assessment results.",
             layout: "wide",
           },
         ],
@@ -218,12 +227,12 @@ export const projectDetailsDictionary: Record<
 
       "disarpus-bekasi": {
         overview:
-          "During my internship, I developed responsive frontend pages for the Disarpus Kabupaten Bekasi website from Figma designs using Next.js. My work covered the homepage, navigation, news-related interfaces, and responsive layout refinements.",
+          "A responsive public-facing website for Disarpus Kabupaten Bekasi, presenting institutional information, news and articles, quick-access services, and public contact information. During my internship, I contributed to the frontend implementation from Figma designs using Next.js.",
 
         focus: [
-          "Translate Figma designs into responsive web pages.",
-          "Keep the implementation visually consistent across screen sizes.",
-          "Develop frontend pages within an existing project workflow.",
+          "Translate Figma designs into responsive public-facing web pages.",
+          "Present institutional information and service entry points through a clear interface.",
+          "Keep the frontend visually consistent across different screen sizes.",
         ],
 
         responsibilities: [
@@ -236,27 +245,27 @@ export const projectDetailsDictionary: Record<
         features: [
           {
             title:
-              "Homepage",
+              "Public Information Homepage",
             detail:
-              "Frontend implementation of the main public-facing homepage.",
+              "The homepage introduces Disarpus services, public information, quick access, and recent content.",
           },
           {
             title:
-              "Navigation",
+              "Institutional Information",
             detail:
-              "Responsive navigation implemented as part of the website experience.",
+              "Profile-related pages present organizational information, duties, functions, vision, and related public content.",
           },
           {
             title:
-              "News Interfaces",
+              "News & Articles",
             detail:
-              "News-related pages and content presentation were implemented for the site.",
+              "Article listing and detail interfaces support publication of news and informational content.",
           },
           {
             title:
-              "Responsive Experience",
+              "Quick Access & Contact",
             detail:
-              "Layouts were adjusted to support a consistent experience across screen sizes.",
+              "Service shortcuts, location information, contact details, and public communication flows support visitor access.",
           },
         ],
 
@@ -265,13 +274,13 @@ export const projectDetailsDictionary: Record<
             title:
               "Figma-to-Code",
             detail:
-              "Figma designs were used as the visual reference for implementation.",
+              "Figma designs were used as the visual reference for frontend implementation.",
           },
           {
             title:
               "Next.js Frontend",
             detail:
-              "Responsive frontend pages were implemented using Next.js.",
+              "Responsive public-facing pages and reusable interface components were implemented with Next.js and TypeScript.",
           },
           {
             title:
@@ -286,14 +295,14 @@ export const projectDetailsDictionary: Record<
             label:
               "Homepage",
             detail:
-              "The primary desktop implementation of the redesigned website.",
+              "The primary desktop implementation of the public-facing website.",
             layout: "wide",
           },
           {
             label:
-              "News Interface",
+              "News & Article Interface",
             detail:
-              "A representative news or content page from the project.",
+              "A representative news listing or article-detail interface from the project.",
             layout:
               "standard",
           },
@@ -301,7 +310,7 @@ export const projectDetailsDictionary: Record<
             label:
               "Responsive View",
             detail:
-              "A mobile or narrow-screen view showing responsive behavior.",
+              "A mobile or narrow-screen view showing responsive navigation and layout behavior.",
             layout:
               "portrait",
             frame:
@@ -312,68 +321,69 @@ export const projectDetailsDictionary: Record<
 
       "lestari-waste-bank": {
         overview:
-          "Lestari Waste Bank is a collaborative digital waste-management project developed during the Kampus Merdeka MSIB program. I contributed to the frontend using Laravel, including flows for waste pickup requests, point tracking, educational content, and rewards.",
+          "Lestari Waste Bank is a collaborative digital waste-bank platform developed during the Kampus Merdeka MSIB program. The product covers waste collection services, points and rewards, educational content, marketplace-related flows, and supporting management features. I contributed to the frontend implementation using Laravel and PHP.",
 
         focus: [
-          "Make waste pickup requests accessible through a digital interface.",
-          "Present point tracking and rewards clearly to users.",
-          "Support educational content within the waste-management experience.",
+          "Support waste collection activities through an accessible digital interface.",
+          "Connect collected waste with point tracking and reward-oriented flows.",
+          "Provide educational and marketplace-related content within the platform.",
+          "Support broader waste-bank management through operational and reporting flows.",
         ],
 
         responsibilities: [
-          "Developed frontend interfaces using Laravel.",
-          "Contributed to waste pickup, point tracking, educational content, and reward flows.",
+          "Developed frontend interfaces using Laravel and PHP.",
+          "Contributed to user-facing waste services, point tracking, educational content, and reward flows.",
           "Collaborated with the team throughout project development.",
         ],
 
         features: [
           {
             title:
-              "Waste Pickup",
+              "Waste Collection Services",
             detail:
-              "Users can access a flow for requesting waste pickup.",
+              "Digital service flows support waste collection and drop-off activities within the waste-bank experience.",
           },
           {
             title:
-              "Point Tracking",
+              "Points & Rewards",
             detail:
-              "Collected points are presented as part of the user experience.",
+              "Waste activities connect with point tracking and reward-redemption experiences.",
           },
           {
             title:
-              "Rewards",
+              "Education & Marketplace",
             detail:
-              "Rewards are presented as part of the platform experience alongside point tracking.",
+              "Educational content and marketplace-related flows extend the platform beyond waste transactions.",
           },
           {
             title:
-              "Educational Content",
+              "Management & Reporting",
             detail:
-              "Waste-related educational information is presented within the platform.",
+              "Supporting management interfaces cover operational data, rewards, waste reception, and reporting needs.",
           },
         ],
 
         screens: [
           {
             label:
-              "Waste Pickup Flow",
+              "Platform Homepage",
             detail:
-              "A primary screen representing the waste pickup experience.",
+              "A primary view introducing the waste-bank platform and its main services.",
             layout: "wide",
           },
           {
             label:
-              "Points & Rewards",
+              "Waste Service Flow",
             detail:
-              "A supporting screen showing points or reward-related functionality.",
+              "A representative user-facing flow for waste collection or drop-off services.",
             layout:
               "standard",
           },
           {
             label:
-              "Educational Content",
+              "Points, Rewards & Marketplace",
             detail:
-              "A representative content screen from the learning side of the platform.",
+              "A supporting view representing point, reward, or marketplace-related functionality.",
             layout:
               "standard",
           },
@@ -382,54 +392,62 @@ export const projectDetailsDictionary: Record<
 
       "gold-price-prediction": {
         overview:
-          "Gold Price Prediction System uses linear regression with gold price and USD/IDR data to generate predicted values. It also includes a manual simulation flow for exploring predictions through different inputs.",
+          "Gold Price Prediction System is a Machine Learning course project built as a Streamlit application. Although the assignment was completed as a group project, I handled the application code and technical implementation independently, integrating a linear regression model with gold-price and USD/IDR data, automatic conversion, next-day prediction, and manual simulation.",
 
         focus: [
-          "Use gold price and USD/IDR data as prediction inputs.",
-          "Apply linear regression as the prediction method.",
-          "Provide a manual simulation flow for exploring predicted values.",
+          "Use recent gold-price values as inputs for a linear regression prediction model.",
+          "Combine gold-price and USD/IDR data to present values in IDR per gram.",
+          "Present a next-day prediction together with its direction and price difference.",
+          "Provide a manual simulation flow for exploring predictions with custom inputs.",
+        ],
+
+        responsibilities: [
+          "Built the Streamlit interface and application flow.",
+          "Integrated the trained linear regression model with market and exchange-rate APIs.",
+          "Implemented currency and unit conversion between USD per troy ounce and IDR per gram.",
+          "Built the live prediction and manual simulation result flows.",
         ],
 
         features: [
           {
             title:
-              "Data Inputs",
+              "Live Market Data",
             detail:
-              "Gold price and USD/IDR data are used as inputs within the prediction flow.",
+              "MetalPriceAPI and CurrencyAPI provide gold-price and USD/IDR data used by the application.",
           },
           {
             title:
-              "Linear Regression",
+              "Automatic Conversion",
             detail:
-              "Linear regression is used as the core prediction method.",
+              "Market values are converted from USD per troy ounce into IDR per gram for user-facing results.",
           },
           {
             title:
-              "Prediction Result",
+              "Next-Day Prediction",
             detail:
-              "Prediction results are presented through the system interface.",
+              "The model generates a next-day price prediction and presents its direction, nominal difference, and percentage change.",
           },
           {
             title:
               "Manual Simulation",
             detail:
-              "A manual simulation flow allows predicted values to be explored through different inputs.",
+              "Users can enter their own recent price values to explore a separate prediction scenario.",
           },
         ],
 
         screens: [
           {
             label:
-              "Prediction Result",
+              "Prediction Dashboard",
             detail:
-              "The primary screen presenting prediction data or results.",
+              "The main Streamlit dashboard showing current market information and the next-day prediction.",
             layout: "wide",
           },
           {
             label:
               "Manual Simulation",
             detail:
-              "The input and result flow used to explore predicted values manually.",
+              "The custom-input flow for exploring a separate prediction scenario.",
             layout: "wide",
           },
         ],
@@ -437,25 +455,38 @@ export const projectDetailsDictionary: Record<
 
       healingaja: {
         overview:
-          "HealingAja! is a personal tourism landing-page project focused on presenting destinations and travel information through a clear content structure.",
+          "HealingAja! is a personal responsive tourism landing-page project built with HTML, CSS, and JavaScript. It presents selected Indonesian destinations, travel guidance, and supporting travel information through a responsive single-page experience.",
 
         focus: [
-          "Present destination content through a clear visual hierarchy.",
-          "Organize travel information within a focused landing-page experience.",
+          "Present destination content through a clear and visual landing-page hierarchy.",
+          "Organize destinations, travel guidance, services, and contact information in one page.",
+          "Keep navigation and content usable across desktop and mobile screen sizes.",
         ],
 
         features: [
           {
             title:
-              "Destination Highlights",
+              "Destination Discovery",
             detail:
-              "Destination content is presented as the primary visual focus of the page.",
+              "Selected Indonesian destinations are presented through visual destination cards and external tourism references.",
+          },
+          {
+            title:
+              "Travel Guidance",
+            detail:
+              "A dedicated guidance section directs visitors to supporting travel and safety information.",
+          },
+          {
+            title:
+              "Responsive Navigation",
+            detail:
+              "The navigation adapts to smaller screens with a JavaScript-powered mobile menu.",
           },
           {
             title:
               "Travel Information",
             detail:
-              "Supporting travel information is organized within the landing-page experience.",
+              "Supporting sections organize travel inspiration, services, and related information within the landing page.",
           },
         ],
 
@@ -464,18 +495,29 @@ export const projectDetailsDictionary: Record<
             label:
               "Landing Page",
             detail:
-              "The main visual overview of the tourism website.",
+              "The main desktop view combining the hero and destination-focused experience.",
             layout: "wide",
           },
           {
             label:
-              "Destination Content",
+              "Guide & Travel Content",
             detail:
-              "A supporting section focused on destinations or travel information.",
+              "A supporting view showing travel guidance or service-oriented content.",
             layout: "wide",
+          },
+          {
+            label:
+              "Mobile Experience",
+            detail:
+              "A mobile view demonstrating the responsive layout and navigation.",
+            layout:
+              "portrait",
+            frame:
+              "phone",
           },
         ],
       },
+
     },
   },
 
@@ -515,6 +557,8 @@ export const projectDetailsDictionary: Record<
         "Proyek Berikutnya",
 
       actions: {
+        liveProject:
+          "Live Project",
         allProjects:
           "Kembali ke Semua Proyek",
         contact:
@@ -525,46 +569,46 @@ export const projectDetailsDictionary: Record<
     projects: {
       edubidan: {
         overview:
-          "EduBidan dikembangkan sebagai proyek skripsi untuk mendukung pembelajaran kebidanan dalam satu platform digital yang terstruktur. Saya mengerjakan aplikasi secara full-stack, mencakup akses berbasis role, modul pembelajaran, kuis teracak, pelacakan progres, pengelolaan media, dan pengiriman email.",
+          "EduBidan adalah Learning Management System full-stack yang dikembangkan sebagai proyek skripsi untuk pendidikan kebidanan. Platform ini mendukung workflow Mahasiswa, Dosen, dan Admin yang berbeda, modul pembelajaran dengan akses berurutan, kuis teracak, pelacakan progres, gradebook dosen, pengelolaan media, dan notifikasi.",
 
         focus: [
-          "Menggabungkan konten pembelajaran dan asesmen dalam satu aplikasi yang terstruktur.",
-          "Menyediakan akses dan kemampuan yang berbeda untuk setiap role pengguna.",
-          "Mengacak urutan soal kuis menggunakan Fisher-Yates Shuffle.",
-          "Melacak progres pembelajaran di dalam platform.",
+          "Menyusun konten pembelajaran dan asesmen dalam alur modul yang terstruktur.",
+          "Menyediakan workflow dan akses yang berbeda untuk Mahasiswa, Dosen, dan Admin.",
+          "Menerapkan akses pembelajaran berurutan sekaligus melacak progres mahasiswa.",
+          "Mengacak soal dan pilihan jawaban menggunakan Fisher-Yates Shuffle.",
         ],
 
         responsibilities: [
           "Mengembangkan aplikasi pada sisi frontend dan backend.",
-          "Mengimplementasikan autentikasi dan role-based access control.",
-          "Membangun modul pembelajaran, kuis, dan pelacakan progres.",
+          "Mengimplementasikan autentikasi dan role-based access control untuk workflow Mahasiswa, Dosen, dan Admin.",
+          "Membangun modul pembelajaran, akses konten berurutan, alur kuis, dan pelacakan progres.",
           "Mengintegrasikan Cloudinary untuk media serta Resend untuk pengiriman email.",
         ],
 
         features: [
           {
             title:
-              "Role-Based Access",
+              "Pembelajaran Multi-Role",
             detail:
-              "Akses dan kemampuan pengguna dibedakan berdasarkan role masing-masing.",
+              "Mahasiswa, Dosen, dan Admin memiliki akses serta workflow yang berbeda di dalam platform.",
           },
           {
             title:
-              "Modul Interaktif",
+              "Alur Belajar Terstruktur",
             detail:
-              "Materi pembelajaran disusun ke dalam modul yang mendukung alur belajar.",
+              "Modul menggabungkan materi dan kuis dengan akses berurutan serta pelacakan progres.",
           },
           {
             title:
-              "Kuis Teracak",
+              "Kuis & Asesmen",
             detail:
-              "Fisher-Yates Shuffle digunakan untuk mengacak urutan soal kuis.",
+              "Soal dan pilihan jawaban diacak menggunakan Fisher-Yates Shuffle dengan dukungan batas waktu, attempt, dan hasil kuis.",
           },
           {
             title:
-              "Pelacakan Progres",
+              "Learning Management",
             detail:
-              "Progres pembelajaran dapat dipantau selama pengguna menggunakan platform.",
+              "Gradebook dosen, enrollment, pengelolaan pengguna, dan notifikasi mendukung workflow LMS secara menyeluruh.",
           },
         ],
 
@@ -573,19 +617,25 @@ export const projectDetailsDictionary: Record<
             title:
               "Aplikasi Full-Stack",
             detail:
-              "Next.js dan TypeScript digunakan sebagai fondasi utama aplikasi.",
+              "Next.js dan TypeScript menjadi fondasi utama untuk antarmuka serta alur server-side aplikasi.",
           },
           {
             title:
-              "Data Layer",
+              "Data Relasional",
             detail:
-              "Prisma ORM dan MySQL digunakan untuk memodelkan serta mengelola data relasional aplikasi.",
+              "Prisma ORM dan MySQL memodelkan pengguna, role, modul, konten belajar, enrollment, progres, kuis, dan data terkait.",
+          },
+          {
+            title:
+              "Logika Pembelajaran Berurutan",
+            detail:
+              "Item pembelajaran dibuka secara bertahap untuk menjaga urutan materi dan asesmen.",
           },
           {
             title:
               "Randomisasi Kuis",
             detail:
-              "Fisher-Yates Shuffle menangani pengacakan urutan soal pada sesi kuis.",
+              "Fisher-Yates Shuffle mengacak urutan soal sekaligus pilihan jawaban pada sesi kuis.",
           },
           {
             title:
@@ -598,32 +648,32 @@ export const projectDetailsDictionary: Record<
         screens: [
           {
             label:
-              "Learning Dashboard",
+              "Dashboard Mahasiswa",
             detail:
-              "Tampilan utama untuk aktivitas pembelajaran dan progres.",
+              "Ringkasan modul yang diikuti, progres belajar, aktivitas selesai, dan kuis yang belum dikerjakan.",
             layout: "wide",
           },
           {
             label:
-              "Modul Pembelajaran",
+              "Modul & Materi",
             detail:
-              "Tampilan representatif dari modul atau materi pembelajaran.",
+              "Tampilan modul dan materi pembelajaran dengan progres yang terstruktur.",
             layout:
               "standard",
           },
           {
             label:
-              "Alur Kuis",
+              "Kuis & Hasil",
             detail:
-              "Pengalaman asesmen dengan soal yang diacak.",
+              "Pengalaman asesmen dengan soal dan pilihan jawaban teracak serta hasil kuis.",
             layout:
               "standard",
           },
           {
             label:
-              "Progres & Management",
+              "Gradebook Dosen",
             detail:
-              "Tampilan pendukung untuk progres atau pengelolaan berbasis role.",
+              "Tampilan dosen untuk meninjau pembelajaran dan hasil asesmen mahasiswa.",
             layout: "wide",
           },
         ],
@@ -631,12 +681,12 @@ export const projectDetailsDictionary: Record<
 
       "disarpus-bekasi": {
         overview:
-          "Selama magang, saya mengembangkan halaman frontend responsif untuk website Disarpus Kabupaten Bekasi dari desain Figma menggunakan Next.js. Pekerjaan saya mencakup homepage, navigasi, antarmuka berita, serta penyempurnaan layout responsif.",
+          "Website publik responsif untuk Disarpus Kabupaten Bekasi yang menyajikan informasi kelembagaan, berita dan artikel, akses cepat layanan, serta informasi kontak publik. Selama magang, saya berkontribusi pada implementasi frontend dari desain Figma menggunakan Next.js.",
 
         focus: [
-          "Menerapkan desain Figma menjadi halaman web responsif.",
-          "Menjaga konsistensi tampilan pada berbagai ukuran layar.",
-          "Mengembangkan halaman frontend dalam workflow proyek yang sudah berjalan.",
+          "Menerapkan desain Figma menjadi halaman publik yang responsif.",
+          "Menyajikan informasi kelembagaan dan akses layanan melalui antarmuka yang jelas.",
+          "Menjaga konsistensi frontend pada berbagai ukuran layar.",
         ],
 
         responsibilities: [
@@ -649,27 +699,27 @@ export const projectDetailsDictionary: Record<
         features: [
           {
             title:
-              "Homepage",
+              "Homepage Informasi Publik",
             detail:
-              "Implementasi frontend untuk halaman utama website.",
+              "Homepage memperkenalkan layanan Disarpus, informasi publik, akses cepat, dan konten terbaru.",
           },
           {
             title:
-              "Navigasi",
+              "Informasi Kelembagaan",
             detail:
-              "Navigasi responsif diimplementasikan sebagai bagian dari pengalaman website.",
+              "Halaman profil menyajikan informasi organisasi, tugas dan fungsi, visi misi, serta konten publik terkait.",
           },
           {
             title:
-              "Antarmuka Berita",
+              "Berita & Artikel",
             detail:
-              "Halaman terkait berita dan penyajian konten dikembangkan untuk website.",
+              "Antarmuka daftar dan detail artikel mendukung penyajian berita serta konten informasi.",
           },
           {
             title:
-              "Tampilan Responsif",
+              "Akses Cepat & Kontak",
             detail:
-              "Layout disesuaikan untuk menjaga pengalaman yang konsisten pada berbagai ukuran layar.",
+              "Shortcut layanan, informasi lokasi, detail kontak, dan alur komunikasi publik mendukung kebutuhan pengunjung.",
           },
         ],
 
@@ -678,13 +728,13 @@ export const projectDetailsDictionary: Record<
             title:
               "Figma-to-Code",
             detail:
-              "Desain Figma digunakan sebagai acuan visual dalam proses implementasi.",
+              "Desain Figma digunakan sebagai acuan visual dalam implementasi frontend.",
           },
           {
             title:
               "Frontend Next.js",
             detail:
-              "Halaman frontend responsif diimplementasikan menggunakan Next.js.",
+              "Halaman publik responsif dan komponen antarmuka reusable diimplementasikan menggunakan Next.js dan TypeScript.",
           },
           {
             title:
@@ -699,14 +749,14 @@ export const projectDetailsDictionary: Record<
             label:
               "Homepage",
             detail:
-              "Implementasi desktop utama dari website yang direvitalisasi.",
+              "Implementasi desktop utama dari website publik Disarpus.",
             layout: "wide",
           },
           {
             label:
-              "Antarmuka Berita",
+              "Antarmuka Berita & Artikel",
             detail:
-              "Tampilan berita atau halaman konten yang representatif.",
+              "Tampilan representatif dari daftar berita atau halaman detail artikel.",
             layout:
               "standard",
           },
@@ -714,7 +764,7 @@ export const projectDetailsDictionary: Record<
             label:
               "Responsive View",
             detail:
-              "Tampilan mobile atau layar sempit yang menunjukkan perilaku responsif.",
+              "Tampilan mobile yang menunjukkan perilaku navigasi dan layout responsif.",
             layout:
               "portrait",
             frame:
@@ -725,68 +775,69 @@ export const projectDetailsDictionary: Record<
 
       "lestari-waste-bank": {
         overview:
-          "Lestari Waste Bank adalah proyek digital pengelolaan sampah yang dikembangkan secara kolaboratif dalam program Kampus Merdeka MSIB. Saya berkontribusi pada pengembangan frontend menggunakan Laravel, termasuk alur penjemputan sampah, pencatatan poin, konten edukasi, dan reward.",
+          "Lestari Waste Bank adalah platform bank sampah digital yang dikembangkan secara kolaboratif dalam program Kampus Merdeka MSIB. Produk ini mencakup layanan pengelolaan sampah, poin dan reward, konten edukasi, alur marketplace, serta fitur pengelolaan pendukung. Saya berkontribusi pada implementasi frontend menggunakan Laravel dan PHP.",
 
         focus: [
-          "Membuat layanan penjemputan sampah dapat diakses melalui antarmuka digital.",
-          "Menyajikan pencatatan poin dan reward dengan jelas kepada pengguna.",
-          "Mendukung konten edukasi dalam pengalaman pengelolaan sampah.",
+          "Mendukung aktivitas pengelolaan sampah melalui antarmuka digital yang mudah diakses.",
+          "Menghubungkan aktivitas sampah dengan pencatatan poin dan alur reward.",
+          "Menyediakan konten edukasi serta fungsi marketplace di dalam platform.",
+          "Mendukung pengelolaan bank sampah melalui alur operasional dan pelaporan.",
         ],
 
         responsibilities: [
-          "Mengembangkan antarmuka frontend menggunakan Laravel.",
-          "Berkontribusi pada alur penjemputan sampah, pencatatan poin, konten edukasi, dan reward.",
+          "Mengembangkan antarmuka frontend menggunakan Laravel dan PHP.",
+          "Berkontribusi pada layanan sampah, pencatatan poin, konten edukasi, dan alur reward untuk pengguna.",
           "Berkolaborasi dengan tim selama pengembangan proyek.",
         ],
 
         features: [
           {
             title:
-              "Penjemputan Sampah",
+              "Layanan Pengelolaan Sampah",
             detail:
-              "Pengguna dapat mengakses alur untuk mengajukan penjemputan sampah.",
+              "Alur layanan digital mendukung aktivitas pengumpulan atau drop-off sampah dalam pengalaman bank sampah.",
           },
           {
             title:
-              "Pencatatan Poin",
+              "Poin & Reward",
             detail:
-              "Poin yang diperoleh ditampilkan sebagai bagian dari pengalaman pengguna.",
+              "Aktivitas pengelolaan sampah terhubung dengan pencatatan poin dan pengalaman penukaran reward.",
           },
           {
             title:
-              "Reward",
+              "Edukasi & Marketplace",
             detail:
-              "Reward disajikan sebagai bagian dari pengalaman platform bersama dengan pencatatan poin.",
+              "Konten edukasi dan alur marketplace memperluas fungsi platform di luar transaksi sampah.",
           },
           {
             title:
-              "Konten Edukasi",
+              "Pengelolaan & Pelaporan",
             detail:
-              "Informasi edukatif terkait sampah disajikan di dalam platform.",
+              "Antarmuka pengelolaan pendukung mencakup data operasional, reward, penerimaan sampah, dan kebutuhan pelaporan.",
           },
         ],
 
         screens: [
           {
             label:
-              "Alur Penjemputan",
+              "Homepage Platform",
             detail:
-              "Tampilan utama yang mewakili pengalaman penjemputan sampah.",
+              "Tampilan utama yang memperkenalkan platform bank sampah dan layanan utamanya.",
             layout: "wide",
           },
           {
             label:
-              "Poin & Reward",
+              "Alur Layanan Sampah",
             detail:
-              "Tampilan pendukung untuk fungsi poin atau reward.",
+              "Tampilan representatif dari layanan pengumpulan atau drop-off sampah.",
             layout:
               "standard",
           },
           {
             label:
-              "Konten Edukasi",
+              "Poin, Reward & Marketplace",
             detail:
-              "Tampilan representatif dari sisi konten edukasi platform.",
+              "Tampilan pendukung untuk fungsi poin, reward, atau marketplace.",
             layout:
               "standard",
           },
@@ -795,54 +846,62 @@ export const projectDetailsDictionary: Record<
 
       "gold-price-prediction": {
         overview:
-          "Gold Price Prediction System menggunakan linear regression dengan data harga emas dan USD/IDR untuk menghasilkan nilai prediksi. Sistem ini juga memiliki alur simulasi manual untuk mengeksplorasi prediksi melalui input yang berbeda.",
+          "Gold Price Prediction System adalah proyek mata kuliah Machine Learning yang dibangun sebagai aplikasi Streamlit. Walaupun tugas dikerjakan dalam kelompok, saya menangani kode aplikasi dan implementasi teknis secara mandiri, termasuk integrasi model linear regression, data harga emas dan USD/IDR, konversi otomatis, prediksi hari berikutnya, serta simulasi manual.",
 
         focus: [
-          "Menggunakan data harga emas dan USD/IDR sebagai input prediksi.",
-          "Menerapkan linear regression sebagai metode prediksi.",
-          "Menyediakan alur simulasi manual untuk mengeksplorasi nilai prediksi.",
+          "Menggunakan nilai harga emas terbaru sebagai input model prediksi linear regression.",
+          "Menggabungkan data harga emas dan USD/IDR untuk menyajikan nilai dalam IDR per gram.",
+          "Menyajikan prediksi harga hari berikutnya beserta arah dan selisih nilainya.",
+          "Menyediakan simulasi manual untuk mengeksplorasi prediksi menggunakan input sendiri.",
+        ],
+
+        responsibilities: [
+          "Membangun antarmuka Streamlit dan alur aplikasi.",
+          "Mengintegrasikan model linear regression dengan API harga pasar dan kurs.",
+          "Mengimplementasikan konversi mata uang dan satuan dari USD per troy ounce ke IDR per gram.",
+          "Membangun alur hasil prediksi aktual dan simulasi manual.",
         ],
 
         features: [
           {
             title:
-              "Input Data",
+              "Data Pasar Aktual",
             detail:
-              "Data harga emas dan USD/IDR digunakan sebagai input dalam alur prediksi.",
+              "MetalPriceAPI dan CurrencyAPI menyediakan data harga emas serta USD/IDR yang digunakan oleh aplikasi.",
           },
           {
             title:
-              "Linear Regression",
+              "Konversi Otomatis",
             detail:
-              "Linear regression digunakan sebagai metode utama prediksi.",
+              "Nilai pasar dikonversi dari USD per troy ounce menjadi IDR per gram untuk hasil yang ditampilkan kepada pengguna.",
           },
           {
             title:
-              "Hasil Prediksi",
+              "Prediksi Hari Berikutnya",
             detail:
-              "Hasil prediksi disajikan melalui antarmuka sistem.",
+              "Model menghasilkan prediksi harga hari berikutnya sekaligus menampilkan arah, selisih nominal, dan perubahan persentase.",
           },
           {
             title:
               "Simulasi Manual",
             detail:
-              "Alur simulasi manual memungkinkan nilai prediksi dieksplorasi melalui input yang berbeda.",
+              "Pengguna dapat memasukkan nilai harga sendiri untuk mengeksplorasi skenario prediksi yang berbeda.",
           },
         ],
 
         screens: [
           {
             label:
-              "Hasil Prediksi",
+              "Dashboard Prediksi",
             detail:
-              "Tampilan utama yang menyajikan data atau hasil prediksi.",
+              "Dashboard utama Streamlit yang menampilkan informasi pasar dan prediksi harga hari berikutnya.",
             layout: "wide",
           },
           {
             label:
               "Simulasi Manual",
             detail:
-              "Alur input dan hasil untuk mengeksplorasi nilai prediksi secara manual.",
+              "Alur input khusus untuk mengeksplorasi skenario prediksi yang berbeda.",
             layout: "wide",
           },
         ],
@@ -850,25 +909,38 @@ export const projectDetailsDictionary: Record<
 
       healingaja: {
         overview:
-          "HealingAja! adalah proyek personal berupa landing page pariwisata yang berfokus menyajikan destinasi dan informasi perjalanan melalui struktur konten yang jelas.",
+          "HealingAja! adalah proyek personal berupa landing page pariwisata responsif yang dibangun menggunakan HTML, CSS, dan JavaScript. Website ini menyajikan destinasi pilihan di Indonesia, panduan perjalanan, serta informasi wisata pendukung melalui pengalaman single-page yang responsif.",
 
         focus: [
-          "Menyajikan konten destinasi melalui hierarki visual yang jelas.",
-          "Mengatur informasi perjalanan dalam pengalaman landing page yang terarah.",
+          "Menyajikan konten destinasi melalui hierarki landing page yang jelas dan visual.",
+          "Mengatur destinasi, panduan perjalanan, layanan, dan informasi kontak dalam satu halaman.",
+          "Menjaga navigasi serta konten tetap nyaman digunakan pada desktop dan mobile.",
         ],
 
         features: [
           {
             title:
-              "Sorotan Destinasi",
+              "Eksplorasi Destinasi",
             detail:
-              "Konten destinasi disajikan sebagai fokus visual utama pada halaman.",
+              "Destinasi pilihan di Indonesia disajikan melalui card visual dan referensi pariwisata eksternal.",
           },
           {
             title:
-              "Informasi Perjalanan",
+              "Panduan Perjalanan",
             detail:
-              "Informasi perjalanan pendukung disusun dalam pengalaman landing page.",
+              "Bagian panduan mengarahkan pengunjung ke informasi pendukung mengenai perjalanan dan keselamatan wisata.",
+          },
+          {
+            title:
+              "Navigasi Responsif",
+            detail:
+              "Navigasi menyesuaikan layar kecil menggunakan mobile menu berbasis JavaScript.",
+          },
+          {
+            title:
+              "Informasi Wisata",
+            detail:
+              "Bagian pendukung menyusun inspirasi perjalanan, layanan, dan informasi terkait dalam landing page.",
           },
         ],
 
@@ -877,18 +949,29 @@ export const projectDetailsDictionary: Record<
             label:
               "Landing Page",
             detail:
-              "Tampilan utama website pariwisata.",
+              "Tampilan desktop utama yang menggabungkan hero dan pengalaman eksplorasi destinasi.",
             layout: "wide",
           },
           {
             label:
-              "Konten Destinasi",
+              "Panduan & Konten Wisata",
             detail:
-              "Bagian pendukung yang berfokus pada destinasi atau informasi perjalanan.",
+              "Tampilan pendukung yang menunjukkan bagian panduan atau layanan perjalanan.",
             layout: "wide",
+          },
+          {
+            label:
+              "Tampilan Mobile",
+            detail:
+              "Tampilan mobile yang menunjukkan layout dan navigasi responsif.",
+            layout:
+              "portrait",
+            frame:
+              "phone",
           },
         ],
       },
+
     },
   },
 };
