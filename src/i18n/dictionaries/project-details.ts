@@ -32,6 +32,7 @@ export type ProjectDetailProjectCopy = {
     detail: string;
     layout: ProjectScreenLayout;
     frame?: ProjectScreenFrame;
+    imageKey?: string;
   }[];
 };
 
@@ -197,30 +198,40 @@ export const projectDetailsDictionary: Record<
             detail:
               "Public-facing introduction to EduBidan and its digital learning experience.",
             layout: "wide",
+            imageKey:
+              "landing-page",
           },
           {
             label: "Student Dashboard",
             detail:
               "Student overview with enrolled modules, learning progress, completed activities, and pending quizzes.",
             layout: "wide",
+            imageKey:
+              "student-dashboard",
           },
           {
             label: "Learning Modules",
             detail:
               "Enrolled module library with completion status and supporting learning information.",
             layout: "standard",
+            imageKey:
+              "modules",
           },
           {
             label: "Quiz Experience",
             detail:
               "Timed assessment flow with question navigation, answer states, and submission controls.",
             layout: "standard",
+            imageKey:
+              "quiz",
           },
           {
             label: "Lecturer Quiz Analytics",
             detail:
               "Lecturer-facing quiz analysis with attempt statistics, score summaries, and answer distribution.",
             layout: "wide",
+            imageKey:
+              "lecturer-analytics",
           },
           {
             label: "Mobile Learning Experience",
@@ -228,6 +239,8 @@ export const projectDetailsDictionary: Record<
               "Responsive module flow showing ordered lessons, quiz locking, and mobile navigation.",
             layout: "wide",
             frame: "phone",
+            imageKey:
+              "mobile-module",
           },
         ],
       },
@@ -658,30 +671,40 @@ export const projectDetailsDictionary: Record<
             detail:
               "Tampilan publik yang memperkenalkan EduBidan dan pengalaman pembelajaran digitalnya.",
             layout: "wide",
+            imageKey:
+              "landing-page",
           },
           {
             label: "Dashboard Mahasiswa",
             detail:
               "Ringkasan modul yang diikuti, progres belajar, aktivitas selesai, dan kuis yang belum dikerjakan.",
             layout: "wide",
+            imageKey:
+              "student-dashboard",
           },
           {
             label: "Modul Pembelajaran",
             detail:
               "Daftar modul yang diikuti beserta status penyelesaian dan informasi pembelajaran pendukung.",
             layout: "standard",
+            imageKey:
+              "modules",
           },
           {
             label: "Pengalaman Kuis",
             detail:
               "Alur asesmen dengan batas waktu, navigasi soal, status jawaban, dan kontrol pengumpulan.",
             layout: "standard",
+            imageKey:
+              "quiz",
           },
           {
             label: "Analisis Kuis Dosen",
             detail:
               "Tampilan dosen untuk menganalisis attempt, ringkasan skor, dan distribusi jawaban kuis.",
             layout: "wide",
+            imageKey:
+              "lecturer-analytics",
           },
           {
             label: "Pengalaman Belajar Mobile",
@@ -689,6 +712,8 @@ export const projectDetailsDictionary: Record<
               "Alur modul responsif yang menampilkan urutan materi, penguncian kuis, dan navigasi mobile.",
             layout: "wide",
             frame: "phone",
+            imageKey:
+              "mobile-module",
           },
         ],
       },

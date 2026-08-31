@@ -12,14 +12,25 @@ export const profileImages = {
 
 export const projectImages: Record<
   string,
-  readonly string[]
+  Record<string, string>
 > = {
-  edubidan: [
-    "/images/projects/edubidan/landing-page.webp",
-    "/images/projects/edubidan/hero-dashboard.webp",
-    "/images/projects/edubidan/modules.webp",
-    "/images/projects/edubidan/quiz.webp",
-    "/images/projects/edubidan/lecturer-analytics.webp",
-    "/images/projects/edubidan/mobile-module.webp",
-  ],
+  edubidan: {
+    "landing-page":
+      "/images/projects/edubidan/landing-page.webp",
+
+    "student-dashboard":
+      "/images/projects/edubidan/hero-dashboard.webp",
+
+    modules:
+      "/images/projects/edubidan/modules.webp",
+
+    quiz:
+      "/images/projects/edubidan/quiz.webp",
+
+    "lecturer-analytics":
+      "/images/projects/edubidan/lecturer-analytics.webp",
+
+    "mobile-module":
+      "/images/projects/edubidan/mobile-module.webp",
+  },
 };

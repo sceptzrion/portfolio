@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import IPhone12ProMockup from "@/components/ui/iphone-12-pro-mockup";
+
 import {
   projectImages,
 } from "@/data/assets";
@@ -246,61 +248,29 @@ function DesktopMockup({
 }
 
 function MobileMockup({
-  project,
   index,
-  imageSrc,
   alt,
 }: {
-  project: Project;
   index: number;
-  imageSrc?: string;
   alt: string;
 }) {
   return (
     <div className="absolute inset-0 flex items-center justify-center px-6 py-8 sm:px-8 sm:py-10">
-      <div className="relative w-[clamp(180px,22vw,250px)] aspect-1170/2532">
-        {/* Side buttons */}
-        <span className="absolute -left-0.5 top-[22%] h-10 w-0.75 rounded-full bg-[#8e8a84]/70" />
-        <span className="absolute -left-0.5 top-[30%] h-14 w-0.75 rounded-full bg-[#8e8a84]/70" />
-        <span className="absolute -left-0.5 top-[39%] h-14 w-0.75 rounded-full bg-[#8e8a84]/70" />
-        <span className="absolute -right-0.5 top-[31%] h-20 w-0.75 rounded-full bg-[#8e8a84]/70" />
+      <IPhone12ProMockup
+        alt={alt}
+        className="w-[clamp(180px,22vw,250px)]"
+      >
+        <div className="absolute inset-0 overflow-hidden bg-white">
+          <div
+            aria-hidden="true"
+            className="tech-grid absolute inset-0 opacity-20"
+          />
 
-        {/* Device body */}
-        <div className="absolute inset-0 rounded-[2.6rem] bg-[#0f0f10] shadow-[0_24px_60px_rgba(0,0,0,0.26)] ring-1 ring-black/10">
-          {/* Metallic edge */}
-          <div className="absolute inset-0.5 rounded-[2.45rem] border border-white/10" />
-
-          {/* Screen frame */}
-          <div className="absolute inset-2 overflow-hidden rounded-[2.1rem] bg-black">
-            {/* Notch */}
-            <div className="absolute left-1/2 top-0 z-30 h-7.5 w-[42%] -translate-x-1/2 rounded-b-[18px] bg-black">
-              <div className="absolute left-1/2 top-2.75 h-1.25 w-14 -translate-x-1/2 rounded-full bg-white/10" />
-              <div className="absolute right-4 top-2.5 h-2 w-2 rounded-full bg-[#1b2740] ring-1 ring-white/10" />
-            </div>
-
-            {/* Screen content */}
-            <div className="absolute inset-0 overflow-hidden rounded-[2.1rem] bg-white">
-              {imageSrc ? (
-                <Image
-                  src={imageSrc}
-                  alt={alt}
-                  fill
-                  sizes="260px"
-                  className="object-cover object-top"
-                />
-              ) : (
-                <>
-                  <div
-                    aria-hidden="true"
-                    className="tech-grid absolute inset-0 opacity-20"
-                  />
-                  <PlaceholderContent index={index} />
-                </>
-              )}
-            </div>
-          </div>
+          <PlaceholderContent
+            index={index}
+          />
         </div>
-      </div>
+      </IPhone12ProMockup>
     </div>
   );
 }
@@ -317,56 +287,11 @@ function PhoneSelectedScreen({
 }) {
   return (
     <div className="group mx-auto w-full max-w-md">
-      <div className="relative mx-auto w-[min(68vw,270px)] aspect-390/844">
-        {/* Left-side controls */}
-        <span
-          aria-hidden="true"
-          className="absolute -left-0.75 top-[20%] h-7 w-0.75 rounded-l-sm bg-[#77736e]"
-        />
-
-        <span
-          aria-hidden="true"
-          className="absolute -left-0.75 top-[27%] h-12 w-0.75 rounded-l-sm bg-[#77736e]"
-        />
-
-        <span
-          aria-hidden="true"
-          className="absolute -left-0.75 top-[35%] h-12 w-0.75 rounded-l-sm bg-[#77736e]"
-        />
-
-        {/* Right-side control */}
-        <span
-          aria-hidden="true"
-          className="absolute -right-0.75 top-[29%] h-16 w-0.75 rounded-r-sm bg-[#77736e]"
-        />
-
-        {/* Metallic outer edge */}
-        <div className="absolute inset-0 rounded-[30px] border border-black/25 bg-[#9b9893] p-0.5 shadow-[0_28px_65px_rgb(0_0_0/0.24)] transition-transform duration-700 group-hover:-translate-y-1">
-          {/* Black device bezel */}
-          <div className="relative h-full overflow-hidden rounded-[27px] bg-[#09090a] p-1.25">
-            {/* Display */}
-            <div className="relative h-full overflow-hidden rounded-[23px] bg-white">
-              <Image
-                src={imageSrc}
-                alt={alt}
-                fill
-                sizes="270px"
-                className="object-contain object-center"
-              />
-
-              {/* iPhone 12-style notch */}
-              <div
-                aria-hidden="true"
-                className="absolute left-1/2 top-0 z-20 h-5.5 w-[43%] -translate-x-1/2 rounded-b-[12px] bg-[#09090a]"
-              >
-                <span className="absolute left-1/2 top-1.75 h-1 w-10 -translate-x-1/2 rounded-full bg-white/15" />
-
-                <span className="absolute right-3.25 top-1.5 size-1.5 rounded-full bg-[#172338] ring-1 ring-white/10" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <IPhone12ProMockup
+        src={imageSrc}
+        alt={alt}
+        className="mx-auto w-[min(68vw,270px)]"
+      />
 
       <div className="mx-auto mt-5 max-w-sm text-center">
         <p className="font-display text-lg font-semibold text-foreground">
@@ -435,11 +360,13 @@ function ScreenPlaceholder({
         "browser";
 
   const imageSrc =
-    projectImages[
-      project.slug
-    ]?.[
-      index - 1
-    ];
+    screen.imageKey
+      ? projectImages[
+          project.slug
+        ]?.[
+          screen.imageKey
+        ]
+      : undefined;
 
   const alt =
     project.title +
@@ -510,9 +437,7 @@ function ScreenPlaceholder({
 
       {frame === "phone" ? (
         <MobileMockup
-          project={project}
           index={index}
-          imageSrc={imageSrc}
           alt={alt}
         />
       ) : frame === "plain" ? (
@@ -590,7 +515,11 @@ export default function ProjectDetailView({
       ? detail.screens
       : detail.screens.slice(1);
 
-  const selectedScreenIndexOffset =
+  /*
+   * Only used for fallback placeholder numbering.
+   * Real project images are resolved through imageKey.
+   */
+  const selectedVisualIndexOffset =
     project.slug === "edubidan"
       ? 1
       : 2;
@@ -1028,7 +957,7 @@ export default function ProjectDetailView({
                       }
                       index={
                         index +
-                        selectedScreenIndexOffset
+                        selectedVisualIndexOffset
                       }
                     />
                   </div>
