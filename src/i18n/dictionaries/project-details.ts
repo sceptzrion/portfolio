@@ -193,34 +193,41 @@ export const projectDetailsDictionary: Record<
 
         screens: [
           {
-            label:
-              "Student Dashboard",
+            label: "Landing Page",
             detail:
-              "Overview of enrolled modules, learning progress, completed activities, and pending quizzes.",
+              "Public-facing introduction to EduBidan and its digital learning experience.",
             layout: "wide",
           },
           {
-            label:
-              "Module & Lesson",
+            label: "Student Dashboard",
             detail:
-              "A representative module and learning-content experience with structured progression.",
-            layout:
-              "standard",
-          },
-          {
-            label:
-              "Quiz & Result",
-            detail:
-              "The assessment experience with randomized questions, answer options, and quiz results.",
-            layout:
-              "standard",
-          },
-          {
-            label:
-              "Lecturer Gradebook",
-            detail:
-              "A lecturer-facing view for reviewing student learning and assessment results.",
+              "Student overview with enrolled modules, learning progress, completed activities, and pending quizzes.",
             layout: "wide",
+          },
+          {
+            label: "Learning Modules",
+            detail:
+              "Enrolled module library with completion status and supporting learning information.",
+            layout: "standard",
+          },
+          {
+            label: "Quiz Experience",
+            detail:
+              "Timed assessment flow with question navigation, answer states, and submission controls.",
+            layout: "standard",
+          },
+          {
+            label: "Lecturer Quiz Analytics",
+            detail:
+              "Lecturer-facing quiz analysis with attempt statistics, score summaries, and answer distribution.",
+            layout: "wide",
+          },
+          {
+            label: "Mobile Learning Experience",
+            detail:
+              "Responsive module flow showing ordered lessons, quiz locking, and mobile navigation.",
+            layout: "wide",
+            frame: "phone",
           },
         ],
       },
@@ -647,34 +654,41 @@ export const projectDetailsDictionary: Record<
 
         screens: [
           {
-            label:
-              "Dashboard Mahasiswa",
+            label: "Landing Page",
+            detail:
+              "Tampilan publik yang memperkenalkan EduBidan dan pengalaman pembelajaran digitalnya.",
+            layout: "wide",
+          },
+          {
+            label: "Dashboard Mahasiswa",
             detail:
               "Ringkasan modul yang diikuti, progres belajar, aktivitas selesai, dan kuis yang belum dikerjakan.",
             layout: "wide",
           },
           {
-            label:
-              "Modul & Materi",
+            label: "Modul Pembelajaran",
             detail:
-              "Tampilan modul dan materi pembelajaran dengan progres yang terstruktur.",
-            layout:
-              "standard",
+              "Daftar modul yang diikuti beserta status penyelesaian dan informasi pembelajaran pendukung.",
+            layout: "standard",
           },
           {
-            label:
-              "Kuis & Hasil",
+            label: "Pengalaman Kuis",
             detail:
-              "Pengalaman asesmen dengan soal dan pilihan jawaban teracak serta hasil kuis.",
-            layout:
-              "standard",
+              "Alur asesmen dengan batas waktu, navigasi soal, status jawaban, dan kontrol pengumpulan.",
+            layout: "standard",
           },
           {
-            label:
-              "Gradebook Dosen",
+            label: "Analisis Kuis Dosen",
             detail:
-              "Tampilan dosen untuk meninjau pembelajaran dan hasil asesmen mahasiswa.",
+              "Tampilan dosen untuk menganalisis attempt, ringkasan skor, dan distribusi jawaban kuis.",
             layout: "wide",
+          },
+          {
+            label: "Pengalaman Belajar Mobile",
+            detail:
+              "Alur modul responsif yang menampilkan urutan materi, penguncian kuis, dan navigasi mobile.",
+            layout: "wide",
+            frame: "phone",
           },
         ],
       },

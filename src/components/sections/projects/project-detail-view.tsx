@@ -1,5 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 
+import {
+  projectImages,
+} from "@/data/assets";
 import type {
   Project,
 } from "@/data/projects";
@@ -190,9 +194,13 @@ function PlaceholderContent({
 function DesktopMockup({
   project,
   index,
+  imageSrc,
+  alt,
 }: {
   project: Project;
   index: number;
+  imageSrc?: string;
+  alt: string;
 }) {
   return (
     <div className="absolute inset-[7%] overflow-hidden rounded-xl border border-border-strong bg-card shadow-[0_20px_55px_rgb(33_30_26/0.10)] transition-transform duration-700 group-hover:-translate-y-1">
@@ -211,15 +219,27 @@ function DesktopMockup({
         </div>
       </div>
 
-      <div className="relative h-[calc(100%-36px)] overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(circle_at_82%_15%,color-mix(in_srgb,var(--primary)_12%,transparent),transparent_35%)]"
-        />
+      <div className="relative h-[calc(100%-36px)] overflow-hidden bg-white">
+        {imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={alt}
+            fill
+            sizes="(min-width: 1024px) 48vw, 92vw"
+            className="object-contain object-center transition-transform duration-700 group-hover:scale-[1.01]"
+          />
+        ) : (
+          <>
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[radial-gradient(circle_at_82%_15%,color-mix(in_srgb,var(--primary)_12%,transparent),transparent_35%)]"
+            />
 
-        <PlaceholderContent
-          index={index}
-        />
+            <PlaceholderContent
+              index={index}
+            />
+          </>
+        )}
       </div>
     </div>
   );
@@ -228,37 +248,57 @@ function DesktopMockup({
 function MobileMockup({
   project,
   index,
+  imageSrc,
+  alt,
 }: {
   project: Project;
   index: number;
+  imageSrc?: string;
+  alt: string;
 }) {
   return (
-    <div className="absolute inset-0 flex items-start justify-center pt-[7%]">
-      <div className="relative h-[72%] aspect-9/19.5 overflow-hidden rounded-4xl border-[6px] border-foreground/85 bg-card shadow-[0_22px_55px_rgb(0_0_0/0.22)] transition-transform duration-700 group-hover:-translate-y-1">
-        <div
-          aria-hidden="true"
-          className="absolute left-1/2 top-1.5 z-20 h-3.5 w-14 -translate-x-1/2 rounded-full bg-foreground/85"
-        />
+    <div className="absolute inset-0 flex items-center justify-center px-6 py-8 sm:px-8 sm:py-10">
+      <div className="relative w-[clamp(180px,22vw,250px)] aspect-[1170/2532]">
+        {/* Side buttons */}
+        <span className="absolute -left-[2px] top-[22%] h-10 w-[3px] rounded-full bg-[#8e8a84]/70" />
+        <span className="absolute -left-[2px] top-[30%] h-14 w-[3px] rounded-full bg-[#8e8a84]/70" />
+        <span className="absolute -left-[2px] top-[39%] h-14 w-[3px] rounded-full bg-[#8e8a84]/70" />
+        <span className="absolute -right-[2px] top-[31%] h-20 w-[3px] rounded-full bg-[#8e8a84]/70" />
 
-        <div className="absolute inset-x-0 top-0 z-10 flex h-7 items-center justify-between px-3 font-mono text-[5px] text-muted-foreground">
-          <span>
-            9:41
-          </span>
+        {/* Device body */}
+        <div className="absolute inset-0 rounded-[2.6rem] bg-[#0f0f10] shadow-[0_24px_60px_rgba(0,0,0,0.26)] ring-1 ring-black/10">
+          {/* Metallic edge */}
+          <div className="absolute inset-[2px] rounded-[2.45rem] border border-white/10" />
 
-          <span>
-            {project.index}
-          </span>
-        </div>
+          {/* Screen frame */}
+          <div className="absolute inset-[8px] overflow-hidden rounded-[2.1rem] bg-black">
+            {/* Notch */}
+            <div className="absolute left-1/2 top-0 z-30 h-[30px] w-[42%] -translate-x-1/2 rounded-b-[18px] bg-black">
+              <div className="absolute left-1/2 top-[11px] h-[5px] w-[56px] -translate-x-1/2 rounded-full bg-white/10" />
+              <div className="absolute right-[16px] top-[10px] h-[8px] w-[8px] rounded-full bg-[#1b2740] ring-1 ring-white/10" />
+            </div>
 
-        <div className="absolute inset-x-0 bottom-0 top-7 overflow-hidden bg-[linear-gradient(145deg,var(--tertiary),var(--secondary))]">
-          <div
-            aria-hidden="true"
-            className="tech-grid absolute inset-0 opacity-20"
-          />
-
-          <PlaceholderContent
-            index={index}
-          />
+            {/* Screen content */}
+            <div className="absolute inset-0 overflow-hidden rounded-[2.1rem] bg-white">
+              {imageSrc ? (
+                <Image
+                  src={imageSrc}
+                  alt={alt}
+                  fill
+                  sizes="260px"
+                  className="object-cover object-top"
+                />
+              ) : (
+                <>
+                  <div
+                    aria-hidden="true"
+                    className="tech-grid absolute inset-0 opacity-20"
+                  />
+                  <PlaceholderContent index={index} />
+                </>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -267,14 +307,28 @@ function MobileMockup({
 
 function PlainMockup({
   index,
+  imageSrc,
+  alt,
 }: {
   index: number;
+  imageSrc?: string;
+  alt: string;
 }) {
   return (
     <div className="absolute inset-[7%] overflow-hidden rounded-xl border border-border-strong bg-card shadow-[0_20px_55px_rgb(33_30_26/0.10)] transition-transform duration-700 group-hover:-translate-y-1">
-      <PlaceholderContent
-        index={index}
-      />
+      {imageSrc ? (
+        <Image
+          src={imageSrc}
+          alt={alt}
+          fill
+          sizes="(min-width: 1024px) 48vw, 92vw"
+          className="object-contain object-center transition-transform duration-700 group-hover:scale-[1.01]"
+        />
+      ) : (
+        <PlaceholderContent
+          index={index}
+        />
+      )}
     </div>
   );
 }
@@ -304,6 +358,45 @@ function ScreenPlaceholder({
       : screen.frame ??
         "browser";
 
+  const imageSrc =
+    projectImages[
+      project.slug
+    ]?.[
+      index - 1
+    ];
+
+  const alt =
+    project.title +
+    " - " +
+    screen.label;
+
+  /*
+   * Primary real screenshot sits directly inside
+   * the existing outer browser-style hero frame.
+   * This avoids rendering two browser frames.
+   */
+  if (
+    primary &&
+    imageSrc
+  ) {
+    return (
+      <div
+        className={
+          "group relative overflow-hidden rounded-2xl border border-border bg-white " +
+          layoutClass
+        }
+      >
+        <Image
+          src={imageSrc}
+          alt={alt}
+          fill
+          sizes="(min-width: 1280px) 1200px, 94vw"
+          className="object-contain object-top transition-transform duration-700 group-hover:scale-[1.005]"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={
@@ -325,24 +418,30 @@ function ScreenPlaceholder({
         <MobileMockup
           project={project}
           index={index}
+          imageSrc={imageSrc}
+          alt={alt}
         />
       ) : frame === "plain" ? (
         <PlainMockup
           index={index}
+          imageSrc={imageSrc}
+          alt={alt}
         />
       ) : (
         <DesktopMockup
           project={project}
           index={index}
+          imageSrc={imageSrc}
+          alt={alt}
         />
       )}
 
-      <div className="absolute inset-x-0 bottom-0 z-30 bg-[linear-gradient(to_top,rgb(0_0_0/0.78),transparent)] px-5 pb-5 pt-16 text-white">
+      <div className="absolute inset-x-0 bottom-0 z-30 bg-[linear-gradient(to_top,rgb(0_0_0/0.82),transparent)] px-5 pb-5 pt-16 text-white">
         <p className="font-display text-base font-semibold sm:text-lg">
           {screen.label}
         </p>
 
-        <p className="mt-1 max-w-xl text-xs leading-5 text-white/70">
+        <p className="mt-1 max-w-xl text-xs leading-5 text-white/75">
           {screen.detail}
         </p>
       </div>
