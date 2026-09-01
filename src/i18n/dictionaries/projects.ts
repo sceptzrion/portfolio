@@ -239,7 +239,7 @@ export const projectsIdContent: Record<
 
   "disarpus-bekasi": {
     tagline:
-      "Pengembangan frontend responsif untuk revitalisasi website arsip dan perpustakaan Kabupaten Bekasi.",
+      "Implementasi frontend responsif untuk website arsip dan perpustakaan Kabupaten Bekasi.",
 
     category:
       "Frontend Development",

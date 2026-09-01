@@ -99,7 +99,7 @@ export const projects: readonly Project[] = [
     title:
       "Disarpus Kabupaten Bekasi",
     tagline:
-      "Responsive frontend development for the revitalization of a regional government archives and library website.",
+      "Responsive frontend implementation for a regional government archives and library website.",
     category:
       "Frontend Development",
     context:
