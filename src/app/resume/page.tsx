@@ -8,24 +8,6 @@ import { metadataDictionary } from "@/i18n/dictionaries/metadata";
 import { resumeDictionary } from "@/i18n/dictionaries/resume";
 import { getLocale } from "@/i18n/get-locale";
 
-function ExternalIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="size-3.5"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M7 17 17 7" />
-      <path d="M7 7h10v10" />
-    </svg>
-  );
-}
-
 function DownloadIcon() {
   return (
     <svg
@@ -123,22 +105,6 @@ export default async function ResumePage() {
             {siteConfig.resume
               .available && (
               <div className="flex flex-wrap gap-3">
-                <a
-                  href={
-                    siteConfig.resume
-                      .fileHref
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-border-strong bg-background px-5 text-sm font-semibold transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-primary-soft"
-                >
-                  {
-                    copy.actions
-                      .open
-                  }
-
-                  <ExternalIcon />
-                </a>
 
                 <a
                   href={
@@ -178,8 +144,8 @@ export default async function ResumePage() {
 
               <ResumeViewerLoader
                 file={
-                    siteConfig.resume
-                    .fileHref
+                  siteConfig.resume
+                    .previewHref
                 }
                 locale={locale}
                 available={

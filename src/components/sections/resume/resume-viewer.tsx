@@ -64,6 +64,136 @@ export default function ResumeViewer({
   const [pageWidth, setPageWidth] =
     useState(760);
 
+  const [
+    previewUrl,
+    setPreviewUrl,
+  ] = useState<string | null>(
+    null,
+  );
+
+  const [
+    previewError,
+    setPreviewError,
+  ] = useState(false);
+
+  /*
+   * Fetch base64 text from our own API,
+   * reconstruct the PDF entirely in memory,
+   * then give react-pdf a browser Blob URL.
+   *
+   * The browser never requests a .pdf URL
+   * during preview, so IDM has no PDF request
+   * to intercept.
+   */
+  useEffect(() => {
+    if (!available) return;
+
+    let cancelled = false;
+    let objectUrl:
+      | string
+      | null = null;
+
+    setNumPages(null);
+    setPreviewError(false);
+
+    async function loadPreview() {
+      try {
+        const response =
+          await fetch(
+            file,
+            {
+              cache:
+                "force-cache",
+            },
+          );
+
+        if (!response.ok) {
+          throw new Error(
+            "Resume preview request failed.",
+          );
+        }
+
+        const base64 =
+          (
+            await response.text()
+          ).trim();
+
+        if (!base64) {
+          throw new Error(
+            "Resume preview is empty.",
+          );
+        }
+
+        const binary =
+          window.atob(base64);
+
+        const bytes =
+          new Uint8Array(
+            binary.length,
+          );
+
+        for (
+          let index = 0;
+          index <
+          binary.length;
+          index += 1
+        ) {
+          bytes[index] =
+            binary.charCodeAt(
+              index,
+            );
+        }
+
+        const blob =
+          new Blob(
+            [bytes],
+            {
+              type:
+                "application/pdf",
+            },
+          );
+
+        objectUrl =
+          URL.createObjectURL(
+            blob,
+          );
+
+        if (cancelled) {
+          URL.revokeObjectURL(
+            objectUrl,
+          );
+
+          return;
+        }
+
+        setPreviewUrl(
+          objectUrl,
+        );
+      } catch {
+        if (!cancelled) {
+          setPreviewError(
+            true,
+          );
+        }
+      }
+    }
+
+    void loadPreview();
+
+    return () => {
+      cancelled = true;
+
+      if (objectUrl) {
+        URL.revokeObjectURL(
+          objectUrl,
+        );
+      }
+    };
+  }, [
+    available,
+    file,
+  ]);
+
   const updateWidth =
     useCallback(() => {
       const container =
@@ -94,7 +224,9 @@ export default function ResumeViewer({
         updateWidth,
       );
 
-    observer.observe(container);
+    observer.observe(
+      container,
+    );
 
     return () => {
       observer.disconnect();
@@ -137,13 +269,53 @@ export default function ResumeViewer({
     );
   }
 
+  if (previewError) {
+    return (
+      <div className="grid min-h-100 place-items-center rounded-3xl border border-border bg-card px-6">
+        <div className="max-w-md text-center">
+          <div className="mx-auto grid size-12 place-items-center rounded-2xl border border-border bg-secondary font-display text-xl font-semibold text-primary">
+            !
+          </div>
+
+          <h2 className="mt-5 font-display text-2xl font-semibold tracking-[-0.035em]">
+            {
+              copy.error
+                .title
+            }
+          </h2>
+
+          <p className="mt-3 text-sm leading-7 text-muted-foreground">
+            {
+              copy.error
+                .description
+            }
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!previewUrl) {
+    return (
+      <div className="grid min-h-100 place-items-center rounded-3xl border border-border bg-card">
+        <div className="text-center">
+          <span className="mx-auto block size-5 animate-spin rounded-full border-2 border-border border-t-primary" />
+
+          <p className="mt-4 font-mono text-[9px] uppercase tracking-[0.13em] text-muted-foreground">
+            {copy.loading}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       ref={containerRef}
       className="w-full"
     >
       <Document
-        file={file}
+        file={previewUrl}
         onLoadSuccess={({
           numPages:
             loadedPages,
@@ -206,16 +378,12 @@ export default function ResumeViewer({
                   className="mx-auto w-fit max-w-full"
                 >
                   <p className="mb-2 px-1 font-mono text-[8px] uppercase tracking-[0.13em] text-muted-foreground">
-                    {
-                      copy.page
-                    }{" "}
+                    {copy.page}{" "}
                     {
                       pageNumber
                     }{" "}
                     {copy.of}{" "}
-                    {
-                      numPages
-                    }
+                    {numPages}
                   </p>
 
                   <div className="max-w-full overflow-hidden rounded-sm border border-border bg-white shadow-[0_20px_60px_rgb(33_30_26/0.10)]">

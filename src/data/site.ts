@@ -70,9 +70,11 @@ export const siteConfig = {
 
   resume: {
     href: "/resume",
+    previewHref:
+      "/api/resume-preview",
     fileHref:
-      "/document/rizqi-yanuar-cv.pdf",
-    available: false,
+      "/documents/rizqi-yanuar-cv.pdf",
+    available: true,
   },
 
   contact: {
