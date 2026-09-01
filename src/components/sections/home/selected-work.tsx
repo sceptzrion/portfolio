@@ -1,9 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import {
   featuredProjects,
   type FeaturedProject,
 } from "@/data/projects";
+import { projectImages } from "@/data/assets";
 import { homeDictionary } from "@/i18n/dictionaries/home";
 import { getLocale } from "@/i18n/get-locale";
 
@@ -38,249 +40,100 @@ function ProjectChip({
 }
 
 /* =========================================================
-   Temporary Project Visuals
-
-   These are intentionally CSS-based placeholders.
-   Real screenshots will replace them later.
+   REAL PROJECT VISUALS
+   Uses each featured project's curated primary screenshot.
    ========================================================= */
 
-function EduBidanVisual() {
-  return (
-    <div className="relative h-full min-h-80 overflow-hidden bg-[linear-gradient(145deg,var(--tertiary),var(--secondary))] p-4 sm:min-h-97.5 sm:p-8 lg:p-10">
+const homeProjectImageKeys: Record<
+  string,
+  string
+> = {
+  edubidan: "landing-page",
+  "disarpus-bekasi": "homepage",
+  "lestari-waste-bank":
+    "statistics-reporting",
+};
+
+function HomeProjectVisual({
+  project,
+  featured = false,
+}: {
+  project: FeaturedProject;
+  featured?: boolean;
+}) {
+  const imageKey =
+    homeProjectImageKeys[
+      project.slug
+    ];
+
+  const imageSrc =
+    imageKey
+      ? projectImages[
+          project.slug
+        ]?.[imageKey]
+      : undefined;
+
+  const layoutClass =
+    featured
+      ? "h-full min-h-80 sm:min-h-97.5"
+      : project.slug ===
+          "disarpus-bekasi"
+        ? "aspect-video"
+        : "aspect-16/10";
+
+  if (!imageSrc) {
+    return (
       <div
-        aria-hidden="true"
-        className="tech-grid absolute inset-0 opacity-35"
-      />
+        className={`relative overflow-hidden bg-[linear-gradient(145deg,var(--secondary),var(--tertiary))] ${layoutClass}`}
+      >
+        <div
+          aria-hidden="true"
+          className="tech-grid absolute inset-0 opacity-30"
+        />
 
-      <div
-        aria-hidden="true"
-        className="absolute -right-20 -top-20 size-72 rounded-full bg-primary/10 blur-3xl"
-      />
+        <div className="absolute inset-5 flex flex-col justify-between rounded-2xl border border-border bg-card/80 p-5">
+          <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-primary">
+            {project.category}
+          </p>
 
-      <div className="relative mx-auto flex h-full max-w-155 items-center">
-        <div className="w-full overflow-hidden rounded-2xl border border-border-strong bg-card shadow-[0_25px_70px_rgb(33_30_26/0.16)] transition-transform duration-700 group-hover:-translate-y-1">
-          {/* Browser chrome */}
-          <div className="flex items-center gap-3 border-b border-border px-4 py-3">
-            <div className="flex items-center gap-1.5">
-              <span className="size-2 rounded-full bg-primary/70" />
-              <span className="size-2 rounded-full bg-border-strong" />
-              <span className="size-2 rounded-full bg-border-strong" />
-            </div>
-
-            <div className="min-w-0 flex-1 rounded-md bg-secondary px-3 py-1.5">
-              <p className="truncate font-mono text-[9px] text-muted-foreground">
-                edubidan / learning-dashboard
-              </p>
-            </div>
-          </div>
-
-          {/* Dashboard */}
-          <div className="grid min-h-64 grid-cols-[64px_1fr] sm:min-h-75 sm:grid-cols-[92px_1fr]">
-            <aside className="border-r border-border bg-secondary/55 p-3">
-              <div className="size-8 rounded-lg bg-primary" />
-
-              <div className="mt-7 space-y-3">
-                <span className="block h-2 w-full rounded-full bg-foreground/15" />
-                <span className="block h-2 w-4/5 rounded-full bg-foreground/10" />
-                <span className="block h-2 w-3/5 rounded-full bg-foreground/10" />
-                <span className="block h-2 w-5/6 rounded-full bg-foreground/10" />
-              </div>
-            </aside>
-
-            <div className="p-4 sm:p-6">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="font-mono text-[8px] uppercase tracking-[0.15em] text-primary">
-                    Student Dashboard
-                  </p>
-
-                  <div className="mt-2 h-4 w-36 rounded-full bg-foreground/80 sm:w-44" />
-
-                  <div className="mt-2 h-2 w-28 rounded-full bg-foreground/15" />
-                </div>
-
-                <span className="size-8 shrink-0 rounded-full bg-primary-soft" />
-              </div>
-
-              <div className="mt-7 grid grid-cols-3 gap-2.5">
-                <div className="rounded-xl border border-border bg-background p-3">
-                  <span className="block h-2 w-10 rounded-full bg-primary/65" />
-                  <span className="mt-3 block h-5 w-8 rounded bg-foreground/75" />
-                </div>
-
-                <div className="rounded-xl border border-border bg-background p-3">
-                  <span className="block h-2 w-9 rounded-full bg-foreground/15" />
-                  <span className="mt-3 block h-5 w-10 rounded bg-foreground/75" />
-                </div>
-
-                <div className="rounded-xl border border-border bg-background p-3">
-                  <span className="block h-2 w-11 rounded-full bg-foreground/15" />
-                  <span className="mt-3 block h-5 w-7 rounded bg-foreground/75" />
-                </div>
-              </div>
-
-              <div className="mt-3 grid gap-3 sm:grid-cols-[1.4fr_0.6fr]">
-                <div className="rounded-xl border border-border bg-background p-4">
-                  <div className="flex items-center justify-between">
-                    <span className="h-2.5 w-24 rounded-full bg-foreground/20" />
-                    <span className="h-5 w-12 rounded-full bg-primary-soft" />
-                  </div>
-
-                  <div className="mt-5 space-y-3">
-                    {[75, 58, 86].map((width) => (
-                      <div
-                        key={width}
-                        className="rounded-lg bg-secondary p-3"
-                      >
-                        <span className="block h-2 w-1/3 rounded-full bg-foreground/20" />
-
-                        <span
-                          className="mt-3 block h-1.5 rounded-full bg-primary/60"
-                          style={{
-                            width: `${width}%`,
-                          }}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="hidden rounded-xl bg-feature p-4 text-feature-foreground sm:block">
-                  <p className="font-mono text-[8px] uppercase tracking-widest text-primary">
-                    Progress
-                  </p>
-
-                  <div className="mx-auto mt-5 grid size-20 place-items-center rounded-full border-[7px] border-primary/80">
-                    <span className="font-mono text-[8px] uppercase tracking-[0.12em] text-feature-muted">
-                        Learning
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <span className="absolute bottom-5 right-5 rounded-full border border-border bg-card/90 px-3 py-1.5 font-mono text-[9px] text-muted-foreground backdrop-blur">
-        UI PREVIEW / PLACEHOLDER
-      </span>
-    </div>
-  );
-}
-
-function DisarpusVisual() {
-  return (
-    <div className="relative aspect-video overflow-hidden bg-[linear-gradient(145deg,var(--secondary),var(--tertiary))]">
-      <div
-        aria-hidden="true"
-        className="tech-grid absolute inset-0 opacity-30"
-      />
-
-      <div className="absolute inset-x-[7%] bottom-[-12%] top-[12%] overflow-hidden rounded-t-2xl border border-border-strong bg-card shadow-[0_20px_55px_rgb(33_30_26/0.13)] transition-transform duration-700 group-hover:-translate-y-2">
-        <div className="flex h-10 items-center border-b border-border px-4">
-          <span className="size-5 rounded-md bg-primary" />
-
-          <div className="ml-auto flex gap-3">
-            <span className="h-1.5 w-8 rounded-full bg-foreground/20" />
-            <span className="h-1.5 w-8 rounded-full bg-foreground/20" />
-            <span className="h-1.5 w-8 rounded-full bg-foreground/20" />
-          </div>
-        </div>
-
-        <div className="relative h-32 overflow-hidden bg-feature">
-          <div className="tech-grid-feature absolute inset-0 opacity-50" />
-
-          <div className="absolute inset-x-5 bottom-5">
-            <span className="block h-2 w-20 rounded-full bg-primary" />
-            <span className="mt-3 block h-5 w-56 max-w-full rounded bg-feature-foreground/85" />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-3 gap-3 p-4">
-          {[1, 2, 3].map((item) => (
-            <div
-              key={item}
-              className="rounded-lg border border-border p-2.5"
-            >
-              <div className="aspect-4/3 rounded-md bg-secondary" />
-              <span className="mt-2 block h-1.5 w-4/5 rounded-full bg-foreground/20" />
-              <span className="mt-1.5 block h-1.5 w-1/2 rounded-full bg-foreground/10" />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function LestariVisual() {
-  return (
-    <div className="relative aspect-16/10 overflow-hidden bg-feature">
-      <div
-        aria-hidden="true"
-        className="tech-grid-feature absolute inset-0 opacity-55"
-      />
-
-      <div
-        aria-hidden="true"
-        className="absolute -right-10 top-5 size-44 rounded-full bg-primary/15 blur-3xl"
-      />
-
-      <div className="absolute inset-5 flex gap-3">
-        <div className="flex w-[42%] flex-col justify-between rounded-2xl border border-feature-border bg-feature/70 p-4">
           <div>
-            <span className="font-mono text-[8px] uppercase tracking-[0.15em] text-primary">
-              Waste Pickup
-            </span>
-
-            <div className="mt-3 h-5 w-3/4 rounded bg-feature-foreground/80" />
-
-            <div className="mt-2 h-2 w-full rounded-full bg-feature-border" />
-            <div className="mt-1.5 h-2 w-3/4 rounded-full bg-feature-border" />
-          </div>
-
-          <div className="rounded-xl bg-primary p-3">
-            <span className="block h-2 w-1/2 rounded-full bg-primary-foreground/80" />
-
-            <span className="mt-2 block h-5 w-3/4 rounded bg-primary-foreground" />
-          </div>
-        </div>
-
-        <div className="flex flex-1 flex-col gap-3">
-          <div className="grid flex-1 grid-cols-2 gap-3">
-            <div className="rounded-2xl border border-feature-border bg-feature/70 p-3">
-              <span className="font-mono text-[7px] uppercase tracking-widest text-feature-muted">
-                Points
-              </span>
-
-              <div className="mt-4 space-y-2">
-                <span className="block h-2 w-3/4 rounded-full bg-feature-foreground/75" />
-                <span className="block h-2 w-1/2 rounded-full bg-primary/75" />
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-feature-border bg-feature/70 p-3">
-              <span className="font-mono text-[7px] uppercase tracking-widest text-feature-muted">
-                Rewards
-              </span>
-
-              <div className="mt-4 flex gap-1.5">
-                <span className="size-7 rounded-lg bg-primary/80" />
-                <span className="size-7 rounded-lg bg-feature-border" />
-              </div>
-            </div>
-          </div>
-
-          <div className="h-[42%] rounded-2xl bg-[linear-gradient(135deg,var(--primary),#b94a1b)] p-4">
-            <p className="font-mono text-[7px] uppercase tracking-widest text-primary-foreground/70">
-              Community impact
+            <p className="font-display text-3xl font-bold tracking-tighter">
+              {project.index}
             </p>
 
-            <span className="mt-3 block h-4 w-3/4 rounded bg-primary-foreground/90" />
+            <p className="mt-2 text-sm font-medium">
+              {project.title}
+            </p>
           </div>
         </div>
       </div>
+    );
+  }
+
+  const sizes =
+    featured
+      ? "(min-width: 1024px) 54vw, 100vw"
+      : project.slug ===
+          "disarpus-bekasi"
+        ? "(min-width: 768px) 60vw, 100vw"
+        : "(min-width: 768px) 40vw, 100vw";
+
+  return (
+    <div
+      className={`relative overflow-hidden bg-secondary ${layoutClass}`}
+    >
+      <Image
+        src={imageSrc}
+        alt=""
+        fill
+        sizes={sizes}
+        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.015]"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5"
+      />
     </div>
   );
 }
@@ -516,7 +369,10 @@ export default async function SelectedWork() {
               </div>
 
               <div aria-hidden="true">
-                <EduBidanVisual />
+                <HomeProjectVisual
+                  project={flagship}
+                  featured
+                />
               </div>
             </div>
           </Link>
@@ -531,7 +387,9 @@ export default async function SelectedWork() {
             <SecondaryProjectCard
               project={disarpus}
               visual={
-                <DisarpusVisual />
+                <HomeProjectVisual
+                  project={disarpus}
+                />
               }
               tagline={
                 copy.projects
@@ -552,7 +410,9 @@ export default async function SelectedWork() {
             <SecondaryProjectCard
               project={lestari}
               visual={
-                <LestariVisual />
+                <HomeProjectVisual
+                  project={lestari}
+                />
               }
               tagline={
                 copy.projects
