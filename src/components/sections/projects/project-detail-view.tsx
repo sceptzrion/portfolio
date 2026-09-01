@@ -506,12 +506,16 @@ export default function ProjectDetailView({
     detail.screens[0];
 
   /*
-   * EduBidan intentionally repeats its primary
-   * Landing Page inside Selected Screens.
-   * Other projects keep primary separated.
+   * Projects with curated real assets may intentionally
+   * repeat their primary visual inside Selected Screens.
    */
+  const repeatPrimaryInSelected =
+    project.slug === "edubidan" ||
+    project.slug ===
+      "disarpus-bekasi";
+
   const selectedScreens =
-    project.slug === "edubidan"
+    repeatPrimaryInSelected
       ? detail.screens
       : detail.screens.slice(1);
 
@@ -520,7 +524,7 @@ export default function ProjectDetailView({
    * Real project images are resolved through imageKey.
    */
   const selectedVisualIndexOffset =
-    project.slug === "edubidan"
+    repeatPrimaryInSelected
       ? 1
       : 2;
 

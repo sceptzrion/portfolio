@@ -33,4 +33,15 @@ export const projectImages: Record<
     "mobile-module":
       "/images/projects/edubidan/mobile-module.webp",
   },
+
+  "disarpus-bekasi": {
+    homepage:
+      "/images/projects/disarpus-bekasi/homepage.webp",
+
+    "news-listing":
+      "/images/projects/disarpus-bekasi/news-listing.webp",
+
+    "mobile-news":
+      "/images/projects/disarpus-bekasi/mobile-news.webp",
+  },
 };

@@ -315,26 +315,30 @@ export const projectDetailsDictionary: Record<
             label:
               "Homepage",
             detail:
-              "The primary desktop implementation of the public-facing website.",
+              "Public homepage with the main institutional banner and navigation.",
             layout: "wide",
+            imageKey:
+              "homepage",
           },
           {
             label:
-              "News & Article Interface",
+              "News & Announcement Listing",
             detail:
-              "A representative news listing or article-detail interface from the project.",
-            layout:
-              "standard",
+              "Desktop listing interface presenting news and public announcements through a responsive card grid.",
+            layout: "wide",
+            imageKey:
+              "news-listing",
           },
           {
             label:
-              "Responsive View",
+              "Responsive News Experience",
             detail:
-              "A mobile or narrow-screen view showing responsive navigation and layout behavior.",
-            layout:
-              "portrait",
+              "Mobile news interface with responsive navigation, search, and single-column article presentation.",
+            layout: "wide",
             frame:
               "phone",
+            imageKey:
+              "mobile-news",
           },
         ],
       },
@@ -788,26 +792,30 @@ export const projectDetailsDictionary: Record<
             label:
               "Homepage",
             detail:
-              "Implementasi desktop utama dari website publik Disarpus.",
+              "Homepage publik dengan banner utama instansi dan navigasi website.",
             layout: "wide",
+            imageKey:
+              "homepage",
           },
           {
             label:
-              "Antarmuka Berita & Artikel",
+              "Daftar Berita & Pengumuman",
             detail:
-              "Tampilan representatif dari daftar berita atau halaman detail artikel.",
-            layout:
-              "standard",
+              "Antarmuka desktop yang menyajikan berita dan pengumuman publik melalui grid card responsif.",
+            layout: "wide",
+            imageKey:
+              "news-listing",
           },
           {
             label:
-              "Responsive View",
+              "Tampilan Berita Responsif",
             detail:
-              "Tampilan mobile yang menunjukkan perilaku navigasi dan layout responsif.",
-            layout:
-              "portrait",
+              "Tampilan berita mobile dengan navigasi responsif, pencarian, dan penyajian artikel dalam satu kolom.",
+            layout: "wide",
             frame:
               "phone",
+            imageKey:
+              "mobile-news",
           },
         ],
       },
