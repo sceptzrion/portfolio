@@ -44,4 +44,15 @@ export const projectImages: Record<
     "mobile-news":
       "/images/projects/disarpus-bekasi/mobile-news.webp",
   },
+
+  "lestari-waste-bank": {
+    "statistics-reporting":
+      "/images/projects/lestari-waste-bank/statistics-reporting.webp",
+
+    "waste-reception":
+      "/images/projects/lestari-waste-bank/waste-reception.webp",
+
+    "mobile-waste-categories":
+      "/images/projects/lestari-waste-bank/mobile-waste-categories.webp",
+  },
 };

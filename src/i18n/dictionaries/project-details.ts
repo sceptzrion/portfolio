@@ -390,26 +390,32 @@ export const projectDetailsDictionary: Record<
         screens: [
           {
             label:
-              "Platform Homepage",
+              "Statistics & Reporting",
             detail:
-              "A primary view introducing the waste-bank platform and its main services.",
+              "Operational overview with participation metrics, distributed points, waste volume, and waste-type distribution.",
             layout: "wide",
+            imageKey:
+              "statistics-reporting",
           },
           {
             label:
-              "Waste Service Flow",
+              "Waste Reception Management",
             detail:
-              "A representative user-facing flow for waste collection or drop-off services.",
-            layout:
-              "standard",
+              "Administrative interface for reviewing waste reception records and tracking status, weight, points, and related submission data.",
+            layout: "wide",
+            imageKey:
+              "waste-reception",
           },
           {
             label:
-              "Points, Rewards & Marketplace",
+              "Mobile Waste Categories",
             detail:
-              "A supporting view representing point, reward, or marketplace-related functionality.",
-            layout:
-              "standard",
+              "Responsive user-facing view presenting the waste categories supported by the platform.",
+            layout: "wide",
+            frame:
+              "phone",
+            imageKey:
+              "mobile-waste-categories",
           },
         ],
       },
@@ -867,26 +873,32 @@ export const projectDetailsDictionary: Record<
         screens: [
           {
             label:
-              "Homepage Platform",
+              "Statistik & Laporan",
             detail:
-              "Tampilan utama yang memperkenalkan platform bank sampah dan layanan utamanya.",
+              "Ringkasan operasional yang menampilkan metrik partisipasi, poin yang diberikan, volume sampah, dan distribusi jenis sampah.",
             layout: "wide",
+            imageKey:
+              "statistics-reporting",
           },
           {
             label:
-              "Alur Layanan Sampah",
+              "Pengelolaan Penerimaan Sampah",
             detail:
-              "Tampilan representatif dari layanan pengumpulan atau drop-off sampah.",
-            layout:
-              "standard",
+              "Antarmuka pengelolaan untuk meninjau data penerimaan sampah serta memantau status, berat, poin, dan data pengajuan terkait.",
+            layout: "wide",
+            imageKey:
+              "waste-reception",
           },
           {
             label:
-              "Poin, Reward & Marketplace",
+              "Kategori Sampah Mobile",
             detail:
-              "Tampilan pendukung untuk fungsi poin, reward, atau marketplace.",
-            layout:
-              "standard",
+              "Tampilan responsif untuk pengguna yang menyajikan berbagai kategori sampah yang didukung platform.",
+            layout: "wide",
+            frame:
+              "phone",
+            imageKey:
+              "mobile-waste-categories",
           },
         ],
       },

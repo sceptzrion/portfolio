@@ -512,7 +512,9 @@ export default function ProjectDetailView({
   const repeatPrimaryInSelected =
     project.slug === "edubidan" ||
     project.slug ===
-      "disarpus-bekasi";
+      "disarpus-bekasi" ||
+    project.slug ===
+      "lestari-waste-bank";
 
   const selectedScreens =
     repeatPrimaryInSelected
