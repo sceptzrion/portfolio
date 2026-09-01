@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { profileImages } from "@/data/assets";
+import {
+  profileImages,
+  projectImages,
+} from "@/data/assets";
 import { siteConfig } from "@/data/site";
 import { homeDictionary } from "@/i18n/dictionaries/home";
 import { sharedDictionary } from "@/i18n/dictionaries/shared";
@@ -132,26 +135,28 @@ function ProjectPreview({
         </span>
       </div>
 
-      <div className="relative aspect-16/10 overflow-hidden bg-feature">
-        <div className="tech-grid-feature absolute inset-0 opacity-60" />
+      <div className="relative aspect-16/10 overflow-hidden bg-white">
+        <Image
+          src={
+            projectImages.edubidan[
+              "student-dashboard"
+            ]
+          }
+          alt=""
+          fill
+          sizes="220px"
+          className="object-cover object-top transition-transform duration-700 hover:scale-[1.02]"
+        />
 
-        <div className="absolute inset-3 rounded-lg border border-feature-border bg-feature">
-          <div className="p-3">
-            <p className="font-mono text-[7px] uppercase tracking-[0.16em] text-primary">
-              {label}
-            </p>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5"
+        />
 
-            <p className="mt-2 font-display text-sm font-semibold leading-tight text-feature-foreground">
-              EduBidan Learning
-              <br />
-              Management System
-            </p>
-
-            <div className="mt-3 flex gap-1">
-              <span className="h-1.5 w-12 rounded-full bg-primary/70" />
-              <span className="h-1.5 w-6 rounded-full bg-feature-border" />
-            </div>
-          </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-[linear-gradient(to_top,rgb(0_0_0/0.68),transparent)] px-3 pb-2 pt-8">
+          <p className="font-mono text-[7px] uppercase tracking-[0.14em] text-white/85">
+            {label}
+          </p>
         </div>
       </div>
     </div>

@@ -26,7 +26,6 @@ type HomeDictionary = {
     };
 
     portraitLabel: string;
-    portraitComingLater: string;
     featuredProject: string;
     scrollHint: string;
   };
@@ -87,7 +86,6 @@ type HomeDictionary = {
       degree: string;
     };
 
-    portraitPlaceholder: string;
 
     action: string;
 
@@ -187,9 +185,7 @@ export const homeDictionary = {
       },
 
       portraitLabel:
-        "Portrait placeholder for Rizqi",
-      portraitComingLater:
-        "Portrait coming later",
+        "Portrait of Rizqi",
       featuredProject:
         "Featured project",
       scrollHint:
@@ -237,12 +233,12 @@ export const homeDictionary = {
 
         disarpus: {
           tagline:
-            "Responsive frontend development for the revitalization of a regional government archives and library website.",
+            "Responsive frontend implementation for a regional government archives and library website.",
         },
 
         lestari: {
           tagline:
-            "A collaborative digital platform for waste pickup, point tracking, educational content, and community rewards.",
+            "A collaborative digital waste-bank platform for waste services, points, rewards, educational content, and management flows.",
         },
       },
     },
@@ -270,9 +266,6 @@ export const homeDictionary = {
         degree:
           "Bachelor of Informatics",
       },
-
-      portraitPlaceholder:
-        "Portrait placeholder",
 
       action:
         "More About Me",
@@ -402,9 +395,7 @@ export const homeDictionary = {
       },
 
       portraitLabel:
-        "Placeholder portrait Rizqi",
-      portraitComingLater:
-        "Portrait akan ditambahkan",
+        "Potret Rizqi",
       featuredProject:
         "Flagship Project",
       scrollHint:
@@ -452,12 +443,12 @@ export const homeDictionary = {
 
         disarpus: {
           tagline:
-            "Pengembangan frontend responsif untuk revitalisasi website arsip dan perpustakaan Kabupaten Bekasi.",
+            "Implementasi frontend responsif untuk website arsip dan perpustakaan Kabupaten Bekasi.",
         },
 
         lestari: {
           tagline:
-            "Platform digital kolaboratif untuk layanan penjemputan sampah, pencatatan poin, konten edukasi, dan reward komunitas.",
+            "Platform bank sampah digital kolaboratif untuk layanan sampah, poin, reward, konten edukasi, dan pengelolaan pendukung.",
         },
       },
     },
@@ -485,9 +476,6 @@ export const homeDictionary = {
         degree:
           "Sarjana Informatika",
       },
-
-      portraitPlaceholder:
-        "Portrait akan ditambahkan",
 
       action:
         "Selengkapnya",

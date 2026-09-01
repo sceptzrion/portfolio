@@ -120,14 +120,25 @@ function HomeProjectVisual({
 
   return (
     <div
-      className={`relative overflow-hidden bg-secondary ${layoutClass}`}
+      className={[
+        "relative overflow-hidden",
+        featured
+          ? "bg-white"
+          : "bg-secondary",
+        layoutClass,
+      ].join(" ")}
     >
       <Image
         src={imageSrc}
         alt=""
         fill
         sizes={sizes}
-        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.015]"
+        className={[
+          "transition-transform duration-700 group-hover:scale-[1.015]",
+          featured
+            ? "object-contain object-center"
+            : "object-cover object-top",
+        ].join(" ")}
       />
 
       <div
