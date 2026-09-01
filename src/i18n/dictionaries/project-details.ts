@@ -435,7 +435,7 @@ export const projectDetailsDictionary: Record<
           "Built the Streamlit interface and application flow.",
           "Integrated the trained linear regression model with market and exchange-rate APIs.",
           "Implemented currency and unit conversion between USD per troy ounce and IDR per gram.",
-          "Built the automatic prediction and manual simulation result flows.",
+          "Built the model-driven prediction and manual simulation result flows.",
         ],
 
         features: [
