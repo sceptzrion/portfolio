@@ -63,4 +63,15 @@ export const projectImages: Record<
     "manual-simulation":
       "/images/projects/gold-price-prediction/manual-simulation.webp",
   },
+
+  healingaja: {
+    "landing-page":
+      "/images/projects/healingaja/landing-page.webp",
+
+    "travel-discovery":
+      "/images/projects/healingaja/travel-discovery.webp",
+
+    "mobile-destinations":
+      "/images/projects/healingaja/mobile-destinations.webp",
+  },
 };

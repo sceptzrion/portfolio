@@ -529,25 +529,30 @@ export const projectDetailsDictionary: Record<
             label:
               "Landing Page",
             detail:
-              "The main desktop view combining the hero and destination-focused experience.",
+              "Desktop landing experience with a full-screen travel hero, primary navigation, and introductory content.",
             layout: "wide",
+            imageKey:
+              "landing-page",
           },
           {
             label:
-              "Guide & Travel Content",
+              "Travel Discovery",
             detail:
-              "A supporting view showing travel guidance or service-oriented content.",
+              "Image-led travel section combining destination inspiration with supporting guidance and journey-oriented content.",
             layout: "wide",
+            imageKey:
+              "travel-discovery",
           },
           {
             label:
-              "Mobile Experience",
+              "Mobile Destinations Experience",
             detail:
-              "A mobile view demonstrating the responsive layout and navigation.",
-            layout:
-              "portrait",
+              "Responsive mobile view presenting selected Indonesian destinations through a compact card grid.",
+            layout: "wide",
             frame:
               "phone",
+            imageKey:
+              "mobile-destinations",
           },
         ],
       },
@@ -1016,25 +1021,30 @@ export const projectDetailsDictionary: Record<
             label:
               "Landing Page",
             detail:
-              "Tampilan desktop utama yang menggabungkan hero dan pengalaman eksplorasi destinasi.",
+              "Tampilan landing page desktop dengan hero wisata layar penuh, navigasi utama, dan konten pengantar.",
             layout: "wide",
+            imageKey:
+              "landing-page",
           },
           {
             label:
-              "Panduan & Konten Wisata",
+              "Eksplorasi Perjalanan",
             detail:
-              "Tampilan pendukung yang menunjukkan bagian panduan atau layanan perjalanan.",
+              "Bagian wisata berbasis visual yang memadukan inspirasi destinasi dengan panduan dan konten pendukung perjalanan.",
             layout: "wide",
+            imageKey:
+              "travel-discovery",
           },
           {
             label:
-              "Tampilan Mobile",
+              "Destinasi Pilihan Mobile",
             detail:
-              "Tampilan mobile yang menunjukkan layout dan navigasi responsif.",
-            layout:
-              "portrait",
+              "Tampilan mobile responsif yang menyajikan destinasi pilihan di Indonesia melalui grid card yang ringkas.",
+            layout: "wide",
             frame:
               "phone",
+            imageKey:
+              "mobile-destinations",
           },
         ],
       },
