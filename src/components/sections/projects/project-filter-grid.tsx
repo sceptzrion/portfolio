@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   useMemo,
@@ -13,6 +14,7 @@ import {
   type Project,
   type ProjectFilterValue,
 } from "@/data/projects";
+import { projectImages } from "@/data/assets";
 
 import { useLocale } from "@/components/i18n/locale-provider";
 import {
@@ -113,514 +115,103 @@ function ProjectChip({
 }
 
 /* =========================================================
-   TEMPORARY PROJECT VISUALS
-   Real screenshots can replace these later.
+   REAL PROJECT VISUALS
+   Uses each project's curated primary screenshot.
    ========================================================= */
 
-function EduBidanVisual() {
-  return (
-    <div className="relative h-full min-h-64 overflow-hidden bg-[linear-gradient(145deg,var(--tertiary),var(--secondary))] p-5 sm:min-h-72 sm:p-7">
-      <div
-        aria-hidden="true"
-        className="tech-grid absolute inset-0 opacity-35"
-      />
-
-      <div
-        aria-hidden="true"
-        className="absolute -right-16 -top-16 size-64 rounded-full bg-primary/10 blur-3xl"
-      />
-
-      <div className="relative mx-auto flex h-full max-w-170 items-center">
-        <div className="w-full overflow-hidden rounded-2xl border border-border-strong bg-card shadow-[0_25px_65px_rgb(33_30_26/0.14)] transition-transform duration-700 group-hover:-translate-y-1">
-          <div className="flex items-center gap-3 border-b border-border px-4 py-3">
-            <div className="flex items-center gap-1.5">
-              <span className="size-2 rounded-full bg-primary/70" />
-              <span className="size-2 rounded-full bg-border-strong" />
-              <span className="size-2 rounded-full bg-border-strong" />
-            </div>
-
-            <div className="min-w-0 flex-1 rounded-md bg-secondary px-3 py-1.5">
-              <p className="truncate font-mono text-[8px] text-muted-foreground">
-                edubidan / learning-dashboard
-              </p>
-            </div>
-          </div>
-
-          <div className="grid min-h-60 grid-cols-[68px_1fr] sm:min-h-68 sm:grid-cols-[94px_1fr]">
-            <aside className="border-r border-border bg-secondary/55 p-3">
-              <div className="size-8 rounded-lg bg-primary" />
-
-              <div className="mt-7 space-y-3">
-                <span className="block h-2 w-full rounded-full bg-foreground/15" />
-                <span className="block h-2 w-4/5 rounded-full bg-foreground/10" />
-                <span className="block h-2 w-3/5 rounded-full bg-foreground/10" />
-                <span className="block h-2 w-5/6 rounded-full bg-foreground/10" />
-              </div>
-            </aside>
-
-            <div className="p-4 sm:p-6">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="font-mono text-[7px] uppercase tracking-[0.15em] text-primary">
-                    Student Dashboard
-                  </p>
-
-                  <div className="mt-3 h-4 w-32 rounded bg-foreground/80 sm:w-44" />
-
-                  <div className="mt-2 h-2 w-24 rounded-full bg-foreground/15" />
-                </div>
-
-                <span className="size-8 rounded-full bg-primary-soft" />
-              </div>
-
-              <div className="mt-6 grid grid-cols-3 gap-2.5">
-                {[1, 2, 3].map(
-                  (item) => (
-                    <div
-                      key={item}
-                      className="rounded-xl border border-border bg-background p-3"
-                    >
-                      <span className="block h-2 w-8 rounded-full bg-primary/45" />
-
-                      <span className="mt-3 block h-5 w-8 rounded bg-foreground/75" />
-                    </div>
-                  ),
-                )}
-              </div>
-
-              <div className="mt-3 grid gap-3 sm:grid-cols-[1.45fr_0.55fr]">
-                <div className="rounded-xl border border-border bg-background p-4">
-                  <div className="flex items-center justify-between">
-                    <span className="h-2 w-20 rounded-full bg-foreground/20" />
-
-                    <span className="h-5 w-11 rounded-full bg-primary-soft" />
-                  </div>
-
-                  <div className="mt-4 space-y-3">
-                    {[78, 55, 88].map(
-                      (width) => (
-                        <div
-                          key={width}
-                          className="rounded-lg bg-secondary p-2.5"
-                        >
-                          <span className="block h-1.5 w-1/3 rounded-full bg-foreground/20" />
-
-                          <span
-                            className="mt-2.5 block h-1.5 rounded-full bg-primary/60"
-                            style={{
-                              width: `${width}%`,
-                            }}
-                          />
-                        </div>
-                      ),
-                    )}
-                  </div>
-                </div>
-
-                <div className="hidden rounded-xl bg-feature p-3 text-feature-foreground sm:block">
-                  <p className="font-mono text-[7px] uppercase tracking-widest text-primary">
-                    Progress
-                  </p>
-
-                  <div className="mx-auto mt-5 grid size-16 place-items-center rounded-full border-[6px] border-primary/80">
-                    <span className="font-mono text-[6px] uppercase tracking-widest text-feature-muted">
-                      Learning
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function EduBidanCardVisual() {
-  return (
-    <div className="relative aspect-16/10 overflow-hidden bg-[linear-gradient(145deg,var(--tertiary),var(--secondary))] p-5">
-      <div
-        aria-hidden="true"
-        className="tech-grid absolute inset-0 opacity-35"
-      />
-
-      <div
-        aria-hidden="true"
-        className="absolute -right-12 -top-12 size-48 rounded-full bg-primary/10 blur-3xl"
-      />
-
-      <div className="relative h-full overflow-hidden rounded-2xl border border-border-strong bg-card shadow-[0_18px_45px_rgb(33_30_26/0.1)] transition-transform duration-700 group-hover:-translate-y-2">
-        <div className="flex h-9 items-center gap-2 border-b border-border px-3">
-          <div className="flex items-center gap-1">
-            <span className="size-1.5 rounded-full bg-primary/70" />
-            <span className="size-1.5 rounded-full bg-border-strong" />
-            <span className="size-1.5 rounded-full bg-border-strong" />
-          </div>
-
-          <div className="ml-2 h-1.5 flex-1 rounded-full bg-secondary" />
-        </div>
-
-        <div className="grid h-[calc(100%-36px)] grid-cols-[22%_1fr]">
-          <div className="border-r border-border bg-secondary/55 p-3">
-            <span className="block size-6 rounded-md bg-primary" />
-
-            <div className="mt-5 space-y-2">
-              <span className="block h-1.5 w-full rounded-full bg-foreground/15" />
-              <span className="block h-1.5 w-4/5 rounded-full bg-foreground/10" />
-              <span className="block h-1.5 w-3/5 rounded-full bg-foreground/10" />
-            </div>
-          </div>
-
-          <div className="p-3">
-            <p className="font-mono text-[6px] uppercase tracking-[0.14em] text-primary">
-              Student Dashboard
-            </p>
-
-            <div className="mt-2 h-3 w-2/3 rounded bg-foreground/75" />
-
-            <div className="mt-2 h-1.5 w-1/2 rounded-full bg-foreground/15" />
-
-            <div className="mt-4 grid grid-cols-3 gap-2">
-              {[1, 2, 3].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-lg border border-border bg-background p-2"
-                >
-                  <span className="block h-1.5 w-1/2 rounded-full bg-primary/50" />
-
-                  <span className="mt-2 block h-3 w-2/3 rounded bg-foreground/20" />
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-2 rounded-lg border border-border bg-background p-2">
-              <div className="flex items-center justify-between">
-                <span className="h-1.5 w-1/3 rounded-full bg-foreground/15" />
-
-                <span className="h-3 w-8 rounded-full bg-primary-soft" />
-              </div>
-
-              <div className="mt-2 h-1.5 w-4/5 rounded-full bg-primary/55" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function DisarpusVisual() {
-  return (
-    <div className="relative aspect-16/10 overflow-hidden bg-[linear-gradient(145deg,var(--secondary),var(--tertiary))]">
-      <div
-        aria-hidden="true"
-        className="tech-grid absolute inset-0 opacity-30"
-      />
-
-      <div className="absolute inset-x-[7%] bottom-[-12%] top-[12%] overflow-hidden rounded-t-2xl border border-border-strong bg-card shadow-[0_20px_50px_rgb(33_30_26/0.12)] transition-transform duration-700 group-hover:-translate-y-2">
-        <div className="flex h-9 items-center border-b border-border px-4">
-          <span className="size-5 rounded-md bg-primary" />
-
-          <div className="ml-auto flex gap-3">
-            <span className="h-1.5 w-7 rounded-full bg-foreground/20" />
-            <span className="h-1.5 w-7 rounded-full bg-foreground/20" />
-            <span className="h-1.5 w-7 rounded-full bg-foreground/20" />
-          </div>
-        </div>
-
-        <div className="relative h-28 overflow-hidden bg-feature sm:h-32">
-          <div className="tech-grid-feature absolute inset-0 opacity-50" />
-
-          <div className="absolute inset-x-5 bottom-5">
-            <span className="block h-2 w-16 rounded-full bg-primary" />
-
-            <span className="mt-3 block h-5 w-48 max-w-full rounded bg-feature-foreground/85" />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-3 gap-2.5 p-4">
-          {[1, 2, 3].map(
-            (item) => (
-              <div
-                key={item}
-                className="rounded-lg border border-border p-2"
-              >
-                <div className="aspect-4/3 rounded-md bg-secondary" />
-
-                <span className="mt-2 block h-1.5 w-4/5 rounded-full bg-foreground/20" />
-
-                <span className="mt-1.5 block h-1.5 w-1/2 rounded-full bg-foreground/10" />
-              </div>
-            ),
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function LestariVisual() {
-  return (
-    <div className="relative aspect-16/10 overflow-hidden bg-feature">
-      <div
-        aria-hidden="true"
-        className="tech-grid-feature absolute inset-0 opacity-55"
-      />
-
-      <div
-        aria-hidden="true"
-        className="absolute -right-10 top-5 size-44 rounded-full bg-primary/15 blur-3xl"
-      />
-
-      <div className="absolute inset-5 flex gap-3">
-        <div className="flex w-[42%] flex-col justify-between rounded-2xl border border-feature-border bg-feature/70 p-3 sm:p-4">
-          <div>
-            <span className="font-mono text-[7px] uppercase tracking-[0.15em] text-primary">
-              Waste Pickup
-            </span>
-
-            <div className="mt-3 h-4 w-3/4 rounded bg-feature-foreground/80" />
-
-            <div className="mt-2 h-2 w-full rounded-full bg-feature-border" />
-
-            <div className="mt-1.5 h-2 w-3/4 rounded-full bg-feature-border" />
-          </div>
-
-          <div className="rounded-xl bg-primary p-3">
-            <span className="block h-2 w-1/2 rounded-full bg-primary-foreground/80" />
-
-            <span className="mt-2 block h-4 w-3/4 rounded bg-primary-foreground" />
-          </div>
-        </div>
-
-        <div className="flex flex-1 flex-col gap-3">
-          <div className="grid flex-1 grid-cols-2 gap-3">
-            <div className="rounded-2xl border border-feature-border bg-feature/70 p-3">
-              <span className="font-mono text-[7px] uppercase tracking-widest text-feature-muted">
-                Points
-              </span>
-
-              <div className="mt-4 space-y-2">
-                <span className="block h-2 w-3/4 rounded-full bg-feature-foreground/75" />
-
-                <span className="block h-2 w-1/2 rounded-full bg-primary/75" />
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-feature-border bg-feature/70 p-3">
-              <span className="font-mono text-[7px] uppercase tracking-widest text-feature-muted">
-                Rewards
-              </span>
-
-              <div className="mt-4 flex gap-1.5">
-                <span className="size-7 rounded-lg bg-primary/80" />
-
-                <span className="size-7 rounded-lg bg-feature-border" />
-              </div>
-            </div>
-          </div>
-
-          <div className="h-[42%] rounded-2xl bg-primary p-3 sm:p-4">
-            <p className="font-mono text-[7px] uppercase tracking-widest text-primary-foreground/70">
-              Community impact
-            </p>
-
-            <span className="mt-3 block h-4 w-3/4 rounded bg-primary-foreground/90" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function GoldVisual() {
-  return (
-    <div className="relative aspect-16/10 overflow-hidden bg-[linear-gradient(145deg,var(--tertiary),var(--secondary))] p-5">
-      <div
-        aria-hidden="true"
-        className="tech-grid absolute inset-0 opacity-30"
-      />
-
-      <div className="relative h-full rounded-2xl border border-border bg-card/90 p-4 shadow-[0_18px_45px_rgb(33_30_26/0.09)]">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="font-mono text-[7px] uppercase tracking-[0.14em] text-primary">
-              Prediction
-            </p>
-
-            <div className="mt-2 h-4 w-28 rounded bg-foreground/80" />
-          </div>
-
-          <div className="rounded-full border border-border px-2 py-1 font-mono text-[6px] uppercase tracking-widest text-muted-foreground">
-            USD / IDR
-          </div>
-        </div>
-
-        <div className="relative mt-5 h-28 overflow-hidden rounded-xl border border-border bg-secondary/45">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-size-[32px_32px] opacity-40"
-          />
-
-          <svg
-            viewBox="0 0 400 120"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-            className="absolute inset-0 size-full text-primary"
-          >
-            <path
-              d="M0 92 C45 80 60 88 95 66 C132 43 155 62 190 46 C230 27 248 55 286 34 C326 12 349 30 400 12"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-
-        <div className="mt-4 grid grid-cols-3 gap-2">
-          {[
-            "Gold",
-            "FX Rate",
-            "Result",
-          ].map((label) => (
-            <div
-              key={label}
-              className="rounded-lg bg-secondary/70 p-2.5"
-            >
-              <p className="font-mono text-[6px] uppercase tracking-wider text-muted-foreground">
-                {label}
-              </p>
-
-              <div className="mt-2 h-3 w-3/4 rounded bg-foreground/20" />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function HealingVisual() {
-  return (
-    <div className="relative aspect-16/10 overflow-hidden bg-feature p-5">
-      <div
-        aria-hidden="true"
-        className="tech-grid-feature absolute inset-0 opacity-45"
-      />
-
-      <div
-        aria-hidden="true"
-        className="absolute -left-10 -top-10 size-48 rounded-full bg-primary/15 blur-3xl"
-      />
-
-      <div className="relative h-full overflow-hidden rounded-2xl border border-feature-border bg-feature/70">
-        <div className="flex items-center justify-between border-b border-feature-border px-4 py-3">
-          <span className="font-display text-xs font-semibold text-feature-foreground">
-            HealingAja!
-          </span>
-
-          <div className="flex gap-2">
-            <span className="h-1.5 w-7 rounded-full bg-feature-border" />
-            <span className="h-1.5 w-7 rounded-full bg-feature-border" />
-            <span className="h-1.5 w-7 rounded-full bg-feature-border" />
-          </div>
-        </div>
-
-        <div className="grid h-[calc(100%-41px)] grid-cols-[1.15fr_0.85fr]">
-          <div className="flex flex-col justify-center p-4">
-            <p className="font-mono text-[7px] uppercase tracking-[0.14em] text-primary">
-              Explore destinations
-            </p>
-
-            <div className="mt-3 h-5 w-4/5 rounded bg-feature-foreground/85" />
-
-            <div className="mt-2 h-2 w-full rounded bg-feature-border" />
-
-            <div className="mt-1.5 h-2 w-3/4 rounded bg-feature-border" />
-
-            <span className="mt-5 h-7 w-20 rounded-full bg-primary" />
-          </div>
-
-          <div className="grid grid-cols-2 gap-2 p-3">
-            <div className="rounded-xl bg-primary/80" />
-
-            <div className="rounded-xl border border-feature-border bg-feature-foreground/10" />
-
-            <div className="col-span-2 rounded-xl border border-feature-border bg-feature-foreground/5" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function GenericVisual({
-  project,
-}: {
-  project: Project;
-}) {
-  return (
-    <div className="relative aspect-16/10 overflow-hidden bg-[linear-gradient(145deg,var(--secondary),var(--tertiary))] p-5">
-      <div
-        aria-hidden="true"
-        className="tech-grid absolute inset-0 opacity-30"
-      />
-
-      <div className="relative flex h-full flex-col justify-between rounded-2xl border border-border bg-card/75 p-5">
-        <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-primary">
-          {project.category}
-        </p>
-
-        <div>
-          <p className="font-display text-3xl font-bold tracking-tighter">
-            {project.index}
-          </p>
-
-          <p className="mt-2 text-sm font-medium">
-            {project.title}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
+const projectIndexImageKeys: Record<
+  string,
+  string
+> = {
+  edubidan: "landing-page",
+  "disarpus-bekasi": "homepage",
+  "lestari-waste-bank":
+    "statistics-reporting",
+  "gold-price-prediction":
+    "prediction-dashboard",
+  healingaja: "landing-page",
+};
 
 function ProjectVisual({
   project,
-  compact = false,
+  featured = false,
 }: {
   project: Project;
-  compact?: boolean;
+  featured?: boolean;
 }) {
-  switch (project.slug) {
-    case "edubidan":
-      return compact ? (
-        <EduBidanCardVisual />
-      ) : (
-        <EduBidanVisual />
-      );
+  const imageKey =
+    projectIndexImageKeys[
+      project.slug
+    ];
 
-    case "disarpus-bekasi":
-      return <DisarpusVisual />;
+  const imageSrc =
+    imageKey
+      ? projectImages[
+          project.slug
+        ]?.[imageKey]
+      : undefined;
 
-    case "lestari-waste-bank":
-      return <LestariVisual />;
-
-    case "gold-price-prediction":
-      return <GoldVisual />;
-
-    case "healingaja":
-      return <HealingVisual />;
-
-    default:
-      return (
-        <GenericVisual
-          project={project}
+  if (!imageSrc) {
+    return (
+      <div
+        className={[
+          "relative overflow-hidden bg-[linear-gradient(145deg,var(--secondary),var(--tertiary))]",
+          featured
+            ? "h-full min-h-64"
+            : "aspect-16/10",
+        ].join(" ")}
+      >
+        <div
+          aria-hidden="true"
+          className="tech-grid absolute inset-0 opacity-30"
         />
-      );
+
+        <div className="absolute inset-5 flex flex-col justify-between rounded-2xl border border-border bg-card/80 p-5">
+          <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-primary">
+            {project.category}
+          </p>
+
+          <div>
+            <p className="font-display text-3xl font-bold tracking-tighter">
+              {project.index}
+            </p>
+
+            <p className="mt-2 text-sm font-medium">
+              {project.title}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
   }
+
+  return (
+    <div
+      className={[
+        "relative overflow-hidden bg-secondary",
+        featured
+          ? "h-full min-h-64"
+          : "aspect-16/10",
+      ].join(" ")}
+    >
+      <Image
+        src={imageSrc}
+        alt={`${project.title} interface preview`}
+        fill
+        sizes={
+          featured
+            ? "(min-width: 1024px) 54vw, 100vw"
+            : "(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+        }
+        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.015]"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5"
+      />
+    </div>
+  );
 }
 
 function FeaturedProjectCard({
@@ -641,14 +232,16 @@ function FeaturedProjectCard({
   return (
     <article className="group overflow-hidden rounded-[1.75rem] border border-border bg-card transition-[border-color,box-shadow] duration-500 hover:border-primary/35 hover:shadow-[0_22px_60px_rgb(33_30_26/0.08)]">
       <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
-        <div
-          aria-hidden="true"
-          className="min-h-64 border-b border-border lg:border-b-0 lg:border-r"
+        <Link
+          href={`/projects/${project.slug}`}
+          aria-label={`${copy.actions.viewCaseStudy}: ${project.title}`}
+          className="block min-h-64 overflow-hidden border-b border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary lg:border-b-0 lg:border-r"
         >
           <ProjectVisual
             project={project}
+            featured
           />
-        </div>
+        </Link>
 
         <div className="flex flex-col p-6 sm:p-8 lg:p-9">
           <div className="flex flex-wrap items-center gap-3">
@@ -752,12 +345,15 @@ function StandardProjectCard({
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-border bg-card transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_18px_45px_rgb(33_30_26/0.07)]">
-      <div aria-hidden="true">
+      <Link
+        href={`/projects/${project.slug}`}
+        aria-label={`${copy.actions.viewCaseStudy}: ${project.title}`}
+        className="block overflow-hidden border-b border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
+      >
         <ProjectVisual
-           project={project}
-           compact
+          project={project}
         />
-      </div>
+      </Link>
 
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[7px] uppercase tracking-[0.11em] text-muted-foreground">
