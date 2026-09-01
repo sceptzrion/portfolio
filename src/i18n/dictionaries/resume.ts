@@ -5,28 +5,13 @@ type ResumeDictionary = {
   title: string;
   description: string;
 
-  actions: {
-    open: string;
-    download: string;
-  };
-
-  viewer: {
+  preview: {
     label: string;
-    loading: string;
-
-    unavailable: {
-      label: string;
-      title: string;
-      description: string;
-    };
-
-    error: {
-      title: string;
-      description: string;
-    };
-
-    page: string;
-    of: string;
+    hint: string;
+    source: string;
+    open: string;
+    frameTitle: string;
+    unavailable: string;
   };
 };
 
@@ -34,78 +19,60 @@ export const resumeDictionary = {
   en: {
     label: "Resume",
 
-    title: "Curriculum Vitae",
+    title:
+      "Curriculum Vitae",
 
     description:
-      "Preview my latest resume directly here, or open the original PDF when needed.",
+      "A compact preview of my latest CV. Select the document preview to open the full version in Google Drive.",
 
-    actions: {
-      open: "Open PDF",
-      download: "Download PDF",
-    },
+    preview: {
+      label:
+        "CV Preview",
 
-    viewer: {
-      label: "Resume Preview",
+      hint:
+        "Select the preview to view the full document.",
 
-      loading:
-        "Loading resume...",
+      source:
+        "Google Drive",
 
-      unavailable: {
-        label: "Preparing",
-        title:
-          "The latest resume is being prepared.",
-        description:
-          "The preview will be available here once the latest version is ready.",
-      },
+      open:
+        "Open Full CV",
 
-      error: {
-        title:
-          "The resume preview could not be loaded.",
-        description:
-          "You can still open or download the original PDF using the options above.",
-      },
+      frameTitle:
+        "Curriculum Vitae preview",
 
-      page: "Page",
-      of: "of",
+      unavailable:
+        "The latest CV is currently unavailable.",
     },
   },
 
   id: {
     label: "Resume",
 
-    title: "Curriculum Vitae",
+    title:
+      "Curriculum Vitae",
 
     description:
-      "Lihat resume terbaru saya langsung di halaman ini, atau buka file PDF aslinya jika diperlukan.",
+      "Preview ringkas CV terbaru saya. Klik preview dokumen untuk membuka versi lengkap di Google Drive.",
 
-    actions: {
-      open: "Buka PDF",
-      download: "Unduh PDF",
-    },
+    preview: {
+      label:
+        "Preview CV",
 
-    viewer: {
-      label: "Preview Resume",
+      hint:
+        "Klik preview untuk melihat dokumen lengkap.",
 
-      loading:
-        "Memuat resume...",
+      source:
+        "Google Drive",
 
-      unavailable: {
-        label: "Sedang Disiapkan",
-        title:
-          "Resume terbaru sedang disiapkan.",
-        description:
-          "Preview akan tersedia di sini setelah versi terbaru selesai disiapkan.",
-      },
+      open:
+        "Buka CV Lengkap",
 
-      error: {
-        title:
-          "Preview resume tidak dapat dimuat.",
-        description:
-          "Anda tetap dapat membuka atau mengunduh file PDF asli melalui opsi di atas.",
-      },
+      frameTitle:
+        "Preview Curriculum Vitae",
 
-      page: "Halaman",
-      of: "dari",
+      unavailable:
+        "CV terbaru saat ini belum tersedia.",
     },
   },
 } satisfies Record<
