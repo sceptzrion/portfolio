@@ -188,10 +188,10 @@ function ProjectVisual({
   return (
     <div
       className={[
-        "relative overflow-hidden bg-secondary",
+        "relative overflow-hidden",
         featured
-          ? "h-full min-h-64"
-          : "aspect-16/10",
+          ? "h-full min-h-64 bg-white"
+          : "aspect-16/10 bg-secondary",
       ].join(" ")}
     >
       <Image
@@ -203,7 +203,12 @@ function ProjectVisual({
             ? "(min-width: 1024px) 54vw, 100vw"
             : "(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
         }
-        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.015]"
+        className={[
+          "transition-transform duration-700 group-hover:scale-[1.015]",
+          featured
+            ? "object-contain object-center"
+            : "object-cover object-top",
+        ].join(" ")}
       />
 
       <div
