@@ -514,7 +514,9 @@ export default function ProjectDetailView({
     project.slug ===
       "disarpus-bekasi" ||
     project.slug ===
-      "lestari-waste-bank";
+      "lestari-waste-bank" ||
+    project.slug ===
+      "gold-price-prediction";
 
   const selectedScreens =
     repeatPrimaryInSelected

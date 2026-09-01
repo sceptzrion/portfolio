@@ -152,7 +152,7 @@ export const projects: readonly Project[] = [
     title:
       "Gold Price Prediction System",
     tagline:
-      "A Streamlit-based gold price prediction app using linear regression, live gold and exchange-rate data, and manual simulation.",
+      "A Streamlit-based gold price prediction app using linear regression, API-fetched gold and exchange-rate data, and manual simulation.",
     category:
       "Data / Machine Learning",
     context:

@@ -55,4 +55,12 @@ export const projectImages: Record<
     "mobile-waste-categories":
       "/images/projects/lestari-waste-bank/mobile-waste-categories.webp",
   },
+
+  "gold-price-prediction": {
+    "prediction-dashboard":
+      "/images/projects/gold-price-prediction/prediction-dashboard.webp",
+
+    "manual-simulation":
+      "/images/projects/gold-price-prediction/manual-simulation.webp",
+  },
 };

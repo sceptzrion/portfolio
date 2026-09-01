@@ -267,7 +267,7 @@ export const projectsIdContent: Record<
 
   "gold-price-prediction": {
     tagline:
-      "Aplikasi prediksi harga emas berbasis Streamlit menggunakan linear regression, data harga emas dan kurs aktual, serta simulasi manual.",
+      "Aplikasi prediksi harga emas berbasis Streamlit menggunakan linear regression, data harga emas dan kurs dari API, serta simulasi manual.",
 
     category:
       "Data / Machine Learning",

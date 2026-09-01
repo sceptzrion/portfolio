@@ -435,13 +435,13 @@ export const projectDetailsDictionary: Record<
           "Built the Streamlit interface and application flow.",
           "Integrated the trained linear regression model with market and exchange-rate APIs.",
           "Implemented currency and unit conversion between USD per troy ounce and IDR per gram.",
-          "Built the live prediction and manual simulation result flows.",
+          "Built the automatic prediction and manual simulation result flows.",
         ],
 
         features: [
           {
             title:
-              "Live Market Data",
+              "API-Fetched Market Data",
             detail:
               "MetalPriceAPI and CurrencyAPI provide gold-price and USD/IDR data used by the application.",
           },
@@ -470,15 +470,19 @@ export const projectDetailsDictionary: Record<
             label:
               "Prediction Dashboard",
             detail:
-              "The main Streamlit dashboard showing current market information and the next-day prediction.",
+              "Application dashboard captured on June 1, 2025, showing API-fetched gold and exchange-rate data together with the next-day prediction.",
             layout: "wide",
+            imageKey:
+              "prediction-dashboard",
           },
           {
             label:
-              "Manual Simulation",
+              "Manual Prediction Simulation",
             detail:
-              "The custom-input flow for exploring a separate prediction scenario.",
+              "Manual simulation using custom H-1 and H+0 gold prices to generate a separate next-day prediction.",
             layout: "wide",
+            imageKey:
+              "manual-simulation",
           },
         ],
       },
@@ -918,13 +922,13 @@ export const projectDetailsDictionary: Record<
           "Membangun antarmuka Streamlit dan alur aplikasi.",
           "Mengintegrasikan model linear regression dengan API harga pasar dan kurs.",
           "Mengimplementasikan konversi mata uang dan satuan dari USD per troy ounce ke IDR per gram.",
-          "Membangun alur hasil prediksi aktual dan simulasi manual.",
+          "Membangun alur hasil prediksi otomatis dan simulasi manual.",
         ],
 
         features: [
           {
             title:
-              "Data Pasar Aktual",
+              "Data Pasar dari API",
             detail:
               "MetalPriceAPI dan CurrencyAPI menyediakan data harga emas serta USD/IDR yang digunakan oleh aplikasi.",
           },
@@ -953,15 +957,19 @@ export const projectDetailsDictionary: Record<
             label:
               "Dashboard Prediksi",
             detail:
-              "Dashboard utama Streamlit yang menampilkan informasi pasar dan prediksi harga hari berikutnya.",
+              "Dashboard aplikasi yang diambil pada 1 Juni 2025, menampilkan data harga emas dan kurs dari API beserta prediksi untuk hari berikutnya.",
             layout: "wide",
+            imageKey:
+              "prediction-dashboard",
           },
           {
             label:
-              "Simulasi Manual",
+              "Simulasi Prediksi Manual",
             detail:
-              "Alur input khusus untuk mengeksplorasi skenario prediksi yang berbeda.",
+              "Simulasi manual menggunakan harga emas H-1 dan H+0 untuk menghasilkan prediksi hari berikutnya secara terpisah.",
             layout: "wide",
+            imageKey:
+              "manual-simulation",
           },
         ],
       },
