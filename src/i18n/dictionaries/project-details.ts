@@ -408,7 +408,7 @@ export const projectDetailsDictionary: Record<
           },
           {
             label:
-              "Mobile Waste Categories",
+              "Waste Categories on Mobile",
             detail:
               "Responsive user-facing view presenting the waste categories supported by the platform.",
             layout: "wide",
@@ -891,7 +891,7 @@ export const projectDetailsDictionary: Record<
           },
           {
             label:
-              "Kategori Sampah Mobile",
+              "Kategori Sampah Responsif",
             detail:
               "Tampilan responsif untuk pengguna yang menyajikan berbagai kategori sampah yang didukung platform.",
             layout: "wide",
