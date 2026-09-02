@@ -65,10 +65,18 @@ type ExperienceDictionary = {
     };
 
     visuals: {
-      responsiveInterface: string;
+      frontendFlow: string;
+
+      frontendFlowSteps: readonly [
+        string,
+        string,
+        string,
+        string,
+      ];
+
       analysisFlow: string;
 
-      flowSteps: readonly [
+      analysisFlowSteps: readonly [
         string,
         string,
         string,
@@ -201,17 +209,24 @@ export const experienceDictionary = {
       },
 
       visuals: {
-        responsiveInterface:
-          "Responsive interface",
+        frontendFlow:
+          "Frontend delivery flow",
+
+        frontendFlowSteps: [
+          "Approved Figma",
+          "Next.js implementation",
+          "Responsive UI",
+          "QA & fixes",
+        ],
 
         analysisFlow:
-          "Analysis flow",
+          "Data analysis flow",
 
-        flowSteps: [
-          "Relational data",
+        analysisFlowSteps: [
+          "Google BigQuery",
           "Master tables",
-          "Dashboards",
-          "Recommendations",
+          "Looker Studio",
+          "Insights",
         ],
       },
     },
@@ -360,17 +375,24 @@ export const experienceDictionary = {
       },
 
       visuals: {
-        responsiveInterface:
-          "Antarmuka responsif",
+        frontendFlow:
+          "Alur implementasi frontend",
+
+        frontendFlowSteps: [
+          "Figma disetujui",
+          "Implementasi Next.js",
+          "UI responsif",
+          "QA & perbaikan",
+        ],
 
         analysisFlow:
-          "Alur analisis",
+          "Alur analisis data",
 
-        flowSteps: [
-          "Data relasional",
+        analysisFlowSteps: [
+          "Google BigQuery",
           "Master table",
-          "Dashboard",
-          "Rekomendasi",
+          "Looker Studio",
+          "Insight",
         ],
       },
     },

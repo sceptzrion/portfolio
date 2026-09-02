@@ -4,97 +4,111 @@ import { experiences } from "@/data/experience";
 import { experienceDictionary } from "@/i18n/dictionaries/experience";
 import { getLocale } from "@/i18n/get-locale";
 
-function BrowserVisual({
-  label,
-}: {
-  label: string;
-}) {
-  return (
-    <div
-      aria-hidden="true"
-      className="overflow-hidden rounded-2xl border border-border bg-secondary/45"
-    >
-      <div className="flex h-9 items-center gap-1.5 border-b border-border px-4">
-        <span className="size-1.5 rounded-full bg-primary/70" />
-        <span className="size-1.5 rounded-full bg-border-strong" />
-        <span className="size-1.5 rounded-full bg-border-strong" />
+type WorkflowVariant =
+  | "frontend"
+  | "data";
 
-        <div className="ml-3 h-1.5 w-20 rounded-full bg-border-strong/60" />
-      </div>
-
-      <div className="grid min-h-52 grid-cols-[0.28fr_1fr] sm:min-h-56">
-        <div className="border-r border-border p-4">
-          <div className="h-1.5 w-9 rounded-full bg-primary/45" />
-
-          <div className="mt-5 space-y-3">
-            <div className="h-1.5 w-full rounded-full bg-border" />
-            <div className="h-1.5 w-4/5 rounded-full bg-border" />
-            <div className="h-1.5 w-3/5 rounded-full bg-border" />
-          </div>
-        </div>
-
-        <div className="relative p-5">
-          <div className="h-1.5 w-14 rounded-full bg-primary/45" />
-
-          <div className="mt-5 h-5 w-4/5 rounded-sm bg-foreground/10" />
-          <div className="mt-2 h-5 w-3/5 rounded-sm bg-foreground/10" />
-
-          <div className="mt-6 grid grid-cols-2 gap-3">
-            <div className="h-16 rounded-lg border border-border bg-background/65" />
-            <div className="h-16 rounded-lg border border-border bg-background/65" />
-          </div>
-
-          <p className="absolute bottom-4 right-4 font-mono text-[7px] uppercase tracking-[0.15em] text-muted-foreground">
-            {label}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function DataFlowVisual({
+function WorkflowVisual({
   label,
   steps,
+  variant,
 }: {
   label: string;
   steps: readonly string[];
+  variant: WorkflowVariant;
 }) {
+  const marker =
+    variant === "frontend"
+      ? "WEB"
+      : "DATA";
+
   return (
     <div
       aria-hidden="true"
-      className="overflow-hidden rounded-2xl border border-border bg-secondary/45 p-5"
+      className="relative overflow-hidden rounded-2xl border border-border bg-secondary/45"
     >
-      <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground">
-        {label}
-      </p>
+      <div
+        className="tech-grid pointer-events-none absolute inset-0 opacity-[0.045]"
+      />
 
-      <div className="mt-4 border-y border-border">
-        {steps.map((step, index) => (
-          <div
-            key={step}
-            className={[
-              "grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3.5",
-              index < steps.length - 1
-                ? "border-b border-border"
-                : "",
-            ].join(" ")}
-          >
-            <span className="font-mono text-[8px] tracking-[0.12em] text-primary">
-              0{index + 1}
-            </span>
+      <div className="relative p-5 sm:p-6">
+        <div className="flex items-center justify-between gap-4">
+          <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground">
+            {label}
+          </p>
 
-            <p className="text-sm font-semibold text-foreground">
-              {step}
-            </p>
+          <span className="rounded-full border border-primary/20 bg-primary-soft px-2.5 py-1 font-mono text-[7px] font-semibold uppercase tracking-[0.14em] text-primary">
+            {marker}
+          </span>
+        </div>
 
-            {index < steps.length - 1 && (
-              <span className="text-xs text-muted-foreground">
-                ↓
-              </span>
+        <div className="relative mt-5">
+          <span className="absolute bottom-4 left-3.75 top-4 w-px bg-border-strong" />
+
+          <div className="space-y-3">
+            {steps.map(
+              (
+                step,
+                index,
+              ) => (
+                <div
+                  key={step}
+                  className="relative grid grid-cols-[30px_1fr] items-center gap-3"
+                >
+                  <span
+                    className={[
+                      "relative z-10 grid size-7.5 place-items-center rounded-full border bg-background font-mono text-[8px] tracking-widest",
+                      index === 0
+                        ? "border-primary/45 text-primary"
+                        : "border-border-strong text-muted-foreground",
+                    ].join(" ")}
+                  >
+                    {String(
+                      index + 1,
+                    ).padStart(
+                      2,
+                      "0",
+                    )}
+                  </span>
+
+                  <div
+                    className={[
+                      "rounded-xl border px-4 py-3.5",
+                      variant ===
+                      "frontend"
+                        ? "border-border bg-background/80"
+                        : "border-primary/15 bg-primary-soft/25",
+                    ].join(" ")}
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="text-sm font-semibold leading-5 text-foreground">
+                        {step}
+                      </p>
+
+                      {index <
+                        steps.length -
+                          1 && (
+                        <span className="shrink-0 font-mono text-[10px] text-primary/65">
+                          ↓
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ),
             )}
           </div>
-        ))}
+        </div>
+
+        <div className="mt-5 flex items-center gap-2 border-t border-border pt-4">
+          <span className="size-1.5 rounded-full bg-primary" />
+
+          <span className="h-px flex-1 bg-border" />
+
+          <span className="font-mono text-[7px] uppercase tracking-[0.13em] text-muted-foreground">
+            04 Steps
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -339,11 +353,16 @@ export default async function ExperienceTimeline() {
                     webCopy.highlights
                   }
                   visual={
-                    <BrowserVisual
+                    <WorkflowVisual
                       label={
                         copy.visuals
-                          .responsiveInterface
+                          .frontendFlow
                       }
+                      steps={
+                        copy.visuals
+                          .frontendFlowSteps
+                      }
+                      variant="frontend"
                     />
                   }
                 />
@@ -396,15 +415,16 @@ export default async function ExperienceTimeline() {
                     dataCopy.highlights
                   }
                   visual={
-                    <DataFlowVisual
+                    <WorkflowVisual
                       label={
                         copy.visuals
                           .analysisFlow
                       }
                       steps={
                         copy.visuals
-                          .flowSteps
+                          .analysisFlowSteps
                       }
+                      variant="data"
                     />
                   }
                 />
