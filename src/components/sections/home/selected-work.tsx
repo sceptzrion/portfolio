@@ -324,7 +324,7 @@ export default async function SelectedWork() {
                   }
                 </p>
 
-                <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-border pt-6 text-sm">
+                <dl className="mt-8 grid grid-cols-1 gap-x-8 gap-y-5 border-t border-border pt-6 sm:grid-cols-2">
                   <div>
                     <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
                       {

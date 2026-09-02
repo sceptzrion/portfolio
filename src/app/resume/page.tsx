@@ -107,7 +107,7 @@ export default async function ResumePage() {
 
             <div className="w-full lg:justify-self-end">
               <div className="mx-auto max-w-sm lg:mx-0 lg:ml-auto">
-                <div className="mb-5 flex items-end justify-between gap-5 px-1">
+                <div className="mb-5 flex flex-col items-start gap-3 px-1 sm:flex-row sm:items-end sm:justify-between sm:gap-5">
                   <div>
                     <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
                       {

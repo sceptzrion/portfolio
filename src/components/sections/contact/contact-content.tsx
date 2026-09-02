@@ -280,7 +280,10 @@ export default async function ContactContent() {
                   <span className="flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.12em] text-muted-foreground">
                     <span className="size-1.5 rounded-full bg-primary" />
 
-                    Available
+                    {
+                      copy.panel
+                        .status
+                    }
                   </span>
                 </div>
 

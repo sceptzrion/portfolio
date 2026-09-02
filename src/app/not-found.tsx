@@ -142,7 +142,7 @@ export default async function NotFound() {
   const copy = notFoundDictionary[locale];
 
   return (
-    <main className="relative grid h-dvh overflow-hidden bg-background px-6">
+    <main className="relative grid min-h-dvh overflow-x-hidden bg-background px-6 py-16 sm:py-20">
       <div
         aria-hidden="true"
         className="warm-veil pointer-events-none absolute inset-0 opacity-45"

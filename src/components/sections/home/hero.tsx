@@ -224,15 +224,16 @@ export default async function Hero() {
                 }
               </span>
 
-              <span
-                aria-hidden="true"
-                className="text-muted-foreground"
-              >
-                ·
-              </span>
+              <span className="inline-flex items-center gap-4 text-muted-foreground">
+                <span
+                  aria-hidden="true"
+                >
+                  ·
+                </span>
 
-              <span className="text-muted-foreground">
-                {shared.location}
+                <span>
+                  {shared.location}
+                </span>
               </span>
             </div>
 

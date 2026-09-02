@@ -23,6 +23,7 @@ type ContactDictionary = {
 
   panel: {
     label: string;
+    status: string;
     title: string;
     description: string;
     emailAction: string;
@@ -59,6 +60,7 @@ export const contactDictionary = {
 
     panel: {
       label: "Availability",
+      status: "Available",
       title:
         "Open to opportunities.",
       description:
@@ -98,7 +100,8 @@ export const contactDictionary = {
     },
 
     panel: {
-      label: "Availability",
+      label: "Ketersediaan",
+      status: "Terbuka",
       title:
         "Terbuka untuk peluang baru.",
       description:
