@@ -26,7 +26,8 @@ function WorkflowVisual({
 
   return (
     <div
-      aria-hidden="true"
+      role="img"
+      aria-label={`${label}: ${steps.join(" → ")}`}
       className="relative overflow-hidden rounded-2xl border border-border bg-secondary/45"
     >
       <div

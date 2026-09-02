@@ -55,7 +55,7 @@ export default function ContactPage() {
 
       <Navbar />
 
-      <main>
+      <main id="main-content">
         <ContactContent />
       </main>
 

@@ -11,6 +11,7 @@ import { LocaleProvider } from "@/components/i18n/locale-provider";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { siteConfig } from "@/data/site";
 import { metadataDictionary } from "@/i18n/dictionaries/metadata";
+import { sharedDictionary } from "@/i18n/dictionaries/shared";
 import { getLocale } from "@/i18n/get-locale";
 
 import "./globals.css";
@@ -131,6 +132,9 @@ export default async function RootLayout({
   const locale =
     await getLocale();
 
+  const sharedCopy =
+    sharedDictionary[locale];
+
   return (
     <html
       lang={locale}
@@ -154,6 +158,17 @@ export default async function RootLayout({
           }
         >
           <ThemeProvider>
+            <a
+              href="#main-content"
+              className="fixed left-4 top-4 z-100 -translate-y-24 rounded-full border border-border bg-foreground px-4 py-3 text-sm font-semibold text-background shadow-lg transition-transform duration-200 focus:translate-y-0"
+            >
+              {
+                sharedCopy
+                  .accessibility
+                  .skipToContent
+              }
+            </a>
+
             {children}
           </ThemeProvider>
         </LocaleProvider>

@@ -3,6 +3,10 @@ import type { Locale } from "@/i18n/config";
 type SharedDictionary = {
   location: string;
 
+  accessibility: {
+    skipToContent: string;
+  };
+
   navigation: {
     home: string;
     about: string;
@@ -49,6 +53,11 @@ export const sharedDictionary = {
   en: {
     location:
       "Karawang, West Java, Indonesia",
+
+    accessibility: {
+      skipToContent:
+        "Skip to main content",
+    },
 
     navigation: {
       home: "Home",
@@ -107,6 +116,11 @@ export const sharedDictionary = {
   id: {
     location:
       "Karawang, Jawa Barat, Indonesia",
+
+    accessibility: {
+      skipToContent:
+        "Lewati ke konten utama",
+    },
 
     navigation: {
       home: "Beranda",

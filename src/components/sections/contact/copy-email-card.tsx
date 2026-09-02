@@ -76,7 +76,8 @@ export default function CopyEmailCard({
   };
 
   return (
-    <button
+    <>
+      <button
       type="button"
       onClick={handleCopy}
       aria-label={`${copyLabel}: ${email}`}
@@ -112,6 +113,20 @@ export default function CopyEmailCard({
           <CopyIcon />
         )}
       </span>
-    </button>
+      </button>
+
+      <span
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+      >
+        {copied
+          ? copiedLabel +
+            ": " +
+            email
+          : ""}
+      </span>
+    </>
   );
 }

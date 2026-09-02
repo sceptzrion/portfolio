@@ -58,7 +58,7 @@ export default function ExperiencePage() {
 
       <Navbar />
 
-      <main>
+      <main id="main-content">
         <ExperienceHero />
         <ExperienceTimeline />
         <ExperienceTakeaways />

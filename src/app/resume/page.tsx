@@ -81,7 +81,7 @@ export default async function ResumePage() {
     <>
       <Navbar />
 
-      <main className="relative min-h-screen overflow-hidden bg-background pt-28 sm:pt-32">
+      <main id="main-content" className="relative min-h-screen overflow-hidden bg-background pt-28 sm:pt-32">
         <div
           aria-hidden="true"
           className="warm-veil pointer-events-none absolute inset-x-0 top-0 h-120 opacity-45"
@@ -134,19 +134,7 @@ export default async function ResumePage() {
 
                 {siteConfig.resume
                   .available ? (
-                  <a
-                    href={
-                      siteConfig.resume
-                        .externalHref
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={
-                      copy.preview
-                        .open
-                    }
-                    className="group block rounded-4xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-                  >
+                  <div className="group relative rounded-4xl">
                     <div className="rounded-4xl border border-border bg-secondary/45 p-3 shadow-[0_24px_70px_rgb(33_30_26/0.08)] transition-[transform,border-color,box-shadow] duration-500 group-hover:-translate-y-1 group-hover:border-primary/35 group-hover:shadow-[0_30px_80px_rgb(33_30_26/0.13)] sm:p-4">
                       <div className="relative mx-auto aspect-4/5 w-full max-w-84 overflow-hidden rounded-[1.45rem] border border-border bg-white">
                         <iframe
@@ -188,7 +176,28 @@ export default async function ResumePage() {
                         </div>
                       </div>
                     </div>
-                  </a>
+
+                    <a
+                      href={
+                        siteConfig.resume
+                          .externalHref
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={
+                        copy.preview
+                          .open
+                      }
+                      className="absolute inset-0 z-40 rounded-4xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                    >
+                      <span className="sr-only">
+                        {
+                          copy.preview
+                            .open
+                        }
+                      </span>
+                    </a>
+                  </div>
                 ) : (
                   <div className="rounded-3xl border border-border bg-card px-6 py-14 text-center text-sm leading-7 text-muted-foreground">
                     {

@@ -57,7 +57,7 @@ export default function ProjectsPage() {
 
       <Navbar />
 
-      <main>
+      <main id="main-content">
         <ProjectsHero />
         <ProjectFilterGrid />
         <ProjectsNext />

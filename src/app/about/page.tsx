@@ -61,7 +61,7 @@ export default function AboutPage() {
 
       <Navbar />
 
-      <main>
+      <main id="main-content">
         <AboutHero />
         <AboutStory />
         <AboutEducation />
