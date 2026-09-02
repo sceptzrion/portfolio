@@ -65,6 +65,8 @@ type ExperienceDictionary = {
     };
 
     visuals: {
+      stepCountLabel: string;
+
       frontendFlow: string;
 
       frontendFlowSteps: readonly [
@@ -209,14 +211,17 @@ export const experienceDictionary = {
       },
 
       visuals: {
+        stepCountLabel:
+          "Steps",
+
         frontendFlow:
           "Frontend delivery flow",
 
         frontendFlowSteps: [
-          "Approved Figma",
-          "Next.js implementation",
+          "Approved Figma Design",
+          "Next.js Implementation",
           "Responsive UI",
-          "QA & fixes",
+          "QA & UI Fixes",
         ],
 
         analysisFlow:
@@ -375,14 +380,17 @@ export const experienceDictionary = {
       },
 
       visuals: {
+        stepCountLabel:
+          "Tahap",
+
         frontendFlow:
           "Alur implementasi frontend",
 
         frontendFlowSteps: [
-          "Figma disetujui",
+          "Desain Figma Disetujui",
           "Implementasi Next.js",
-          "UI responsif",
-          "QA & perbaikan",
+          "UI Responsif",
+          "QA & Perbaikan UI",
         ],
 
         analysisFlow:

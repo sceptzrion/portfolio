@@ -11,10 +11,12 @@ type WorkflowVariant =
 function WorkflowVisual({
   label,
   steps,
+  countLabel,
   variant,
 }: {
   label: string;
   steps: readonly string[];
+  countLabel: string;
   variant: WorkflowVariant;
 }) {
   const marker =
@@ -106,7 +108,13 @@ function WorkflowVisual({
           <span className="h-px flex-1 bg-border" />
 
           <span className="font-mono text-[7px] uppercase tracking-[0.13em] text-muted-foreground">
-            04 Steps
+            {String(
+              steps.length,
+            ).padStart(
+              2,
+              "0",
+            )}{" "}
+            {countLabel}
           </span>
         </div>
       </div>
@@ -362,6 +370,10 @@ export default async function ExperienceTimeline() {
                         copy.visuals
                           .frontendFlowSteps
                       }
+                      countLabel={
+                        copy.visuals
+                          .stepCountLabel
+                      }
                       variant="frontend"
                     />
                   }
@@ -423,6 +435,10 @@ export default async function ExperienceTimeline() {
                       steps={
                         copy.visuals
                           .analysisFlowSteps
+                      }
+                      countLabel={
+                        copy.visuals
+                          .stepCountLabel
                       }
                       variant="data"
                     />
