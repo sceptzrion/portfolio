@@ -32,6 +32,7 @@ export const profile = {
     university:
       "Universitas Singaperbangsa Karawang",
     period: "2022 — 2026",
+    graduationYear: "2026",
     gpa: "3.93 / 4.00",
     honour: "Cum Laude",
   },
