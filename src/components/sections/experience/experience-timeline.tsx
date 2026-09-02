@@ -122,6 +122,40 @@ function WorkflowVisual({
   );
 }
 
+function highlightDividerClass(
+  index: number,
+  total: number,
+) {
+  const classes: string[] =
+    [];
+
+  const isLastItem =
+    index === total - 1;
+
+  const lastDesktopRowStart =
+    Math.floor(
+      (total - 1) / 2,
+    ) * 2;
+
+  if (!isLastItem) {
+    classes.push(
+      "border-b",
+      "border-border",
+    );
+  }
+
+  if (
+    index >=
+    lastDesktopRowStart
+  ) {
+    classes.push(
+      "md:border-b-0",
+    );
+  }
+
+  return classes.join(" ");
+}
+
 function ExperienceCard({
   experience,
   category,
@@ -236,9 +270,10 @@ function ExperienceCard({
                   index % 2 === 0
                     ? "md:pr-7"
                     : "md:border-l md:border-border md:pl-7",
-                  index < 2
-                    ? "border-b border-border"
-                    : "",
+                  highlightDividerClass(
+                    index,
+                    highlights.length,
+                  ),
                 ].join(" ")}
               >
                 <span className="font-mono text-[8px] tracking-[0.12em] text-primary">
