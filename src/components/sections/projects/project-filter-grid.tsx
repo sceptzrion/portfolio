@@ -40,6 +40,12 @@ type ProjectGridCopy = {
     viewAllProjects: string;
   };
 
+  results: {
+    singular: string;
+    plural: string;
+    filter: string;
+  };
+
   empty: string;
 };
 
@@ -495,7 +501,7 @@ export default function ProjectFilterGrid() {
                     aria-pressed={
                       active
                     }
-                    aria-controls="projects-grid"
+                    aria-controls="projects-results"
                     onClick={() =>
                       setActiveFilter(
                         filter.value,
@@ -516,7 +522,40 @@ export default function ProjectFilterGrid() {
           </div>
         </div>
 
-        <div className="mt-8 space-y-6">
+        <div
+          id="projects-results"
+          className="mt-8 space-y-6"
+        >
+          <p
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            className="sr-only"
+          >
+            {
+              filteredProjects.length
+            }{" "}
+            {
+              filteredProjects.length ===
+              1
+                ? copy.results
+                    .singular
+                : copy.results
+                    .plural
+            }
+            .{" "}
+            {
+              copy.results
+                .filter
+            }
+            :{" "}
+            {
+              copy.filters[
+                activeFilter
+              ]
+            }
+            .
+          </p>
           {featuredProject && (
             <div
               key={`${activeFilter}-featured-${featuredProject.slug}`}

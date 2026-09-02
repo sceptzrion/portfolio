@@ -205,7 +205,7 @@ export default async function ProjectPage({
 
       <Navbar />
 
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <ProjectDetailView
           project={project}
           nextProject={

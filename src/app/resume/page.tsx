@@ -81,7 +81,7 @@ export default async function ResumePage() {
     <>
       <Navbar />
 
-      <main id="main-content" className="relative min-h-screen overflow-hidden bg-background pt-28 sm:pt-32">
+      <main id="main-content" tabIndex={-1} className="relative min-h-screen overflow-hidden bg-background pt-28 sm:pt-32">
         <div
           aria-hidden="true"
           className="warm-veil pointer-events-none absolute inset-x-0 top-0 h-120 opacity-45"

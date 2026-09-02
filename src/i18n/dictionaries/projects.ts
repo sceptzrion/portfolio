@@ -57,6 +57,12 @@ type ProjectsDictionary = {
       viewAllProjects: string;
     };
 
+    results: {
+      singular: string;
+      plural: string;
+      filter: string;
+    };
+
     empty: string;
   };
 };
@@ -130,6 +136,15 @@ export const projectsDictionary = {
           "View all projects",
       },
 
+      results: {
+        singular:
+          "project shown",
+        plural:
+          "projects shown",
+        filter:
+          "Filter",
+      },
+
       empty:
         "No projects in this category yet.",
     },
@@ -201,6 +216,15 @@ export const projectsDictionary = {
           "Lihat Studi Kasus",
         viewAllProjects:
           "Lihat semua proyek",
+      },
+
+      results: {
+        singular:
+          "proyek ditampilkan",
+        plural:
+          "proyek ditampilkan",
+        filter:
+          "Filter",
       },
 
       empty:
