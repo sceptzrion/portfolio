@@ -98,11 +98,30 @@ export default function Navbar() {
         );
       };
 
+    let frameId:
+      number | null = null;
+
+    const scheduleNavbarStateUpdate =
+      () => {
+        if (frameId !== null) {
+          return;
+        }
+
+        frameId =
+          window.requestAnimationFrame(
+            () => {
+              frameId = null;
+
+              updateNavbarState();
+            },
+          );
+      };
+
     updateNavbarState();
 
     window.addEventListener(
       "scroll",
-      updateNavbarState,
+      scheduleNavbarStateUpdate,
       {
         passive: true,
       },
@@ -110,19 +129,25 @@ export default function Navbar() {
 
     window.addEventListener(
       "resize",
-      updateNavbarState,
+      scheduleNavbarStateUpdate,
     );
 
     return () => {
       window.removeEventListener(
         "scroll",
-        updateNavbarState,
+        scheduleNavbarStateUpdate,
       );
 
       window.removeEventListener(
         "resize",
-        updateNavbarState,
+        scheduleNavbarStateUpdate,
       );
+
+      if (frameId !== null) {
+        window.cancelAnimationFrame(
+          frameId,
+        );
+      }
     };
   }, []);
 

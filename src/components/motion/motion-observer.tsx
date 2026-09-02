@@ -150,19 +150,57 @@ export default function MotionObserver() {
      * Watch for those newly inserted reveal elements
      * so locale changes never leave them hidden.
      */
+    const pendingRevealElements =
+      new Set<HTMLElement>();
+
+    let mutationFrameId:
+      number | null = null;
+
+    const flushPendingRevealElements =
+      () => {
+        mutationFrameId = null;
+
+        pendingRevealElements.forEach(
+          revealOrObserve,
+        );
+
+        pendingRevealElements.clear();
+      };
+
+    const scheduleRevealElements = (
+      node: Node,
+    ) => {
+      collectRevealElements(
+        node,
+      ).forEach(
+        (element) => {
+          pendingRevealElements.add(
+            element,
+          );
+        },
+      );
+
+      if (
+        pendingRevealElements.size ===
+          0 ||
+        mutationFrameId !== null
+      ) {
+        return;
+      }
+
+      mutationFrameId =
+        window.requestAnimationFrame(
+          flushPendingRevealElements,
+        );
+    };
+
     const mutationObserver =
       new MutationObserver(
         (records) => {
           records.forEach(
             (record) => {
               record.addedNodes.forEach(
-                (node) => {
-                  collectRevealElements(
-                    node,
-                  ).forEach(
-                    revealOrObserve,
-                  );
-                },
+                scheduleRevealElements,
               );
             },
           );
@@ -181,6 +219,16 @@ export default function MotionObserver() {
       mutationObserver.disconnect();
 
       intersectionObserver?.disconnect();
+
+      if (
+        mutationFrameId !== null
+      ) {
+        window.cancelAnimationFrame(
+          mutationFrameId,
+        );
+      }
+
+      pendingRevealElements.clear();
 
       root.classList.remove(
         MOTION_READY_CLASS,

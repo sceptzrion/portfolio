@@ -144,6 +144,8 @@ function ProjectPreview({
           }
           alt=""
           fill
+          loading="lazy"
+          fetchPriority="low"
           sizes="220px"
           className="object-cover object-top transition-transform duration-700 hover:scale-[1.02]"
         />
