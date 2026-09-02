@@ -4,10 +4,6 @@ Personal portfolio of **Muhamad Ikhsan Rizqi Yanuar**, a Full-Stack Web Develope
 
 The website presents selected projects, professional experience, background, capabilities, resume, and contact information through a responsive bilingual interface.
 
-## Website
-
-**rizqiyr.id**
-
 ## Features
 
 - English and Indonesian localization with clean public URLs
@@ -75,12 +71,3 @@ public/
 ## Localization
 
 English is the default locale. Language preference is persisted through a cookie without adding locale prefixes such as `/en` or `/id` to public URLs.
-
-## Resume
-
-The Resume page provides a compact embedded preview of the latest CV. The full document is hosted on Google Drive and opens externally from the preview.
-
-## Contact
-
-- Email: rizqi.iry@gmail.com
-- LinkedIn: linkedin.com/in/ikhsanry
