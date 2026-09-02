@@ -6,8 +6,6 @@ export const siteConfig = {
   monogram: "RY",
 
   role: "Full-Stack Web Developer",
-  location:
-    "Karawang, West Java, Indonesia",
 
   domain: "rizqiyr.id",
   url: "https://rizqiyr.id",

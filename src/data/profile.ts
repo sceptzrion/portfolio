@@ -10,17 +10,6 @@ type LearningStage = {
 };
 
 export const profile = {
-  introduction:
-    "I’m a fresh Informatics graduate with hands-on experience building responsive interfaces and web applications through internships, academic projects, and collaborative development.",
-
-  perspective:
-    "I enjoy translating ideas and interface designs into functional products, with particular interest in frontend engineering, full-stack development, database integration, and maintainable application development.",
-
-  story: [
-    "My interest in building for the web grew from studying Informatics and turning academic concepts into working applications. I became especially interested in the point where interface decisions, application logic, and data need to work together as one product.",
-    "Through academic projects and internships, I gained hands-on experience translating interface designs into responsive pages, working with application data, and collaborating throughout the development process. Those experiences shaped a practical approach to software: understand the problem, keep the implementation clear, and build with both users and maintainability in mind.",
-  ],
-
   focusAreas: [
     {
       title: "Frontend Engineering",
@@ -40,16 +29,11 @@ export const profile = {
   ],
 
   education: {
-    degree: "Bachelor of Informatics",
     university:
       "Universitas Singaperbangsa Karawang",
     period: "2022 — 2026",
-    graduationYear: "2026",
-    location: "Karawang, West Java",
     gpa: "3.93 / 4.00",
     honour: "Cum Laude",
-    description:
-      "Built a foundation in software engineering and full-stack development through academic study, hands-on projects, and practical development experience.",
   },
 
   learning: [

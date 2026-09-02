@@ -30,35 +30,27 @@ export type ProjectFilterValue =
 
 export const projectFilterOptions: readonly {
   value: ProjectFilterValue;
-  label: string;
 }[] = [
   {
     value: "all",
-    label: "All",
   },
   {
     value: "full-stack",
-    label: "Full-Stack",
   },
   {
     value: "frontend",
-    label: "Frontend",
   },
   {
     value: "data-ml",
-    label: "Data / ML",
   },
   {
     value: "academic",
-    label: "Academic",
   },
   {
     value: "professional",
-    label: "Professional",
   },
   {
     value: "personal",
-    label: "Personal",
   },
 ];
 
